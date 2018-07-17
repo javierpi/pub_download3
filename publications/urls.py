@@ -23,6 +23,5 @@ urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
     url(r'^auth/', include('social_django.urls', namespace='social')), # <- Here
-    url(r'^google_analytics/', include('google_analytics.urls')), 
     url(r'^google/', include('gug.urls')), 
 ]
