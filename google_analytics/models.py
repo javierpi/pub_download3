@@ -1,9 +1,10 @@
 from datetime import date
+import json
 
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.db import models
-# from django.utils.functional import SimpleLazyObject, empty
+
 
 class Period(object):
     DAY = 86400  # seconds
@@ -20,46 +21,14 @@ PERIOD_CHOICES = (
     (Period.MONTH, 'Month'),
 	(Period.LIFETIME, 'Lifetime'))
 
-
-# class RegisterLazilyManagerMixin(object):
-#     _lazy_entries = []
-
-#     def _register(self, defaults=None, **kwargs):
-#         """Fetch (update or create)  an instance, lazily.
-#         We're doing this lazily, so that it becomes possible to define
-#         custom enums in your code, even before the Django ORM is fully
-#         initialized.
-#         Domain.objects.SHOPPING = Domain.objects.register(
-#             ref='shopping',
-#             name='Webshop')
-#         Domain.objects.USERS = Domain.objects.register(
-#             ref='users',
-#             name='User Accounts')
-#         """
-#         f = lambda: self.update_or_create(defaults=defaults, **kwargs)[0]
-#         ret = SimpleLazyObject(f)
-#         self._lazy_entries.append(ret)
-#         return ret
-
-#     def clear_cache(self):
-#         """For testability"""
-#         for entry in self._lazy_entries:
-#             entry._wrapped = empty
-
-
-# class DomainManager(RegisterLazilyManagerMixin, models.Manager):
-
-#     def register(self, ref, name=''):
-#         return super(DomainManager, self)._register(
-#             defaults={'name': name},
-#             ref=ref)
-
-#     def get_by_natural_key(self, ref):
-#         return self.get(ref=ref)
+def validate_json(value):
+    try:
+        json.loads(value)
+    except ValueError:
+        raise ValidationError(('Variables must be in json format'), params={},)
 
 
 class Domain(models.Model):
-#    objects = DomainManager()
 
     ref = models.CharField(
         max_length=100,
@@ -77,17 +46,6 @@ class Domain(models.Model):
         return [self.ref]
 
 
-# class MetricManager(RegisterLazilyManagerMixin, models.Manager):
-
-#     def register(self, domain, ref, name='', description=''):
-#         return super(MetricManager, self)._register(
-#             defaults={'name': name,
-#                       'description': description},
-#             domain=domain,
-#             ref=ref)
-
-#     def get_by_natural_key(self, domain, ref):
-#         return self.get(source=domain,ref=ref)
 
 
 class Metric(models.Model):
@@ -128,3 +86,15 @@ class AbstractStatistic(models.Model):
 class Period(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
+
+    def __str__(self):
+        return str(self.start_date)
+
+class Google_service(models.Model):
+    name = models.CharField(max_length=200)
+    scope = models.CharField(max_length=200)
+    discovery = models.CharField(max_length=200)
+    secret_json = models.TextField(default='{}', blank=True, null=True, validators=[validate_json])
+
+    def __str__(self):
+        return str(self.name)

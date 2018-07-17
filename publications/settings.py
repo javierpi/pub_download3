@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'google_analytics',
+    'gug',
     'social_django',
 ]
 
