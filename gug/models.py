@@ -4,6 +4,7 @@ import json
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 class Period(object):
@@ -86,6 +87,7 @@ class AbstractStatistic(models.Model):
 class Period(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
+    active = models.BooleanField('active', default=True)
 
     def __str__(self):
         return str(self.start_date) + ' - ' + str(self.end_date)
@@ -94,39 +96,50 @@ class Period(models.Model):
 class Google_service(models.Model):
     name = models.CharField(max_length=200)
     scope = models.CharField(max_length=200)
-    discovery = models.CharField(max_length=200)
+    discovery = models.CharField(max_length=200, blank=True, null=True)
     secret_json = models.TextField(default='{}', blank=True, null=True, validators=[validate_json])
     client_secret_path = models.CharField(max_length=100, default='')
     service = models.CharField(max_length=20, default='')
     version = models.CharField(max_length=2, default='')
-    view_id = models.CharField(max_length=10, default='')
+    view_id = models.CharField(max_length=30, default='')
+#    property_uri = models.CharField(max_length=30, blank=True, null=True)
+    active = models.BooleanField('active', default=True)
+    report = models.TextField(default='{}', blank=True, null=True, validators=[validate_json])
 
     def __str__(self):
         return str(self.name)
 
-
-class Publication(models.Model):
-    turl = models.CharField(max_length=200)
-    title = models.CharField(max_length=600)
+class Dspace(models.Model):
+    id_dspace = models.PositiveIntegerField(default=0, help_text="ID Dspace", unique=True)
+    title = models.CharField(max_length=600,default='')
 
     def __str__(self):
-        return str(self.turl)
+        return str(self.id_dspace) + ' ' + self.title
+
+class Publication(models.Model):
+    id_dspace = models.ForeignKey(Dspace, on_delete=models.CASCADE, null=True)
+    tfile = models.CharField(max_length=200)
+
+    class Meta:
+        ordering = ["id_dspace", "tfile"]
+        unique_together = ("id_dspace", "tfile")
+
+    def __str__(self):
+        return str(self.tfile)
 
 
 class Stats(models.Model):
-    google_service = models.ForeignKey(Google_service, on_delete=models.PROTECT)
+    google_service = models.ForeignKey(Google_service, on_delete=models.CASCADE)
     period = models.ForeignKey(Period, on_delete=models.PROTECT)
+    id_dspace = models.ForeignKey(Dspace, on_delete=models.CASCADE, null=True)
     publication = models.ForeignKey(Publication, on_delete=models.PROTECT)
-
-    cuantity = models.BigIntegerField(
-        # To support storing that no data is available, use: NULL
-        null=True)
+    cuantity = models.BigIntegerField(null=True)
 
     class Meta:
         verbose_name_plural = 'STATS'
         verbose_name = 'STATS'
         ordering = ["google_service", "publication", "period"]
-        unique_together = ("google_service", "period", "publication")
+        unique_together = ("google_service", "period", "id_dspace", "publication")
 
     def __str__(self):
         return str(self.google_service)
