@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+	<head>
+		<title>UWeb - STATS</title>
+		<meta charset="utf-8"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    {% load staticfiles %}
+	    <link rel="shortcut icon" href="/static/img/favicon.png">
+        <link rel='stylesheet' href="{% static 'css/bootstrap.min.css' %}" type='text/css'>
+        <link rel='stylesheet' href="{% static 'css/custom.css' %}" type='text/css'>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="{% static 'highcharts/highcharts.js' %}"></script>
+        <script src="{% static 'highcharts/modules/exporting.js' %}"></script>
+
+		<script src="/static/js/spin.min.js"></script>
+		<script src="/static/js/jquery.spin.js"></script>
+
+
+		{% block extrahead %}
+		{% endblock %}
+
+		<!--style type="text/css">
+			html,
+			body {
+				height:100%;
+				background: navy !important;
+				background-color: navy !important;
+			}
+		</style-->
+		{% block extrajs %}
+
+		{% endblock %}
+	</head>
+
+<body>
+
+	<div class="container-fluid" style="min-height:95%;">
+	    {% include "gug/menu.html" %}
+		<div class="row">
+			<div class="col-sm-12">
+				{% block heading %}
+				{% endblock %}
+			</div>
+		</div>
+		{% if messages %}
+			<div class="row">
+		    	<div class="col-xs-12">
+					<div class="alert alert-success" role="alert">
+					    {% for message in messages %}
+					    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+					    {% endfor %}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+		<div class="row">
+		    <div class="col-sm-12">
+				<div class="container-fluid">
+					{% block content %}
+
+					{% endblock %}
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="container-fluid" style="margin-left:15px">
+			<p>
+				bla |  bla
+			</p>
+		</div>
+	</footer>
+
+
+
+</body>
+</html>

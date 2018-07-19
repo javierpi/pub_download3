@@ -1,0 +1,115 @@
+{% extends "gug/header.html" %}
+{% block content %}
+
+
+<h2>Google Services </h2>
+  <div class="table-responsive">
+    <div class="panel panel-primary">
+      <div class="collapse navbar-collapse panel-heading" id="bs-example-navbar-collapse-1">
+        Google Services: {{ google_service.name }}
+
+        {% if user.is_authenticated  %}
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tasks <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+
+              </ul>
+            </li>
+
+
+          </ul>
+        {% endif %}
+      </div>
+
+   
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-6">
+          <dl class="dl-horizontal">
+            <dt>Name</dt>
+            <dd>{{ google_service.name }}</dd>
+
+            <dt>Scope</dt>
+            <dd>{{ google_service.scope }}</dd>
+            <dt>Discovery</dt>
+            <dd>{{ google_service.discovery }}</dd>
+
+            <dt>Service:</dt>
+            <dd>{{ google_service.service }}</dd>
+
+            <dt>Version</dt>
+            <dd>{{ google_service.version }}</dd>
+
+            <dt>client_secret_path</dt>
+            <dd>{{ google_service.client_secret_path }}</dd>
+            
+          </dl>
+        </div>
+        <div class="col-xs-6">
+          <dl class="dl-horizontal">
+            <dt>View ID</dt>
+            <dd>{{ google_service.view_id }}</dd>
+            
+            <dt>Active</dt>
+            <dd>{{ google_service.active }}</dd>
+            
+            <dt>Report</dt>
+            <dd>{{ google_service.report }}</dd>
+      
+          </dl>
+        </div>
+        
+
+      </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="tabbable"> <!-- Only required for left/right tabs -->
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Periods</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Period</th>
+                        <th>Records</th>
+                        <th>Downloads</th>
+                      </tr>
+                    </thead>
+                      <tbody>
+                        {% for st in periods %}
+                          <tr>
+                            <th scope="row">{{ st.id }}</th>
+                            <td>{{ st }}</td>
+                            
+                              {% for statistic in statistics %}
+                                {% if st.id == statistic.period %}
+                                <td>
+                                  {{ statistic.cuantity__count }}
+                                </td>
+                                <td>
+                                  {{ statistic.cuantity__sum }}
+                                </td>
+                                {% endif %}
+                              {% endfor%}
+
+                          </tr>
+                        {% endfor%}
+                        
+                    </tbody>
+                   </table>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

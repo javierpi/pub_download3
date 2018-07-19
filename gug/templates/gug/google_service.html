@@ -1,0 +1,60 @@
+{% extends "gug/home.html" %}
+{% load static %}
+{% block content %}
+
+
+<h2>Google Services </h2>
+<div class="panel panel-primary">
+  <div class="collapse navbar-collapse panel-heading" id="bs-example-navbar-collapse-1">
+
+    {% if user.is_authenticated %}
+      <ul class="nav navbar-nav navbar-right">
+
+      </ul>
+    {% endif %}
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab1" data-toggle="tab">Google Services</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+          <table class="table table-striped">
+		      <thead>
+		        <tr>
+		          <th>ID</th>
+		          <th>Name</th>
+		          <th>Service</th>
+		          <th>Version</th>
+		          <th>View ID</th>
+		          <th>Is Active</th>
+		          <th>Records</th>
+		        </tr>
+		      </thead>
+      			<tbody>
+			        {% for gs in google_service %}
+			          <tr>
+			            <th scope="row">{{ gs.id }}</th>
+			            <td><a href="{% url "google_services_detail" gs.id %}">{{ gs.name }}</a></td>
+			            <td>{{ gs.service }}</td>
+			            <td>{{ gs.version }}</td>
+			            <td>{{ gs.view_id }}</td>
+			            <td>{{ gs.active }}</td>
+			            <td>{{ gs.stats__count }}</td>
+			          </tr>
+			        {% endfor%}
+			    </tbody>
+			   </table>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
