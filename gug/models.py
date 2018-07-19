@@ -89,8 +89,18 @@ class Period(models.Model):
     end_date = models.DateField()
     active = models.BooleanField('active', default=True)
 
+    class Meta:
+        ordering = ["start_date"]
+
     def __str__(self):
         return str(self.start_date) + ' - ' + str(self.end_date)
+
+
+class Service_type(models.Model):
+    service = models.CharField(max_length=20, default='')
+
+    def __str__(self):
+        return str(self.service)
 
 
 class Google_service(models.Model):
@@ -99,12 +109,11 @@ class Google_service(models.Model):
     discovery = models.CharField(max_length=200, blank=True, null=True)
     secret_json = models.TextField(default='{}', blank=True, null=True, validators=[validate_json])
     client_secret_path = models.CharField(max_length=100, default='')
-    service = models.CharField(max_length=20, default='')
+    service = models.ForeignKey(Service_type, on_delete=models.CASCADE, null=True)
     version = models.CharField(max_length=2, default='')
-    view_id = models.CharField(max_length=30, default='')
-#    property_uri = models.CharField(max_length=30, blank=True, null=True)
+    view_id = models.CharField(max_length=30, default='', help_text="In Google Analytics is View Id, in Google Webmaster is protocol+domain")
     active = models.BooleanField('active', default=True)
-    report = models.TextField(default='{}', blank=True, null=True, validators=[validate_json])
+    report = models.TextField(default='{}', validators=[validate_json], help_text="Transformed variables are view_id, start_date and end_date.")
 
     def __str__(self):
         return str(self.name)
@@ -140,6 +149,9 @@ class Stats(models.Model):
         verbose_name = 'STATS'
         ordering = ["google_service", "publication", "period"]
         unique_together = ("google_service", "period", "id_dspace", "publication")
+
+    def period_desc(self):
+        return str(self.period.start_date)
 
     def __str__(self):
         return str(self.google_service)

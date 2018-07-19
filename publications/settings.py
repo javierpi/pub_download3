@@ -137,7 +137,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-
+STATIC_ROOT = '/home/deployer/pub_download3/publications/gug/static/'
 STATIC_URL = '/static/'
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secrets.json'
 CLIENT_SECRETS_PATH = '808752919447-8no63baroh3ofaqtupfg5n8eppdjks36.apps.googleusercontent.com_secreto_cliente.json' # Path to client_secrets.json file.
