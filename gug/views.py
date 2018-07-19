@@ -12,11 +12,15 @@ class periods(ListView):
     template_name = 'gug/periods_list.html'
 
     def get_queryset(self):
-        return Period.objects.all()
+        #return Period.objects.all()
+        return Period.objects.annotate(Count('stats'))
+        #return Google_service.objects.annotate(Count('stats'))
 
     def get_context_data(self, **kwargs):
         context = super(periods, self).get_context_data(**kwargs)
-#        context['servers_sums'] = Server.objects.filter(net_area__zone__in=myzones).aggregate(Sum('vcpu'), memory=Sum('memory') * 1024 * 1024)
+#        context['statistics'] = Stats.objects.values('google_service').filter(period=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
+#        context['statistics'] = Stats.objects.values('period', 'period').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
+
         return context
 
 class google_services_detail(DetailView):
@@ -26,7 +30,7 @@ class google_services_detail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(google_services_detail, self).get_context_data(**kwargs)
         context['periods'] = Period.objects.all()
-        context['statistics'] = Stats.objects.values('period', 'period').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
+        context['statistics'] = Stats.objects.values('period').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
         return context
 
 class google_services(ListView):
@@ -34,7 +38,6 @@ class google_services(ListView):
     template_name = 'gug/google_service.html'
 
     def get_queryset(self):
-        #return Google_service.objects.all()
         return Google_service.objects.annotate(Count('stats'))
 
     def get_context_data(self, **kwargs):
