@@ -6,21 +6,45 @@ import json
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Count, Sum, Min
+from django.core.paginator import Paginator
+from django.shortcuts import render, redirect
+
+def stat_index_view(request,page):
+    stat_list = Stats.objects.all()
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(stat_list, 20)
+    try:
+        stats = paginator.page(page)
+    except PageNotAnInteger:
+        stats = paginator.page(1)
+    except EmptyPage:
+        stats = paginator.page(paginator.num_pages)
+
+    return render(request, 'gug/stat.html', { 'stats': stats })
+
+ 
+
+class periods_detail(DetailView):
+    model = Period
+    template_name = 'gug/periods_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(periods_detail, self).get_context_data(**kwargs)
+        context['google_service'] = Google_service.objects.all()
+        context['statistics'] = Stats.objects.values('google_service').filter(period=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
+        context['resume'] = Stats.objects.values('google_service').filter(period=self.get_object()).aggregate(totalrecords=Count('cuantity'),totalcuantity=Sum('cuantity'))
+        return context
 
 class periods(ListView):
     context_object_name = 'periods'
-    template_name = 'gug/periods_list.html'
+    template_name = 'gug/periods.html'
 
     def get_queryset(self):
-        #return Period.objects.all()
         return Period.objects.annotate(Count('stats'))
-        #return Google_service.objects.annotate(Count('stats'))
 
     def get_context_data(self, **kwargs):
         context = super(periods, self).get_context_data(**kwargs)
-#        context['statistics'] = Stats.objects.values('google_service').filter(period=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
-#        context['statistics'] = Stats.objects.values('period', 'period').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
-
         return context
 
 class google_services_detail(DetailView):
