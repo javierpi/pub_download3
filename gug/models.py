@@ -1,5 +1,6 @@
 from datetime import date
 import json
+import calendar
 
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
@@ -93,7 +94,8 @@ class Period(models.Model):
         ordering = ["start_date"]
 
     def __str__(self):
-        return str(self.start_date) + ' - ' + str(self.end_date)
+        #return str(self.start_date) + ' - ' + str(self.end_date)
+        return str(self.end_date.year) + ' - ' +str(calendar.month_name[self.end_date.month]) 
 
 
 class Service_type(models.Model):
