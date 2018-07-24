@@ -1,19 +1,23 @@
 from apiclient.discovery import build
 from google.oauth2 import service_account
-from google.auth.transport.urllib3 import AuthorizedHttp
 from gug.models import Google_service, Period, Publication, Stats, Dspace
 import json
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.db.models import Count, Sum, Min
+from django.db.models import Count, Sum
 from django.core.paginator import Paginator
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
-def stat_index_view(request,page):
-    stat_list = Stats.objects.all()
+
+def stat_index_view(request, gs, period):
+    stat_list = Stats.objects.filter(google_service=gs, period=period).order_by('-cuantity')
+    print(request)
+    period = Period.objects.get(pk=period)
+    gs = Google_service.objects.get(pk=gs)
     page = request.GET.get('page', 1)
+    pagesize = request.GET.get('pagesize', 10)
 
-    paginator = Paginator(stat_list, 20)
+    paginator = Paginator(stat_list, pagesize)
     try:
         stats = paginator.page(page)
     except PageNotAnInteger:
@@ -21,9 +25,8 @@ def stat_index_view(request,page):
     except EmptyPage:
         stats = paginator.page(paginator.num_pages)
 
-    return render(request, 'gug/stat.html', { 'stats': stats })
+    return render(request, 'gug/stat.html', {'stats': stats, 'period': period, 'gs': gs})
 
- 
 
 class periods_detail(DetailView):
     model = Period
@@ -33,8 +36,9 @@ class periods_detail(DetailView):
         context = super(periods_detail, self).get_context_data(**kwargs)
         context['google_service'] = Google_service.objects.all()
         context['statistics'] = Stats.objects.values('google_service').filter(period=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
-        context['resume'] = Stats.objects.values('google_service').filter(period=self.get_object()).aggregate(totalrecords=Count('cuantity'),totalcuantity=Sum('cuantity'))
+        context['resume'] = Stats.objects.values('google_service').filter(period=self.get_object()).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
         return context
+
 
 class periods(ListView):
     context_object_name = 'periods'
@@ -47,6 +51,7 @@ class periods(ListView):
         context = super(periods, self).get_context_data(**kwargs)
         return context
 
+
 class google_services_detail(DetailView):
     model = Google_service
     template_name = 'gug/google_service_detail.html'
@@ -56,6 +61,7 @@ class google_services_detail(DetailView):
         context['periods'] = Period.objects.all()
         context['statistics'] = Stats.objects.values('period').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
         return context
+
 
 class google_services(ListView):
     context_object_name = 'google_service'
@@ -91,19 +97,19 @@ def get_GCS(request):
         "startRow": 0,
         "aggregationType": "byPage",
         "fileType": "pdf",
-        "dimensionFilterGroups" : [
+        "dimensionFilterGroups": [
             {
-                "filters" : [{
+                "filters": [{
                     "dimension": "page",
                     "expression": "bitstream",
                     "operator": "contains"
                 },
-                {
+                    {
                     "dimension": "page",
                     "expression": "pdf",
                     "operator": "contains"
                 },
-                {
+                    {
                     "dimension": "page",
                     "expression": ".txt",
                     "operator": "notcontains"
@@ -122,7 +128,7 @@ def get_GCS(request):
             output_row = [keys, row['clicks']]
             print(row_count, output_row)
 
-    #print(response)
+    # print(response)
 
 
 def get_GA(request):
@@ -141,9 +147,9 @@ def get_GA(request):
             version = gs.version
             view_id = gs.view_id
             report = gs.report
-            report = report.replace('view_id',view_id)
-            report = report.replace('start_date',start_date)
-            report = report.replace('end_date',end_date)
+            report = report.replace('view_id', view_id)
+            report = report.replace('start_date', start_date)
+            report = report.replace('end_date', end_date)
             report = json.loads(report)
             print(report)
 
@@ -151,15 +157,15 @@ def get_GA(request):
             if credentials is None:
                 print("BAD CREDENTIALS")
 
-            ## delete all stats from this report
-            delete_stat(gs,period)
+            # delete all stats from this report
+            delete_stat(gs, period)
             if discovery:
-            	analytics = build(service, version, discoveryServiceUrl=discovery)
-            	response = analytics.reports().batchGet(body=report).execute()
-            else: 
-            	analytics = build(service, version)
-            	response = analytics.searchanalytics().query(siteUrl=view_id, body=report).execute()
-            
+                analytics = build(service, version, discoveryServiceUrl=discovery)
+                response = analytics.reports().batchGet(body=report).execute()
+            else:
+                analytics = build(service, version)
+                response = analytics.searchanalytics().query(siteUrl=view_id, body=report).execute()
+
             if service == 'analytics':
                 for report in response.get('reports', []):
                     columnHeader = report.get('columnHeader', {})
@@ -195,20 +201,22 @@ def get_GA(request):
                         save_record(gs, period, url, title, cantidad)
                         # print(output_row)
 
-def delete_stat(gs,period):
-	Stats.objects.filter(google_service=gs, period=period).delete()
+
+def delete_stat(gs, period):
+    Stats.objects.filter(google_service=gs, period=period).delete()
+
 
 def save_record(gs, period, url, title, cantidad):
     #print(gs.id, period.id, url, title, cantidad)
     n_url = url.split('?')[0]
-    n_url = n_url.replace('http://','')
-    n_url = n_url.replace('https://','')
-    n_url = n_url.replace('repositorio.cepal.org','')
-    n_url = n_url.replace('/bitstream','')
-    n_url = n_url.replace('/handle','')
-    n_url = n_url.replace('/id/','')
-    n_url = n_url.replace('/11362/','')
-    
+    n_url = n_url.replace('http://', '')
+    n_url = n_url.replace('https://', '')
+    n_url = n_url.replace('repositorio.cepal.org', '')
+    n_url = n_url.replace('/bitstream', '')
+    n_url = n_url.replace('/handle', '')
+    n_url = n_url.replace('/id/', '')
+    n_url = n_url.replace('/11362/', '')
+
     id_dspace = n_url.split("/")[0]
     file = n_url.split("/")[-1]
     title = title[:599]
@@ -221,7 +229,6 @@ def save_record(gs, period, url, title, cantidad):
         except Dspace.DoesNotExist:
             dsp = Dspace(id_dspace=id_dspace, title=title)
             dsp.save()
-
 
         try:
             pub = Publication.objects.get(id_dspace=dsp, tfile=file)
@@ -245,6 +252,3 @@ def isNum(data):
         return True
     except ValueError:
         return False
-
-
-

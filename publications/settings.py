@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'bootstrap_pagination',
+    'mathfilters',
     'gug',
     'social_django',
 ]
@@ -123,7 +124,7 @@ AUTHENTICATION_BACKENDS = (
  'social_core.backends.google.GoogleOAuth2',  # for Google authentication
  'social_core.backends.github.GithubOAuth2',  # for Github authentication
  'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
- 
+
  'django.contrib.auth.backends.ModelBackend',
 )
 # Internationalization

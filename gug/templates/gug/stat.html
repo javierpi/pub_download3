@@ -1,13 +1,14 @@
 {% extends "gug/header.html" %}
+{% load mathfilters %}
 {% load bootstrap_pagination %}
 {% block content %}
 
 
-<h2>Periods </h2>
+<h2>Download Stats </h2>
   <div class="table-responsive">
     <div class="panel panel-primary">
       <div class="collapse navbar-collapse panel-heading" id="bs-example-navbar-collapse-1">
-        Periods: {{ period }}
+        Period: {{ period }}
 
         {% if user.is_authenticated  %}
           <ul class="nav navbar-nav navbar-right">
@@ -22,7 +23,7 @@
         {% endif %}
       </div>
 
-   
+
     <div class="panel-body">
       <div class="row">
         <div class="col-xs-6">
@@ -34,18 +35,35 @@
             <dd>{{ period.start_date }}</dd>
             <dt>Start Date</dt>
             <dd>{{ period.end_date }}</dd>
+            <dt>Active</dt>
+            <dd>{{ period.active }}</dd>
+
 
           </dl>
         </div>
         <div class="col-xs-6">
           <dl class="dl-horizontal">
-            
+
+            <dt>Name</dt>
+            <dd>{{ gs.name }}</dd>
+
+            <dt>Scope</dt>
+            <dd>{{ gs.scope }}</dd>
+            <dt>Discovery</dt>
+            <dd>{{ gs.discovery }}</dd>
+
+            <dt>Service:</dt>
+            <dd>{{ gs.service }}</dd>
+
+            <dt>Version</dt>
+            <dd>{{ gs.version }}</dd>
             <dt>Active</dt>
-            <dd>{{ period.active }}</dd>
-      
+            <dd>{{ gs.active }}</dd>
+
+
           </dl>
         </div>
-        
+
 
       </div>
         <div class="row">
@@ -72,37 +90,53 @@
                             <td>{{ gs.id_dspace }}</td>
                             <td>{{ gs.publication }}</td>
                             <td>{{ gs.cuantity}}</td>
-                            
+
                           </tr>
                         {% endfor%}
-                        
+
                     </tbody>
-                    
-                   </table>
+
+
                    {% if stats.has_other_pages %}
-                    <ul class="pagination">
-                      {% if stats.has_previous %}
-                        <li><a href="?page={{ stat.previous_page_number }}">&laquo;</a></li>
-                      {% else %}
-                        <li class="disabled"><span>&laquo;</span></li>
-                      {% endif %}
-                      {% for i in stats.paginator.page_range %}
-                        {% if stat.number == i %}
-                          <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                        {% else %}
-                          <li><a href="?page={{ i }}">{{ i }}</a></li>
-                        {% endif %}
-                      {% endfor %}
-                      {% if stats.has_next %}
-                        <li><a href="?page={{ stat.next_page_number }}">&raquo;</a></li>
-                      {% else %}
-                        <li class="disabled"><span>&raquo;</span></li>
-                      {% endif %}
-                    </ul>
+                    <tfooter>
+                      <tr>
+                        <td colspan="4" align="center">
+                          <ul class="pagination">
+                              <li><a href="?page=1">&laquo;&laquo;</a></li>
+                              {% if stats.has_previous %}
+                                  <li><a href="?page={{ stats.previous_page_number }}">&laquo;</a></li>
+                              {% else %}
+                                  <li class="disabled"><span>&laquo;</span></li>
+                              {% endif %}
+                              {% for i in stats.paginator.page_range %}
+                                  {% if stats.number == i %}
+                                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                  {% else %}
+                                    {% if i|sub:3 > 0 and i|add:3 < stats.paginator.num_pages%}
+                                      {% if i|sub:stats.number <= 3 and i|sub:stats.number > 0 %}
+                                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                      {% elif stats.number|sub:i <= 3  and stats.number|sub:i >= 0 %}
+                                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                      {% endif %}
+                                    {% endif %}
+                                  {% endif %}
+                              {% endfor %}
+                              {% if stats.has_next %}
+                                  <li><a href="?page={{ stats.next_page_number }}">&raquo;</a></li>
+                              {% else %}
+                                  <li class="disabled"><span>&raquo;</span></li>
+                              {% endif %}
+                              <li><a href="?page={{ stats.paginator.num_pages }}">&raquo;&raquo;</a></li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tfooter>
+
                   {% endif %}
+                  </table>
 
                 </div>
-                
+
               </div>
             </div>
           </div>

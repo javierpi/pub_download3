@@ -94,8 +94,7 @@ class Period(models.Model):
         ordering = ["start_date"]
 
     def __str__(self):
-        #return str(self.start_date) + ' - ' + str(self.end_date)
-        return str(self.end_date.year) + ' - ' +str(calendar.month_name[self.end_date.month]) 
+        return str(self.end_date.year) + ' - ' + str(calendar.month_name[self.end_date.month])
 
 
 class Service_type(models.Model):
@@ -120,12 +119,14 @@ class Google_service(models.Model):
     def __str__(self):
         return str(self.name)
 
+
 class Dspace(models.Model):
     id_dspace = models.PositiveIntegerField(default=0, help_text="ID Dspace", unique=True)
-    title = models.CharField(max_length=600,default='')
+    title = models.CharField(max_length=600, default='')
 
     def __str__(self):
-        return str(self.id_dspace) + ' ' + self.title
+        return str(self.id_dspace) + ' ' + self.title.split('|')[0]
+
 
 class Publication(models.Model):
     id_dspace = models.ForeignKey(Dspace, on_delete=models.CASCADE, null=True)

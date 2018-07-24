@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^gs/(?P<pk>\d+)$', google_services_detail.as_view(), name='google_services_detail'),
     url(r'^periods/$', periods.as_view(), name='periods'),
     url(r'^periods/(?P<pk>\d+)$', periods_detail.as_view(), name='periods_detail'),
-    url(r'^stat/(?P<page>\d+)/$', stat_index_view, name='stat_index_paginated')
+    url(r'^stat/(?P<gs>\d+)/(?P<period>\d+)/$', stat_index_view, name='stat_index_paginated')
 ]
 
-   
+
