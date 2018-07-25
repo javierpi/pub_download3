@@ -100,6 +100,10 @@ class Period(models.Model):
 class Service_type(models.Model):
     service = models.CharField(max_length=20, default='')
 
+    class Meta:
+        verbose_name_plural = 'Service types'
+        verbose_name = 'Service type'
+
     def __str__(self):
         return str(self.service)
 
@@ -116,6 +120,10 @@ class Google_service(models.Model):
     active = models.BooleanField('active', default=True)
     report = models.TextField(default='{}', validators=[validate_json], help_text="Transformed variables are view_id, start_date and end_date.")
 
+    class Meta:
+        verbose_name_plural = 'Google Services'
+        verbose_name = 'Google Service'
+
     def __str__(self):
         return str(self.name)
 
@@ -126,6 +134,9 @@ class Dspace(models.Model):
 
     def __str__(self):
         return str(self.id_dspace) + ' ' + self.title.split('|')[0]
+
+    def title_short(self):
+    	return self.title.split('|')[0]
 
 
 class Publication(models.Model):

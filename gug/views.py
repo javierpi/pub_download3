@@ -1,31 +1,60 @@
 from apiclient.discovery import build
 from google.oauth2 import service_account
 from gug.models import Google_service, Period, Publication, Stats, Dspace
+from gug.forms import ApplicationForm
 import json
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.db.models import Count, Sum
-from django.core.paginator import Paginator
+from django.db.models import Count, Sum, Max
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
+from django.http import QueryDict
+from django.http import HttpRequest
+
+# def stat_index_view(request, gsid, period):
+def stat_index_view(request):
+    if request.method == "GET":
+        form = ApplicationForm(request.GET)
+        # if form.is_valid():
+            # post = form.save(commit=False)
+            # post.save()
+        page = request.GET.get('page', 1)
+        pagesize = request.GET.get('pagesize', 10)
+        detail = request.GET.get('detail', 'off')
+        gsid = request.GET.getlist('gsid', 1)
+        period = request.GET.getlist('period', 1)
+
+        if detail == 'on':
+            print('Report: Detailed')
+            stat_list = Stats.objects.select_related('id_dspace').\
+                values('id_dspace__id_dspace', 'id_dspace__title', 'publication__tfile').\
+                annotate(cuantity=Sum('cuantity')).\
+                filter(google_service__in=gsid, period__in=period).\
+                order_by('-cuantity')
+        else:
+            stat_list = Stats.objects.select_related('id_dspace').\
+                values('id_dspace__id_dspace', 'id_dspace__title').\
+                annotate(cuantity=Sum('cuantity')).\
+                filter(google_service__in=gsid, period__in=period).\
+                order_by('-cuantity')
+
+        # print(request)
+        period = Period.objects.filter(pk__in=period)
+        gs = Google_service.objects.filter(pk__in=gsid)
+        resume = Stats.objects.values('google_service').filter(google_service__in=gs,period__in=period).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+        paginator = Paginator(stat_list, pagesize)
+        try:
+            stats = paginator.page(page)
+        except PageNotAnInteger:
+            stats = paginator.page(1)
+        except EmptyPage:
+            stats = paginator.page(paginator.num_pages)
+
+        return render(request, 'gug/stat.html', {'form': form, 'stats': stats, 'period': period, 'gs': gs, 'resume': resume, 'pagesize': pagesize, 'detail': detail})
+
+ 
 
 
-def stat_index_view(request, gs, period):
-    stat_list = Stats.objects.filter(google_service=gs, period=period).order_by('-cuantity')
-    print(request)
-    period = Period.objects.get(pk=period)
-    gs = Google_service.objects.get(pk=gs)
-    page = request.GET.get('page', 1)
-    pagesize = request.GET.get('pagesize', 10)
-
-    paginator = Paginator(stat_list, pagesize)
-    try:
-        stats = paginator.page(page)
-    except PageNotAnInteger:
-        stats = paginator.page(1)
-    except EmptyPage:
-        stats = paginator.page(paginator.num_pages)
-
-    return render(request, 'gug/stat.html', {'stats': stats, 'period': period, 'gs': gs})
 
 
 class periods_detail(DetailView):

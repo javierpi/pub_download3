@@ -83,6 +83,7 @@
                         {% for st in periods %}
                           <tr>
                             <th scope="row">{{ st.id }}</th>
+                            <td><a href="{% url "stat_index_paginated" %}?period={{st.id}}&amp;gsid={{google_service.id}}">{{ st }}</a></td>
                             <td>{{ st }}</td>
                             
                               {% for statistic in statistics %}

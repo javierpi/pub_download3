@@ -25,7 +25,7 @@ SECRET_KEY = 'd8(ia+66p&m9o7#v66+tgc$8bcy!s94w3%)m^e-qyvj#8)@c+4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -150,3 +150,78 @@ STATIC_ROOT = '/home/deployer/pub_download3/publications/gug/static/'
 STATIC_URL = '/static/'
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secrets.json'
 CLIENT_SECRETS_PATH = '808752919447-8no63baroh3ofaqtupfg5n8eppdjks36.apps.googleusercontent.com_secreto_cliente.json' # Path to client_secrets.json file.
+
+GRAPPELLI_ADMIN_TITLE = 'UWEB'
+###
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s %(levelname)s %(name)s %(message)s'
+        },
+        'django.server': {
+            '()': 'django.utils.log.ServerFormatter',
+            'format': '[%(server_time)s] %(message)s',
+        }
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+    },
+    'handlers': {
+        'request_handler': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/request_log.log',
+            'maxBytes': 1024 * 1024 * 5,  # 5Mb
+            'backupCount': 5,
+            'formatter': 'verbose'
+        },
+        'default': {
+            'level': 'ERROR',
+            'filters': ['require_debug_true'],
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/default_log.log',
+            'maxBytes': 1024 * 1024 * 5,  # 5Mb
+            'backupCount': 5,
+            'formatter': 'verbose'
+        },
+        'django.server': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/server_log.log',
+            'maxBytes': 1024 * 1024 * 5,  # 5Mb
+            'backupCount': 5,
+            'formatter': 'django.server'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['default'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django.server': {
+            'handlers': ['django.server'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'django.request': {
+            'handlers': ['request_handler', 'mail_admins'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+
+    }
+}

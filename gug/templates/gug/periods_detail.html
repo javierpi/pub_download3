@@ -69,7 +69,8 @@
                         {% for gs in google_service %}
                           <tr>
                             <th scope="row">{{ gs.id }}</th>
-                            <td>{{ gs }}</td>
+                            <td><a href="{% url "stat_index_paginated" %}?period={{period.id}}&amp;gsid={{gs.id}}">{{ gs }}</a></td>
+                            
                             <td>{{ gs.view_id }}</td>
                             
                             
