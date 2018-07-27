@@ -27,18 +27,19 @@
 		          <th>ID</th>
 		          <th>Start date</th>
 		          <th>End date</th>
-		          <th>Is Active</th>
 		          <th>Records</th>
+              <th>Downloads</th>
 		        </tr>
 		      </thead>
       			<tbody>
 			        {% for period in periods %}
 			          <tr>
 			            <th scope="row">{{ period.id }}</th>
-			            <td><a href="{% url "periods_detail" period.id %}">{{ period.start_date }}</a></td>
+			            <td><a href="{% url "gug:periods_detail" period.id %}">{{ period.start_date }}</a></td>
 			            <td>{{ period.end_date }}</td>
-			            <td>{{ period.active }}</td>
 			            <td>{{ period.stats__count }}</td>
+                  <td>{{ period.cuantity }}</td>
+                  
 			          </tr>
 			        {% endfor%}
 			    </tbody>

@@ -1,4 +1,4 @@
-{% extends "gug/header.html" %}
+{% extends "gug/home.html" %}
 {% block content %}
 
 
@@ -83,8 +83,7 @@
                         {% for st in periods %}
                           <tr>
                             <th scope="row">{{ st.id }}</th>
-                            <td><a href="{% url "stat_index_paginated" %}?period={{st.id}}&amp;gsid={{google_service.id}}">{{ st }}</a></td>
-                            <td>{{ st }}</td>
+                            <td><a href="{% url "gug:stat_index_paginated" %}?period={{st.id}}&amp;gsid={{google_service.id}}&amp;page=1">{{ st }}</a></td>
                             
                               {% for statistic in statistics %}
                                 {% if st.id == statistic.period %}

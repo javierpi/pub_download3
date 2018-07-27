@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 from django.contrib import admin
-from .models import Domain, Period, Google_service, Publication, Stats, Dspace, Service_type
+from .models import  Period, Google_service, Publication, Stats, Dspace, Service_type
 
 
 class Google_service_Admin(admin.ModelAdmin):
@@ -15,15 +15,11 @@ class Period_Admin(admin.ModelAdmin):
 class Dspace_Admin(admin.ModelAdmin):
     list_display = ('id_dspace', 'title')
 
-class Domain_Admin(admin.ModelAdmin):
-    list_display = ('ref', 'name')
-
 class Stats_Admin(admin.ModelAdmin):
 	list_display = ('google_service', 'period', 'id_dspace' ,'publication', 'cuantity')
 	list_filter = ('google_service', 'period', )
 	
 
-admin.site.register(Domain, Domain_Admin)
 admin.site.register(Period, Period_Admin)
 admin.site.register(Google_service, Google_service_Admin)
 admin.site.register(Publication, Publication_Admin)

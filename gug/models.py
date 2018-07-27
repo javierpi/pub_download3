@@ -31,59 +31,6 @@ def validate_json(value):
         raise ValidationError(('Variables must be in json format'), params={},)
 
 
-class Domain(models.Model):
-
-    ref = models.CharField(
-        max_length=100,
-        unique=True,
-        help_text="Unique reference ID for this domain")
-    name = models.CharField(
-        max_length=100,
-        blank=True,
-        help_text="Short descriptive name")
-
-    def __str__(self):
-        return self.name or self.ref
-
-    def natural_key(self):
-        return [self.ref]
-
-
-class Metric(models.Model):
-    #    objects = MetricManager()
-
-    domain = models.ForeignKey(Domain, on_delete=models.PROTECT)
-    ref = models.CharField(
-        max_length=100,
-        help_text="Unique reference ID for this metric within the domain")
-    name = models.CharField(
-        max_length=100,
-        blank=True,
-        help_text="Short descriptive name")
-    description = models.TextField(
-        blank=True,
-        help_text="Description")
-
-    class Meta:
-        unique_together = ('domain', 'ref')
-
-    def __str__(self):
-        return self.name or self.ref
-
-    def natural_key(self):
-        return [self.source, self.ref]
-
-
-class AbstractStatistic(models.Model):
-    metric = models.ForeignKey(Metric, on_delete=models.PROTECT)
-    value = models.BigIntegerField(
-        # To support storing that no data is available, use: NULL
-        null=True)
-    period = models.IntegerField(choices=PERIOD_CHOICES)
-
-    class Meta:
-        abstract = True
-
 
 class Period(models.Model):
     start_date = models.DateField()
@@ -131,6 +78,8 @@ class Google_service(models.Model):
 class Dspace(models.Model):
     id_dspace = models.PositiveIntegerField(default=0, help_text="ID Dspace", unique=True)
     title = models.CharField(max_length=600, default='')
+    post_title1 = models.CharField(max_length=300, default='')
+    post_title2 = models.CharField(max_length=200, default='')
 
     def __str__(self):
         return str(self.id_dspace) + ' ' + self.title.split('|')[0]

@@ -1,0 +1,23 @@
+{% extends "gug/home.html" %}
+{% load static i18n %}
+
+
+{% block content %}
+    <div class="panel-body">
+    home page
+    <div class="tab-pane  active" id="tab4" >
+      <script type="text/javascript">
+        $(function () {
+          $.getJSON("/api/chart/data/{{ definedtest.id }}/bar/", function(data) {
+            $('#container').highcharts(data);
+          });
+          
+        });
+      </script>
+    <div id="container" style="min-width: 600px; height: 400px; "></div>
+
+  </div>
+
+    </div>
+{% endblock %}
+

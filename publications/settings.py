@@ -14,7 +14,8 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+ADMIN_SITE_NAME = 'My Admin Site'
+ADMIN_SITE_DESCRIPTION = 'This is a private site.  Please don\'t hack me'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -31,7 +32,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'grappelli',
+    'jet.dashboard',
+    'jet',
+#    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +45,8 @@ INSTALLED_APPS = [
     'bootstrap_pagination',
     'mathfilters',
     'gug',
-    'social_django',
+    'django_celery_beat',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -57,9 +61,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'publications.urls'
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.core.context_processors.request",
-)
+# TEMPLATE_CONTEXT_PROCESSORS = (
+#     "django.core.context_processors.request",
+# )
 
 TEMPLATES = [
     {
@@ -72,8 +76,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',  # <- Here
-                'social_django.context_processors.login_redirect', # <- Here
             ],
         },
     },
@@ -119,18 +121,87 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
- 'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
- 'social_core.backends.google.GoogleOpenId',  # for Google authentication
- 'social_core.backends.google.GoogleOAuth2',  # for Google authentication
- 'social_core.backends.github.GithubOAuth2',  # for Github authentication
- 'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
-
  'django.contrib.auth.backends.ModelBackend',
 )
+
+# Celery
+BROKER_URL = 'amqp://pub_download:pub_downloadpass@127.0.0.1:5672/pub_download'
+# CELERY_RESULT_BACKEND = 'amqp://test:test@127.0.0.1:5672//'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_DEFAULT_QUEUE = 'pub_download'
+CELERY_ENABLE_REMOTE_CONTROL = True
+
+# Jet
+JET_DEFAULT_THEME = 'light-gray'
+                    # <li><a href="{% url "google_services" %}"></a></li>
+                    # <li><a href="{% url "periods" %}">Periods</a></li>
+# JET_SIDE_MENU_ITEMS = [  # A list of application or custom item dicts
+#     {'label': 'Google Services', 'app_label': 'core', 'items': [
+#         {'name': 'help.question'},
+#         {'name': 'pages.page', 'label': 'Static page'},
+#         {'name': 'city'},
+#         {'name': 'validationcode'},
+#         {'label': 'Analytics', 'url': 'http://example.com', 'url_blank': True},
+#     ]},
+#     {'label': 'Users', 'items': [
+#         {'name': 'core.user'},
+#         {'name': 'auth.group'},
+#         {'name': 'core.userprofile', 'permissions': ['core.user']},
+#     ]},
+#     {'app_label': 'banners', 'items': [
+#         {'name': 'banner'},
+#         {'name': 'bannertype'},
+#     ]},
+# ]
+JET_THEMES = [
+    {
+        'theme': 'default', # theme folder name
+        'color': '#47bac1', # color of the theme's button in user menu
+        'title': 'Default' # theme title
+    },
+    {
+        'theme': 'green',
+        'color': '#44b78b',
+        'title': 'Green'
+    },
+    {
+        'theme': 'light-green',
+        'color': '#2faa60',
+        'title': 'Light Green'
+    },
+    {
+        'theme': 'light-violet',
+        'color': '#a464c4',
+        'title': 'Light Violet'
+    },
+    {
+        'theme': 'light-blue',
+        'color': '#5EADDE',
+        'title': 'Light Blue'
+    },
+    {
+        'theme': 'light-gray',
+        'color': '#222',
+        'title': 'Light Gray'
+    }
+]
+JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
+JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
+#JET_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
+
+#JET_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
+#JET_APP_INDEX_DASHBOARD = 'dashboard.CustomAppIndexDashboard'
+#JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = 'DownloadPublicaciones-a610ebc17b1e.json'
+JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.path.join(BASE_DIR, 'DownloadPublicaciones-a610ebc17b1e.json')
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -148,8 +219,6 @@ DECIMAL_SEPARATOR = ','
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_ROOT = '/home/deployer/pub_download3/publications/gug/static/'
 STATIC_URL = '/static/'
-GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secrets.json'
-CLIENT_SECRETS_PATH = '808752919447-8no63baroh3ofaqtupfg5n8eppdjks36.apps.googleusercontent.com_secreto_cliente.json' # Path to client_secrets.json file.
 
 GRAPPELLI_ADMIN_TITLE = 'UWEB'
 ###
