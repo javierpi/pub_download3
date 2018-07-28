@@ -1,17 +1,19 @@
-from apiclient.discovery import build
-from google.oauth2 import service_account
+# from apiclient.discovery import build
+# from google.oauth2 import service_account
 from gug.models import Google_service, Period, Publication, Stats, Dspace
 from gug.forms import ApplicationForm
-import json
+# import json
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.db.models import Count, Sum, Max
+from django.db.models import Count, Sum
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
-from django.http import QueryDict
-from django.http import HttpRequest
+# from django.http import QueryDict
+# from django.http import HttpRequest
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
 
-# def stat_index_view(request, gsid, period):
 
 class index(ListView):
     context_object_name = 'periods'
@@ -23,6 +25,7 @@ class index(ListView):
     def get_context_data(self, **kwargs):
         context = super(index, self).get_context_data(**kwargs)
         return context
+
 
 def stat_index_view(request):
     if request.method == "GET":
@@ -53,7 +56,7 @@ def stat_index_view(request):
         # print(request)
         period = Period.objects.filter(pk__in=period)
         gs = Google_service.objects.filter(pk__in=gsid)
-        resume = Stats.objects.values('google_service').filter(google_service__in=gs,period__in=period).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+        resume = Stats.objects.values('google_service').filter(google_service__in=gs, period__in=period).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
         paginator = Paginator(stat_list, pagesize)
         try:
             stats = paginator.page(page)
@@ -64,7 +67,7 @@ def stat_index_view(request):
 
         return render(request, 'gug/stat.html', {'form': form, 'stats': stats, 'period': period, 'gs': gs, 'resume': resume, 'pagesize': pagesize, 'detail': detail})
 
- 
+
 class periods_detail(DetailView):
     model = Period
     template_name = 'gug/periods_detail.html'
@@ -87,6 +90,23 @@ class periods(ListView):
     def get_context_data(self, **kwargs):
         context = super(periods, self).get_context_data(**kwargs)
         return context
+
+class Listperiods(APIView):
+    """
+    View to list all periods in the system.
+
+    * Requires token authentication.
+    * Only admin users are able to access this view.
+    """
+    authentication_classes = (authentication.TokenAuthentication,)
+    permission_classes = (permissions.IsAdminUser,)
+
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        usernames = [user.username for user in User.objects.all()]
+        return Response(usernames)
 
 
 class google_services_detail(DetailView):
@@ -165,4 +185,3 @@ class google_services(ListView):
 #             print(row_count, output_row)
 
     # print(response)
-
