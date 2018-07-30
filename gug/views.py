@@ -3,14 +3,24 @@ from __future__ import absolute_import
 
 from gug.models import Google_service, Period, Publication, Stats, Dspace
 from gug.forms import ApplicationForm, DspaceForm
+from gug.serializers import PeriodSerializer
+
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Count, Sum
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import authentication, permissions
+# from rest_framework import authentication, permissions
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.parsers import JSONParser
+
+
 
 
 def dspace_detail(request):
@@ -19,16 +29,24 @@ def dspace_detail(request):
         gsid = request.GET.getlist('gsid', 1)
         id_dspace = request.GET.get('id_dspace', 1)
         dspace_record = Dspace.objects.get(id_dspace=id_dspace)
-        # dspace = Dspace.objects.all()
-        stat_list = Stats.objects.select_related('id_dspace', 'period').\
-            values('id_dspace__id_dspace', 'period__start_date', 'publication__tfile').\
-            annotate(cuantity=Sum('cuantity')).\
-            filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid).\
-            order_by('period__start_date')
+        detail = request.GET.get('detail', 'off')
+        if detail == 'on':
+            stat_list = Stats.objects.select_related('id_dspace', 'period').\
+                values('id_dspace__id_dspace', 'period__start_date', 'publication__tfile').\
+                annotate(cuantity=Sum('cuantity')).\
+                filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid).\
+                order_by('period__start_date')
+        else:
+            stat_list = Stats.objects.select_related('id_dspace', 'period').\
+                values('id_dspace__id_dspace', 'period__start_date').\
+                annotate(cuantity=Sum('cuantity')).\
+                filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid).\
+                order_by('period__start_date')
+
 
         gs = Google_service.objects.filter(pk__in=gsid)
 
-        return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record})
+        return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail})
 
 
 class index(ListView):
@@ -71,7 +89,8 @@ def stat_index_view(request):
 
         # print(request)
         period = Period.objects.filter(pk__in=period)
-        gs = Google_service.objects.filter(pk__in=gsid)
+        gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+
         resume = Stats.objects.values('google_service').filter(google_service__in=gs, period__in=period).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
         paginator = Paginator(stat_list, pagesize)
         try:
@@ -81,7 +100,7 @@ def stat_index_view(request):
         except EmptyPage:
             stats = paginator.page(paginator.num_pages)
 
-        return render(request, 'gug/stat.html', {'form': form, 'stats': stats, 'period': period, 'gs': gs, 'resume': resume, 'pagesize': pagesize, 'detail': detail})
+        return render(request, 'gug/stat.html', {'form': form, 'stats': stats, 'period': period, 'gs': gsid, 'resume': resume, 'pagesize': pagesize, 'detail': detail})
 
 
 class periods_detail(DetailView):
@@ -108,23 +127,26 @@ class periods(ListView):
         return context
 
 
-class Listperiods(APIView):
-    """
-    View to list all periods in the system.
+@api_view(['GET'])
+def periodos_list(request):
+  
+    if request.method == 'GET':
+        periods = Period.objects.all()
+        serializer = PeriodSerializer(periods, many=True)
+        return  Response(serializer.data)
 
-    * Requires token authentication.
-    * Only admin users are able to access this view.
-    """
-    authentication_classes = (authentication.TokenAuthentication,)
-    permission_classes = (permissions.IsAdminUser,)
+@api_view(['GET'])
+def periodos_detail(request, pk):
+    try:
+        periods = Period.objects.get(pk=pk)
+    except periods.DoesNotExist:
+        return HttpResponse(status=404)
 
-    def get(self, request, format=None):
-        """
-        Return a list of all users.
-        """
-        usernames = [user.username for user in User.objects.all()]
-        return Response(usernames)
+    if request.method == 'GET':
+        serializer = PeriodSerializer(periods)
+        return Response(serializer.data)
 
+    
 
 class google_services_detail(DetailView):
     model = Google_service

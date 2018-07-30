@@ -5,6 +5,7 @@ from gug.models import Google_service, Period, Dspace
 class DspaceForm(forms.Form):
     gs_choices = Google_service.objects.all().values_list('id', 'name')
     dspace_choices = Dspace.objects.all().values_list('id_dspace', 'title')
+    detail = forms.BooleanField(label="Detailed report", required=False)
     id_dspace = forms.ChoiceField(choices=dspace_choices, label="Dspace ID")
     gsid = forms.MultipleChoiceField(choices=gs_choices, label="Google Service")
 
@@ -35,7 +36,7 @@ class ApplicationForm(forms.Form):
     period = forms.MultipleChoiceField(choices=period_choices, label="Period")
     gsid = forms.MultipleChoiceField(choices=gs_choices, label="Google Service")
     pagesize = forms.ChoiceField(choices=PAGE_SIZE_CHOICES)
-    detail = forms.BooleanField(help_text="Check for detailed report", label="Detailed report", required=False)
+    detail = forms.BooleanField(label="Detailed report", required=False)
     page = forms.IntegerField(label="Page", min_value=1)
 
     def __init__(self, *args, **kwargs):

@@ -1,147 +1,78 @@
 {% extends "gug/home.html" %}
-
 {% load i18n %}
-
-
-
+{% load static %}
 {% load mathfilters %}
 {% load bootstrap_pagination %}
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+{% endblock %}
 {% block content %}
 
 
-<h2>Download Stats </h2>
-  <div class="table-responsive">
-    <div class="panel panel-primary">
-      <div class="collapse navbar-collapse panel-heading" id="bs-example-navbar-collapse-1">
-        <form action="" method="get" class="form-horizontal" role="form">
-             {% csrf_token %}
-             {{ form }}
-              <input type="submit" value="Submit" />
-        </form>
+  <h2>Download Stats </h2>
+
+    <form action="" method="get" class="form-horizontal" role="form">
+         {% csrf_token %}
+         {{ form }}
+          <input type="submit" value="Go" />
+          
+          
+    </form>
+         
+    <dl class="dl-horizontal">
+      <dt>Records</dt>
+      <dd>{{ resume.totalrecords }}</dd>
+
+      <dt>Downloads</dt>
+      <dd>{{ resume.totalcuantity }}</dd>
+
+    </dl>
+    <br class="clear" />
+
+    <div class="results">
+      <table id="result_list">
+        <thead>
+          <tr>
+            <th scope="col"  class="sortable column-id_dspace">
+              <div class="text">ID Dspace</div>
+              <div class="clear"></div>
+            </th>
+              <th scope="col"  class="sortable column-title">
+                 <div class="text">Title</div>
+                 <div class="clear"></div>
+              </th>
+              {% if detail == 'on' %}
+                <th scope="col"  class="sortable column-title">
+                   <div class="text">File</div>
+                   <div class="clear"></div>
+                </th>
+              {% endif %}
+              <th scope="col"  class="sortable column-title">
+                 <div class="text">Downloads</div>
+                 <div class="clear"></div>
+              </th>
+              </tr>
+            </thead>
+                      
+            <tbody>
+              {% for grs in stats %}
+                <tr>
+                  <td><a href="{% url 'gug:dspace_detail' %}?id_dspace={{grs.id_dspace__id_dspace|urlize}}{% for t in gs %}&amp;gsid={{t}}{% endfor%}">{{grs.id_dspace__id_dspace}}</a></td>
+
+                  <td>{{ grs.id_dspace__title}}</td>
+                  {% if detail == 'on' %}
+                    <td>{{grs.publication__tfile}}</td>
+                  {% endif %}
+                  <td>{{ grs.cuantity}}</td>
+
+                </tr>
+              {% endfor%}
+
+            </tbody>
+          </table>
       </div>
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-xs-3">
-          <dl class="dl-horizontal">
-            <dt>Periods</dt>
-            <dd>
-            {% for per in period %}
-              {{ per }} <br/>
-            {% endfor%}
-            </dd>
+      
 
 
-          </dl>
-        </div>
-        <div class="col-xs-5">
-          <dl class="dl-horizontal">
-            <dt>Google Service</dt>
-            <dd>
-            {% for g in gs %}
-              {{ g }} {{ g.view_id }} <br/>
-            {% endfor%}
-            </dd>
-
-          </dl>
-        </div>
-         <div class="col-xs-3">
-          <dl class="dl-horizontal">
-            <dt>Records</dt>
-            <dd>{{ resume.totalrecords }}</dd>
-
-            <dt>Downloads</dt>
-            <dd>{{ resume.totalcuantity }}</dd>
-
-          </dl>
-        </div>
-      </div>
-
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="tabbable"> <!-- Only required for left/right tabs -->
-              <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab1" data-toggle="tab">Google Services</a></li>
-              </ul>
-              <div class="tab-content">
-                <div class="tab-pane active" id="tab1">
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th>ID Dspace</th>
-                        <th>Title</th>
-                        {% if detail == 'on' %}
-                          <th>File</th>
-                        {% endif %}
-
-                        <th class="text-right">Downloads</th>
-                      </tr>
-                    </thead>
-                      <tbody>
-                        {% for gs in stats %}
-                          <tr>
-                            <td><a href="{% url 'gug:dspace_detail' %}?id_dspace={{gs.id_dspace__id_dspace|int}}&amp;period=1&amp;gsid=1">{{gs.id_dspace__id_dspace}}</a></td>
-
-                            <td>{{ gs.id_dspace__title}}</td>
-                            {% if detail == 'on' %}
-                              <td>{{gs.publication__tfile}}</td>
-                            {% endif %}
-                            <td>{{ gs.cuantity}}</td>
-
-                          </tr>
-                        {% endfor%}
-
-                    </tbody>
-
-                    <!--div>
-                    if stats.has_other_pages %}
-                    <tfooter>
-                      <tr>
-                        <td colspan="5" align="center">
-                          <ul class="pagination">
-                              <li><a href="?page=1">&laquo;&laquo;</a></li>
-                               if stats.has_previous %}
-                                  <li><a href="?page= stats.previous_page_number }}&amp;pagesize= pagesize }}&amp;detail= detail }}">&laquo;</a></li>
-                               else %}
-                                  <li class="disabled"><span>&laquo;</span></li>
-                               endif %}
-                               for i in stats.paginator.page_range %}
-                                   if stats.number == i %}
-                                    <li class="active"><span> i }} <span class="sr-only">(current)</span></span></li>
-                                   else %}
-                                     if i|sub:3 >= -2 and i|add:3 < stats.paginator.num_pages%}
-                                       if i|sub:stats.number <= 3 and i|sub:stats.number >= 0 %}
-                                        <li><a href="?page= i }}&amp;pagesize={{ pagesize }}&amp;detail={{ detail }}&amp;period={{ period.id }}">{{ i }}</a></li>
-                                       elif stats.number|sub:i <= 3  and stats.number|sub:i >= 0
-                                        <li><a href="?page= i }}&amp;pagesize= pagesize }}&amp;detail= detail }}">{{ i }}</a></li>
-                                       endif %}
-                                     endif %}
-                                   endif %}
-                               endfor %}
-                               if stats.has_next %}
-                                  <li><a href="?page= stats.next_page_number }}&amp;pagesize= pagesize }}&amp;detail= detail }}">&raquo;</a></li>
-                               else %}
-                                  <li class="disabled"><span>&raquo;</span></li>
-                               endif %}
-                              <li><a href="?page= stats.paginator.num_pages }}&amp;pagesize= pagesize }}&amp;detail= detail }}">&raquo;&raquo;</a></li>
-                          </ul>
-
-                        </td>
-                      </tr>
-                    </tfooter>
-
-                   endif %}
-                  </div-->
-                  </table>
-
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
+     
 {% endblock %}

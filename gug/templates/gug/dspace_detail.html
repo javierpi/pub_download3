@@ -8,45 +8,63 @@
        {{ form }}
         <input type="submit" value="Submit" />
   </form>
-  <fieldset class="module aligned ">
+  <br class="clear" />
+  <fieldset class="module aligned extrapretty wide">
     <div class="form-row field-id_dspace">
       <div>
-        <div class="text">Id dspace: {{ dspace_record.id_dspace }}</div>
-        <div class="text">Title: {{ dspace_record.title }}</div>
-        <div class="text">Pot Title 1: {{ dspace_record.post_title1 }}</div>
-        <div class="text">Pot Title 2: {{ dspace_record.post_title2 }}</div>
-
+        <label for="id_name">Id dspace:</label>
+        {{ dspace_record.id_dspace }}
+      </div>
+    </div>
+    <div class="form-row field-id_dspace">
+      <div>
+        <label for="title">Title:</label>{{ dspace_record.title }}
+      </div>
+    </div>
+    <div class="form-row field-id_dspace">
+      <div>
+        <label for="post_title1">Post Title 1:</label>{{ dspace_record.post_title1 }}
+      </div>
+    </div>
+    <div class="form-row field-id_dspace">
+      <div>
+        <label for="post_title2">Post Title 2:</label>{{ dspace_record.post_title2 }}
       </div>
     </div>
   </fieldset>
+  <br class="clear" />
   <div class="results">
     <table id="result_list">
       <thead>
         <tr>
         <th scope="col"  class="sortable column-id_dspace">
-           <div class="text"><a href="?o=1">Id dspace</a></div>
+           <div class="text">Id dspace</div>
            <div class="clear"></div>
         </th>
         <th scope="col"  class="sortable column-title">
-           <div class="text"><a href="?o=2">Period</a></div>
+           <div class="text">Period</div>
            <div class="clear"></div>
         </th>
+        {% if detail == 'on' %}
         <th scope="col"  class="sortable column-title">
-           <div class="text"><a href="?o=3">File</a></div>
+           <div class="text">File</div>
            <div class="clear"></div>
         </th>
+        {% endif %}
         <th scope="col"  class="sortable column-title">
-           <div class="text"><a href="?o=4">Downloads</a></div>
+           <div class="text">Downloads</div>
            <div class="clear"></div>
         </th>
         </tr>
       </thead>
       <tbody>
         {% for st in stats %}
-          <tr class="row1">
+          <tr class="{% cycle 'row1' 'row2' %}">
             <th class="field-id_dspace">{{st.id_dspace__id_dspace}}</th>
             <td class="field-title">{{ st.period__start_date}}</td>
-            <td>{{st.publication__tfile}}</td>
+            {% if detail == 'on' %}
+              <td>{{st.publication__tfile}}</td>
+            {% endif %}
             <td>{{ st.cuantity}}</td>
 
           </tr>

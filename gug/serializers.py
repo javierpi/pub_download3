@@ -40,6 +40,14 @@ class PeriodSerializer(serializers.HyperlinkedModelSerializer):
 
 
 # ------- View Sets
+class PeriodosSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Period
+        fields = ('start_date', 'end_date', 'active')
+
+class PeriodosViewSet(viewsets.ModelViewSet):
+    queryset = Period.objects.all()
+    serializer_class = PeriodosSerializer
 
 
 class StatsViewSet(viewsets.ModelViewSet):
@@ -60,7 +68,6 @@ class PublicationViewSet(viewsets.ModelViewSet):
 class Service_typeViewSet(viewsets.ModelViewSet):
     queryset = Service_type.objects.all()
     serializer_class = Service_typeSerializer
-
 
 class PeriodViewSet(viewsets.ModelViewSet):
     queryset = Period.objects.all()

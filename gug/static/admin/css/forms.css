@@ -1,0 +1,18 @@
+display: table-row;
+  &#action-toggle {
+    display: none !important;
+  }
+  + label:before {
+    @include font-icon;
+    color: $input-icon-color;
+    font-size: 12px;
+    content: $icon-checkbox-outline;
+    letter-spacing: 5px;
+    .action-checkbox-column & {
+      color: $content-contrast2-text-color;
+    }
+  }
+  &:checked + label:before {
+    content: $icon-checkbox;
+  }
+}

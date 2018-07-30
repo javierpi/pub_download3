@@ -7,24 +7,17 @@
 <div class="panel panel-primary">
   <div class="collapse navbar-collapse panel-heading" id="bs-example-navbar-collapse-1">
 
-    {% if user.is_authenticated %}
-      <ul class="nav navbar-nav navbar-right">
-
-      </ul>
-    {% endif %}
+   
   </div>
   <div class="row">
     <div class="col-xs-12">
       <div class="tabbable"> <!-- Only required for left/right tabs -->
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#tab1" data-toggle="tab">Periods</a></li>
-        </ul>
+        
         <div class="tab-content">
           <div class="tab-pane active" id="tab1">
           <table class="table table-striped">
 		      <thead>
 		        <tr>
-		          <th>ID</th>
 		          <th>Start date</th>
 		          <th>End date</th>
 		          <th>Records</th>
@@ -34,7 +27,6 @@
       			<tbody>
 			        {% for period in periods %}
 			          <tr>
-			            <th scope="row">{{ period.id }}</th>
 			            <td><a href="{% url "gug:periods_detail" period.id %}">{{ period.start_date }}</a></td>
 			            <td>{{ period.end_date }}</td>
 			            <td>{{ period.stats__count }}</td>
