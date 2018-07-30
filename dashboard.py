@@ -1,10 +1,23 @@
-from django.core.urlresolvers import reverse
+from __future__ import unicode_literals
+from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 from jet.dashboard import modules
 from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
-jet_get_current_theme
 from jet.utils import get_admin_site_name
-from jet.dashboard.dashboard_modules import google_analytics
+
+from jet.dashboard.modules import DashboardModule
+from gug.models import Period
+
+
+class RecentTickets(DashboardModule):
+    title = 'Recent Period'
+    #  title_url = Period.get_admin_changelist_url()
+    template = 'gug/periods.html'
+
+    limit = 10
+
+    def init_with_context(self, context):
+        self.children = Period.objects.order_by('-date_add')[:self.limit]
 
 
 class CustomIndexDashboard(Dashboard):
@@ -14,28 +27,8 @@ class CustomIndexDashboard(Dashboard):
         self.available_children.append(modules.LinkList)
         self.available_children.append(modules.Feed)
 
-        self.available_children.append(google_analytics.GoogleAnalyticsVisitorsTotals)
-        self.available_children.append(google_analytics.GoogleAnalyticsVisitorsChart)
-        self.available_children.append(google_analytics.GoogleAnalyticsPeriodVisitors)
-
         site_name = get_admin_site_name(context)
         # append a link list module for "quick links"
-        self.children.append(modules.LinkList(
-            _('Quick links'),
-            layout='inline',
-            draggable=False,
-            deletable=False,
-            collapsible=False,
-            children=[
-                [_('Return to site'), '/'],
-                [_('Change password'),
-                 reverse('%s:password_change' % site_name)],
-                [_('Log out'), reverse('%s:logout' % site_name)],
-            ],
-            column=0,
-            order=0
-        ))
-
         # append an app list module for "Applications"
         self.children.append(modules.AppList(
             _('Applications'),
@@ -108,15 +101,14 @@ class CustomAppIndexDashboard(AppIndexDashboard):
             include_list=self.get_app_content_types(),
             column=1,
             order=0
-))
-# from __future__ import unicode_literals  
-# from __future__ import absolute_import  
-  
-# from django.core.urlresolvers import reverse  
-# from django.utils.translation import ugettext_lazy as _  
-# from jet.dashboard import modules  
-# from jet.dashboard.dashboard import Dashboard, AppIndexDashboard  
-# from jet.utils import get_admin_site_name 
+        ))
+
+
+# from django.core.urlresolvers import reverse
+# from django.utils.translation import ugettext_lazy as _
+# from jet.dashboard import modules
+# from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
+# from jet.utils import get_admin_site_name
 
 # #from django.utils.translation import ugettext_lazy as _
 # #from jet.dashboard import modules

@@ -31,7 +31,6 @@ def validate_json(value):
         raise ValidationError(('Variables must be in json format'), params={},)
 
 
-
 class Period(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
@@ -42,6 +41,10 @@ class Period(models.Model):
 
     def __str__(self):
         return str(self.end_date.year) + ' - ' + str(calendar.month_name[self.end_date.month])
+
+    @staticmethod
+    def autocomplete_search_fields():
+        return 'start_datet'
 
 
 class Service_type(models.Model):
@@ -85,7 +88,7 @@ class Dspace(models.Model):
         return str(self.id_dspace) + ' ' + self.title.split('|')[0]
 
     def title_short(self):
-    	return self.title.split('|')[0]
+        return self.title.split('|')[0]
 
 
 class Publication(models.Model):

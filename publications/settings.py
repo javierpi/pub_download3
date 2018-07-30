@@ -148,24 +148,44 @@ CELERY_ENABLE_REMOTE_CONTROL = True
 JET_DEFAULT_THEME = 'light-gray'
                     # <li><a href="{% url "google_services" %}"></a></li>
                     # <li><a href="{% url "periods" %}">Periods</a></li>
-# JET_SIDE_MENU_ITEMS = [  # A list of application or custom item dicts
-#     {'label': 'Google Services', 'app_label': 'core', 'items': [
-#         {'name': 'help.question'},
-#         {'name': 'pages.page', 'label': 'Static page'},
-#         {'name': 'city'},
-#         {'name': 'validationcode'},
-#         {'label': 'Analytics', 'url': 'http://example.com', 'url_blank': True},
-#     ]},
-#     {'label': 'Users', 'items': [
-#         {'name': 'core.user'},
-#         {'name': 'auth.group'},
-#         {'name': 'core.userprofile', 'permissions': ['core.user']},
-#     ]},
-#     {'app_label': 'banners', 'items': [
-#         {'name': 'banner'},
-#         {'name': 'bannertype'},
-#     ]},
-# ]
+JET_SIDE_MENU_ITEMS = [
+    {'app_label': 'auth', 'items': [
+        {'name': 'group'},
+        {'name': 'user'},
+    ]},
+    {'app_label': 'django_celery_results', 'items': [
+        {'name': 'taskresult'},
+    ]},
+    {'app_label': 'gug', 'items': [
+        {'name': 'dspace'},
+        {'name': 'google_service'},
+        {'name': 'period'},
+        {'name': 'publication'},
+        {'name': 'stats'},
+        {'name': 'service_type'},
+    ]},
+    {'app_label': 'django_celery_beat', 'items': [
+        {'name': 'crontabschedule'},
+        {'name': 'intervalschedule'},
+        {'name': 'periodictask'},
+        {'name': 'solarschedule'},
+    ]},
+]
+# JET_SIDE_MENU_CUSTOM_APPS = [
+#     ('core', [ # Each list element is a tuple with application name (app_label) and list of models
+#         'User',
+#         'MenuItem',
+#         'Block',
+#     ]),
+#     ('shops', [
+#         'Shop',
+#         'City',
+#         'MetroStation',
+#     ]),
+#     ('feedback', [
+#         'Feedback',
+#     ]),
+#]
 JET_THEMES = [
     {
         'theme': 'default', # theme folder name
@@ -200,11 +220,10 @@ JET_THEMES = [
 ]
 JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
 JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
-#JET_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
+JET_SIDE_MENU_COMPACT = False
 
 #JET_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
 #JET_APP_INDEX_DASHBOARD = 'dashboard.CustomAppIndexDashboard'
-#JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = 'DownloadPublicaciones-a610ebc17b1e.json'
 JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.path.join(BASE_DIR, 'DownloadPublicaciones-a610ebc17b1e.json')
 
 # Internationalization

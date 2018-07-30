@@ -1,0 +1,62 @@
+{% extends "gug/home.html" %}
+{% block content %}
+
+
+<h2>DSpace Publication </h2>
+  <form action="" method="get" class="form-horizontal" role="form">
+       {% csrf_token %}
+       {{ form }}
+        <input type="submit" value="Submit" />
+  </form>
+  <fieldset class="module aligned ">
+    <div class="form-row field-id_dspace">
+      <div>
+        <div class="text">Id dspace: {{ dspace_record.id_dspace }}</div>
+        <div class="text">Title: {{ dspace_record.title }}</div>
+        <div class="text">Pot Title 1: {{ dspace_record.post_title1 }}</div>
+        <div class="text">Pot Title 2: {{ dspace_record.post_title2 }}</div>
+
+      </div>
+    </div>
+  </fieldset>
+  <div class="results">
+    <table id="result_list">
+      <thead>
+        <tr>
+        <th scope="col"  class="sortable column-id_dspace">
+           <div class="text"><a href="?o=1">Id dspace</a></div>
+           <div class="clear"></div>
+        </th>
+        <th scope="col"  class="sortable column-title">
+           <div class="text"><a href="?o=2">Period</a></div>
+           <div class="clear"></div>
+        </th>
+        <th scope="col"  class="sortable column-title">
+           <div class="text"><a href="?o=3">File</a></div>
+           <div class="clear"></div>
+        </th>
+        <th scope="col"  class="sortable column-title">
+           <div class="text"><a href="?o=4">Downloads</a></div>
+           <div class="clear"></div>
+        </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for st in stats %}
+          <tr class="row1">
+            <th class="field-id_dspace">{{st.id_dspace__id_dspace}}</th>
+            <td class="field-title">{{ st.period__start_date}}</td>
+            <td>{{st.publication__tfile}}</td>
+            <td>{{ st.cuantity}}</td>
+
+          </tr>
+        {% endfor%}
+      </tbody>
+
+    </table>
+</div>
+
+
+
+
+{% endblock %}

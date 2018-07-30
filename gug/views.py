@@ -1,18 +1,34 @@
-# from apiclient.discovery import build
-# from google.oauth2 import service_account
+from __future__ import unicode_literals
+from __future__ import absolute_import
+
 from gug.models import Google_service, Period, Publication, Stats, Dspace
-from gug.forms import ApplicationForm
-# import json
+from gug.forms import ApplicationForm, DspaceForm
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Count, Sum
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
-# from django.http import QueryDict
-# from django.http import HttpRequest
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
+
+
+def dspace_detail(request):
+    if request.method == "GET":
+        form = DspaceForm(request.GET)
+        gsid = request.GET.getlist('gsid', 1)
+        id_dspace = request.GET.get('id_dspace', 1)
+        dspace_record = Dspace.objects.get(id_dspace=id_dspace)
+        # dspace = Dspace.objects.all()
+        stat_list = Stats.objects.select_related('id_dspace', 'period').\
+            values('id_dspace__id_dspace', 'period__start_date', 'publication__tfile').\
+            annotate(cuantity=Sum('cuantity')).\
+            filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid).\
+            order_by('period__start_date')
+
+        gs = Google_service.objects.filter(pk__in=gsid)
+
+        return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record})
 
 
 class index(ListView):
@@ -31,8 +47,8 @@ def stat_index_view(request):
     if request.method == "GET":
         form = ApplicationForm(request.GET)
         # if form.is_valid():
-            # post = form.save(commit=False)
-            # post.save()
+        # post = form.save(commit=False)
+        # post.save()
         page = request.GET.get('page', 1)
         pagesize = request.GET.get('pagesize', 10)
         detail = request.GET.get('detail', 'off')
@@ -48,7 +64,7 @@ def stat_index_view(request):
                 order_by('-cuantity')
         else:
             stat_list = Stats.objects.select_related('id_dspace').\
-                values('id_dspace__id_dspace', 'id_dspace__title').\
+                values('id_dspace__id', 'id_dspace__id_dspace', 'id_dspace__title').\
                 annotate(cuantity=Sum('cuantity')).\
                 filter(google_service__in=gsid, period__in=period).\
                 order_by('-cuantity')
@@ -90,6 +106,7 @@ class periods(ListView):
     def get_context_data(self, **kwargs):
         context = super(periods, self).get_context_data(**kwargs)
         return context
+
 
 class Listperiods(APIView):
     """

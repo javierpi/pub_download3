@@ -10,6 +10,7 @@
 
 {% block extrastyle %}
     {{ block.super }}
+    {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "core/css/branding.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "core/css/icons/style.css" %}" />
 {% endblock %}
@@ -27,8 +28,8 @@
 				{% trans 'Periods' %}
 			</span>
     </a>
-				
-		          	
+
+
 {% endblock %}
 
 
@@ -39,8 +40,8 @@
 
 {% block footer %}
     {{ block.super }}
-    
-    
+
+
 {% endblock %}
 
 {% block content %}

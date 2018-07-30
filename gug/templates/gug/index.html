@@ -1,8 +1,32 @@
 {% extends "gug/home.html" %}
 {% load static i18n %}
-
+{% load i18n %}
 
 {% block content %}
+
+
+{% load i18n %}
+
+
+    <div class="padding center">
+        <canvas id="chart_{{ module.model.pk }}" style="width: 100%;">
+            <div class="chart-fillColor"></div>
+            <div class="chart-strokeColor"></div>
+            <div class="chart-pointColor"></div>
+            <div class="chart-pointHighlightFill"></div>
+            <div class="chart-scaleGridLineColor"></div>
+            <div class="chart-scaleLineColor"></div>
+            <div class="chart-scaleFontColor"></div>
+            <div class="chart-data">
+                {% for data in module.children %}
+                    <div class="chart-data-item" data-date="{{ data.0|date:"d/m" }}" data-value="{{ data.1 }}"></div>
+                {% endfor %}
+            </div>
+        </canvas>
+        <script>jet.jQuery('#chart_{{ module.model.pk }}').googleAnalyticsChart();</script>
+    </div>
+
+
     <div class="panel-body">
     home page
     <div class="tab-pane  active" id="tab4" >
@@ -11,7 +35,7 @@
           $.getJSON("/api/chart/data/{{ definedtest.id }}/bar/", function(data) {
             $('#container').highcharts(data);
           });
-          
+
         });
       </script>
     <div id="container" style="min-width: 600px; height: 400px; "></div>

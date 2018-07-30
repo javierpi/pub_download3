@@ -29,7 +29,7 @@
               {{ per }} <br/>
             {% endfor%}
             </dd>
-            
+
 
           </dl>
         </div>
@@ -41,7 +41,7 @@
               {{ g }} {{ g.view_id }} <br/>
             {% endfor%}
             </dd>
-            
+
           </dl>
         </div>
          <div class="col-xs-3">
@@ -51,11 +51,11 @@
 
             <dt>Downloads</dt>
             <dd>{{ resume.totalcuantity }}</dd>
-          
+
           </dl>
         </div>
       </div>
-      
+
         <div class="row">
           <div class="col-xs-12">
             <div class="tabbable"> <!-- Only required for left/right tabs -->
@@ -72,15 +72,15 @@
                         {% if detail == 'on' %}
                           <th>File</th>
                         {% endif %}
-                        
+
                         <th class="text-right">Downloads</th>
                       </tr>
                     </thead>
                       <tbody>
                         {% for gs in stats %}
                           <tr>
-                            <td>{{gs.id_dspace__id_dspace}}</td>
-                            
+                            <td><a href="{% url 'gug:dspace_detail' %}?id_dspace={{gs.id_dspace__id_dspace|int}}&amp;period=1&amp;gsid=1">{{gs.id_dspace__id_dspace}}</a></td>
+
                             <td>{{ gs.id_dspace__title}}</td>
                             {% if detail == 'on' %}
                               <td>{{gs.publication__tfile}}</td>
@@ -111,7 +111,7 @@
                                      if i|sub:3 >= -2 and i|add:3 < stats.paginator.num_pages%}
                                        if i|sub:stats.number <= 3 and i|sub:stats.number >= 0 %}
                                         <li><a href="?page= i }}&amp;pagesize={{ pagesize }}&amp;detail={{ detail }}&amp;period={{ period.id }}">{{ i }}</a></li>
-                                       elif stats.number|sub:i <= 3  and stats.number|sub:i >= 0 
+                                       elif stats.number|sub:i <= 3  and stats.number|sub:i >= 0
                                         <li><a href="?page= i }}&amp;pagesize= pagesize }}&amp;detail= detail }}">{{ i }}</a></li>
                                        endif %}
                                      endif %}
@@ -124,7 +124,7 @@
                                endif %}
                               <li><a href="?page= stats.paginator.num_pages }}&amp;pagesize= pagesize }}&amp;detail= detail }}">&raquo;&raquo;</a></li>
                           </ul>
-                          
+
                         </td>
                       </tr>
                     </tfooter>
