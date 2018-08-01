@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from __future__ import absolute_import
+import sys
 
 from gug.models import Google_service, Period, Publication, Stats, Dspace
 from gug.forms import StatForm, DspaceForm
@@ -9,11 +10,12 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Count, Sum
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import django_filters.rest_framework
 from django_filters.rest_framework import DjangoFilterBackend
+
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -24,6 +26,9 @@ from rest_framework.parsers import JSONParser
 from rest_framework.reverse import reverse
 from rest_framework import generics
 
+from django.core.management import call_command
+from django.core import management
+from .management.commands import get_title
 
 def dspace_detail(request):
     if request.method == "GET":
@@ -243,6 +248,18 @@ class google_services(ListView):
         context = super(google_services, self).get_context_data(**kwargs)
         return context
 
+def get_title(request, dspace_id):
+    print(int(dspace_id))
+    try:
+    	#management.call_command('get_title', dspace_id=int(dspace_id), verbosity=2, interactive=False)
+    	management.call_command('get_title', verbosity=2)
+    except:
+    	print("Unexpected error:", sys.exc_info()[0])
+    	raise
+
+    	
+
+    return redirect('/dspace/?id_dspace=' + dspace_id + '&gsid=3')
 
 # def get_GCS(request):
 #     SCOPE_WEBMASTER = 'https://www.googleapis.com/auth/webmasters.readonly'
