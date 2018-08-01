@@ -2,74 +2,90 @@
 {% block content %}
 
 
-<h2>Google Services </h2>
-  <div class="table-responsive">
-    <div class="panel panel-primary">
-      <div class="collapse navbar-collapse panel-heading" id="bs-example-navbar-collapse-1">
-        Google Services: {{ google_service.name }}
+<h2>Google Services: {{ google_service.name }} </h2>
+  <table id="result_list">
+      <thead>
+        <tr>
+          <th scope="col"  class="column-id_dspace">
+             <div class="text">Scope</div>
+             <div class="clear"></div>
+          </th>
+          <td scope="col"  class="column-title">
+             <div class="text">{{ google_service.scope }}</div>
+             <div class="clear"></div>
+          </dh>
+          <th scope="col"  class="column-id_dspace">
+             <div class="text">Client Secret Path</div>
+             <div class="clear"></div>
+          </th>
+          <td scope="col"  class="column-title">
+             <div class="text">{{ google_service.client_secret_path }}</div>
+             <div class="clear"></div>
+          </dh>
+        </tr>
+        <tr>
+          <td scope="col"  class="column-title">
+             <div class="text">Discovery</div>
+             <div class="clear"></div>
+          </th>
+          <td scope="col"  class="column-title">
+             <div class="text">{{ google_service.discovery }}</div>
+             <div class="clear"></div>
+          </td>
+          <td scope="col"  class="column-title">
+             <div class="text">View ID</div>
+             <div class="clear"></div>
+          </td>
+          <td scope="col"  class="column-title">
+             <div class="text">{{ google_service.view_id }}</div>
+             <div class="clear"></div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="col"  class="column-title">
+             <div class="text">Service</div>
+             <div class="clear"></div>
+          </th>
+          <td scope="col"  class="column-title">
+             <div class="text">{{ google_service.service }}</div>
+             <div class="clear"></div>
+          </td>
+          <td scope="col"  class="column-title">
+             <div class="text">Active</div>
+             <div class="clear"></div>
+          </td>
+          <td scope="col"  class="column-title">
+             <div class="text">{{ google_service.active }}</div>
+             <div class="clear"></div>
+          </td>
+        </tr>
+        <tr>
+          <td scope="col"  class="column-title">
+             <div class="text">Version</div>
+             <div class="clear"></div>
+          </th>
+          <td scope="col"  class="column-title">
+             <div class="text">{{ google_service.version }}</div>
+             <div class="clear"></div>
+          </td>
+          <td scope="col"  class="column-title">
+             <div class="text">Report</div>
+             <div class="clear"></div>
+          </td>
+          <td scope="col"  class="column-title">
+             <div class="text">{{ google_service.report }}</div>
+             <div class="clear"></div>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+       
+      </tbody>
 
-        {% if user.is_authenticated  %}
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tasks <span class="caret"></span></a>
-              <ul class="dropdown-menu">
+    </table>
+    <br class="clear" />
+    
 
-              </ul>
-            </li>
-
-
-          </ul>
-        {% endif %}
-      </div>
-
-   
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-xs-6">
-          <dl class="dl-horizontal">
-            <dt>Name</dt>
-            <dd>{{ google_service.name }}</dd>
-
-            <dt>Scope</dt>
-            <dd>{{ google_service.scope }}</dd>
-            <dt>Discovery</dt>
-            <dd>{{ google_service.discovery }}</dd>
-
-            <dt>Service:</dt>
-            <dd>{{ google_service.service }}</dd>
-
-            <dt>Version</dt>
-            <dd>{{ google_service.version }}</dd>
-
-            <dt>client_secret_path</dt>
-            <dd>{{ google_service.client_secret_path }}</dd>
-            
-          </dl>
-        </div>
-        <div class="col-xs-6">
-          <dl class="dl-horizontal">
-            <dt>View ID</dt>
-            <dd>{{ google_service.view_id }}</dd>
-            
-            <dt>Active</dt>
-            <dd>{{ google_service.active }}</dd>
-            
-            <dt>Report</dt>
-            <dd>{{ google_service.report }}</dd>
-      
-          </dl>
-        </div>
-        
-
-      </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="tabbable"> <!-- Only required for left/right tabs -->
-              <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab1" data-toggle="tab">Periods</a></li>
-              </ul>
-              <div class="tab-content">
-                <div class="tab-pane active" id="tab1">
                   <table class="table table-striped">
                     <thead>
                       <tr>
@@ -100,16 +116,16 @@
                         {% endfor%}
                         
                     </tbody>
-                   </table>
-                </div>
+                    <tfooter>
+            <tr>
+                <th colspan="1">Total</th>
+                <th>{{ statistics|length }}</th>
+                <th class="text-right">{{ resume.totalrecords }}</th>
+                <th class="text-right">{{ resume.totalcuantity }}</th>
                 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
+            </tr>
+          </tfooter>
+                   </table>
+                </td>
+
 {% endblock %}

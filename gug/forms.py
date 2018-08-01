@@ -21,7 +21,7 @@ class DspaceForm(forms.Form):
         return super(DspaceForm, self).__init__(*args, **kwargs)
 
 
-class ApplicationForm(forms.Form):
+class StatForm(forms.Form):
     PAGE_SIZE_CHOICES = (
         ('10', '10'),
         ('50', '50'),
@@ -37,10 +37,11 @@ class ApplicationForm(forms.Form):
     gsid = forms.MultipleChoiceField(choices=gs_choices, label="Google Service")
     pagesize = forms.ChoiceField(choices=PAGE_SIZE_CHOICES)
     detail = forms.BooleanField(label="Detailed report", required=False)
+    json = forms.BooleanField(label="Json Output", required=False)
     page = forms.IntegerField(label="Page", min_value=1)
 
     def __init__(self, *args, **kwargs):
 
         #     self.fields['object_type'].widget.attrs['readonly'] = True
 
-        return super(ApplicationForm, self).__init__(*args, **kwargs)
+        return super(StatForm, self).__init__(*args, **kwargs)

@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 from __future__ import absolute_import
 
 from gug.models import Google_service, Period, Publication, Stats, Dspace
-from gug.forms import ApplicationForm, DspaceForm
-from gug.serializers import PeriodSerializer
+from gug.forms import StatForm, DspaceForm
+from gug.serializers import PeriodSerializer, StatsSerializer, DspaceSerializer
 
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -12,6 +12,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import django_filters.rest_framework
+from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -19,8 +21,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
-
-
+from rest_framework.reverse import reverse
+from rest_framework import generics
 
 
 def dspace_detail(request):
@@ -60,26 +62,32 @@ class index(ListView):
         context = super(index, self).get_context_data(**kwargs)
         return context
 
-
+@api_view(['GET'])
 def stat_index_view(request):
     if request.method == "GET":
-        form = ApplicationForm(request.GET)
+        form = StatForm(request.GET)
         # if form.is_valid():
         # post = form.save(commit=False)
         # post.save()
         page = request.GET.get('page', 1)
         pagesize = request.GET.get('pagesize', 10)
         detail = request.GET.get('detail', 'off')
+        json = request.GET.get('json', 'off')
         gsid = request.GET.getlist('gsid', 1)
         period = request.GET.getlist('period', 1)
 
         if detail == 'on':
             print('Report: Detailed')
-            stat_list = Stats.objects.select_related('id_dspace').\
-                values('id_dspace__id_dspace', 'id_dspace__title', 'publication__tfile').\
-                annotate(cuantity=Sum('cuantity')).\
-                filter(google_service__in=gsid, period__in=period).\
-                order_by('-cuantity')
+            if json == 'on':
+            	stat_list = Stats.objects.select_related('id_dspace').\
+                    filter(google_service__in=gsid, period__in=period).\
+                    order_by('-cuantity')
+            else:
+                stat_list = Stats.objects.select_related('id_dspace').\
+                    values('id_dspace__id_dspace', 'id_dspace__title', 'publication__tfile').\
+                    annotate(cuantity=Sum('cuantity')).\
+                    filter(google_service__in=gsid, period__in=period).\
+                    order_by('-cuantity')
         else:
             stat_list = Stats.objects.select_related('id_dspace').\
                 values('id_dspace__id', 'id_dspace__id_dspace', 'id_dspace__title').\
@@ -88,19 +96,25 @@ def stat_index_view(request):
                 order_by('-cuantity')
 
         # print(request)
-        period = Period.objects.filter(pk__in=period)
-        gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+        
 
-        resume = Stats.objects.values('google_service').filter(google_service__in=gs, period__in=period).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
-        paginator = Paginator(stat_list, pagesize)
-        try:
-            stats = paginator.page(page)
-        except PageNotAnInteger:
-            stats = paginator.page(1)
-        except EmptyPage:
-            stats = paginator.page(paginator.num_pages)
+        
+        if json == 'on':
+            serializer = StatsSerializer(stat_list, many=True, context={'request': request})
+            return Response(serializer.data)
+        else:
+            period = Period.objects.filter(pk__in=period)
+            gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+            resume = Stats.objects.values('google_service').filter(google_service__in=gs, period__in=period).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
 
-        return render(request, 'gug/stat.html', {'form': form, 'stats': stats, 'period': period, 'gs': gsid, 'resume': resume, 'pagesize': pagesize, 'detail': detail})
+            paginator = Paginator(stat_list, pagesize)
+            try:
+                stats = paginator.page(page)
+            except PageNotAnInteger:
+                stats = paginator.page(1)
+            except EmptyPage:
+                stats = paginator.page(paginator.num_pages)
+            return render(request, 'gug/stat.html', {'form': form, 'stats': stats, 'period': period, 'gs': gsid, 'resume': resume, 'pagesize': pagesize, 'detail': detail})
 
 
 class periods_detail(DetailView):
@@ -127,8 +141,66 @@ class periods(ListView):
         return context
 
 
+
+#class api_stat(generics.ListAPIView):
 @api_view(['GET'])
-def periodos_list(request):
+def api_stat(request):
+    if request.method == 'GET':
+        # stat_list = Stats.objects.all()
+        detail = request.GET.get('detail', 'off')
+        gsid = request.GET.getlist('gsid', 1)
+        period = request.GET.getlist('period', 1)
+        id_dspace = request.GET.getlist('id_dspace', None)
+        stat_list = Stats.objects.select_related('id_dspace', 'google_service').\
+            values('id_dspace__id_dspace', 'id_dspace__title', 'publication__tfile').\
+            annotate(cuantity=Sum('cuantity')).\
+            filter(google_service__in=gsid, period__in=period).\
+            order_by('-cuantity')
+
+    # if id_dspace is not None:
+    #     stat_list = stat_list.filter(id_dspace=id_dspace)
+
+        serializer = StatsSerializer(stat_list, many=True)
+        return Response(serializer.data)
+
+# @api_view(['GET'])
+# def api_stat(request):
+#     if request.method == 'GET':
+#         detail = request.GET.get('detail', 'off')
+#         gsid = request.GET.getlist('gsid', (1,2))
+#         period = request.GET.getlist('period', (1,2))
+
+#         # if detail == 'on':
+# #        print('Report: Detailed')
+#         stat_list = Stats.objects.select_related('id_dspace', 'google_service').\
+#             values('id_dspace__id_dspace', 'id_dspace__title', 'publication__tfile').\
+#             annotate(cuantity=Sum('cuantity')).\
+#             filter(google_service__in=gsid, period__in=period).\
+#             order_by('-cuantity')
+#         # else:
+#         #     stat_list = Stats.objects.select_related('id_dspace').\
+#         #         values('id_dspace__id', 'id_dspace__id_dspace', 'id_dspace__title').\
+#         #         annotate(cuantity=Sum('cuantity')).\
+#         #         filter(google_service__in=gsid, period__in=period).\
+#         #         order_by('-cuantity')
+#         serializer = StatsSerializer(stat_list, many=True)
+#         return  Response(serializer.data)
+
+        
+
+@api_view(['GET'])
+def api_publication_detail(request, pk):
+    try:
+        publication = Publication.objects.get(pk=pk)
+    except publication.DoesNotExist:
+        return HttpResponse(status=404)
+  
+    if request.method == 'GET':
+        serializer = PublicationSerializer(publication, many=True)
+        return  Response(serializer.data)
+
+@api_view(['GET'])
+def api_periods_list(request):
   
     if request.method == 'GET':
         periods = Period.objects.all()
@@ -136,7 +208,7 @@ def periodos_list(request):
         return  Response(serializer.data)
 
 @api_view(['GET'])
-def periodos_detail(request, pk):
+def api_periods_detail(request, pk):
     try:
         periods = Period.objects.get(pk=pk)
     except periods.DoesNotExist:
@@ -156,6 +228,7 @@ class google_services_detail(DetailView):
         context = super(google_services_detail, self).get_context_data(**kwargs)
         context['periods'] = Period.objects.all()
         context['statistics'] = Stats.objects.values('period').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
+        context['resume'] = Stats.objects.values('google_service').filter(google_service=self.get_object()).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
         return context
 
 
@@ -164,7 +237,7 @@ class google_services(ListView):
     template_name = 'gug/google_service.html'
 
     def get_queryset(self):
-        return Google_service.objects.annotate(Count('stats'))
+        return Google_service.objects.annotate(Count('stats')).annotate(cuantity=Sum('stats__cuantity'))
 
     def get_context_data(self, **kwargs):
         context = super(google_services, self).get_context_data(**kwargs)

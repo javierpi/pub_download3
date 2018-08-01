@@ -9,70 +9,69 @@
 {% block content %}
 
 
-  <h2>Download Stats </h2>
+<h2>Download Stats </h2>
 
-    <form action="" method="get" class="form-horizontal" role="form">
-         {% csrf_token %}
-         {{ form }}
-          <input type="submit" value="Go" />
-          
-          
-    </form>
-         
-    <dl class="dl-horizontal">
-      <dt>Records</dt>
-      <dd>{{ resume.totalrecords }}</dd>
-
-      <dt>Downloads</dt>
-      <dd>{{ resume.totalcuantity }}</dd>
-
-    </dl>
-    <br class="clear" />
-
-    <div class="results">
-      <table id="result_list">
-        <thead>
-          <tr>
-            <th scope="col"  class="sortable column-id_dspace">
-              <div class="text">ID Dspace</div>
-              <div class="clear"></div>
-            </th>
-              <th scope="col"  class="sortable column-title">
-                 <div class="text">Title</div>
-                 <div class="clear"></div>
-              </th>
-              {% if detail == 'on' %}
-                <th scope="col"  class="sortable column-title">
-                   <div class="text">File</div>
-                   <div class="clear"></div>
-                </th>
-              {% endif %}
-              <th scope="col"  class="sortable column-title">
-                 <div class="text">Downloads</div>
-                 <div class="clear"></div>
-              </th>
-              </tr>
-            </thead>
-                      
-            <tbody>
-              {% for grs in stats %}
-                <tr>
-                  <td><a href="{% url 'gug:dspace_detail' %}?id_dspace={{grs.id_dspace__id_dspace|urlize}}{% for t in gs %}&amp;gsid={{t}}{% endfor%}">{{grs.id_dspace__id_dspace}}</a></td>
-
-                  <td>{{ grs.id_dspace__title}}</td>
-                  {% if detail == 'on' %}
-                    <td>{{grs.publication__tfile}}</td>
-                  {% endif %}
-                  <td>{{ grs.cuantity}}</td>
-
-                </tr>
-              {% endfor%}
-
-            </tbody>
-          </table>
-      </div>
+<form action="" method="get" class="form-horizontal" role="form">
+     {% csrf_token %}
+     {{ form }}
+      <input type="submit" value="Go" />
       
-
-
+      
+</form>
      
+<br class="clear" />
+
+<div class="results">
+  <table id="result_list">
+    <thead>
+      <tr>
+        <th scope="col"  class="sortable column-id_dspace">
+          <div class="text">ID Dspace</div>
+          <div class="clear"></div>
+        </th>
+        <th scope="col"  class="sortable column-title">
+           <div class="text">Title</div>
+           <div class="clear"></div>
+        </th>
+        {% if detail == 'on' %}
+          <th scope="col"  class="sortable column-title">
+             <div class="text">File</div>
+             <div class="clear"></div>
+          </th>
+        {% endif %}
+        <th scope="col"  class="sortable column-title">
+           <div class="text">Downloads</div>
+           <div class="clear"></div>
+        </th>
+      </tr>
+    </thead>
+                  
+    <tbody>
+      {% for grs in stats %}
+        <tr>
+          <td><a href="{% url 'gug:dspace_detail' %}?id_dspace={{grs.id_dspace__id_dspace|urlize}}{% for t in gs %}&amp;gsid={{t}}{% endfor%}">{{grs.id_dspace__id_dspace}}</a></td>
+
+          <td>{{ grs.id_dspace__title}}</td>
+          {% if detail == 'on' %}
+            <td>{{grs.publication__tfile}}</td>
+          {% endif %}
+          <td>{{ grs.cuantity}}</td>
+
+        </tr>
+      {% endfor%}
+
+    </tbody>
+    <tfooter>
+      <tr>
+          <th colspan="1">Total</th>
+          <th class="text-right">{{ resume.totalrecords }}</th>
+          {% if detail == 'on' %}
+            <th class="text-right"></th>
+          {% endif %}
+          <th class="text-right">{{ resume.totalcuantity }}</th>
+          
+      </tr>
+    </tfooter>
+  </table>
+</div>
 {% endblock %}

@@ -6,7 +6,13 @@ from gug.models import Google_service, Period, Publication, Stats, Dspace, Servi
 class StatsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Stats
-        fields = ('google_service', 'period', 'id_dspace', 'publication', 'cuantity')
+        fields = ('cuantity',)
+        #fields = ('publication', 'cuantity')
+        # extra_kwargs = {
+        #     'publication': {'lookup_field': 'pk'}
+        # }
+        # 'publication': {'view_name': 'publication_detail', 'lookup_field': 'pk'}
+        # fields = ('id_dspace__id_dspace', 'cuantity')
 
 
 class DspaceSerializer(serializers.HyperlinkedModelSerializer):
