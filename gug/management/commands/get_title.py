@@ -30,7 +30,7 @@ class Command(BaseCommand):
                         try:
                               URLObject = urllib2.urlopen(site)
                         except:
-                              raise
+                              print('Some error')
                         else:
                               html = BeautifulSoup(URLObject.read(), features="html.parser")
                               title = html.find('title')

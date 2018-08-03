@@ -10,7 +10,7 @@ import json
 
 
 @shared_task
-def get_GA():
+def get_GA(header=False):
     gservices = Google_service.objects.filter(active=True)
     periods = Period.objects.filter(active=True)
     for period in periods:
@@ -37,7 +37,10 @@ def get_GA():
                 print("BAD CREDENTIALS")
 
             # delete all stats from this report
+
             delete_stat(gs, period)
+            # raise
+
             if discovery:
                 analytics = build(service, version, discoveryServiceUrl=discovery)
                 response = analytics.reports().batchGet(body=report).execute()
@@ -82,7 +85,9 @@ def get_GA():
 
 
 def delete_stat(gs, period):
+    print('deleting stats for period:', period, ' and gs:', gs)
     Stats.objects.filter(google_service=gs, period=period).delete()
+
 
 
 def save_record(gs, period, url, title, cantidad):
@@ -107,7 +112,7 @@ def save_record(gs, period, url, title, cantidad):
         post_title2 = title.split('|')[2]
     title = title.split('|')[0]
 
-    print(url, n_url, id_dspace, file)
+    # print(url, n_url, id_dspace, file)
     if isNum(id_dspace) and int(cantidad) > 0:
         # dsp, created = Dspace.objects.get_or_create(id_dspace=id_dspace, title=title)
         try:

@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from __future__ import absolute_import
 import sys
+import csv
 
 from gug.models import Google_service, Period, Publication, Stats, Dspace
 from gug.forms import StatForm, DspaceForm
@@ -11,7 +12,7 @@ from django.views.generic.detail import DetailView
 from django.db.models import Count, Sum
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, StreamingHttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import django_filters.rest_framework
 from django_filters.rest_framework import DjangoFilterBackend
@@ -29,6 +30,65 @@ from rest_framework import generics
 from django.core.management import call_command
 from django.core import management
 from .management.commands import get_title
+
+
+class Echo:
+    """An object that implements just the write method of the file-like
+    interface.
+    """
+    def write(self, value):
+        """Write the value by returning it, instead of storing in a buffer."""
+        return value
+
+def some_view(request):
+	# values('id_dspace__id_dspace', 'id_dspace__title', 'publication__tfile').\
+ #    annotate(cuantity=Sum('cuantity')).\
+    gsid = request.GET.getlist('gsid', [1,])
+    period = request.GET.getlist('period', [1,])
+    stat_list = Stats.objects.select_related('id_dspace').\
+        values('id_dspace__title', 'publication__tfile').\
+        filter(google_service__in=gsid, period__in=period).\
+        order_by('-cuantity')
+
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+
+    writer = csv.writer(response)
+    row = ""
+    rows = (["Row {}".format(idx), str(idx)] for idx in stat_list.all())
+    pseudo_buffer = Echo()
+    writer = csv.writer(pseudo_buffer)
+    response = StreamingHttpResponse((writer.writerow(row) for row in rows),
+                                     content_type="text/csv")
+    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+    # for header in stat_list.all()[1]:
+    # 	print(header)
+    # 	row += header + ","
+    # 	# for field in header:
+    # 	# 	print(header[field])
+    # writer.writerow(row)
+
+#     for record in stat_list.all():
+#         row = ""
+#         for field in record:
+# #        	print(record[field])
+#             row += record[field] + ","
+#         writer.writerow(row)
+    
+
+    return response
+    """A view that streams a large CSV file."""
+    # Generate a sequence of rows. The range is based on the maximum number of
+    # rows that can be handled by a single sheet in most spreadsheet
+    # applications.
+    # rows = (["Row {}".format(idx), str(idx)] for idx in range(65536))
+    # pseudo_buffer = Echo()
+    # writer = csv.writer(pseudo_buffer)
+    # response = StreamingHttpResponse((writer.writerow(row) for row in rows),
+    #                                  content_type="text/csv")
+    # response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+    # return response
 
 def dspace_detail(request):
     if request.method == "GET":
@@ -66,6 +126,8 @@ class index(ListView):
     def get_context_data(self, **kwargs):
         context = super(index, self).get_context_data(**kwargs)
         return context
+
+
 
 @api_view(['GET'])
 def stat_index_view(request):
