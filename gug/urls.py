@@ -1,15 +1,11 @@
-from django.conf.urls import url, include
-
+from django.conf.urls import url
 from .views import google_services, periods, google_services_detail,\
     periods_detail, stat_index_view, index, dspace_detail, api_publication_detail, \
-    api_periods_list, api_periods_detail,api_stat, get_title,\
+    api_periods_list, api_periods_detail, api_stat, get_title,\
     some_view
-
 from rest_framework.urlpatterns import format_suffix_patterns
-from rest_framework import routers
+
 app_name = 'gug'
-
-
 
 urlpatterns = [
     url(r'^$', index.as_view(), name='index'),
@@ -18,8 +14,6 @@ urlpatterns = [
 
     url(r'^periods/$', periods.as_view(), name='periods'),
     url(r'^periods/(?P<pk>\d+)$', periods_detail.as_view(), name='periods_detail'),
-    
-
     url(r'^stat/$', stat_index_view, name='stat_index_paginated'),
     url(r'^dspace/$', dspace_detail, name='dspace_detail'),
 
@@ -27,13 +21,10 @@ urlpatterns = [
     url(r'^api/periods/$', api_periods_list, name='api_periods_list'),
     url(r'^api/periods/(?P<pk>[0-9]+)/$', api_periods_detail, name='api_periods_detail'),
     url(r'^api/stat/$', api_stat),
-    
     url(r'^csv1/$', some_view),
 
-    ## Commands
-#	url(r'^maketest/(?P<pk>[\w]+)/$', make_test, name='make-test'),
-	url(r'^get_title/(?P<dspace_id>[0-9]+)$', get_title, name='get_title'),
-
-    
+    # Commands
+    # url(r'^maketest/(?P<pk>[\w]+)/$', make_test, name='make-test'),
+    url(r'^get_title/(?P<dspace_id>[0-9]+)$', get_title, name='get_title')
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

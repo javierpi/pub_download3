@@ -58,6 +58,7 @@
         </tr>
       </thead>
       <tbody>
+
         {% for st in stats %}
           <tr class="{% cycle 'row1' 'row2' %}">
             <th class="field-id_dspace">{{st.id_dspace__id_dspace}}</th>
@@ -65,7 +66,7 @@
             {% if detail == 'on' %}
               <td>{{st.publication__tfile}}</td>
             {% endif %}
-            <td>{{ st.cuantity}}</td>
+            <td>{{ st.cuantity }}</td>
 
           </tr>
         {% endfor%}

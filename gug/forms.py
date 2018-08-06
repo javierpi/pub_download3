@@ -37,7 +37,7 @@ class StatForm(forms.Form):
     gsid = forms.MultipleChoiceField(choices=gs_choices, label="Google Service")
     pagesize = forms.ChoiceField(choices=PAGE_SIZE_CHOICES)
     detail = forms.BooleanField(label="Detailed report", required=False)
-    json = forms.BooleanField(label="Json Output", required=False)
+    csv_output = forms.BooleanField(label="CSV Output", required=False)
     page = forms.IntegerField(label="Page", min_value=1)
 
     def __init__(self, *args, **kwargs):

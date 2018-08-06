@@ -113,6 +113,12 @@ class Stats(models.Model):
     class Meta:
         verbose_name_plural = 'STATS'
         verbose_name = 'STATS'
+        indexes = [
+            models.Index(
+                fields=['id_dspace', 'google_service', 'period'],
+                name='stats_iddspace_idx',
+            ),
+        ]
         ordering = ["google_service", "publication", "period"]
         unique_together = ("google_service", "period", "id_dspace", "publication")
 

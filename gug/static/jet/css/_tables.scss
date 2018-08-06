@@ -2,7 +2,9 @@
 
 
 /* TABLES */
-
+.text-right {
+  text-align: right;
+}
 table {
   border-collapse: collapse;
   background: $content-background-color;
