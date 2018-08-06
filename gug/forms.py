@@ -29,19 +29,15 @@ class StatForm(forms.Form):
         ('500', '500'),
         ('1000', '1000'),
     )
-    # PAGE_CHOICES = Paginator.page_range
     gs_choices = Google_service.objects.all().values_list('id', 'name')
     period_choices = Period.objects.all().values_list('id', 'start_date')
 
     period = forms.MultipleChoiceField(choices=period_choices, label="Period")
     gsid = forms.MultipleChoiceField(choices=gs_choices, label="Google Service")
     pagesize = forms.ChoiceField(choices=PAGE_SIZE_CHOICES)
-    detail = forms.BooleanField(label="Detailed report", required=False)
+#     detail = forms.BooleanField(label="Detailed report", required=False)
     csv_output = forms.BooleanField(label="CSV Output", required=False)
     page = forms.IntegerField(label="Page", min_value=1)
 
     def __init__(self, *args, **kwargs):
-
-        #     self.fields['object_type'].widget.attrs['readonly'] = True
-
         return super(StatForm, self).__init__(*args, **kwargs)

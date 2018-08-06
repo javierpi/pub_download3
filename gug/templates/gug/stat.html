@@ -5,6 +5,15 @@
 {% load bootstrap_pagination %}
 {% block extrastyle %}
 <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.min.js"></script>
 {% endblock %}
 {% block content %}
 
@@ -24,7 +33,11 @@
       <tr>
         {% for fieldname in table.headers %}
           <th scope="col" class="column-title">
-             <div class="text">{{ fieldname }}</div>
+          {% if forloop.counter0 >= 2 and not forloop.last %}
+             <div class="text">{{ fieldname|join:"<br/>" }}</div>
+          {% else %}
+            <div class="text">{{ fieldname }}</div>
+          {% endif %}
              <div class="clear"></div>
           </th>
         {% endfor %}
@@ -40,7 +53,7 @@
               </th>
             {% else %}
               <td class="text-right">
-                {{val|default_if_none:""}}
+                {{val|default_if_none:"0"}}
               </td>
             {% endif %}
           {% endfor %}

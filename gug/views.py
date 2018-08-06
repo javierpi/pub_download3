@@ -121,19 +121,20 @@ def stat_index_view(request):
 
         page = request.GET.get('page', 1)
         pagesize = request.GET.get('pagesize', 10)
-        detail = request.GET.get('detail', 'off')
+        # detail = request.GET.get('detail', 'off')
         csv_output = request.GET.get('csv_output', 'off')
 
         gsid = request.GET.getlist('gsid', 1)
         period = request.GET.getlist('period', 1)
-        gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
 
+        gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
         gstitles = Google_service.objects.filter(pk__in=gsid)
-        fields_id = ['id_dspace', 'title']
-        fields = ['id_dspace', 'title']
+
+        fields = ['ID Dspace', 'Title']
         for title in gstitles:
-            fields.append(title.name[0:10])
-        fields.append('total downloads')
+            # fields.append(title.name[0:10])
+            fields.append(title.name.split(' ') )
+        fields.append('Total Downloads')
         table = {'headers': fields}
 
         query_resume_inicial = "select  'Total' as tit1, count(*) as tit2, "
@@ -152,17 +153,17 @@ def stat_index_view(request):
             query_rows += "(select sum(cuantity) as " + sumvar + " from gug_stats as gs1 where google_service_id = " + str(gsn) + " and period_id in (" + ','.join(period) + ") and gs_master.id_dspace_id = gs1.id_dspace_id group by id_dspace_id ) AS '" + sumvar + "' ,"
 
         final_sql = query_inicial + query_rows[:-1] + query_final
-
         query_resume = query_resume_inicial + query_resume_rows[:-1] + query_resume_final
+
         cursor = connection.cursor()
         cursor.execute(final_sql)
         stat_list = cursor.fetchall()
 
-        period = Period.objects.filter(pk__in=period)
-
         cursor = connection.cursor()
         cursor.execute(query_resume)
         resume = cursor.fetchall()
+
+        period = Period.objects.filter(pk__in=period)
 
         if csv_output == 'on':
             rows = []
@@ -174,14 +175,17 @@ def stat_index_view(request):
             for record in stat_list:
                 row = []
                 for col in list(range(0, len(fields))):
-                    row.append(record[col])
+                    if col == 1:
+                    	row.append('"'+str(record[col])+'"')
+                    else:
+                    	row.append(record[col])
                 rows.append(row)
 
             pseudo_buffer = Echo()
             writer = csv.writer(pseudo_buffer)
             response = StreamingHttpResponse((writer.writerow(row) for row in rows),
                                              content_type="text/csv")
-            response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+            response['Content-Disposition'] = 'attachment; filename="pub_downloads.csv"'
 
             return response
 
@@ -196,60 +200,8 @@ def stat_index_view(request):
 
             table.update({'rows': stats})
             table.update({'resume': resume})
-            return render(request, 'gug/stat.html', {'form': form, 'stats': stats, 'table': table, 'period': period, 'gs': gsid, 'resume': resume, 'pagesize': pagesize, 'detail': detail})
+            return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
 
-
-@api_view(['GET'])
-def stat_index_view1(request):
-    if request.method == "GET":
-        form = StatForm(request.GET)
-        # if form.is_valid():
-        # post = form.save(commit=False)
-        # post.save()
-        page = request.GET.get('page', 1)
-        pagesize = request.GET.get('pagesize', 10)
-        detail = request.GET.get('detail', 'off')
-        json = request.GET.get('json', 'off')
-        gsid = request.GET.getlist('gsid', 1)
-        period = request.GET.getlist('period', 1)
-
-        if detail == 'on':
-            print('Report: Detailed')
-            if json == 'on':
-                stat_list = Stats.objects.select_related('id_dspace').\
-                    filter(google_service__in=gsid, period__in=period).\
-                    order_by('-cuantity')
-            else:
-                stat_list = Stats.objects.select_related('id_dspace').\
-                    values('id_dspace__id_dspace', 'id_dspace__title', 'publication__tfile').\
-                    annotate(cuantity=Sum('cuantity')).\
-                    filter(google_service__in=gsid, period__in=period).\
-                    order_by('-cuantity')
-        else:
-            stat_list = Stats.objects.select_related('id_dspace').\
-                values('id_dspace__id', 'id_dspace__id_dspace', 'id_dspace__title').\
-                annotate(cuantity=Sum('cuantity')).\
-                filter(google_service__in=gsid, period__in=period).\
-                order_by('-cuantity')
-
-        # print(request)
-
-        if json == 'on':
-            serializer = StatsSerializer(stat_list, many=True, context={'request': request})
-            return Response(serializer.data)
-        else:
-            period = Period.objects.filter(pk__in=period)
-            gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
-            resume = Stats.objects.values('google_service').filter(google_service__in=gs, period__in=period).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
-
-            paginator = Paginator(stat_list, pagesize)
-            try:
-                stats = paginator.page(page)
-            except PageNotAnInteger:
-                stats = paginator.page(1)
-            except EmptyPage:
-                stats = paginator.page(paginator.num_pages)
-            return render(request, 'gug/stat.html', {'form': form, 'stats': stats, 'period': period, 'gs': gsid, 'resume': resume, 'pagesize': pagesize, 'detail': detail})
 
 
 class periods_detail(DetailView):
@@ -291,34 +243,8 @@ def api_stat(request):
             filter(google_service__in=gsid, period__in=period).\
             order_by('-cuantity')
 
-    # if id_dspace is not None:
-    #     stat_list = stat_list.filter(id_dspace=id_dspace)
-
         serializer = StatsSerializer(stat_list, many=True)
         return Response(serializer.data)
-
-# @api_view(['GET'])
-# def api_stat(request):
-#     if request.method == 'GET':
-#         detail = request.GET.get('detail', 'off')
-#         gsid = request.GET.getlist('gsid', (1,2))
-#         period = request.GET.getlist('period', (1,2))
-
-#         # if detail == 'on':
-# #        print('Report: Detailed')
-#         stat_list = Stats.objects.select_related('id_dspace', 'google_service').\
-#             values('id_dspace__id_dspace', 'id_dspace__title', 'publication__tfile').\
-#             annotate(cuantity=Sum('cuantity')).\
-#             filter(google_service__in=gsid, period__in=period).\
-#             order_by('-cuantity')
-#         # else:
-#         #     stat_list = Stats.objects.select_related('id_dspace').\
-#         #         values('id_dspace__id', 'id_dspace__id_dspace', 'id_dspace__title').\
-#         #         annotate(cuantity=Sum('cuantity')).\
-#         #         filter(google_service__in=gsid, period__in=period).\
-#         #         order_by('-cuantity')
-#         serializer = StatsSerializer(stat_list, many=True)
-#         return  Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -388,57 +314,3 @@ def get_title(request, dspace_id):
         raise
 
     return redirect('/dspace/?id_dspace=' + dspace_id + '&gsid=3')
-
-# def get_GCS(request):
-#     SCOPE_WEBMASTER = 'https://www.googleapis.com/auth/webmasters.readonly'
-#     CLIENT_SECRETS_PATH = 'DownloadPublicaciones-a610ebc17b1e.json'
-#     REDIRECT_URI = 'urn:ietf:wg:oauth:2.0:oob'
-#     property_uri = 'http://repositorio.cepal.org'
-#     credentials = service_account.Credentials.from_service_account_file(CLIENT_SECRETS_PATH, scopes=SCOPE_WEBMASTER)
-#     if credentials is None:
-#         print("BAD CREDENTIALS")
-
-#     #authed_http = AuthorizedHttp(credentials)
-#     service = build('webmasters', 'v3')
-#     output_rows = []
-#     request = {
-#         "startDate": "2018-06-01",
-#         "endDate": "2018-06-30",
-#         "dimensions": ["page"],
-#         "searchType": "web",
-#         "rowLimit": 20000,
-#         "startRow": 0,
-#         "aggregationType": "byPage",
-#         "fileType": "pdf",
-#         "dimensionFilterGroups": [
-#             {
-#                 "filters": [{
-#                     "dimension": "page",
-#                     "expression": "bitstream",
-#                     "operator": "contains"
-#                 },
-#                     {
-#                     "dimension": "page",
-#                     "expression": "pdf",
-#                     "operator": "contains"
-#                 },
-#                     {
-#                     "dimension": "page",
-#                     "expression": ".txt",
-#                     "operator": "notcontains"
-#                 }
-#                 ]
-#             }
-#         ]
-#     }
-#     response = service.searchanalytics().query(siteUrl=property_uri, body=request).execute()
-#     if 'rows' in response:
-#         row_count = 0
-#         for row in response['rows']:
-#             row_count = row_count + 1
-#             keys = ','.join(row['keys'])
-#             #output_row = [keys, row['clicks'], row['impressions'], row['ctr'], row['position']]
-#             output_row = [keys, row['clicks']]
-#             print(row_count, output_row)
-
-    # print(response)

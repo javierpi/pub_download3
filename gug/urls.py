@@ -24,7 +24,6 @@ urlpatterns = [
     url(r'^csv1/$', some_view),
 
     # Commands
-    # url(r'^maketest/(?P<pk>[\w]+)/$', make_test, name='make-test'),
     url(r'^get_title/(?P<dspace_id>[0-9]+)$', get_title, name='get_title')
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
