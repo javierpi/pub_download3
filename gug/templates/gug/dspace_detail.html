@@ -96,4 +96,50 @@
 
 
 
+
+
+
+  <div class="results">
+    <table id="result_list">
+      <thead>
+        <tr>
+        <th scope="col"  class="sortable column-id_dspace">
+           <div class="text">Id dspace</div>
+           <div class="clear"></div>
+        </th>
+        <th scope="col"  class="sortable column-title">
+           <div class="text">Period</div>
+           <div class="clear"></div>
+        </th>
+        {% if detail == 'on' %}
+        <th scope="col"  class="sortable column-title">
+           <div class="text">File</div>
+           <div class="clear"></div>
+        </th>
+        {% endif %}
+        <th scope="col"  class="sortable column-title">
+           <div class="text">Downloads</div>
+           <div class="clear"></div>
+        </th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for st in stats %}
+          <tr class="{% cycle 'row1' 'row2' %}">
+            <th class="field-id_dspace">{{st.id_dspace__id_dspace}}</th>
+            <td class="field-title">{{ st.period__start_date}}</td>
+            {% if detail == 'on' %}
+              <td>{{st.publication__tfile}}</td>
+            {% endif %}
+            <td>{{ st.cuantity }}</td>
+
+          </tr>
+        {% endfor%}
+      </tbody>
+
+    </table>
+</div>
+
+
 {% endblock %}

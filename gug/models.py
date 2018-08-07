@@ -35,6 +35,7 @@ class Period(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     active = models.BooleanField('active', default=True)
+    # closed = models.BooleanField('Data on this period is gotten', default=False)
 
     class Meta:
         ordering = ["start_date"]
@@ -68,6 +69,7 @@ class Google_service(models.Model):
     version = models.CharField(max_length=2, default='')
     view_id = models.CharField(max_length=30, default='', help_text="In Google Analytics is View Id, in Google Webmaster is protocol+domain")
     active = models.BooleanField('active', default=True)
+#    hidden = models.BooleanField('Hidden in application', default=False)
     report = models.TextField(default='{}', validators=[validate_json], help_text="Transformed variables are view_id, start_date and end_date.")
 
     class Meta:

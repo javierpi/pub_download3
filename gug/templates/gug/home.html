@@ -10,9 +10,18 @@
 
 {% block extrastyle %}
     {{ block.super }}
+    <script type="text/javascript" charset="utf-8">
+        (function(w,d,s,g,js,fs){
+          g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+          js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+          js.src='https://apis.google.com/js/platform.js';
+          fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+        }(window,document,'script'));
+    </script>
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "core/css/branding.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "core/css/icons/style.css" %}" />
+
 {% endblock %}
 
 {% block nav-global %}

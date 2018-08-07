@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 from __future__ import absolute_import
 import sys
 import csv
+# import unicodecsv as csv
+import codecs
 
 from gug.models import Google_service, Period, Publication, Stats, Dspace
 from gug.forms import StatForm, DspaceForm
@@ -40,8 +42,32 @@ class Echo:
         """Write the value by returning it, instead of storing in a buffer."""
         return value
 
-
 def dspace_detail(request):
+    if request.method == "GET":
+        form = DspaceForm(request.GET)
+        gsid = request.GET.getlist('gsid', 1)
+        id_dspace = request.GET.get('id_dspace', 1)
+        dspace_record = Dspace.objects.get(id_dspace=id_dspace)
+        detail = request.GET.get('detail', 'off')
+        if detail == 'on':
+            stat_list = Stats.objects.select_related('id_dspace', 'period').\
+                values('id_dspace__id_dspace', 'period__start_date', 'publication__tfile').\
+                annotate(cuantity=Sum('cuantity')).\
+                filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid).\
+                order_by('period__start_date')
+        else:
+            stat_list = Stats.objects.select_related('id_dspace', 'period').\
+                values('id_dspace__id_dspace', 'period__start_date').\
+                annotate(cuantity=Sum('cuantity')).\
+                filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid).\
+                order_by('period__start_date')
+
+        gs = Google_service.objects.filter(pk__in=gsid)
+
+        return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail})
+
+
+def dspace_detail2(request):
     if request.method == "GET":
         form = DspaceForm(request.GET)
         gsid = request.GET.getlist('gsid', 1)
@@ -159,6 +185,12 @@ class index(ListView):
         context = super(index, self).get_context_data(**kwargs)
         return context
 
+def iter_csv(rows, pseudo_buffer):
+    yield pseudo_buffer.write(codecs.BOM_UTF8)
+    writer = csv.writer(pseudo_buffer)
+    for row in rows:
+        yield writer.writerow(row)
+
 
 @api_view(['GET'])
 def stat_index_view(request):
@@ -176,7 +208,7 @@ def stat_index_view(request):
         gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
         gstitles = Google_service.objects.filter(pk__in=gsid)
 
-        fields = ['ID Dspace', 'Title']
+        fields = ['Dspace ID', 'Title']
         for title in gstitles:
             # fields.append(title.name[0:10])
             fields.append(title.name.split(' '))
@@ -214,8 +246,13 @@ def stat_index_view(request):
         if csv_output == 'on':
             rows = []
             row = []
+            colcount = 0
             for head in fields:
-                row.append(head)
+                colcount += 1
+                if colcount > 2:
+                    row.append(' '.join(head))
+                else:
+                    row.append(head)
             rows.append(row)
 
             for record in stat_list:
@@ -223,14 +260,14 @@ def stat_index_view(request):
                 for col in list(range(0, len(fields))):
                     if col == 1:
                         row.append('"' + str(record[col]) + '"')
+                        # row.append(str(record[col]))
                     else:
                         row.append(record[col])
                 rows.append(row)
 
             pseudo_buffer = Echo()
             writer = csv.writer(pseudo_buffer)
-            response = StreamingHttpResponse((writer.writerow(row) for row in rows),
-                                             content_type="text/csv")
+            response = StreamingHttpResponse(iter_csv(rows, Echo()), content_type="text/csv")
             response['Content-Disposition'] = 'attachment; filename="pub_downloads.csv"'
 
             return response
@@ -274,22 +311,18 @@ class periods(ListView):
 
 
 # class api_stat(generics.ListAPIView):
-@api_view(['GET'])
-def api_stat(request):
-    if request.method == 'GET':
-        # stat_list = Stats.objects.all()
-        detail = request.GET.get('detail', 'off')
-        gsid = request.GET.getlist('gsid', 1)
-        period = request.GET.getlist('period', 1)
-        id_dspace = request.GET.getlist('id_dspace', None)
-        stat_list = Stats.objects.select_related('id_dspace', 'google_service').\
-            values('id_dspace__id_dspace', 'id_dspace__title', 'publication__tfile').\
-            annotate(cuantity=Sum('cuantity')).\
-            filter(google_service__in=gsid, period__in=period).\
-            order_by('-cuantity')
+# @api_view(['GET'])
+# def api_stat(request):
+#     if request.method == 'GET':
+#         gsid = request.GET.getlist('gsid', 1)
+#         period = request.GET.getlist('period', 1)
+#         id_dspace = request.GET.getlist('id_dspace', None)
+#         gsid = request.GET.getlist('gsid', 1)
+#         dspace_record = Dspace.objects.get(id_dspace=id_dspace)
 
-        serializer = StatsSerializer(stat_list, many=True)
-        return Response(serializer.data)
+
+#         serializer = StatsSerializer(stat_list, many=True)
+#         return Response(serializer.data)
 
 
 @api_view(['GET'])

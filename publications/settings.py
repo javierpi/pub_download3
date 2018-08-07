@@ -14,6 +14,8 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.dirname(BASE_DIR)
+
 ADMIN_SITE_NAME = 'My Admin Site'
 ADMIN_SITE_DESCRIPTION = 'This is a private site.  Please don\'t hack me'
 
@@ -57,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
 ]
 
 ROOT_URLCONF = 'publications.urls'
@@ -65,6 +68,11 @@ ROOT_URLCONF = 'publications.urls'
 #     "django.core.context_processors.request",
 # )
 
+
+# 'django.template.context_processors.debug',
+# 'django.template.context_processors.request',
+# 'django.contrib.auth.context_processors.auth',
+# 'django.contrib.messages.context_processors.messages',
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -72,10 +80,15 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request'
+
             ],
         },
     },
@@ -147,8 +160,6 @@ CELERY_ENABLE_REMOTE_CONTROL = True
 
 # Jet
 JET_DEFAULT_THEME = 'light-gray'
-                    # <li><a href="{% url "google_services" %}"></a></li>
-                    # <li><a href="{% url "periods" %}">Periods</a></li>
 JET_SIDE_MENU_ITEMS = [
     {'app_label': 'auth', 'items': [
         {'name': 'group'},
@@ -172,21 +183,7 @@ JET_SIDE_MENU_ITEMS = [
         {'name': 'solarschedule'},
     ]},
 ]
-# JET_SIDE_MENU_CUSTOM_APPS = [
-#     ('core', [ # Each list element is a tuple with application name (app_label) and list of models
-#         'User',
-#         'MenuItem',
-#         'Block',
-#     ]),
-#     ('shops', [
-#         'Shop',
-#         'City',
-#         'MetroStation',
-#     ]),
-#     ('feedback', [
-#         'Feedback',
-#     ]),
-#]
+
 JET_THEMES = [
     {
         'theme': 'default', # theme folder name
@@ -221,10 +218,10 @@ JET_THEMES = [
 ]
 JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
 JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
-JET_SIDE_MENU_COMPACT = False
+# JET_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
+# JET_APP_INDEX_DASHBOARD = 'dashboard.CustomAppIndexDashboard'
 
-#JET_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
-#JET_APP_INDEX_DASHBOARD = 'dashboard.CustomAppIndexDashboard'
+JET_SIDE_MENU_COMPACT = False
 JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.path.join(BASE_DIR, 'DownloadPublicaciones-a610ebc17b1e.json')
 
 # Internationalization
