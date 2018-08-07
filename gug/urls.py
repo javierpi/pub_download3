@@ -1,8 +1,7 @@
 from django.conf.urls import url
 from .views import google_services, periods, google_services_detail,\
     periods_detail, stat_index_view, index, dspace_detail, api_publication_detail, \
-    api_periods_list, api_periods_detail, api_stat, get_title,\
-    some_view
+    api_periods_list, api_periods_detail, api_stat, get_titles
 from rest_framework.urlpatterns import format_suffix_patterns
 
 app_name = 'gug'
@@ -21,9 +20,8 @@ urlpatterns = [
     url(r'^api/periods/$', api_periods_list, name='api_periods_list'),
     url(r'^api/periods/(?P<pk>[0-9]+)/$', api_periods_detail, name='api_periods_detail'),
     url(r'^api/stat/$', api_stat),
-    url(r'^csv1/$', some_view),
 
     # Commands
-    url(r'^get_title/(?P<dspace_id>[0-9]+)$', get_title, name='get_title')
+    url(r'^get_title/(?P<dspace_id>[0-9]+)$', get_titles, name='get_titles')
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

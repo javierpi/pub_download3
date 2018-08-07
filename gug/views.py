@@ -15,8 +15,7 @@ from django.db.models import OuterRef, Subquery
 from collections import namedtuple
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse, StreamingHttpResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse, StreamingHttpResponse
 import django_filters.rest_framework
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -31,8 +30,6 @@ from rest_framework import generics
 from django.core import management
 from .management.commands import get_title
 
-from django.template.defaulttags import register
-
 
 class Echo:
     """An object that implements just the write method of the file-like
@@ -44,33 +41,6 @@ class Echo:
         return value
 
 
-def some_view(request):
-    # values('id_dspace__id_dspace', 'id_dspace__title', 'publication__tfile').\
-    gsid = request.GET.getlist('gsid', [1, ])
-    period = request.GET.getlist('period', [1, ])
-    stat_list = Stats.objects.select_related('id_dspace').\
-        values('id_dspace__id_dspace', 'id_dspace__title').\
-        annotate(cuantity=Sum('cuantity')).\
-        filter(google_service__in=gsid, period__in=period).\
-        order_by('-cuantity')
-
-    rows = []
-    for record in stat_list.all():
-        row = []
-        row.append(record['id_dspace__id_dspace'])
-        row.append(record['id_dspace__title'])
-        row.append(record['cuantity'])
-        rows.append(row)
-
-    pseudo_buffer = Echo()
-    writer = csv.writer(pseudo_buffer)
-    response = StreamingHttpResponse((writer.writerow(row) for row in rows),
-                                     content_type="text/csv")
-    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
-
-    return response
-
-
 def dspace_detail(request):
     if request.method == "GET":
         form = DspaceForm(request.GET)
@@ -78,22 +48,104 @@ def dspace_detail(request):
         id_dspace = request.GET.get('id_dspace', 1)
         dspace_record = Dspace.objects.get(id_dspace=id_dspace)
         detail = request.GET.get('detail', 'off')
-        if detail == 'on':
-            stat_list = Stats.objects.select_related('id_dspace', 'period').\
-                values('id_dspace__id_dspace', 'period__start_date', 'publication__tfile').\
-                annotate(cuantity=Sum('cuantity')).\
-                filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid).\
-                order_by('period__start_date')
-        else:
-            stat_list = Stats.objects.select_related('id_dspace', 'period').\
-                values('id_dspace__id_dspace', 'period__start_date').\
-                annotate(cuantity=Sum('cuantity')).\
-                filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid).\
-                order_by('period__start_date')
+
+        # query_resume_inicial = "select  'Total' as tit1, count(*) as tit2, "
+        # query_resume_rows = ""
+        # query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ") and period_id in (" + ','.join(period) + ") "
+
+        query_inicial = "select gp1.id, gug_period.start_date, gp1.tfile, "
+        query_rows = ""
+        query_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master"\
+            " inner join gug_dspace ON gs_master.id_dspace_id = gug_dspace.id " \
+            " inner join gug_publication gp1 ON gug_dspace.id_dspace = gug_publication.id_dspace_id" \
+            " inner join gug_period ON gs_master.period_id = gug_period.id " \
+            " where gs_master.google_service_id in (" + ','.join(gsid) + ") and "\
+            " gug_dspace.id_dspace = " + str(id_dspace) + ""\
+            " group by gp1.id, period_id " \
+            " order by gug_period.start_date asc "
+
+        num_cols = 0
+        for gsn in gsid:
+            num_cols += 1
+            sumvar = "sumags" + str(num_cols)
+        #    query_resume_rows += "(select sum(cuantity) as " + sumvar + " from gug_stats as gs1 where google_service_id = " + str(gsn) + " and period_id in (" + ','.join(period) + ")  ) AS '" + sumvar + "' ,"
+            query_rows += "(select sum(cuantity) from gug_stats as gs1 "\
+                " inner join gug_dspace ON gs1.id_dspace_id = gug_dspace.id " \
+                " inner join gug_publication ON gug_dspace.id_dspace = gug_publication.id_dspace_id" \
+                " inner join gug_period ON gs1.period_id = gug_period.id " \
+                " where google_service_id = " + str(gsn) + " and "\
+                " gug_dspace.id_dspace = " + str(id_dspace) + " and "\
+                " gug_publication.id = gp1.id " \
+                " group by gug_publication.id, period_id  " \
+                " order by gug_period.start_date asc) AS 'gs1' ,"
+
+        final_sql = query_inicial + query_rows[:-1] + query_final  # todos
+        # final_sql = query_inicial[:-1] + query_final[2:]  # Solo inicial
+        query_resume = query_inicial + query_rows[8:-12]  # Solo internos
+        # query_resume = query_resume_inicial + query_resume_rows[:-1] + query_resume_final
+
+        # query_add = ""
+        # if detail == 'on':
+        #     query_add = ", gug_publication.tfile "
+        # query_inicial = "select gug_dspace.id_dspace, gug_period.start_date " + query_add
+        # query_rows = ""
+        # query_final = ", sum(cuantity) as sumtotal " \
+        #     " from gug_stats as gs_master "\
+        #     " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id" \
+        #     " inner join gug_period on gs_master.period_id = gug_period.id"
+
+        # if detail == 'on':
+        #     query_final += " inner join gug_publication on gs_master.publication_id = gug_publication.id "
+
+        # query_final += " where " \
+        #     " gs_master.google_service_id in (" + ','.join(gsid) + ") and " \
+        #     " id_dspace=" + str(id_dspace) + "" \
+        #     " group by gs_master.id_dspace_id, gs_master.period_id" + query_add + " order by gug_period.start_date desc "
+
+        # num_cols = 0
+        # for gsn in gsid:
+        #     num_cols += 1
+        #     sumvar = "sumags" + str(num_cols)
+        #     vargs = "gs" + str(num_cols)
+        #     query_rows += ", (select sum(cuantity) as " + sumvar + " "\
+        #         " from gug_stats as " + vargs + "" \
+        #         " inner join gs_master on " + vargs + ".id_dspace_id = gs_master.id_dspace_id" \
+        #         " and " + vargs + ".period_id = gs_master.period_id"
+        #     if detail == 'on':
+        #         query_rows += " and " + vargs + ".publication_id = gs_master.publication_id "
+
+        #     query_rows += " where " \
+        #         " google_service_id = " + str(gsn) + " and "\
+        #         "" + vargs + ".id_dspace = " + str(id_dspace) + "" \
+        #         " group by "\
+        #         "id_dspace_id, gs_master.period_id " + query_add + " ) AS '" + sumvar + "' "
+
+        # final_sql = query_inicial + query_rows[:-1] + query_final
+
+        print(final_sql)
+        cursor = connection.cursor()
+        cursor.execute(final_sql)
+        stats = cursor.fetchall()
+
+        cursor = connection.cursor()
+        cursor.execute(query_resume)
+        resume = cursor.fetchall()
 
         gs = Google_service.objects.filter(pk__in=gsid)
+        gstitles = Google_service.objects.filter(pk__in=gsid)
+        fields = ['ID Dspace', 'Period']
+        if detail == 'on':
+            fields.append('Filename')
+        for title in gstitles:
+            # fields.append(title.name[0:10])
+            fields.append(title.name.split(' '))
+        fields.append('Total Downloads')
 
-        return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail})
+        table = {'headers': fields}
+        table.update({'rows': stats})
+        table.update({'resume': resume})
+
+        return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail})
 
 
 class index(ListView):
@@ -106,12 +158,6 @@ class index(ListView):
     def get_context_data(self, **kwargs):
         context = super(index, self).get_context_data(**kwargs)
         return context
-
-
-# @register.filter()
-# def range(maxim):
-#     print(maxim)
-#     return range(1, maxim)
 
 
 @api_view(['GET'])
@@ -133,7 +179,7 @@ def stat_index_view(request):
         fields = ['ID Dspace', 'Title']
         for title in gstitles:
             # fields.append(title.name[0:10])
-            fields.append(title.name.split(' ') )
+            fields.append(title.name.split(' '))
         fields.append('Total Downloads')
         table = {'headers': fields}
 
@@ -176,9 +222,9 @@ def stat_index_view(request):
                 row = []
                 for col in list(range(0, len(fields))):
                     if col == 1:
-                    	row.append('"'+str(record[col])+'"')
+                        row.append('"' + str(record[col]) + '"')
                     else:
-                    	row.append(record[col])
+                        row.append(record[col])
                 rows.append(row)
 
             pseudo_buffer = Echo()
@@ -201,7 +247,6 @@ def stat_index_view(request):
             table.update({'rows': stats})
             table.update({'resume': resume})
             return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
-
 
 
 class periods_detail(DetailView):
@@ -304,10 +349,10 @@ class google_services(ListView):
         return context
 
 
-def get_title(request, dspace_id):
+def get_titles(request, dspace_id):
     print(int(dspace_id))
     try:
-        #management.call_command('get_title', dspace_id=int(dspace_id), verbosity=2, interactive=False)
+        # management.call_command('get_title', dspace_id=int(dspace_id), verbosity=2, interactive=False)
         management.call_command('get_title', verbosity=2)
     except:
         print("Unexpected error:", sys.exc_info()[0])

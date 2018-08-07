@@ -1,12 +1,24 @@
 {% extends "gug/home.html" %}
+{% load i18n %}
+{% load static %}
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.min.js"></script>
+{% endblock %}
 {% block content %}
-
-
 <h2>DSpace Publication </h2>
   <form action="" method="get" class="form-horizontal" role="form">
        {% csrf_token %}
        {{ form }}
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Go" />
   </form>
   <br class="clear" />
   <fieldset class="module aligned extrapretty wide">
@@ -33,48 +45,54 @@
     </div>
   </fieldset>
   <br class="clear" />
+
   <div class="results">
-    <table id="result_list">
-      <thead>
+  <table id="result_list">
+    <!--tr class=" cycle 'row1' 'row2' }"-->
+    <thead>
+      <tr>
+        {% for fieldname in table.headers %}
+          <th scope="col" class="column-title">
+          {% if forloop.counter0 >= 3 and not forloop.last %}
+             <div class="text">{{ fieldname|join:"<br/>" }}</div>
+          {% else %}
+            <div class="text">{{ fieldname }}</div>
+          {% endif %}
+             <div class="clear"></div>
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in table.rows %}
         <tr>
-        <th scope="col"  class="sortable column-id_dspace">
-           <div class="text">Id dspace</div>
-           <div class="clear"></div>
-        </th>
-        <th scope="col"  class="sortable column-title">
-           <div class="text">Period</div>
-           <div class="clear"></div>
-        </th>
-        {% if detail == 'on' %}
-        <th scope="col"  class="sortable column-title">
-           <div class="text">File</div>
-           <div class="clear"></div>
-        </th>
-        {% endif %}
-        <th scope="col"  class="sortable column-title">
-           <div class="text">Downloads</div>
-           <div class="clear"></div>
-        </th>
-        </tr>
-      </thead>
-      <tbody>
-
-        {% for st in stats %}
-          <tr class="{% cycle 'row1' 'row2' %}">
-            <th class="field-id_dspace">{{st.id_dspace__id_dspace}}</th>
-            <td class="field-title">{{ st.period__start_date}}</td>
-            {% if detail == 'on' %}
-              <td>{{st.publication__tfile}}</td>
+          {% for val in row %}
+            {% if forloop.counter0 == 0 %}
+              <th>
+                <a href="{% url 'gug:dspace_detail' %}?id_dspace={{val|urlize}}{% for t in gs %}&amp;gsid={{t}}{% endfor%}">{{val|urlize}}</a>
+              </th>
+            {% else %}
+              <td class="text-right">
+                {{val|default_if_none:"0"}}
+              </td>
             {% endif %}
-            <td>{{ st.cuantity }}</td>
-
-          </tr>
-        {% endfor%}
-      </tbody>
-
-    </table>
+          {% endfor %}
+        </tr>
+      {% endfor%}
+    </tbody>
+    <tfooter>
+       {% for row in table.resume %}
+        <tr>
+          {% for val in row %}
+            <th>
+              {{val|default_if_none:""}}
+            </th>
+          {% endfor %}
+        </tr>
+      {% endfor%}
+    </tfooter>
+  </table>
 </div>
-
 
 
 
