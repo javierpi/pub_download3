@@ -117,7 +117,7 @@ DATABASES = {
         'NAME': 'pub_download',
         'USER': 'pub_user',
         'PASSWORD': 'pub_pass',
-        'HOST': 'localhost',
+        'HOST': '10.0.9.54',
         'PORT': '',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
