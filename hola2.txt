@@ -1,0 +1,53 @@
+# def get_GCS(request):
+#     SCOPE_WEBMASTER = 'https://www.googleapis.com/auth/webmasters.readonly'
+#     CLIENT_SECRETS_PATH = 'DownloadPublicaciones-a610ebc17b1e.json'
+#     REDIRECT_URI = 'urn:ietf:wg:oauth:2.0:oob'
+#     property_uri = 'http://repositorio.cepal.org'
+#     credentials = service_account.Credentials.from_service_account_file(CLIENT_SECRETS_PATH, scopes=SCOPE_WEBMASTER)
+#     if credentials is None:
+#         print("BAD CREDENTIALS")
+
+#     #authed_http = AuthorizedHttp(credentials)
+#     service = build('webmasters', 'v3')
+#     output_rows = []
+#     request = {
+#         "startDate": "2018-06-01",
+#         "endDate": "2018-06-30",
+#         "dimensions": ["page"],
+#         "searchType": "web",
+#         "rowLimit": 20000,
+#         "startRow": 0,
+#         "aggregationType": "byPage",
+#         "fileType": "pdf",
+#         "dimensionFilterGroups": [
+#             {
+#                 "filters": [{
+#                     "dimension": "page",
+#                     "expression": "bitstream",
+#                     "operator": "contains"
+#                 },
+#                     {
+#                     "dimension": "page",
+#                     "expression": "pdf",
+#                     "operator": "contains"
+#                 },
+#                     {
+#                     "dimension": "page",
+#                     "expression": ".txt",
+#                     "operator": "notcontains"
+#                 }
+#                 ]
+#             }
+#         ]
+#     }
+#     response = service.searchanalytics().query(siteUrl=property_uri, body=request).execute()
+#     if 'rows' in response:
+#         row_count = 0
+#         for row in response['rows']:
+#             row_count = row_count + 1
+#             keys = ','.join(row['keys'])
+#             #output_row = [keys, row['clicks'], row['impressions'], row['ctr'], row['position']]
+#             output_row = [keys, row['clicks']]
+#             print(row_count, output_row)
+
+    # print(response)hola
