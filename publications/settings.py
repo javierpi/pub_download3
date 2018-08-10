@@ -244,9 +244,9 @@ DECIMAL_SEPARATOR = ','
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-STATIC_ROOT = '/home/deployer/pub_download3/publications/gug/static/'
+# STATIC_ROOT = '/home/deployer/sites/pub_downloads3/pub_downloads/publications/gug/static/'
+STATIC_ROOT = '/var/www/pub_static/'
 STATIC_URL = '/static/'
-
 GRAPPELLI_ADMIN_TITLE = 'UWEB'
 ###
 LOGGING = {
