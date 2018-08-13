@@ -117,7 +117,7 @@ DATABASES = {
         'NAME': 'pub_download',
         'USER': 'pub_user',
         'PASSWORD': 'pub_pass',
-        'HOST': '10.0.9.54',
+        'HOST': 'localhost',
         'PORT': '',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
@@ -125,6 +125,21 @@ DATABASES = {
     }
 
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'pub_download',
+#         'USER': 'pub_user',
+#         'PASSWORD': 'pub_pass',
+#         'HOST': '10.0.9.54',
+#         'PORT': '',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         }
+#     }
+
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

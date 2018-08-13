@@ -18,6 +18,7 @@ class Period_Admin(admin.ModelAdmin):
 
 class Dspace_Admin(admin.ModelAdmin):
     list_display = ('id_dspace', 'title')
+    search_fields = ['title']
 
 
 class Stats_Admin(admin.ModelAdmin):

@@ -2,8 +2,24 @@ from rest_framework import serializers, viewsets
 from gug.models import Google_service, Period, Publication, Stats, Dspace, Service_type
 
 
+class StatsSerializer3(serializers.ModelSerializer):
+    non_model_field = serializers.CharField()
+
+    class Meta:
+        model = Stats
+        fields = '__all__'
+        # fields = ('non_model_field', 'cuantity')
+
+
+class StatsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Stats
+        fields = ('google_service', 'period', 'id_dspace', 'publication', 'cuantity')
+
 # Serializers define the API representation.
-class StatsSerializer(serializers.HyperlinkedModelSerializer):
+
+
+class StatsSerializer2(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Stats
         fields = ('cuantity',)
@@ -51,6 +67,7 @@ class PeriodosSerializer(serializers.HyperlinkedModelSerializer):
         model = Period
         fields = ('start_date', 'end_date', 'active')
 
+
 class PeriodosViewSet(viewsets.ModelViewSet):
     queryset = Period.objects.all()
     serializer_class = PeriodosSerializer
@@ -74,6 +91,7 @@ class PublicationViewSet(viewsets.ModelViewSet):
 class Service_typeViewSet(viewsets.ModelViewSet):
     queryset = Service_type.objects.all()
     serializer_class = Service_typeSerializer
+
 
 class PeriodViewSet(viewsets.ModelViewSet):
     queryset = Period.objects.all()

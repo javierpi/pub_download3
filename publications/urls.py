@@ -7,5 +7,4 @@ urlpatterns = [
     url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path('admin/', admin.site.urls),
     url(r'^', include('gug.urls')),
-    url(r'^api-auth/', include('rest_framework.urls'))
 ]

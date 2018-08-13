@@ -92,6 +92,10 @@ class Dspace(models.Model):
     def title_short(self):
         return self.title.split('|')[0]
 
+    @staticmethod
+    def autocomplete_search_fields():
+        return 'title',
+
 
 class Publication(models.Model):
     id_dspace = models.ForeignKey(Dspace, on_delete=models.CASCADE, null=True)

@@ -14,3 +14,744 @@ Traceback (most recent call last):
   File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 403, in get
     self.model._meta.object_name
 gug.models.DoesNotExist: Dspace matching query does not exist.
+2018-08-12 01:52:32,942 ERROR django.request Internal Server Error: /api/stat/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+2018-08-12 01:52:44,900 ERROR django.request Internal Server Error: /api/stat/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+2018-08-12 01:53:15,208 ERROR django.request Internal Server Error: /api/stat/list/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+2018-08-12 01:56:09,522 ERROR django.request Internal Server Error: /api/stat/list/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+2018-08-12 01:57:23,138 ERROR django.request Internal Server Error: /api/stat/list/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+2018-08-12 02:12:45,031 ERROR django.request Internal Server Error: /api/stat/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+2018-08-12 03:08:49,043 ERROR django.request Internal Server Error: /api/stat/list/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/viewsets.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/mixins.py", line 56, in retrieve
+    instance = self.get_object()
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/generics.py", line 85, in get_object
+    queryset = self.filter_queryset(self.get_queryset())
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/generics.py", line 68, in get_queryset
+    % self.__class__.__name__
+AssertionError: 'api_statViewSet' should either include a `queryset` attribute, or override the `get_queryset()` method.
+2018-08-12 03:11:36,224 ERROR django.request Internal Server Error: /api/stat/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/viewsets.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/mixins.py", line 44, in list
+    serializer = self.get_serializer(page, many=True)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/generics.py", line 110, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/generics.py", line 127, in get_serializer_class
+    % self.__class__.__name__
+AssertionError: 'api_statViewSet' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+2018-08-12 03:12:12,133 ERROR django.request Internal Server Error: /api/stat/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/viewsets.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/mixins.py", line 44, in list
+    serializer = self.get_serializer(page, many=True)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/generics.py", line 110, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/generics.py", line 127, in get_serializer_class
+    % self.__class__.__name__
+AssertionError: 'api_statViewSet' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+2018-08-12 04:01:50,232 ERROR django.request Internal Server Error: /api/stat3/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 52, in stat_list
+    return JsonResponse(serializer.data, safe=False)
+NameError: name 'JsonResponse' is not defined
+2018-08-12 04:29:27,451 ERROR django.request Internal Server Error: /stat/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 303, in stat_index_view
+    serializer = StatsSerializer(stats, many=True)
+UnboundLocalError: local variable 'stats' referenced before assignment
+2018-08-12 04:30:10,419 ERROR django.request Internal Server Error: /stat/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/fields.py", line 441, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/fields.py", line 100, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'tuple' object has no attribute 'google_service'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 304, in stat_index_view
+    return JsonResponse(serializer.data, safe=False)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 765, in data
+    ret = super(ListSerializer, self).data
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    attribute = field.get_attribute(instance)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/relations.py", line 177, in get_attribute
+    return super(RelatedField, self).get_attribute(instance)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/fields.py", line 462, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `google_service` on serializer `StatsSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `tuple` instance.
+Original exception text was: 'tuple' object has no attribute 'google_service'.
+2018-08-12 13:11:02,076 ERROR django.request Internal Server Error: /stat/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/fields.py", line 441, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/fields.py", line 100, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'tuple' object has no attribute 'period'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 304, in stat_index_view
+    return JsonResponse(serializer.data, safe=False)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 765, in data
+    ret = super(ListSerializer, self).data
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    attribute = field.get_attribute(instance)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/relations.py", line 177, in get_attribute
+    return super(RelatedField, self).get_attribute(instance)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/fields.py", line 462, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `period` on serializer `StatsSerializer3`.
+The serializer field might be named incorrectly and not match any attribute or key on the `tuple` instance.
+Original exception text was: 'tuple' object has no attribute 'period'.
+2018-08-12 13:11:21,376 ERROR django.request Internal Server Error: /stat/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 304, in stat_index_view
+    return JsonResponse(serializer.data, safe=False)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 765, in data
+    ret = super(ListSerializer, self).data
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 510, in to_representation
+    fields = self._readable_fields
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/utils/functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 376, in _readable_fields
+    field for field in self.fields.values()
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 1020, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 1076, in get_field_names
+    'Got %s.' % type(fields).__name__
+TypeError: The `fields` option must be a list or tuple or "__all__". Got str.
+2018-08-12 13:20:35,716 ERROR django.request Internal Server Error: /stat/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 305, in stat_index_view
+    return JsonResponse(serializer.data, safe=False)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 560, in data
+    ret = super(Serializer, self).data
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 258, in data
+    raise AssertionError(msg)
+AssertionError: When a serializer is passed a `data` keyword argument you must call `.is_valid()` before attempting to access the serialized `.data` representation.
+You should either call `.is_valid()` first, or access `.initial_data` instead.
+2018-08-12 13:23:02,323 ERROR django.request Internal Server Error: /stat/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 305, in stat_index_view
+    serializer.is_valid()
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 739, in is_valid
+    'Cannot call `.is_valid()` as no `data=` keyword argument was '
+AssertionError: Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.
+2018-08-12 13:23:18,137 ERROR django.request Internal Server Error: /stat/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/fields.py", line 441, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/fields.py", line 100, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'tuple' object has no attribute 'non_model_field'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 306, in stat_index_view
+    return JsonResponse(serializer.data, safe=False)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 765, in data
+    ret = super(ListSerializer, self).data
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    attribute = field.get_attribute(instance)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/fields.py", line 462, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `non_model_field` on serializer `StatsSerializer3`.
+The serializer field might be named incorrectly and not match any attribute or key on the `tuple` instance.
+Original exception text was: 'tuple' object has no attribute 'non_model_field'.
+2018-08-12 20:26:17,752 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 110, in dspace_detail
+    print(page_template % vars())
+NameError: name 'page_template' is not defined
+2018-08-12 20:31:05,899 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 139, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view gug.views.dspace_detail didn't return an HttpResponse object. It returned None instead.
+2018-08-12 20:31:43,851 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 136, in dspace_detail
+    return(render(page_template % vars()))
+TypeError: render() missing 1 required positional argument: 'template_name'
+2018-08-12 20:32:10,136 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 136, in dspace_detail
+    return(render(request, page_template % vars()))
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: 
+<html>
+  <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+  <script>
+    google.load('visualization', '1', {packages:['table']});
+
+    google.setOnLoadCallback(drawTable);
+    function drawTable() {
+      var jscode_data = new google.visualization.DataTable();
+jscode_data.addColumn("string", "Name", "name");
+jscode_data.addColumn("number", "Salary", "salary");
+jscode_data.addColumn("boolean", "Full Time Employee", "full_time");
+jscode_data.addRows(4);
+jscode_data.setCell(0, 0, "Jim");
+jscode_data.setCell(0, 1, 800, "$800");
+jscode_data.setCell(0, 2, false);
+jscode_data.setCell(1, 0, "Bob");
+jscode_data.setCell(1, 1, 7000, "$7,000");
+jscode_data.setCell(1, 2, true);
+jscode_data.setCell(2, 0, "Mike");
+jscode_data.setCell(2, 1, 10000, "$10,000");
+jscode_data.setCell(2, 2, true);
+jscode_data.setCell(3, 0, "Alice");
+jscode_data.setCell(3, 1, 12500, "$12,500");
+jscode_data.setCell(3, 2, true);
+
+      var jscode_table = new google.visualization.Table(document.getElementById('table_div_jscode'));
+      jscode_table.draw(jscode_data, {showRowNumber: true});
+
+      var json_table = new google.visualization.Table(document.getElementById('table_div_json'));
+      var json_data = new google.visualization.DataTable({"rows":[{"c":[{"v":"Jim"},{"v":800,"f":"$800"},{"v":false}]},{"c":[{"v":"Bob"},{"v":7000,"f":"$7,000"},{"v":true}]},{"c":[{"v":"Mike"},{"v":10000,"f":"$10,000"},{"v":true}]},{"c":[{"v":"Alice"},{"v":12500,"f":"$12,500"},{"v":true}]}],"cols":[{"type":"string","label":"Name","id":"name"},{"type":"number","label":"Salary","id":"salary"},{"type":"boolean","label":"Full Time Employee","id":"full_time"}]}, 0.6);
+      json_table.draw(json_data, {showRowNumber: true});
+    }
+  </script>
+  <body>
+    <H1>Table created using ToJSCode</H1>
+    <div id="table_div_jscode"></div>
+    <H1>Table created using ToJSon</H1>
+    <div id="table_div_json"></div>
+  </body>
+</html>
+
+2018-08-12 22:59:40,592 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 115, in get_data
+    print(page_template % vars())
+NameError: name 'page_template' is not defined
+2018-08-12 23:00:13,581 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 139, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view gug.views.get_data didn't return an HttpResponse object. It returned None instead.
+2018-08-12 23:07:28,230 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 139, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view gug.views.get_data didn't return an HttpResponse object. It returned None instead.
+2018-08-12 23:08:58,318 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 139, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view gug.views.get_data didn't return an HttpResponse object. It returned None instead.
+2018-08-12 23:09:55,858 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 139, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view gug.views.get_data didn't return an HttpResponse object. It returned None instead.
+2018-08-12 23:10:35,262 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 108, in get_data
+    return(null)
+NameError: name 'null' is not defined
+2018-08-12 23:10:52,099 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 139, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view gug.views.get_data didn't return an HttpResponse object. It returned None instead.
+2018-08-12 23:11:02,929 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/utils/deprecation.py", line 97, in __call__
+    response = self.process_response(request, response)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/middleware/clickjacking.py", line 26, in process_response
+    if response.get('X-Frame-Options') is not None:
+AttributeError: 'str' object has no attribute 'get'
+2018-08-12 23:25:52,558 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/utils/deprecation.py", line 97, in __call__
+    response = self.process_response(request, response)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/middleware/common.py", line 113, in process_response
+    if response.status_code == 404:
+AttributeError: 'dict' object has no attribute 'status_code'
+2018-08-12 23:26:40,235 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/utils/deprecation.py", line 97, in __call__
+    response = self.process_response(request, response)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/middleware/clickjacking.py", line 26, in process_response
+    if response.get('X-Frame-Options') is not None:
+AttributeError: 'str' object has no attribute 'get'
+2018-08-12 23:27:45,045 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/utils/deprecation.py", line 97, in __call__
+    response = self.process_response(request, response)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/middleware/clickjacking.py", line 26, in process_response
+    if response.get('X-Frame-Options') is not None:
+AttributeError: 'function' object has no attribute 'get'
+2018-08-12 23:39:06,094 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 111, in get_data
+    return JsonResponse(data_table.data, safe=False)
+AttributeError: 'DataTable' object has no attribute 'data'
+2018-08-12 23:39:19,021 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 111, in get_data
+    return JsonResponse(data_table.data, safe=False)
+AttributeError: 'DataTable' object has no attribute 'data'
+2018-08-12 23:39:19,262 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 111, in get_data
+    return JsonResponse(data_table.data, safe=False)
+AttributeError: 'DataTable' object has no attribute 'data'
+2018-08-12 23:39:35,669 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 111, in get_data
+    return JsonResponse(data_table, safe=False)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/http/response.py", line 509, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/serializers/json.py", line 104, in default
+    return super().default(o)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <gviz_api.DataTable object at 0x7fe7cced61d0> is not JSON serializable
+2018-08-12 23:41:44,225 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 111, in get_data
+    return JsonResponse(data_table.ToJSonResponse(columns_order=("name", "salary", "full_time")), safe=True)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/http/response.py", line 503, in __init__
+    'In order to allow non-dict objects to be serialized set the '
+TypeError: In order to allow non-dict objects to be serialized set the safe parameter to False.
+2018-08-12 23:46:35,244 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/views.py", line 111, in get_data
+    return JsonResponse(data)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/http/response.py", line 503, in __init__
+    'In order to allow non-dict objects to be serialized set the '
+TypeError: In order to allow non-dict objects to be serialized set the safe parameter to False.
+2018-08-13 00:07:07,362 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: get() missing 2 required positional arguments: 'pk' and 'ctype'
+2018-08-13 00:08:05,400 ERROR django.request Internal Server Error: /get_data/4/6/
+Traceback (most recent call last):
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/Codigo/pub_download3_2/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/Codigo/pub_download3_2/publications/gug/apis.py", line 32, in get
+    title = Period.objects.get(pk=testid).name
+AttributeError: 'Period' object has no attribute 'name'

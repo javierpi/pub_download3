@@ -2,35 +2,51 @@ from __future__ import unicode_literals
 from __future__ import absolute_import
 import sys
 import csv
+import gviz_api
 # import unicodecsv as csv
 import codecs
 
+####
+####
+
 from gug.models import Google_service, Period, Publication, Stats, Dspace
 from gug.forms import StatForm, DspaceForm
-from gug.serializers import PeriodSerializer, StatsSerializer
+from gug.serializers import PeriodSerializer, StatsSerializer, StatsSerializer3
 
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Count, Sum
 from django.db import connection
-from django.db.models import OuterRef, Subquery
-from collections import namedtuple
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, StreamingHttpResponse
-import django_filters.rest_framework
-from django_filters.rest_framework import DjangoFilterBackend
+from django.http import HttpResponse, StreamingHttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
-
+from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 from rest_framework.reverse import reverse
-from rest_framework import generics
+from rest_framework import generics, serializers, viewsets, views
+from rest_framework.renderers import JSONRenderer
+
 
 from django.core import management
 from .management.commands import get_title
+from .serializers import StatsSerializer
+
+
+@csrf_exempt
+def stat_list(request):
+    """
+    List all code snippets, or create a new snippet.
+    """
+    if request.method == 'GET':
+        stats = Period.objects.all()
+        serializer = StatsSerializer(stats, many=True)
+        return JsonResponse(serializer.data, safe=False)
 
 
 class Echo:
@@ -42,7 +58,9 @@ class Echo:
         """Write the value by returning it, instead of storing in a buffer."""
         return value
 
+
 def dspace_detail(request):
+
     if request.method == "GET":
         form = DspaceForm(request.GET)
         gsid = request.GET.getlist('gsid', 1)
@@ -75,10 +93,6 @@ def dspace_detail2(request):
         dspace_record = Dspace.objects.get(id_dspace=id_dspace)
         detail = request.GET.get('detail', 'off')
 
-        # query_resume_inicial = "select  'Total' as tit1, count(*) as tit2, "
-        # query_resume_rows = ""
-        # query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ") and period_id in (" + ','.join(period) + ") "
-
         query_inicial = "select gp1.id, gug_period.start_date, gp1.tfile, "
         query_rows = ""
         query_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master"\
@@ -94,7 +108,6 @@ def dspace_detail2(request):
         for gsn in gsid:
             num_cols += 1
             sumvar = "sumags" + str(num_cols)
-        #    query_resume_rows += "(select sum(cuantity) as " + sumvar + " from gug_stats as gs1 where google_service_id = " + str(gsn) + " and period_id in (" + ','.join(period) + ")  ) AS '" + sumvar + "' ,"
             query_rows += "(select sum(cuantity) from gug_stats as gs1 "\
                 " inner join gug_dspace ON gs1.id_dspace_id = gug_dspace.id " \
                 " inner join gug_publication ON gug_dspace.id_dspace = gug_publication.id_dspace_id" \
@@ -106,47 +119,7 @@ def dspace_detail2(request):
                 " order by gug_period.start_date asc) AS 'gs1' ,"
 
         final_sql = query_inicial + query_rows[:-1] + query_final  # todos
-        # final_sql = query_inicial[:-1] + query_final[2:]  # Solo inicial
         query_resume = query_inicial + query_rows[8:-12]  # Solo internos
-        # query_resume = query_resume_inicial + query_resume_rows[:-1] + query_resume_final
-
-        # query_add = ""
-        # if detail == 'on':
-        #     query_add = ", gug_publication.tfile "
-        # query_inicial = "select gug_dspace.id_dspace, gug_period.start_date " + query_add
-        # query_rows = ""
-        # query_final = ", sum(cuantity) as sumtotal " \
-        #     " from gug_stats as gs_master "\
-        #     " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id" \
-        #     " inner join gug_period on gs_master.period_id = gug_period.id"
-
-        # if detail == 'on':
-        #     query_final += " inner join gug_publication on gs_master.publication_id = gug_publication.id "
-
-        # query_final += " where " \
-        #     " gs_master.google_service_id in (" + ','.join(gsid) + ") and " \
-        #     " id_dspace=" + str(id_dspace) + "" \
-        #     " group by gs_master.id_dspace_id, gs_master.period_id" + query_add + " order by gug_period.start_date desc "
-
-        # num_cols = 0
-        # for gsn in gsid:
-        #     num_cols += 1
-        #     sumvar = "sumags" + str(num_cols)
-        #     vargs = "gs" + str(num_cols)
-        #     query_rows += ", (select sum(cuantity) as " + sumvar + " "\
-        #         " from gug_stats as " + vargs + "" \
-        #         " inner join gs_master on " + vargs + ".id_dspace_id = gs_master.id_dspace_id" \
-        #         " and " + vargs + ".period_id = gs_master.period_id"
-        #     if detail == 'on':
-        #         query_rows += " and " + vargs + ".publication_id = gs_master.publication_id "
-
-        #     query_rows += " where " \
-        #         " google_service_id = " + str(gsn) + " and "\
-        #         "" + vargs + ".id_dspace = " + str(id_dspace) + "" \
-        #         " group by "\
-        #         "id_dspace_id, gs_master.period_id " + query_add + " ) AS '" + sumvar + "' "
-
-        # final_sql = query_inicial + query_rows[:-1] + query_final
 
         print(final_sql)
         cursor = connection.cursor()
@@ -184,6 +157,7 @@ class index(ListView):
     def get_context_data(self, **kwargs):
         context = super(index, self).get_context_data(**kwargs)
         return context
+
 
 def iter_csv(rows, pseudo_buffer):
     yield pseudo_buffer.write(codecs.BOM_UTF8)
@@ -242,6 +216,14 @@ def stat_index_view(request):
         resume = cursor.fetchall()
 
         period = Period.objects.filter(pk__in=period)
+
+        # if csv_output == 'on':
+        #     # serializer = StatsSerializer3(stat_list, many=True)
+        #     response = Response(stat_list, status=status.HTTP_200_OK)
+        #     return response
+        #     # serializer = StatsSerializer3(data={'non_model_field': 'foo', 'cuantity': '10'})
+        #     # serializer.is_valid()
+        #     # return JsonResponse(serializer.data, safe=False)
 
         if csv_output == 'on':
             rows = []
@@ -308,21 +290,6 @@ class periods(ListView):
     def get_context_data(self, **kwargs):
         context = super(periods, self).get_context_data(**kwargs)
         return context
-
-
-# class api_stat(generics.ListAPIView):
-# @api_view(['GET'])
-# def api_stat(request):
-#     if request.method == 'GET':
-#         gsid = request.GET.getlist('gsid', 1)
-#         period = request.GET.getlist('period', 1)
-#         id_dspace = request.GET.getlist('id_dspace', None)
-#         gsid = request.GET.getlist('gsid', 1)
-#         dspace_record = Dspace.objects.get(id_dspace=id_dspace)
-
-
-#         serializer = StatsSerializer(stat_list, many=True)
-#         return Response(serializer.data)
 
 
 @api_view(['GET'])
