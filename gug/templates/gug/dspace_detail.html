@@ -66,12 +66,26 @@
     </script>
 
 {% endblock %}
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+            {% if app %}
+                &rsaquo; <a href="{{ app.app_url }}">{% if app.name != app.app_label|capfirst|escape %}{{ app.name }}{% else %}{% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}{% endif %}</a>
+            {% endif %}
+            &rsaquo; {{ object.title|capfirst }}
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block bodyclass %}{{ block.super }} dashboard jet change-form{% endblock %}
+
 {% block content %}
 <div id="content" class="flex">
 
   <h1>DSpace Publication </h1>
 
-  <div class="dashboard-container columns_1 cf">
+  <div class="dashboard-container columns_2 cf">
     <div class="dashboard-column-wrapper">
       <div class="dashboard-column first">
         <div class="dashboard-item collapsible deletable draggable" data-module-id="1">
@@ -90,15 +104,19 @@
             <div class="dashboard-item-content">
                 <ul>
                     <li>
-                        <form action="" method="get" class="form-horizontal" role="form">
+                        <form action="" method="get" >
                              {% csrf_token %}
-                             {{ form }}
+                             {{ form.as_ul }}
                               <input type="submit" value="Go" />
                         </form>
                     </li>
                 </ul>
             </div>
         </div>
+      </div>
+    </div>
+    <div class="dashboard-column-wrapper">
+      <div class="dashboard-column ">
         <div class="dashboard-item collapsible deletable draggable" data-module-id="2">
           <div class="dashboard-item-header">
               <span class="dashboard-item-header-drag icon-grid"></span>
@@ -131,7 +149,16 @@
             </ul>
           </div>
         </div>
-        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+<div class="dashboard-container columns_2 cf">
+    <div class="dashboard-column-wrapper">
+      <div class="dashboard-column first">
+
+
         <div class="dashboard-item collapsible deletable draggable" data-module-id="3">
           <div class="dashboard-item-header">
               <span class="dashboard-item-header-drag icon-grid"></span>
@@ -140,24 +167,46 @@
               <span class="dashboard-item-header-title">
                       <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
                       <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                      Results
+                      Graphs
               </span>
               <div class="cf"></div>
           </div>
           <div class="dashboard-item-content">
-            <div class="dashboard-container columns_2 cf">
+            <div class="dashboard-container columns_1 cf">
               <div class="dashboard-column-wrapper">
                 <div class="dashboard-column first ui-droppable ui-sortable">
                   {% if detail == 'on' %}
                     <!--div id="chart_div_detail" style="width: 800px; height: 450px"></div-->
                   {% endif %}
-                  <div id="chart_div" style="width: 800px; height: 450px"></div>
-
-                  
-                    
+                  <div id="chart_div"></div>
                   
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-column-wrapper">
+      <div class="dashboard-column ">
+
+
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="4">
+          <div class="dashboard-item-header">
+              <span class="dashboard-item-header-drag icon-grid"></span>
+              <span class="dashboard-item-header-buttons">
+              </span>
+              <span class="dashboard-item-header-title">
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                      Data Results
+              </span>
+              <div class="cf"></div>
+          </div>
+          <div class="dashboard-item-content">
+            <div class="dashboard-container columns_1 cf">
+
+
               <div class="dashboard-column-wrapper">
                 <div class="dashboard-column ui-droppable ui-sortable">
                 {% regroup stats by publication__tfile as tfile_list %}

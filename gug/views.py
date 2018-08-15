@@ -5,6 +5,7 @@ import csv
 import gviz_api
 # import unicodecsv as csv
 import codecs
+import json
 
 ####
 ####
@@ -13,6 +14,7 @@ from gug.models import Google_service, Period, Publication, Stats, Dspace
 from gug.forms import StatForm, DspaceForm
 from gug.serializers import PeriodSerializer, StatsSerializer, StatsSerializer3
 
+from django.forms import formset_factory
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Count, Sum
@@ -184,34 +186,72 @@ def iter_csv(rows, pseudo_buffer):
 @api_view(['GET'])
 def stat_index_view(request):
     if request.method == "GET":
+        # ArticleFormSet = formset_factory(StatForm, extra=0)
         form = StatForm(request.GET)
+        # form = ArticleFormSet(initial=[{'page': '1', 'pagesize': 10, 'csv_output': 'off',} ])
+        # try:
+        #     form = ArticleFormSet(request.GET)
+        # except ValidationError:
+        #     print('Try error !!!! ')
+        #     form = ArticleFormSet(initial=[{'page': 1, 'pagesize': '10', 'csv_output': 'off',} ])
+        # else:
+        #     print('ELSE error !!!! ')
+        #     form = ArticleFormSet(initial=[{'page': 1, 'pagesize': '10', 'csv_output': 'off',} ])
+        
+
+        if form.is_valid():
+            print('form valido')
+        else:
+            print('form NO valido !!!! ')
+            
+
+            # FormSet = formset_factory(StatForm, extra=0)
+            # form = StatForm(request.GET, initial=[{'page': page, 'pagesize': '10', 'gsid':gsid_avalable , 'period': period_avalable} ] )
+            form = StatForm(request.GET)
+            # form = FormSet(initial=[{'page': page, 'pagesize': '10', 'gsid':gs_list , 'period': per_list} ])
+
+
+        
+        #form.page = 2
+        gsid_avalable = list(Google_service.objects.values_list('id', flat=True))
+
+        period_avalable = list(Period.objects.values_list('id', flat=True))
+        per_list = []
+        for x in period_avalable:
+            per_list.append(str(x))
+
+        gs_list = []
+        for x in gsid_avalable:
+            gs_list.append(str(x))
 
         page = request.GET.get('page', 1)
         pagesize = request.GET.get('pagesize', 10)
+
+        limits_start = (int(page) * int(pagesize)) - int(pagesize)
+        limits_end = int(page) * int(pagesize)
+        query_limits = ' limit ' + str(limits_start) + ', ' + str(limits_end)
         # detail = request.GET.get('detail', 'off')
         csv_output = request.GET.get('csv_output', 'off')
+        
 
-        gsid = request.GET.getlist('gsid', 1)
-        period = request.GET.getlist('period', 1)
+        gsid = request.GET.getlist('gsid', gs_list)
+        period = request.GET.getlist('period', per_list)
 
         gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
         gstitles = Google_service.objects.filter(pk__in=gsid)
 
         fields = ['Dspace ID', 'Title']
         for title in gstitles:
-            # fields.append(title.name[0:10])
             fields.append(title.name.split(' '))
         fields.append('Total Downloads')
         table = {'headers': fields}
-
         query_resume_inicial = "select  'Total' as tit1, count(*) as tit2, "
         query_resume_rows = ""
-        query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ") and period_id in (" + ','.join(period) + ") "
-
+        query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ")"
+        query_resume_final += " and period_id in (" + ','.join(period) + ") "
         query_inicial = "select gug_dspace.id_dspace, gug_dspace.title , "
         query_rows = ""
         query_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id where gs_master.google_service_id in (" + ','.join(gsid) + ") and period_id in (" + ','.join(period) + ") group by id_dspace_id order by sumtotal desc "
-
         num_cols = 0
         for gsn in gsid:
             num_cols += 1
@@ -219,28 +259,22 @@ def stat_index_view(request):
             query_resume_rows += "(select sum(cuantity) as " + sumvar + " from gug_stats as gs1 where google_service_id = " + str(gsn) + " and period_id in (" + ','.join(period) + ")  ) AS '" + sumvar + "' ,"
             query_rows += "(select sum(cuantity) as " + sumvar + " from gug_stats as gs1 where google_service_id = " + str(gsn) + " and period_id in (" + ','.join(period) + ") and gs_master.id_dspace_id = gs1.id_dspace_id group by id_dspace_id ) AS '" + sumvar + "' ,"
 
-        final_sql = query_inicial + query_rows[:-1] + query_final
+
         query_resume = query_resume_inicial + query_resume_rows[:-1] + query_resume_final
-
-        cursor = connection.cursor()
-        cursor.execute(final_sql)
-        stat_list = cursor.fetchall()
-
         cursor = connection.cursor()
         cursor.execute(query_resume)
         resume = cursor.fetchall()
 
         period_objs = Period.objects.filter(pk__in=period)
 
-        # if csv_output == 'on':
-        #     # serializer = StatsSerializer3(stat_list, many=True)
-        #     response = Response(stat_list, status=status.HTTP_200_OK)
-        #     return response
-        #     # serializer = StatsSerializer3(data={'non_model_field': 'foo', 'cuantity': '10'})
-        #     # serializer.is_valid()
-        #     # return JsonResponse(serializer.data, safe=False)
 
         if csv_output == 'on':
+            ## No records limit for CSV
+            final_sql = query_inicial + query_rows[:-1] + query_final 
+            print(final_sql)
+            cursor = connection.cursor()
+            cursor.execute(final_sql)
+            stat_list = cursor.fetchall()
             rows = []
             row = []
             colcount = 0
@@ -270,6 +304,13 @@ def stat_index_view(request):
             return response
 
         else:
+            final_sql = query_inicial + query_rows[:-1] + query_final + query_limits
+            print(final_sql)
+            cursor = connection.cursor()
+            cursor.execute(final_sql)
+            stat_list = cursor.fetchall()
+
+
             paginator = Paginator(stat_list, pagesize)
             try:
                 stats = paginator.page(page)

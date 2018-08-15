@@ -34,7 +34,10 @@ class StatForm(forms.Form):
     pagesize = forms.ChoiceField(choices=PAGE_SIZE_CHOICES)
 #     detail = forms.BooleanField(label="Detailed report", required=False)
     csv_output = forms.BooleanField(label="CSV Output", required=False)
-    page = forms.IntegerField(label="Page", min_value=1)
+    page = forms.IntegerField(label="Page", min_value=1, initial='1')
 
     def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['page'].initial =  '2'
+
         return super(StatForm, self).__init__(*args, **kwargs)

@@ -15,64 +15,133 @@
 <script type="text/javascript" src="/static/admin/js/prepopulate.min.js"></script>
 <script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.min.js"></script>
 {% endblock %}
-{% block content %}
 
-<h2>Download Stats </h2>
-
-<form action="" method="get" class="form-horizontal" role="form">
-     {% csrf_token %}
-     {{ form }}
-      <input type="submit" value="Go" />
-</form>
-
-<br class="clear" />
-
-<div class="results">
-  <table id="result_list">
-    <thead>
-      <tr>
-        {% for fieldname in table.headers %}
-          <th scope="col" class="column-title">
-          {% if forloop.counter0 >= 2 and not forloop.last %}
-             <div class="text">{{ fieldname|join:"<br/>" }}</div>
-          {% else %}
-            <div class="text">{{ fieldname }}</div>
-          {% endif %}
-             <div class="clear"></div>
-          </th>
-        {% endfor %}
-      </tr>
-    </thead>
-    <tbody>
-      {% for row in table.rows %}
-        <tr>
-          {% for val in row %}
-            {% if forloop.counter0 == 0 %}
-              <th>
-                
-                <a href="{% url 'gug:dspace_detail' %}?id_dspace={{val|urlize}}{% for t in gs %}&amp;gsid={{t}}{% endfor%}{% for t in table.period %}&amp;period={{t}}{% endfor%}">{{val|urlize}}</a>
-                
-              </th>
-            {% else %}
-              <td class="text-right">
-                {{val|default_if_none:"0"}}
-              </td>
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+            {% if app %}
+                &rsaquo; <a href="{{ app.app_url }}">{% if app.name != app.app_label|capfirst|escape %}{{ app.name }}{% else %}{% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}{% endif %}</a>
             {% endif %}
-          {% endfor %}
-        </tr>
-      {% endfor%}
-    </tbody>
-    <tfooter>
-       {% for row in table.resume %}
-        <tr>
-          {% for val in row %}
-            <th>
-              {{val|default_if_none:""}}
-            </th>
-          {% endfor %}
-        </tr>
-      {% endfor%}
-    </tfooter>
-  </table>
+            &rsaquo; {{ object.title|capfirst }}
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block bodyclass %}{{ block.super }} dashboard jet change-form{% endblock %}
+
+
+{% block content %}
+<div id="content" class="flex">
+
+  <h1>Download Stats </h1>
+
+  <div class="dashboard-container columns_1 cf">
+    <div class="dashboard-column-wrapper">
+      <div class="dashboard-column first">
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="1">
+            <div class="dashboard-item-header">
+                <span class="dashboard-item-header-drag icon-grid"></span>
+                <span class="dashboard-item-header-buttons">
+                    
+                </span>
+                <span class="dashboard-item-header-title">
+                        <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                        <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                        Form
+                </span>
+                <div class="cf"></div>
+            </div>
+           <div class="dashboard-item-content">
+                <ul>
+                    <li>
+                        <form action="" method="get" >
+                             {% csrf_token %}
+                             {{ form.as_ul }}
+                             {% block submit_buttons_bottom %}
+                                  <div class="submit-row">
+                                      <input type="submit" value="{% trans 'Go' %}" class="default" name="_save" />
+                                  </div>
+                              {% endblock %}
+                              {% block admin_change_form_document_ready %}{% endblock %}
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="2">
+          <div class="dashboard-item-header">
+              <span class="dashboard-item-header-drag icon-grid"></span>
+              <span class="dashboard-item-header-buttons">
+                  
+              </span>
+              <span class="dashboard-item-header-title">
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                      
+                Results
+              </span>
+              <div class="cf"></div>
+          </div>
+          <div class="dashboard-item-content">
+            <div class="dashboard-container columns_1 cf">
+              <div class="dashboard-column-wrapper">
+                <div class="dashboard-column first ui-droppable ui-sortable">
+                  <table id="result_list">
+                    <thead>
+                      <tr>
+
+                      {% for fieldname in table.headers %}
+                        <th scope="col" class="column-title">
+                        {% if forloop.counter0 >= 2 and not forloop.last %}
+                           <div class="text">{{ fieldname|join:"<br/>" }}</div>
+                        {% else %}
+                          <div class="text">{{ fieldname }}</div>
+                        {% endif %}
+                           <div class="clear"></div>
+                        </th>
+                      {% endfor %}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for row in table.rows %}
+                      <tr>
+                        {% for val in row %}
+                          {% if forloop.counter0 == 0 %}
+                            <th>
+                              
+                              <a href="{% url 'gug:dspace_detail' %}?id_dspace={{val|urlize}}{% for t in gs %}&amp;gsid={{t}}{% endfor%}{% for t in table.period %}&amp;period={{t}}{% endfor%}">{{val|urlize}}</a>
+                              
+                            </th>
+                          {% else %}
+                            <td class="text-right">
+                              {{val|default_if_none:"0"}}
+                            </td>
+                          {% endif %}
+                        {% endfor %}
+                      </tr>
+                    {% endfor%}
+                  </tbody>
+                  <tfooter>
+                     {% for row in table.resume %}
+                      <tr>
+                        {% for val in row %}
+                          <th>
+                            {{val|default_if_none:""}}
+                          </th>
+                        {% endfor %}
+                      </tr>
+                    {% endfor%}
+                  </tfooter>
+                </table>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 {% endblock %}

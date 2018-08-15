@@ -2345,3 +2345,1851 @@ Traceback (most recent call last):
   File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 549, in unclosed_block_tag
     raise self.error(token, msg)
 django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 229: 'if'. Looking for one of: endif.
+2018-08-15 18:31:45,991 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 197, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 204, in get_prep_lookup
+    for rhs_value in self.rhs:
+TypeError: 'int' object is not iterable
+2018-08-15 18:33:27,029 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 198, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 204, in get_prep_lookup
+    for rhs_value in self.rhs:
+TypeError: 'int' object is not iterable
+2018-08-15 18:34:11,996 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 198, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 204, in get_prep_lookup
+    for rhs_value in self.rhs:
+TypeError: 'int' object is not iterable
+2018-08-15 18:34:31,559 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 198, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 204, in get_prep_lookup
+    for rhs_value in self.rhs:
+TypeError: 'int' object is not iterable
+2018-08-15 18:35:03,572 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 198, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 204, in get_prep_lookup
+    for rhs_value in self.rhs:
+TypeError: 'int' object is not iterable
+2018-08-15 18:35:50,333 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 198, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 204, in get_prep_lookup
+    for rhs_value in self.rhs:
+TypeError: 'int' object is not iterable
+2018-08-15 18:37:13,848 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 213, in stat_index_view
+    query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ") and period_id in (" + ','.join(period) + ") "
+TypeError: sequence item 0: expected str instance, int found
+2018-08-15 18:38:01,603 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 213, in stat_index_view
+    query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ") and period_id in (" + ','.join(period) + ") "
+TypeError: sequence item 0: expected str instance, int found
+2018-08-15 18:39:02,342 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 214, in stat_index_view
+    query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ") and period_id in (" + ','.join(period) + ") "
+TypeError: sequence item 0: expected str instance, int found
+2018-08-15 18:40:33,973 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 215, in stat_index_view
+    query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ") and period_id in (" + ','.join(period) + ") "
+TypeError: sequence item 0: expected str instance, int found
+2018-08-15 18:41:29,018 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 215, in stat_index_view
+    query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ")"
+TypeError: sequence item 0: expected str instance, int found
+2018-08-15 18:42:11,657 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 194, in stat_index_view
+    gsid_avalable = Google_service.objects.values('id', flat=True)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 742, in values
+    clone = self._values(*fields, **expressions)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 735, in _values
+    clone = clone.annotate(**expressions)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 971, in annotate
+    self._validate_values_are_expressions(args + tuple(kwargs.values()), method_name='annotate')
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 1247, in _validate_values_are_expressions
+    ', '.join(invalid_args),
+TypeError: QuerySet.annotate() received non-expression(s): True.
+2018-08-15 18:42:27,824 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 215, in stat_index_view
+    query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ")"
+TypeError: sequence item 0: expected str instance, dict found
+2018-08-15 18:47:28,673 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 194, in stat_index_view
+    gsid_avalable = json.dumps(Google_service.objects.values('id'))
+NameError: name 'json' is not defined
+2018-08-15 18:47:56,130 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 195, in stat_index_view
+    gsid_avalable = json.dumps(Google_service.objects.values('id'))
+  File "/usr/lib/python3.4/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python3.4/json/encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.4/json/encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.4/json/encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <QuerySet [{'id': 4}, {'id': 5}, {'id': 2}, {'id': 3}]> is not JSON serializable
+2018-08-15 18:48:46,549 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 195, in stat_index_view
+    gsid_avalable = json.dumps(Google_service.objects.values_list('id', flat=True))
+  File "/usr/lib/python3.4/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python3.4/json/encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.4/json/encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.4/json/encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <QuerySet [4, 5, 2, 3]> is not JSON serializable
+2018-08-15 18:49:11,419 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 201, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 210, in get_prep_lookup
+    rhs_value = self.lhs.output_field.get_prep_value(rhs_value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/fields/__init__.py", line 947, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: '<'
+2018-08-15 18:54:28,774 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 216, in stat_index_view
+    query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ")"
+TypeError: sequence item 0: expected str instance, int found
+2018-08-15 18:54:48,740 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 216, in stat_index_view
+    query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ")"
+TypeError: sequence item 0: expected str instance, int found
+2018-08-15 19:01:06,492 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 219, in stat_index_view
+    query_resume_final += " and period_id in (" + ','.join(period) + ") "
+TypeError: sequence item 0: expected str instance, int found
+2018-08-15 19:01:55,066 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 294, in stat_index_view
+    return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period_objs, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 314, in render
+    return nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/resolvers.py", line 636, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'index' not found. 'index' is not a valid view function or pattern name.
+2018-08-15 19:02:55,616 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 294, in stat_index_view
+    return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period_objs, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 314, in render
+    return nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/resolvers.py", line 636, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'index' not found. 'index' is not a valid view function or pattern name.
+2018-08-15 19:03:09,487 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 202, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 210, in get_prep_lookup
+    rhs_value = self.lhs.output_field.get_prep_value(rhs_value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/fields/__init__.py", line 947, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ','
+2018-08-15 19:05:11,033 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ',1,7,,,1,6,,,1,5,,,1,4,,,1,3,,,1,2,,,1,1,,,1,0,,,9,,,8,,,7,,,6,,,5,,,4,,,3,,,2,,' at line 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 236, in stat_index_view
+    cursor.execute(final_sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ',1,7,,,1,6,,,1,5,,,1,4,,,1,3,,,1,2,,,1,1,,,1,0,,,9,,,8,,,7,,,6,,,5,,,4,,,3,,,2,,' at line 1")
+2018-08-15 19:06:11,766 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 294, in stat_index_view
+    return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period_objs, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 314, in render
+    return nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/resolvers.py", line 636, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'index' not found. 'index' is not a valid view function or pattern name.
+2018-08-15 19:08:10,706 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 202, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 210, in get_prep_lookup
+    rhs_value = self.lhs.output_field.get_prep_value(rhs_value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/fields/__init__.py", line 947, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ','
+2018-08-15 19:08:56,029 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 218, in stat_index_view
+    query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ")"
+TypeError: sequence item 0: expected str instance, int found
+2018-08-15 19:16:00,846 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 205, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 210, in get_prep_lookup
+    rhs_value = self.lhs.output_field.get_prep_value(rhs_value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/fields/__init__.py", line 947, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ','
+2018-08-15 19:17:11,576 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ',8,,,1,,,7,,,1,,,6,,,1,,,5,,,1,,,4,,,1,,,3,,,1,,,2,,,1,,,1,,,1,,,0,,,9,,,8,,,7,,' at line 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 240, in stat_index_view
+    cursor.execute(final_sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ',8,,,1,,,7,,,1,,,6,,,1,,,5,,,1,,,4,,,1,,,3,,,1,,,2,,,1,,,1,,,1,,,0,,,9,,,8,,,7,,' at line 1")
+2018-08-15 19:17:48,214 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 206, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 210, in get_prep_lookup
+    rhs_value = self.lhs.output_field.get_prep_value(rhs_value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/fields/__init__.py", line 947, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ','
+2018-08-15 19:19:11,744 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 206, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 210, in get_prep_lookup
+    rhs_value = self.lhs.output_field.get_prep_value(rhs_value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/fields/__init__.py", line 947, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ','
+2018-08-15 19:23:59,729 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 231, in stat_index_view
+    query_resume_final += " and period_id in (" + ','.join(period) + ") "
+TypeError: sequence item 0: expected str instance, int found
+2018-08-15 19:27:48,766 ERROR django.request Internal Server Error: /gs/2
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 211, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/resolvers.py", line 636, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'stat_index_paginated' not found. 'stat_index_paginated' is not a valid view function or pattern name.
+2018-08-15 19:28:09,848 ERROR django.request Internal Server Error: /periods/3
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 211, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/resolvers.py", line 636, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'stat_index_paginated' not found. 'stat_index_paginated' is not a valid view function or pattern name.
+2018-08-15 20:23:41,398 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 189, in stat_index_view
+    form.cleaned_data['page'] = 2
+AttributeError: 'StatForm' object has no attribute 'cleaned_data'
+2018-08-15 20:23:57,168 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 189, in stat_index_view
+    form['page'] = 2
+TypeError: 'StatForm' object does not support item assignment
+2018-08-15 20:34:56,391 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 297, in stat_index_view
+    return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period_objs, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 999, in render
+    return render_value_in_context(output, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 978, in render_value_in_context
+    value = str(value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/html.py", line 380, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/forms.py", line 136, in __str__
+    return self.as_table()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/forms.py", line 279, in as_table
+    errors_on_separate_row=False)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/forms.py", line 238, in _html_output
+    'field_name': bf.html_name,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/html.py", line 380, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/boundfield.py", line 36, in __str__
+    return self.as_widget()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/boundfield.py", line 92, in as_widget
+    attrs = self.build_widget_attrs(attrs, widget)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/boundfield.py", line 247, in build_widget_attrs
+    if widget.use_required_attribute(self.initial) and self.field.required and self.form.use_required_attribute:
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/boundfield.py", line 235, in initial
+    data = self.form.get_initial_for_field(self.field, self.name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/forms.py", line 492, in get_initial_for_field
+    value = self.initial.get(field_name, field.initial)
+AttributeError: 'list' object has no attribute 'get'
+2018-08-15 20:40:37,736 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 301, in stat_index_view
+    return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period_objs, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
+NameError: name 'form' is not defined
+2018-08-15 20:49:18,531 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 192, in stat_index_view
+    if form.is_valid():
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/formsets.py", line 301, in is_valid
+    self.errors
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/formsets.py", line 281, in errors
+    self.full_clean()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/formsets.py", line 322, in full_clean
+    for i in range(0, self.total_form_count()):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/formsets.py", line 110, in total_form_count
+    return min(self.management_form.cleaned_data[TOTAL_FORM_COUNT], self.absolute_max)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/formsets.py", line 92, in management_form
+    code='missing_management_form',
+django.core.exceptions.ValidationError: ['ManagementForm data is missing or has been tampered with']
+2018-08-15 20:50:41,805 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 196, in stat_index_view
+    if form.is_valid():
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/formsets.py", line 301, in is_valid
+    self.errors
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/formsets.py", line 281, in errors
+    self.full_clean()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/formsets.py", line 322, in full_clean
+    for i in range(0, self.total_form_count()):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/formsets.py", line 110, in total_form_count
+    return min(self.management_form.cleaned_data[TOTAL_FORM_COUNT], self.absolute_max)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/formsets.py", line 92, in management_form
+    code='missing_management_form',
+django.core.exceptions.ValidationError: ['ManagementForm data is missing or has been tampered with']
+2018-08-15 21:04:35,068 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 190, in stat_index_view
+    form = StatForm(request.GET)
+  File "/home/deployer/pub_download3/publications/gug/forms.py", line 40, in __init__
+    self.fields['page'].initial =  '2'
+AttributeError: 'StatForm' object has no attribute 'fields'
+2018-08-15 21:14:12,032 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 207, in stat_index_view
+    form = FormSet(initial=[{'page': '2', 'pagesize': '50', 'csv_output': off,} ])
+NameError: name 'off' is not defined
+2018-08-15 21:27:59,401 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 324, in stat_index_view
+    return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period_objs, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 999, in render
+    return render_value_in_context(output, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 978, in render_value_in_context
+    value = str(value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/html.py", line 380, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/forms.py", line 136, in __str__
+    return self.as_table()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/forms.py", line 279, in as_table
+    errors_on_separate_row=False)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/forms.py", line 238, in _html_output
+    'field_name': bf.html_name,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/html.py", line 380, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/boundfield.py", line 36, in __str__
+    return self.as_widget()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/boundfield.py", line 92, in as_widget
+    attrs = self.build_widget_attrs(attrs, widget)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/boundfield.py", line 247, in build_widget_attrs
+    if widget.use_required_attribute(self.initial) and self.field.required and self.form.use_required_attribute:
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/boundfield.py", line 235, in initial
+    data = self.form.get_initial_for_field(self.field, self.name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/forms.py", line 492, in get_initial_for_field
+    value = self.initial.get(field_name, field.initial)
+AttributeError: 'list' object has no attribute 'get'
+2018-08-15 21:28:45,637 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 324, in stat_index_view
+    return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period_objs, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 999, in render
+    return render_value_in_context(output, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 978, in render_value_in_context
+    value = str(value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/html.py", line 380, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/forms.py", line 136, in __str__
+    return self.as_table()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/forms.py", line 279, in as_table
+    errors_on_separate_row=False)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/forms.py", line 238, in _html_output
+    'field_name': bf.html_name,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/html.py", line 380, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/boundfield.py", line 36, in __str__
+    return self.as_widget()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/boundfield.py", line 92, in as_widget
+    attrs = self.build_widget_attrs(attrs, widget)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/boundfield.py", line 247, in build_widget_attrs
+    if widget.use_required_attribute(self.initial) and self.field.required and self.form.use_required_attribute:
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/boundfield.py", line 235, in initial
+    data = self.form.get_initial_for_field(self.field, self.name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/forms/forms.py", line 492, in get_initial_for_field
+    value = self.initial.get(field_name, field.initial)
+AttributeError: 'list' object has no attribute 'get'
+2018-08-15 21:29:58,604 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 237, in stat_index_view
+    gsid = request.GET.getlist('gsid', gs_list)
+UnboundLocalError: local variable 'gs_list' referenced before assignment
+2018-08-15 21:46:09,778 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 69, in get
+    data_table = gviz_api.DataTable(fields_description)
+UnboundLocalError: local variable 'fields_description' referenced before assignment

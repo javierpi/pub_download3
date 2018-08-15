@@ -19,15 +19,20 @@ from .apis import get_data
 app_name = 'gug'
 
 urlpatterns = [
+    #url(r'^$', index.as_view(), name='index'),
+    url(r'^$', stat_index_view, name='index'),
+    url(r'^stat/$', stat_index_view, name='stat_index_paginated'),
+
     # url(r'^api/', include((router.urls, 'app_name'), namespace='instance_name')),
     url(r'^api-auth/', include('rest_framework.urls')),
-    url(r'^$', index.as_view(), name='index'),
+   
+
     url(r'^gs/$', google_services.as_view(), name='google_services'),
     url(r'^gs/(?P<pk>\d+)$', google_services_detail.as_view(), name='google_services_detail'),
 
     url(r'^periods/$', periods.as_view(), name='periods'),
     url(r'^periods/(?P<pk>\d+)$', periods_detail.as_view(), name='periods_detail'),
-    url(r'^stat/$', stat_index_view, name='stat_index_paginated'),
+    
     url(r'^dspace/$', dspace_detail, name='dspace_detail'),
 
     url(r'^api/publication/(?P<pk>[0-9]+)$', api_publication_detail, name='publication-detail'),
