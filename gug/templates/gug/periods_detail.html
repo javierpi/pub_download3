@@ -58,7 +58,7 @@
             <tbody>
               {% for gs in google_service %}
                 <tr>
-                  <td><a href="{% url "gug:stat_index_paginated" %}?period={{period.id}}&amp;gsid={{gs.id}}&amp;page=1">{{ gs }}</a></td>
+                  <td><a href="{% url "gug:stat_index_paginated" %}?period={{period.id}}&amp;gsid={{gs.id}}&amp;page=1&amp;pagesize=10">{{ gs }}</a></td>
                   
                   <td>{{ gs.view_id }}</td>
                   

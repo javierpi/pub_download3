@@ -1,131 +1,172 @@
 {% extends "gug/home.html" %}
+{% load static %}
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}"/>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+
+
+    google.charts.load('current', {'packages':['line', 'corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+
+      data.addColumn('date', 'Period');
+      data.addColumn('number', 'Records');
+      data.addColumn('number', 'Downloads');
+      data.addRows([
+      {% for statistic in statistics %}[new Date({{statistic.period__start_date|date:"Y"}}, {{statistic.period__start_date|date:"m"}}),{{statistic.cuantity__count|urlize}}, {{statistic.cuantity__sum|urlize}}]{% if not forloop.last %},{% endif %}{% endfor%}
+      ]);
+
+      // Create our data table out of JSON data loaded from server.
+      var options = {
+        chart: {
+          title: 'Downloads'
+        },
+        width: 800,
+        height: 450,
+        series: {
+          // Gives each series an axis name that matches the Y-axis below.
+          0: {axis: 'Downloads'},
+          1: {axis: 'Records'}
+        },
+        axes: {
+          // Adds labels to each axis; they don't have to match the axis names.
+          y: {
+            Records: {label: 'Records'},
+            Downloads: {label: 'Downloads'}
+          }
+        }
+      };
+      var materialChart = new google.charts.Line(document.getElementById('chart_div'));
+      materialChart.draw(data, options);
+      // var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      // chart.draw(data, options);
+    }
+
+    </script>
+
+{% endblock %}
 {% block content %}
+ 
+ <div id="content" class="flex">
 
+  <h1>Google Services: {{ google_service.name }}  </h1>
 
-<h2>Google Services: {{ google_service.name }} </h2>
-  <table id="result_list">
-      <thead>
-        <tr>
-          <th scope="col"  class="column-id_dspace">
-             <div class="text">Scope</div>
-             <div class="clear"></div>
-          </th>
-          <td scope="col"  class="column-title">
-             <div class="text">{{ google_service.scope }}</div>
-             <div class="clear"></div>
-          </dh>
-          <th scope="col"  class="column-id_dspace">
-             <div class="text">Client Secret Path</div>
-             <div class="clear"></div>
-          </th>
-          <td scope="col"  class="column-title">
-             <div class="text">{{ google_service.client_secret_path }}</div>
-             <div class="clear"></div>
-          </dh>
-        </tr>
-        <tr>
-          <td scope="col"  class="column-title">
-             <div class="text">Discovery</div>
-             <div class="clear"></div>
-          </th>
-          <td scope="col"  class="column-title">
-             <div class="text">{{ google_service.discovery }}</div>
-             <div class="clear"></div>
-          </td>
-          <td scope="col"  class="column-title">
-             <div class="text">View ID</div>
-             <div class="clear"></div>
-          </td>
-          <td scope="col"  class="column-title">
-             <div class="text">{{ google_service.view_id }}</div>
-             <div class="clear"></div>
-          </td>
-        </tr>
-        <tr>
-          <td scope="col"  class="column-title">
-             <div class="text">Service</div>
-             <div class="clear"></div>
-          </th>
-          <td scope="col"  class="column-title">
-             <div class="text">{{ google_service.service }}</div>
-             <div class="clear"></div>
-          </td>
-          <td scope="col"  class="column-title">
-             <div class="text">Active</div>
-             <div class="clear"></div>
-          </td>
-          <td scope="col"  class="column-title">
-             <div class="text">{{ google_service.active }}</div>
-             <div class="clear"></div>
-          </td>
-        </tr>
-        <tr>
-          <td scope="col"  class="column-title">
-             <div class="text">Version</div>
-             <div class="clear"></div>
-          </th>
-          <td scope="col"  class="column-title">
-             <div class="text">{{ google_service.version }}</div>
-             <div class="clear"></div>
-          </td>
-          <td scope="col"  class="column-title">
-             <div class="text">Report</div>
-             <div class="clear"></div>
-          </td>
-          <td scope="col"  class="column-title">
-             <div class="text">{{ google_service.report }}</div>
-             <div class="clear"></div>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-       
-      </tbody>
-
-    </table>
-    <br class="clear" />
-    
-
+  <div class="dashboard-container columns_1 cf">
+    <div class="dashboard-column-wrapper">
+      <div class="dashboard-column first">
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="10">
+            <div class="dashboard-item-header">
+                <span class="dashboard-item-header-drag icon-grid"></span>
+                <span class="dashboard-item-header-buttons">
+                    
+                </span>
+                <span class="dashboard-item-header-title">
+                        <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                        <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                        Google Services: {{ google_service.name }}
+                </span>
+                <div class="cf"></div>
+            </div>
+            <div class="dashboard-item-content">
+                <ul>
+                    <li>
+                        Scope: {{ google_service.scope }}
+                    </li>
+                     <li>
+                        Discovery: {{ google_service.discovery }}
+                    </li>
+                     <li>
+                        View ID: {{ google_service.view_id }}
+                    </li>
+                     <li>
+                        Service: {{ google_service.service }}
+                    </li>
+                    <li>
+                        Version: {{ google_service.version }}
+                    </li>
+                    <li>
+                        Is Active: {{ google_service.active }}
+                    </li>
+                    <li>
+                        Report: {{ google_service.report }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="11">
+          <div class="dashboard-item-header">
+              <span class="dashboard-item-header-drag icon-grid"></span>
+              <span class="dashboard-item-header-buttons">
+              </span>
+              <span class="dashboard-item-header-title">
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                      Results
+              </span>
+              <div class="cf"></div>
+          </div>
+          <div class="dashboard-item-content">
+            <div class="dashboard-container columns_2 cf">
+              <div class="dashboard-column-wrapper">
+                <div class="dashboard-column first ui-droppable ui-sortable">
+                  <div id="chart_div" style="width: 800px; height: 450px"></div>
+                </div>
+              </div>
+              <div class="dashboard-column-wrapper">
+                <div class="dashboard-column ui-droppable ui-sortable">
                   <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th>ID</th>
                         <th>Period</th>
                         <th>Records</th>
                         <th>Downloads</th>
                       </tr>
                     </thead>
-                      <tbody>
-                        {% for st in periods %}
-                          <tr>
-                            <th scope="row">{{ st.id }}</th>
-                            <td><a href="{% url "gug:stat_index_paginated" %}?period={{st.id}}&amp;gsid={{google_service.id}}&amp;page=1">{{ st }}</a></td>
-                            
-                              {% for statistic in statistics %}
-                                {% if st.id == statistic.period %}
-                                <td>
-                                  {{ statistic.cuantity__count }}
-                                </td>
-                                <td>
-                                  {{ statistic.cuantity__sum }}
-                                </td>
-                                {% endif %}
-                              {% endfor%}
-
+                    <tbody>
+                      {% for statistic in statistics %}
+                        <tr>
+                              <th>
+                                <a href="{% url "gug:stat_index_paginated" %}?period={{statistic.period}}&amp;gsid={{google_service.id}}&amp;pagesize=10&amp;page=1">
+                                  {{ statistic.period__start_date }}
+                                </a>
+                              </th>
+                              
+                              <td>
+                                {{ statistic.cuantity__count }}
+                              </td>
+                              <td>
+                                {{ statistic.cuantity__sum }}
+                              </td>
+                              
                           </tr>
-                        {% endfor%}
-                        
+                      {% endfor %}
+
+                      
                     </tbody>
                     <tfooter>
-            <tr>
-                <th colspan="1">Total</th>
-                <th>{{ statistics|length }}</th>
-                <th class="text-right">{{ resume.totalrecords }}</th>
-                <th class="text-right">{{ resume.totalcuantity }}</th>
-                
-            </tr>
-          </tfooter>
-                   </table>
-                </td>
+                      <tr>
+                          <th colspan="1">Total {{ statistics|length }} periods</th>
+                          <th class="text-right">{{ resume.totalrecords }}</th>
+                          <th class="text-right">{{ resume.totalcuantity }}</th>
+                          
+                      </tr>
+                    </tfooter>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 {% endblock %}

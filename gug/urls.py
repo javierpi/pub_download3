@@ -33,7 +33,8 @@ urlpatterns = [
     url(r'^api/publication/(?P<pk>[0-9]+)$', api_publication_detail, name='publication-detail'),
     url(r'^api/periods/$', api_periods_list, name='api_periods_list'),
     url(r'^api/periods/(?P<pk>[0-9]+)/$', api_periods_detail, name='api_periods_detail'),
-    url(r'^get_data/(?P<pk>\d+)/(?P<ctype>[\w]+)/$', get_data.as_view()),
+    # url(r'^get_data/(?P<dspace_id>\d+)/(?P<gsid>\d+)/(?P<period>\d+)/$', get_data.as_view()),
+    url(r'^get_data/$', get_data.as_view()),
 #    url(r'^api/chart/data/(?P<pk>\d+)/(?P<ctype>[\w]+)/$', ChartData2.as_view()),
 
     # Commands

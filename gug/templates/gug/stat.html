@@ -49,7 +49,9 @@
           {% for val in row %}
             {% if forloop.counter0 == 0 %}
               <th>
-                <a href="{% url 'gug:dspace_detail' %}?id_dspace={{val|urlize}}{% for t in gs %}&amp;gsid={{t}}{% endfor%}">{{val|urlize}}</a>
+                
+                <a href="{% url 'gug:dspace_detail' %}?id_dspace={{val|urlize}}{% for t in gs %}&amp;gsid={{t}}{% endfor%}{% for t in table.period %}&amp;period={{t}}{% endfor%}">{{val|urlize}}</a>
+                
               </th>
             {% else %}
               <td class="text-right">

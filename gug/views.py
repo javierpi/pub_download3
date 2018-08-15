@@ -19,7 +19,7 @@ from django.db.models import Count, Sum
 from django.db import connection
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, StreamingHttpResponse, JsonResponse
+from django.http import HttpResponse, StreamingHttpResponse, JsonResponse, HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.renderers import TemplateHTMLRenderer
@@ -65,24 +65,39 @@ def dspace_detail(request):
         form = DspaceForm(request.GET)
         gsid = request.GET.getlist('gsid', 1)
         id_dspace = request.GET.get('id_dspace', 1)
-        dspace_record = Dspace.objects.get(id_dspace=id_dspace)
-        detail = request.GET.get('detail', 'off')
-        if detail == 'on':
-            stat_list = Stats.objects.select_related('id_dspace', 'period').\
-                values('id_dspace__id_dspace', 'period__start_date', 'publication__tfile').\
-                annotate(cuantity=Sum('cuantity')).\
-                filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid).\
-                order_by('period__start_date')
-        else:
-            stat_list = Stats.objects.select_related('id_dspace', 'period').\
-                values('id_dspace__id_dspace', 'period__start_date').\
-                annotate(cuantity=Sum('cuantity')).\
-                filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid).\
-                order_by('period__start_date')
-
         gs = Google_service.objects.filter(pk__in=gsid)
+        detail = request.GET.get('detail', 'off')
+        period = request.GET.getlist('period', 1)
 
-        return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail})
+        try:
+            dspace_record = Dspace.objects.get(id_dspace=id_dspace)
+            period_objs = Period.objects.filter(pk__in=period)
+            if detail == 'on':
+                # values('id_dspace__id_dspace', 'period__start_date', 'publication__tfile').\
+                stat_list = Stats.objects.select_related('id_dspace', 'period').\
+                    filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid, period__in=period).\
+                    values('period__start_date', 'publication__tfile').\
+                    annotate(cuantity=Sum('cuantity')).\
+                    order_by('period__start_date')
+            else:
+                stat_list = Stats.objects.select_related('id_dspace', 'period').\
+                    values('id_dspace__id_dspace', 'period__start_date').\
+                    annotate(cuantity=Sum('cuantity')).\
+                    filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid, period__in=period).\
+                    order_by('period__start_date')
+
+            resume = Stats.objects.values('google_service').filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid, period__in=period).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+        except Dspace.DoesNotExist:
+            stat_list = []
+            dspace_record = {}
+            dspace_record['id_dspace'] = 1
+            dspace_record['title'] = 'Not Found'
+            resume = []
+            period_objs = []
+            # return HttpResponseNotFound('<h1>ID Dspace not found</h1>')
+
+
+        return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail, 'resume': resume, 'period':period_objs })
 
 
 def dspace_detail2(request):
@@ -215,7 +230,7 @@ def stat_index_view(request):
         cursor.execute(query_resume)
         resume = cursor.fetchall()
 
-        period = Period.objects.filter(pk__in=period)
+        period_objs = Period.objects.filter(pk__in=period)
 
         # if csv_output == 'on':
         #     # serializer = StatsSerializer3(stat_list, many=True)
@@ -264,8 +279,9 @@ def stat_index_view(request):
                 stats = paginator.page(paginator.num_pages)
 
             table.update({'rows': stats})
+            table.update({'period': period})
             table.update({'resume': resume})
-            return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
+            return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period_objs, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
 
 
 class periods_detail(DetailView):
@@ -332,7 +348,7 @@ class google_services_detail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(google_services_detail, self).get_context_data(**kwargs)
         context['periods'] = Period.objects.all()
-        context['statistics'] = Stats.objects.values('period').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
+        context['statistics'] = Stats.objects.values('period','period__start_date').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by('period__start_date')
         context['resume'] = Stats.objects.values('google_service').filter(google_service=self.get_object()).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
         return context
 

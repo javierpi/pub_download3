@@ -3,6 +3,8 @@
 {% load static %}
 {% block extrastyle %}
 <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}"/>
+
 <script type="text/javascript" src="/admin/jsi18n/"></script>
 <script type="text/javascript" src="/static/admin/js/core.js"></script>
 <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.min.js"></script>
@@ -12,167 +14,278 @@
 <script type="text/javascript" src="/static/admin/js/urlify.js"></script>
 <script type="text/javascript" src="/static/admin/js/prepopulate.min.js"></script>
 <script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.min.js"></script>
+
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript">
 
     // Load the Visualization API and the piechart package.
-    google.charts.load('current', {'packages':['corechart']});
+    google.charts.load('current', {'packages':['corechart', 'line']});
+    // google.charts.load('current', {'packages':['bar']});
 
     // Set a callback to run when the Google Visualization API is loaded.
-    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawChart1);
 
-    function drawChart() {
+    function drawChart1() {
       var jsonData = $.ajax({
-          url: "/get_data/4/5/?format=json",
+          url: "/get_data/?id_dspace={{dspace_record.id_dspace|urlize}}{% for t in gs %}&amp;gsid={{t.pk}}{% endfor%}{% for t in period %}&amp;period={{t.id}}{% endfor%}",
           dataType: "json",
           async: false
           }).responseText;
 
-      // Create our data table out of JSON data loaded from server.
-      var data = new google.visualization.DataTable(jsonData);
+      
 
-      // Instantiate and draw our chart, passing in some options.
-      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-      chart.draw(data, {width: 400, height: 240});
+      // Create our data table out of JSON data loaded from server.
+      // curveType: 'function',
+      var options = {
+          title: '{{ dspace_record.title }}',
+          legend: { position: 'bottom' },
+          annotations: {
+            textStyle: {
+              fontName: 'Arial,sans-serif',
+              fontSize: 18,
+              bold: true,
+              italic: true,
+              // The color of the text.
+              color: '#871b47',
+              // The color of the text outline.
+              auraColor: '#d799ae',
+              // The transparency of the text.
+              opacity: 0.8
+            }
+          }
+        };
+
+      var data = new google.visualization.DataTable(jsonData);
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
     }
+    
 
     </script>
 
 {% endblock %}
 {% block content %}
+<div id="content" class="flex">
 
-<h2>DSpace Publication </h2>
-  <form action="" method="get" class="form-horizontal" role="form">
-       {% csrf_token %}
-       {{ form }}
-        <input type="submit" value="Go" />
-  </form>
-  <br class="clear" />
-  <fieldset class="module aligned extrapretty wide">
-    <div class="form-row field-id_dspace">
-      <div>
-        <label for="id_name">Id dspace:</label>
-        {{ dspace_record.id_dspace }}
-      </div>
+  <h1>DSpace Publication </h1>
+
+  <div class="dashboard-container columns_1 cf">
+    <div class="dashboard-column-wrapper">
+      <div class="dashboard-column first">
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="1">
+            <div class="dashboard-item-header">
+                <span class="dashboard-item-header-drag icon-grid"></span>
+                <span class="dashboard-item-header-buttons">
+                    
+                </span>
+                <span class="dashboard-item-header-title">
+                        <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                        <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                        Form
+                </span>
+                <div class="cf"></div>
+            </div>
+            <div class="dashboard-item-content">
+                <ul>
+                    <li>
+                        <form action="" method="get" class="form-horizontal" role="form">
+                             {% csrf_token %}
+                             {{ form }}
+                              <input type="submit" value="Go" />
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="2">
+          <div class="dashboard-item-header">
+              <span class="dashboard-item-header-drag icon-grid"></span>
+              <span class="dashboard-item-header-buttons">
+                  
+              </span>
+              <span class="dashboard-item-header-title">
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                      Content
+              </span>
+              <div class="cf"></div>
+          </div>
+          <div class="dashboard-item-content">
+            <ul>
+              <li>
+                 ID DSpace: {{ dspace_record.id_dspace }}
+              </li>
+              <li>
+                 Title: {{ dspace_record.title }}
+              </li>
+              {% if user.is_authenticated  %}
+                <li>
+                  Post Title 1: {{ dspace_record.post_title1 }}
+                </li>
+                <li>
+                  Post Title 2: {{ dspace_record.post_title2 }}
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        </div>
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="3">
+          <div class="dashboard-item-header">
+              <span class="dashboard-item-header-drag icon-grid"></span>
+              <span class="dashboard-item-header-buttons">
+              </span>
+              <span class="dashboard-item-header-title">
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                      Results
+              </span>
+              <div class="cf"></div>
+          </div>
+          <div class="dashboard-item-content">
+            <div class="dashboard-container columns_2 cf">
+              <div class="dashboard-column-wrapper">
+                <div class="dashboard-column first ui-droppable ui-sortable">
+                  {% if detail == 'on' %}
+                    <!--div id="chart_div_detail" style="width: 800px; height: 450px"></div-->
+                  {% endif %}
+                  <div id="chart_div" style="width: 800px; height: 450px"></div>
+
+                  
+                    
+                  
+                </div>
+              </div>
+              <div class="dashboard-column-wrapper">
+                <div class="dashboard-column ui-droppable ui-sortable">
+                {% regroup stats by publication__tfile as tfile_list %}
+                  <table id="result_list">
+                    <thead>
+                      <tr>
+                        <th scope="col"  class="column-title">
+                             <div class="text">Period</div>
+                             <div class="clear"></div>
+                          </th>
+                        {% if detail == 'on' %}
+                          <th scope="col"  class="column-title">
+                             <div class="text">File</div>
+                             <div class="clear"></div>
+                          </th>
+                          
+                        
+                        {% endif %}
+                        <th scope="col"  class="column-title">
+                           <div class="text">Downloads</div>
+                           <div class="clear"></div>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      
+                        {% for st in stats %}
+                          <tr class="{% cycle 'row1' 'row2' %}">
+                            <th class="field-title">{{ st.period__start_date}}</th>
+                            
+                            {% if detail == 'on' %}
+                              <td>{{ st.publication__tfile }}</td>
+                            {% endif %}      
+                            <td>{{ st.cuantity }}</td>
+
+                          </tr>
+                        {% endfor%}
+                      
+                    </tbody>
+                    <tfooter>
+                      <tr class="row1">
+                        <th colspan="1">Total {{ resume.totalrows }} </th>
+                        {% if detail == 'on' %}<td></td>{% endif %}      
+                        <th class="text-right">{{ resume.totalcuantity }}</th>
+                      </tr>
+
+                  </tfooter>
+
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
     </div>
-    <div class="form-row field-id_dspace">
-      <div>
-        <label for="title">Title:</label>{{ dspace_record.title }}
-      </div>
-    </div>
-    <div class="form-row field-id_dspace">
-      <div>
-        <label for="post_title1">Post Title 1:</label>{{ dspace_record.post_title1 }}
-      </div>
-    </div>
-    <div class="form-row field-id_dspace">
-      <div>
-        <label for="post_title2">Post Title 2:</label>{{ dspace_record.post_title2 }}
-      </div>
-    </div>
-  </fieldset>
-  <br class="clear" />
+  </div>
 
-  <div class="results">
-  <table id="result_list">
-    <!--tr class=" cycle 'row1' 'row2' }"-->
-    <thead>
-      <tr>
-        {% for fieldname in table.headers %}
-          <th scope="col" class="column-title">
-          {% if forloop.counter0 >= 3 and not forloop.last %}
-             <div class="text">{{ fieldname|join:"<br/>" }}</div>
-          {% else %}
-            <div class="text">{{ fieldname }}</div>
-          {% endif %}
-             <div class="clear"></div>
-          </th>
-        {% endfor %}
-      </tr>
-    </thead>
-    <tbody>
-      {% for row in table.rows %}
-        <tr>
-          {% for val in row %}
-            {% if forloop.counter0 == 0 %}
-              <th>
-                <a href="{% url 'gug:dspace_detail' %}?id_dspace={{val|urlize}}{% for t in gs %}&amp;gsid={{t}}{% endfor%}">{{val|urlize}}</a>
-              </th>
-            {% else %}
-              <td class="text-right">
-                {{val|default_if_none:"0"}}
-              </td>
-            {% endif %}
-          {% endfor %}
-        </tr>
-      {% endfor%}
-    </tbody>
-    <tfooter>
-       {% for row in table.resume %}
-        <tr>
-          {% for val in row %}
-            <th>
-              {{val|default_if_none:""}}
-            </th>
-          {% endfor %}
-        </tr>
-      {% endfor%}
-    </tfooter>
-  </table>
-   <div id="chart_div"></div>
-</div>
-
-
-
-
-
-
-  <div class="results">
-    <table id="result_list">
-      <thead>
-        <tr>
-        <th scope="col"  class="sortable column-id_dspace">
-           <div class="text">Id dspace</div>
-           <div class="clear"></div>
-        </th>
-        <th scope="col"  class="sortable column-title">
-           <div class="text">Period</div>
-           <div class="clear"></div>
-        </th>
-        {% if detail == 'on' %}
-        <th scope="col"  class="sortable column-title">
-           <div class="text">File</div>
-           <div class="clear"></div>
-        </th>
-        {% endif %}
-        <th scope="col"  class="sortable column-title">
-           <div class="text">Downloads</div>
-           <div class="clear"></div>
-        </th>
-        </tr>
-      </thead>
-      <tbody>
-
-        {% for st in stats %}
-          <tr class="{% cycle 'row1' 'row2' %}">
-            <th class="field-id_dspace">{{st.id_dspace__id_dspace}}</th>
-            <td class="field-title">{{ st.period__start_date}}</td>
-            {% if detail == 'on' %}
-              <td>{{st.publication__tfile}}</td>
-            {% endif %}
-            <td>{{ st.cuantity }}</td>
-
-          </tr>
-        {% endfor%}
-      </tbody>
-
-    </table>
-</div>
 
 
 {% endblock %}
 
 
 
+                         regroup stats by publication__tfile as tfile_list %}
+                         for filename in tfile_list %}
+                          <tr class="{% cycle 'row1' 'row2' %}">
+                            <th class="field-title" colspan="3">{{ filename.grouper }}</th>
+                          </tr>
+                           for periods in filename.list %}
+                            <tr class="{% cycle 'row1' 'row2' %}">
+                              <td></td>
+                              <td>{{periods.period__start_date}}</td>
+                              <td>{{periods.cuantity}}</td>
+                            </tr>
+                           endfor%}
+                          <tr class="row1">
+                            <th colspan="2">&nbsp;&nbsp;&nbsp;subTotal {{ filename.list|length }} periods</th>
+                            <th class="text-right">{{ periods.cuantity__sum }}</th>
+                          </tr>
+                         endfor%}
+                       else %}
+
+<table id="result_list">
+  <!--tr class=" cycle 'row1' 'row2' }"-->
+  <thead>
+    <tr>
+      {% for fieldname in stats %}
+        <th scope="col" class="column-title">
+        {% if forloop.counter0 == 0 and not forloop.last %}
+           <div class="text">{{ fieldname|join:"<br/>" }}</div>
+        {% else %}
+          <div class="text">{{ fieldname }}</div>
+        {% endif %}
+           <div class="clear"></div>
+        </th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in stats %}
+      <tr>
+        {% for val in row %}
+          {% if forloop.counter0 == 0 %}
+            <th>
+              <a href="{% url 'gug:dspace_detail' %}?id_dspace={{val|urlize}}{% for t in gs %}&amp;gsid={{t}}{% endfor%}">{{val|urlize}}</a>
+            </th>
+          {% else %}
+            <td class="text-right">
+              {{val|default_if_none:"0"}}
+            </td>
+          {% endif %}
+        {% endfor %}
+      </tr>
+    {% endfor%}
+  </tbody>
+  <tfooter>
+     {% for row in table.resume %}
+      <tr>
+        {% for val in row %}
+          <th>
+            {{val|default_if_none:""}}
+          </th>
+        {% endfor %}
+      </tr>
+    {% endfor%}
+  </tfooter>
+</table>
 

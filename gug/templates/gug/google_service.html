@@ -9,7 +9,6 @@
 	<table class="table table-striped">
 	  <thead>
 	    <tr>
-	      <th>ID</th>
 	      <th>Name</th>
 	      <th>Service</th>
 	      <th>Version</th>
@@ -21,8 +20,7 @@
 		<tbody>
 	    {% for gs in google_service %}
 	      <tr>
-	        <th scope="row">{{ gs.id }}</th>
-	        <td><a href="{% url "gug:google_services_detail" gs.id %}">{{ gs.name }}</a></td>
+	        <th><a href="{% url "gug:google_services_detail" gs.id %}">{{ gs.name }}</a></th>
 	        <td>{{ gs.service }}</td>
 	        <td>{{ gs.version }}</td>
 	        <td>{{ gs.view_id }}</td>
