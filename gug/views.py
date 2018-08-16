@@ -98,8 +98,7 @@ def dspace_detail(request):
             period_objs = []
             # return HttpResponseNotFound('<h1>ID Dspace not found</h1>')
 
-
-        return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail, 'resume': resume, 'period':period_objs })
+        return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail, 'resume': resume, 'period': period_objs})
 
 
 def dspace_detail2(request):
@@ -169,10 +168,21 @@ class index(ListView):
     template_name = 'gug/index.html'
 
     def get_queryset(self):
-        return Period.objects.annotate(Count('stats'))
+        return Period.objects.annotate(cuantity=Sum('stats__cuantity'))
 
     def get_context_data(self, **kwargs):
         context = super(index, self).get_context_data(**kwargs)
+        context['google_services'] = Google_service.objects.annotate(cuantity=Sum('stats__cuantity'))
+        context['google_services_sums'] = Google_service.objects.aggregate(cuantity=Sum('stats__cuantity'))
+        q_dspace = " select gug_dspace.id_dspace, gug_dspace.title , sum(cuantity) as sumtotal " \
+                " from gug_stats as gs_master " \
+                " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \
+                " group by id_dspace_id order by sumtotal desc limit 0,10;"
+
+        cursor = connection.cursor()
+        cursor.execute(q_dspace)
+        context['dspaces'] = cursor.fetchall()
+
         return context
 
 
@@ -197,21 +207,17 @@ def stat_index_view(request):
         # else:
         #     print('ELSE error !!!! ')
         #     form = ArticleFormSet(initial=[{'page': 1, 'pagesize': '10', 'csv_output': 'off',} ])
-        
 
         if form.is_valid():
             print('form valido')
         else:
             print('form NO valido !!!! ')
-            
 
             # FormSet = formset_factory(StatForm, extra=0)
             # form = StatForm(request.GET, initial=[{'page': page, 'pagesize': '10', 'gsid':gsid_avalable , 'period': period_avalable} ] )
             form = StatForm(request.GET)
             # form = FormSet(initial=[{'page': page, 'pagesize': '10', 'gsid':gs_list , 'period': per_list} ])
 
-
-        
         #form.page = 2
         gsid_avalable = list(Google_service.objects.values_list('id', flat=True))
 
@@ -232,7 +238,6 @@ def stat_index_view(request):
         query_limits = ' limit ' + str(limits_start) + ', ' + str(limits_end)
         # detail = request.GET.get('detail', 'off')
         csv_output = request.GET.get('csv_output', 'off')
-        
 
         gsid = request.GET.getlist('gsid', gs_list)
         period = request.GET.getlist('period', per_list)
@@ -259,7 +264,6 @@ def stat_index_view(request):
             query_resume_rows += "(select sum(cuantity) as " + sumvar + " from gug_stats as gs1 where google_service_id = " + str(gsn) + " and period_id in (" + ','.join(period) + ")  ) AS '" + sumvar + "' ,"
             query_rows += "(select sum(cuantity) as " + sumvar + " from gug_stats as gs1 where google_service_id = " + str(gsn) + " and period_id in (" + ','.join(period) + ") and gs_master.id_dspace_id = gs1.id_dspace_id group by id_dspace_id ) AS '" + sumvar + "' ,"
 
-
         query_resume = query_resume_inicial + query_resume_rows[:-1] + query_resume_final
         cursor = connection.cursor()
         cursor.execute(query_resume)
@@ -267,10 +271,9 @@ def stat_index_view(request):
 
         period_objs = Period.objects.filter(pk__in=period)
 
-
         if csv_output == 'on':
-            ## No records limit for CSV
-            final_sql = query_inicial + query_rows[:-1] + query_final 
+            # No records limit for CSV
+            final_sql = query_inicial + query_rows[:-1] + query_final
             print(final_sql)
             cursor = connection.cursor()
             cursor.execute(final_sql)
@@ -309,7 +312,6 @@ def stat_index_view(request):
             cursor = connection.cursor()
             cursor.execute(final_sql)
             stat_list = cursor.fetchall()
-
 
             paginator = Paginator(stat_list, pagesize)
             try:
@@ -389,7 +391,7 @@ class google_services_detail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(google_services_detail, self).get_context_data(**kwargs)
         context['periods'] = Period.objects.all()
-        context['statistics'] = Stats.objects.values('period','period__start_date').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by('period__start_date')
+        context['statistics'] = Stats.objects.values('period', 'period__start_date').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by('period__start_date')
         context['resume'] = Stats.objects.values('google_service').filter(google_service=self.get_object()).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
         return context
 

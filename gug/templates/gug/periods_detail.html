@@ -1,5 +1,38 @@
 {% extends "gug/home.html" %}
+{% load i18n %}
+{% load static %}
+{% load mathfilters %}
+{% load bootstrap_pagination %}
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.min.js"></script>
+{% endblock %}
+
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'gug:index' %}">{% trans 'Home' %}</a>&rsaquo; <a href="{% url 'gug:periods' %}">{% trans 'Periods' %}</a>
+            {% if app %}
+                &rsaquo; <a href="{{ app.app_url }}">{% if app.name != app.app_label|capfirst|escape %}{{ app.name }}{% else %}{% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}{% endif %}</a>
+            {% endif %}
+            &rsaquo; {{ object.title|capfirst }}
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block bodyclass %}{{ block.super }} dashboard jet change-form{% endblock %}
+
+
 {% block content %}
+<div id="content" class="flex">
 
 
 <h2>Periods {{ period }}</h2>
@@ -21,7 +54,7 @@
           <td scope="col"  class=" column-id_dspace">
              <div class="text">End Date</div>
              <div class="clear"></div>
-             
+
           </td>
           <td scope="col" class="column-id_dspace">
             <div class="text">{{ period.end_date }}</div>
@@ -54,15 +87,15 @@
               </th>
               </tr>
             </thead>
-                      
+
             <tbody>
               {% for gs in google_service %}
                 <tr>
                   <td><a href="{% url "gug:stat_index_paginated" %}?period={{period.id}}&amp;gsid={{gs.id}}&amp;page=1&amp;pagesize=10">{{ gs }}</a></td>
-                  
+
                   <td>{{ gs.view_id }}</td>
-                  
-                  
+
+
                     {% for statistic in statistics %}
                       {% if gs.id == statistic.google_service %}
                       <td class="text-right">
@@ -76,7 +109,7 @@
 
                 </tr>
               {% endfor%}
-              
+
           </tbody>
           <tfooter>
             <tr>
@@ -84,7 +117,7 @@
                 <th>{{ statistics|length }}</th>
                 <th class="text-right">{{ resume.totalrecords }}</th>
                 <th class="text-right">{{ resume.totalcuantity }}</th>
-                
+
             </tr>
           </tfooter>
          </table>

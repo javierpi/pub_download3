@@ -1,5 +1,6 @@
 {% extends "gug/home.html" %}
 {% load static %}
+{% load i18n %}
 {% block extrastyle %}
 <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
 <link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}"/>
@@ -27,8 +28,6 @@
         chart: {
           title: 'Downloads'
         },
-        width: 800,
-        height: 450,
         series: {
           // Gives each series an axis name that matches the Y-axis below.
           0: {axis: 'Downloads'},
@@ -51,12 +50,22 @@
     </script>
 
 {% endblock %}
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'gug:index' %}">{% trans 'Home' %}</a>&rsaquo; <a href="{% url 'gug:google_services' %}">{% trans 'Google Services' %}</a>
+            {% if app %}
+                &rsaquo; <a href="{{ app.app_url }}">{% if app.name != app.app_label|capfirst|escape %}{{ app.name }}{% else %}{% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}{% endif %}</a>
+            {% endif %}
+            &rsaquo; {{ object.title|capfirst }}
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block bodyclass %}{{ block.super }} dashboard jet change-form{% endblock %}
 {% block content %}
- 
+
  <div id="content" class="flex">
-
-  <h1>Google Services: {{ google_service.name }}  </h1>
-
   <div class="dashboard-container columns_1 cf">
     <div class="dashboard-column-wrapper">
       <div class="dashboard-column first">
@@ -64,7 +73,7 @@
             <div class="dashboard-item-header">
                 <span class="dashboard-item-header-drag icon-grid"></span>
                 <span class="dashboard-item-header-buttons">
-                    
+
                 </span>
                 <span class="dashboard-item-header-title">
                         <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
@@ -75,98 +84,98 @@
             </div>
             <div class="dashboard-item-content">
                 <ul>
-                    <li>
-                        Scope: {{ google_service.scope }}
-                    </li>
-                     <li>
-                        Discovery: {{ google_service.discovery }}
-                    </li>
-                     <li>
-                        View ID: {{ google_service.view_id }}
-                    </li>
-                     <li>
-                        Service: {{ google_service.service }}
-                    </li>
-                    <li>
-                        Version: {{ google_service.version }}
-                    </li>
-                    <li>
-                        Is Active: {{ google_service.active }}
-                    </li>
-                    <li>
-                        Report: {{ google_service.report }}
-                    </li>
+                    <li>Scope: {{ google_service.scope }}</li>
+                     <li>Discovery: {{ google_service.discovery }}</li>
+                     <li>View ID: {{ google_service.view_id }}</li>
+                     <li>Service: {{ google_service.service }}</li>
+                    <li>Version: {{ google_service.version }}</li>
+                    <li>Is Active: {{ google_service.active }}</li>
+                    <li>Report: {{ google_service.report }}</li>
                 </ul>
             </div>
         </div>
-        <div class="dashboard-item collapsible deletable draggable" data-module-id="11">
-          <div class="dashboard-item-header">
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-container columns_2 cf">
+      <div class="dashboard-column-wrapper">
+        <div class="dashboard-column first">
+          <div class="dashboard-item collapsible deletable draggable" data-module-id="21">
+            <div class="dashboard-item-header">
               <span class="dashboard-item-header-drag icon-grid"></span>
               <span class="dashboard-item-header-buttons">
               </span>
               <span class="dashboard-item-header-title">
                       <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
                       <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                      Results
+                      Graph
               </span>
               <div class="cf"></div>
           </div>
           <div class="dashboard-item-content">
-            <div class="dashboard-container columns_2 cf">
-              <div class="dashboard-column-wrapper">
-                <div class="dashboard-column first ui-droppable ui-sortable">
-                  <div id="chart_div" style="width: 800px; height: 450px"></div>
-                </div>
-              </div>
-              <div class="dashboard-column-wrapper">
-                <div class="dashboard-column ui-droppable ui-sortable">
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th>Period</th>
-                        <th>Records</th>
-                        <th>Downloads</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {% for statistic in statistics %}
-                        <tr>
-                              <th>
-                                <a href="{% url "gug:stat_index_paginated" %}?period={{statistic.period}}&amp;gsid={{google_service.id}}&amp;pagesize=10&amp;page=1">
-                                  {{ statistic.period__start_date }}
-                                </a>
-                              </th>
-                              
-                              <td>
-                                {{ statistic.cuantity__count }}
-                              </td>
-                              <td>
-                                {{ statistic.cuantity__sum }}
-                              </td>
-                              
-                          </tr>
-                      {% endfor %}
-
-                      
-                    </tbody>
-                    <tfooter>
-                      <tr>
-                          <th colspan="1">Total {{ statistics|length }} periods</th>
-                          <th class="text-right">{{ resume.totalrecords }}</th>
-                          <th class="text-right">{{ resume.totalcuantity }}</th>
-                          
-                      </tr>
-                    </tfooter>
-                  </table>
-                </div>
-              </div>
-            </div>
+               <div id="chart_div" style="width: 800px; height: 450px"></div>
           </div>
         </div>
       </div>
     </div>
+    <div class="dashboard-column ">
+      <div class="dashboard-column-wrapper">
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="22">
+          <div class="dashboard-item-header">
+            <span class="dashboard-item-header-drag icon-grid"></span>
+            <span class="dashboard-item-header-buttons">
+            </span>
+            <span class="dashboard-item-header-title">
+                    <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                    <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                    Data
+            </span>
+            <div class="cf"></div>
+        </div>
+        <div class="dashboard-item-content">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Period</th>
+                <th>Records</th>
+                <th>Downloads</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for statistic in statistics %}
+                <tr>
+                      <th>
+                        <a href="{% url "gug:stat_index_paginated" %}?period={{statistic.period}}&amp;gsid={{google_service.id}}&amp;pagesize=10&amp;page=1">
+                          {{ statistic.period__start_date }}
+                        </a>
+                      </th>
+
+                      <td>
+                        {{ statistic.cuantity__count }}
+                      </td>
+                      <td>
+                        {{ statistic.cuantity__sum }}
+                      </td>
+
+                  </tr>
+              {% endfor %}
+            </tbody>
+            <tfooter>
+              <tr>
+                  <th colspan="1">Total {{ statistics|length }} periods</th>
+                  <th class="text-right">{{ resume.totalrecords }}</th>
+                  <th class="text-right">{{ resume.totalcuantity }}</th>
+
+              </tr>
+            </tfooter>
+          </table>
+        </div>
+
+    </div>
   </div>
 </div>
-
+</div>
+</div>
+</script>
 
 {% endblock %}
