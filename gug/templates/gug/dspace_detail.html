@@ -21,47 +21,174 @@
     <script type="text/javascript">
 
     // Load the Visualization API and the piechart package.
-    google.charts.load('current', {'packages':['corechart', 'line']});
+    google.charts.load('current', {'packages':['corechart', 'line', 'controls']});
     // google.charts.load('current', {'packages':['bar']});
 
     // Set a callback to run when the Google Visualization API is loaded.
     google.charts.setOnLoadCallback(drawChart1);
+    // google.charts.setOnLoadCallback(drawChart2);
+    google.charts.setOnLoadCallback(drawChart3);
+
+    $(window).resize(function() {
+    if(this.resizeTO) clearTimeout(this.resizeTO);
+      this.resizeTO = setTimeout(function() {
+          $(this).trigger('resizeEnd');
+      }, 500);
+    });
+
+    //redraw graph when window resize is completed
+    $(window).on('resizeEnd', function() {
+
+        dashboard1.draw(jsonData1);
+        dashboard3.draw(jsonData3);
+
+    });
+
+    function drawChart3() {
+
+        // Create our data table.
+        var jsonData3 = $.ajax({
+          url: "/get_data/?id_dspace={{dspace_record.id_dspace|urlize}}{% for t in gs %}&amp;gsid={{t.pk}}{% endfor%}{% for t in period %}&amp;period={{t.id}}{% endfor%}&amp;by=file",
+          dataType: "json",
+          async: false
+          }).responseText;
+
+
+        // Create a dashboard.
+        var dashboard3 = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div3'));
+
+        // Create a range slider, passing some options
+        var donutRangeSlider = new google.visualization.ControlWrapper({
+          'controlType': 'NumberRangeFilter',
+          'containerId': 'filter_div3',
+          'options': {
+            'filterColumnLabel': 'Downloads'
+          }
+        });
+
+        // Create a pie chart, passing some options
+        var pieChart = new google.visualization.ChartWrapper({
+          'chartType': 'PieChart',
+          'containerId': 'chart_div3',
+          'options': {
+            'title': '{{ dspace_record.title }}',
+            'pieSliceText': 'value',
+            'legend': 'bottom'
+          }
+        });
+
+        // Establish dependencies, declaring that 'filter' drives 'pieChart',
+        // so that the pie chart will only display entries that are let through
+        // given the chosen slider range.
+        dashboard3.bind(donutRangeSlider, pieChart);
+
+        // Draw the dashboard.
+        dashboard3.draw(jsonData3);
+      }
+    // function drawChart2() {
+    //   ///
+    //   var jsonData2 = $.ajax({
+    //       url: "/get_data/?id_dspace={{dspace_record.id_dspace|urlize}}{% for t in gs %}&amp;gsid={{t.pk}}{% endfor%}{% for t in period %}&amp;period={{t.id}}{% endfor%}&amp;by=file",
+    //       dataType: "json",
+    //       async: false
+    //       }).responseText;
+
+    //   // Create a dashboard.
+    //   var dashboard = new google.visualization.Dashboard(
+    //       document.getElementById('dashboard_div2'));
+
+    //   var options2 = {
+    //       title: '{{ dspace_record.title }}',
+    //       legend: { position: 'bottom' },
+    //       annotations: {
+    //         textStyle: {
+    //           fontName: 'Arial,sans-serif',
+    //           fontSize: 18,
+    //           bold: true,
+    //           italic: true,
+    //           // The color of the text.
+    //           color: '#871b47',
+    //           // The color of the text outline.
+    //           auraColor: '#d799ae',
+    //           // The transparency of the text.
+    //           opacity: 0.8
+    //         }
+    //       }
+    //     };
+
+
+
+    //   var data2 = new google.visualization.DataTable(jsonData2);
+    //   var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+    //   chart2.draw(data2, options2);
+    // }
 
     function drawChart1() {
-      var jsonData = $.ajax({
+      var jsonData1 = $.ajax({
           url: "/get_data/?id_dspace={{dspace_record.id_dspace|urlize}}{% for t in gs %}&amp;gsid={{t.pk}}{% endfor%}{% for t in period %}&amp;period={{t.id}}{% endfor%}",
           dataType: "json",
           async: false
           }).responseText;
 
-      
+      // Create a dashboard.
+        var dashboard1 = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div1'));
 
-      // Create our data table out of JSON data loaded from server.
-      // curveType: 'function',
-      var options = {
-          title: '{{ dspace_record.title }}',
-          legend: { position: 'bottom' },
-          annotations: {
-            textStyle: {
-              fontName: 'Arial,sans-serif',
-              fontSize: 18,
-              bold: true,
-              italic: true,
-              // The color of the text.
-              color: '#871b47',
-              // The color of the text outline.
-              auraColor: '#d799ae',
-              // The transparency of the text.
-              opacity: 0.8
-            }
+        // Create a range slider, passing some options
+        var donutRangeSlider1 = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'filter_div1',
+          'options': {
+            'filterColumnLabel': 'Period'
           }
-        };
+        });
 
-      var data = new google.visualization.DataTable(jsonData);
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
+        // Create a pie chart, passing some options
+        var pieChart1 = new google.visualization.ChartWrapper({
+          'chartType': 'LineChart',
+          'containerId': 'chart_div1',
+          'options': {
+            'title': '{{ dspace_record.title }}',
+            'pieSliceText': 'value',
+            'legend': 'bottom'
+          }
+        });
+
+        // Establish dependencies, declaring that 'filter' drives 'pieChart',
+        // so that the pie chart will only display entries that are let through
+        // given the chosen slider range.
+        dashboard1.bind(donutRangeSlider1, pieChart1);
+
+        // Draw the dashboard.
+        var data1 = new google.visualization.DataTable(jsonData1);
+        dashboard1.draw(data1);
+
+
+      // var options = {
+      //     title: '{{ dspace_record.title }}',
+      //     legend: { position: 'bottom' },
+      //     annotations: {
+      //       textStyle: {
+      //         fontName: 'Arial,sans-serif',
+      //         fontSize: 18,
+      //         bold: true,
+      //         italic: true,
+      //         // The color of the text.
+      //         color: '#871b47',
+      //         // The color of the text outline.
+      //         auraColor: '#d799ae',
+      //         // The transparency of the text.
+      //         opacity: 0.8
+      //       }
+      //     }
+      //   };
+
+      // var data = new google.visualization.DataTable(jsonData);
+      // var chart = new google.visualization.(document.getElementById(''));
+      // chart.draw(data, options);
     }
-    
+
 
     </script>
 
@@ -84,7 +211,16 @@
 <div id="content" class="flex">
 
   <h1>DSpace Publication </h1>
+<div class="dashboard-container columns_1 cf">
+    <div class="dashboard-column-wrapper">
+      <div class="dashboard-column first">
+          <div class="dashboard-item-content deletable draggable padding center" style="heigth: auto; overflow-x: auto;" data-module-id="100">
 
+
+          </div>
+      </div>
+    </div>
+  </div>
   <div class="dashboard-container columns_2 cf">
     <div class="dashboard-column-wrapper">
       <div class="dashboard-column first">
@@ -92,7 +228,8 @@
             <div class="dashboard-item-header">
                 <span class="dashboard-item-header-drag icon-grid"></span>
                 <span class="dashboard-item-header-buttons">
-                    
+
+
                 </span>
                 <span class="dashboard-item-header-title">
                         <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
@@ -121,7 +258,7 @@
           <div class="dashboard-item-header">
               <span class="dashboard-item-header-drag icon-grid"></span>
               <span class="dashboard-item-header-buttons">
-                  
+
               </span>
               <span class="dashboard-item-header-title">
                       <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
@@ -152,14 +289,14 @@
       </div>
       </div>
     </div>
-  </div>
+
 
 <div class="dashboard-container columns_2 cf">
     <div class="dashboard-column-wrapper">
       <div class="dashboard-column first">
 
 
-        <div class="dashboard-item collapsible deletable draggable" data-module-id="3">
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="31">
           <div class="dashboard-item-header">
               <span class="dashboard-item-header-drag icon-grid"></span>
               <span class="dashboard-item-header-buttons">
@@ -167,21 +304,60 @@
               <span class="dashboard-item-header-title">
                       <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
                       <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                      Graphs
+                      Graphs 1
               </span>
               <div class="cf"></div>
           </div>
-          <div class="dashboard-item-content">
-            <div class="dashboard-container columns_1 cf">
-              <div class="dashboard-column-wrapper">
-                <div class="dashboard-column first ui-droppable ui-sortable">
-                  {% if detail == 'on' %}
-                    <!--div id="chart_div_detail" style="width: 800px; height: 450px"></div-->
-                  {% endif %}
-                  <div id="chart_div"></div>
-                  
+          <div class="dashboard-item-content contrast" style="heigth: auto; overflow-x: auto;">
+            <div class="padding center">
+                <div id="dashboard_div1">
+                  <div id="chart_div1" style="border: 1px solid #ccc"></div>
+                  <div id="filter_div1"></div>
                 </div>
-              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <!--div class="dashboard-item collapsible deletable draggable" data-module-id="32">
+          <div class="dashboard-item-header">
+              <span class="dashboard-item-header-drag icon-grid"></span>
+              <span class="dashboard-item-header-buttons">
+              </span>
+              <span class="dashboard-item-header-title">
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                      Graphs 2
+              </span>
+              <div class="cf"></div>
+          </div>
+          <div class="dashboard-item-content contrast" style="heigth: auto; overflow-x: auto;">
+            <div class="padding center">
+                <div id="dashboard_div2">
+                  <div id="chart_div2" style="border: 1px solid #ccc"></div>
+                  <div id="filter_div2"></div>
+                </div>
+            </div>
+          </div>
+        </div-->
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="33">
+          <div class="dashboard-item-header">
+              <span class="dashboard-item-header-drag icon-grid"></span>
+              <span class="dashboard-item-header-buttons">
+              </span>
+              <span class="dashboard-item-header-title">
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                      Graphs 3
+              </span>
+              <div class="cf"></div>
+          </div>
+          <div class="dashboard-item-content contrast" style="heigth: auto; overflow-x: auto;">
+            <div class="padding center">
+                <div id="dashboard_div3">
+                  <div id="chart_div3" style="border: 1px solid #ccc"></div>
+                  <div id="filter_div3"></div>
+                </div>
             </div>
           </div>
         </div>
@@ -207,7 +383,7 @@
             <div class="dashboard-container columns_1 cf">
 
 
-              <div class="dashboard-column-wrapper">
+
                 <div class="dashboard-column ui-droppable ui-sortable">
                 {% regroup stats by publication__tfile as tfile_list %}
                   <table id="result_list">
@@ -222,8 +398,8 @@
                              <div class="text">File</div>
                              <div class="clear"></div>
                           </th>
-                          
-                        
+
+
                         {% endif %}
                         <th scope="col"  class="column-title">
                            <div class="text">Downloads</div>
@@ -233,24 +409,24 @@
                     </thead>
                     <tbody>
 
-                      
+
                         {% for st in stats %}
                           <tr class="{% cycle 'row1' 'row2' %}">
                             <th class="field-title">{{ st.period__start_date}}</th>
-                            
+
                             {% if detail == 'on' %}
                               <td>{{ st.publication__tfile }}</td>
-                            {% endif %}      
+                            {% endif %}
                             <td>{{ st.cuantity }}</td>
 
                           </tr>
                         {% endfor%}
-                      
+
                     </tbody>
                     <tfooter>
                       <tr class="row1">
                         <th colspan="1">Total {{ resume.totalrows }} </th>
-                        {% if detail == 'on' %}<td></td>{% endif %}      
+                        {% if detail == 'on' %}<td></td>{% endif %}
                         <th class="text-right">{{ resume.totalcuantity }}</th>
                       </tr>
 
@@ -259,7 +435,7 @@
                   </table>
                 </div>
               </div>
-            </div>
+
           </div>
         </div>
         </div>
