@@ -165,13 +165,12 @@ AUTHENTICATION_BACKENDS = (
 
 # Celery
 BROKER_URL = 'amqp://pub_download:pub_downloadpass@127.0.0.1:5672/pub_download'
-# CELERY_RESULT_BACKEND = 'amqp://test:test@127.0.0.1:5672//'
-CELERY_RESULT_BACKEND = 'django-db'
+# CELERY_RESULT_BACKEND = 'django-db'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_DEFAULT_QUEUE = 'pub_download'
-CELERY_ENABLE_REMOTE_CONTROL = True
+# CELERY_ENABLE_REMOTE_CONTROL = True
 
 # Jet
 JET_DEFAULT_THEME = 'light-gray'
