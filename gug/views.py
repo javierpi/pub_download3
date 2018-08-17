@@ -11,9 +11,10 @@ import json
 ####
 
 from gug.models import Google_service, Period, Publication, Stats, Dspace
-from gug.forms import StatForm, DspaceForm
+from gug.forms import StatForm, DspaceForm, IndexForm
 from gug.serializers import PeriodSerializer, StatsSerializer, StatsSerializer3
 
+from django import forms
 from django.forms import formset_factory
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -59,6 +60,26 @@ class Echo:
     def write(self, value):
         """Write the value by returning it, instead of storing in a buffer."""
         return value
+
+def dspace_detail_tmp(request):
+    if request.method == "GET":
+        id_dspace = request.GET.get('id_dspace', 1)
+        
+        gsid_avalable = list(Google_service.objects.values_list('id', flat=True))
+        period_avalable = list(Period.objects.values_list('id', flat=True))
+
+        per_list = ""
+        for x in period_avalable:
+            per_list += '&period='+str(x)
+
+        gs_list = ""
+        for x in gsid_avalable:
+            gs_list += '&gsid=' + str(x)
+
+        period = per_list
+        gsid = gs_list
+        print("/dspace/?id_dspace=" +id_dspace +  gsid + period)
+        return redirect("/dspace/?id_dspace=" +id_dspace +  gsid + period)
 
 
 def dspace_detail(request):
@@ -163,28 +184,30 @@ def dspace_detail2(request):
         return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail})
 
 
-class index(ListView):
+# class index(ListView):
+def index(request):
     context_object_name = 'periods'
     template_name = 'gug/index.html'
 
-    def get_queryset(self):
-        return Period.objects.annotate(cuantity=Sum('stats__cuantity'))
+    form = IndexForm()
+      
+    context = {}
+    context['periods'] = Period.objects.annotate(cuantity=Sum('stats__cuantity')).order_by('-start_date')
+    context['google_services'] = Google_service.objects.annotate(cuantity=Sum('stats__cuantity'))
+    context['google_services_sums'] = Google_service.objects.aggregate(cuantity=Sum('stats__cuantity'))
+    q_dspace = " select gug_dspace.id_dspace, gug_dspace.title , sum(cuantity) as sumtotal " \
+            " from gug_stats as gs_master " \
+            " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \
+            " group by id_dspace_id order by sumtotal desc limit 0,10;"
 
-    def get_context_data(self, **kwargs):
-        context = super(index, self).get_context_data(**kwargs)
-        context['google_services'] = Google_service.objects.annotate(cuantity=Sum('stats__cuantity'))
-        context['google_services_sums'] = Google_service.objects.aggregate(cuantity=Sum('stats__cuantity'))
-        q_dspace = " select gug_dspace.id_dspace, gug_dspace.title , sum(cuantity) as sumtotal " \
-                " from gug_stats as gs_master " \
-                " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \
-                " group by id_dspace_id order by sumtotal desc limit 0,10;"
+    cursor = connection.cursor()
+    cursor.execute(q_dspace)
+    context['dspaces'] = cursor.fetchall()
 
-        cursor = connection.cursor()
-        cursor.execute(q_dspace)
-        context['dspaces'] = cursor.fetchall()
 
-        return context
+    return render(request, 'gug/index.html', {'form': form,  'table': context })
 
+   
 
 def iter_csv(rows, pseudo_buffer):
     yield pseudo_buffer.write(codecs.BOM_UTF8)

@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelChoiceField, ModelMultipleChoiceField
 from gug.models import Google_service, Period, Dspace
 
 
@@ -41,3 +42,12 @@ class StatForm(forms.Form):
         self.fields['page'].initial =  '2'
 
         return super(StatForm, self).__init__(*args, **kwargs)
+
+class IndexForm(forms.Form):
+    id_dspace = forms.IntegerField(required=True,label="Dspace ID")
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        return super(IndexForm, self).__init__(*args, **kwargs)

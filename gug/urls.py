@@ -1,26 +1,15 @@
 from django.conf.urls import url, include
 from .views import google_services, periods, google_services_detail,\
     periods_detail, stat_index_view, index, dspace_detail, api_publication_detail, \
-    api_periods_list, api_periods_detail, get_titles
+    api_periods_list, api_periods_detail, get_titles, dspace_detail_tmp
 from .apis import get_data
 
-# class StatsViewSet(viewsets.ModelViewSet):
-#     queryset = Stats.objects.all()
-#     serializer_class = StatsSerializer
-
-#     @classmethod
-#     def get_extra_actions(cls):
-#         return []
-
-
-# router = routers.DefaultRouter()
-# router.register(r'stat2', StatsViewSet, base_name='inoutreports')
 
 app_name = 'gug'
 
 urlpatterns = [
-    #url(r'^$', index.as_view(), name='index'),
-    url(r'^$', index.as_view(), name='index'),
+    # url(r'^$', index.as_view(), name='index'),
+    url(r'^$', index, name='index'),
     url(r'^stat/$', stat_index_view, name='stat_index_paginated'),
 
     # url(r'^api/', include((router.urls, 'app_name'), namespace='instance_name')),
@@ -34,6 +23,7 @@ urlpatterns = [
     url(r'^periods/(?P<pk>\d+)$', periods_detail.as_view(), name='periods_detail'),
 
     url(r'^dspace/$', dspace_detail, name='dspace_detail'),
+    url(r'^dspace_tmp/$', dspace_detail_tmp, name='dspace_detail_tmp'),
 
     url(r'^api/publication/(?P<pk>[0-9]+)$', api_publication_detail, name='publication-detail'),
     url(r'^api/periods/$', api_periods_list, name='api_periods_list'),
