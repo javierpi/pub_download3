@@ -3,7 +3,7 @@ from google.oauth2 import service_account
 from celery import shared_task
 from gug.models import Google_service, Period, Publication, Stats, Dspace
 import json
-
+import logging
 ########################################################
 # python manage.py celery -A ansible3 worker -l info
 ########################################################
@@ -11,6 +11,7 @@ import json
 
 @shared_task
 def get_GA(header=False):
+    logging.getLogger('googleapiclient.discovery_cache').setLevel(logging.ERROR)
     gservices = Google_service.objects.filter(active=True)
     periods = Period.objects.filter(active=True)
     for period in periods:
@@ -30,7 +31,7 @@ def get_GA(header=False):
             report = report.replace('start_date', start_date)
             report = report.replace('end_date', end_date)
             report = json.loads(report)
-            print(report)
+            # print(report)
 
             credentials = service_account.Credentials.from_service_account_file(client_secret_path, scopes=scope)
             if credentials is None:
@@ -42,7 +43,7 @@ def get_GA(header=False):
             # raise
 
             if discovery:
-                analytics = build(service, version, discoveryServiceUrl=discovery)
+                analytics = build(service, version, discoveryServiceUrl=discovery, cache_discovery=False)
                 response = analytics.reports().batchGet(body=report).execute()
             else:
                 analytics = build(service, version)
