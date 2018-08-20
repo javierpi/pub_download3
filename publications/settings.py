@@ -117,13 +117,20 @@ DATABASES = {
         'NAME': 'pub_download',
         'USER': 'pub_user',
         'PASSWORD': 'pub_pass',
-        'HOST': 'localhost',
+        'HOST': '10.0.0.2',
         'PORT': '',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         }
     }
 
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
 }
 
 # DATABASES = {

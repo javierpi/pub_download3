@@ -7165,3 +7165,14 @@ Traceback (most recent call last):
   File "/home/deployer/pub_download3/publications/gug/apis.py", line 36, in get
     " and gug_dspace.id_dspace = " + str(id_dspace) + "" \
 TypeError: can only join an iterable
+2018-08-20 01:14:15,480 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_downloads4/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_downloads4/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_downloads4/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_downloads4/publications/gug/views.py", line 196, in index
+    context['dspaces'] = cache.get(cache_key) # returns None if no key-value pair
+UnboundLocalError: local variable 'context' referenced before assignment

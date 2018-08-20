@@ -24,6 +24,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, StreamingHttpResponse, JsonResponse, HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
 
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
@@ -41,6 +43,7 @@ from .management.commands import get_title
 from .serializers import StatsSerializer
 
 
+@cache_page(60 * 15)
 @csrf_exempt
 def stat_list(request):
     """
@@ -82,6 +85,7 @@ def dspace_detail_tmp(request):
         return redirect("/dspace/?id_dspace=" +id_dspace +  gsid + period)
 
 
+@cache_page(60 * 15)
 def dspace_detail(request):
 
     if request.method == "GET":
@@ -185,9 +189,12 @@ def dspace_detail2(request):
 
 
 # class index(ListView):
+@cache_page(60 * 15)
 def index(request):
     context_object_name = 'periods'
     template_name = 'gug/index.html'
+
+    
 
     form = IndexForm()
       
@@ -200,9 +207,18 @@ def index(request):
             " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \
             " group by id_dspace_id order by sumtotal desc limit 0,10;"
 
+    # cache_key = 'my_unique_key' # needs to be unique
+    # cache_time = 86400 # time in seconds for cache to be valid
+    # context['dspaces'] = cache.get(cache_key) # returns None if no key-value pair
+
+    # if not context['dspaces']:
+        #my_service = Service()
+        #data = service.get_data()
+        # cache.set(cache_key, data, cache_time)
     cursor = connection.cursor()
     cursor.execute(q_dspace)
     context['dspaces'] = cursor.fetchall()
+    #cache.set(cache_key, context['dspaces'], cache_time)
 
 
     return render(request, 'gug/index.html', {'form': form,  'table': context })
@@ -216,6 +232,7 @@ def iter_csv(rows, pseudo_buffer):
         yield writer.writerow(row)
 
 
+@cache_page(60 * 15)
 @api_view(['GET'])
 def stat_index_view(request):
     if request.method == "GET":
@@ -350,6 +367,7 @@ def stat_index_view(request):
             return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period_objs, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
 
 
+
 class periods_detail(DetailView):
     model = Period
     template_name = 'gug/periods_detail.html'
@@ -360,6 +378,7 @@ class periods_detail(DetailView):
         context['statistics'] = Stats.objects.values('google_service').filter(period=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
         context['resume'] = Stats.objects.values('google_service').filter(period=self.get_object()).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
         return context
+
 
 
 class periods(ListView):
@@ -374,6 +393,7 @@ class periods(ListView):
         return context
 
 
+@cache_page(60 * 15)
 @api_view(['GET'])
 def api_publication_detail(request, pk):
     try:
@@ -386,6 +406,7 @@ def api_publication_detail(request, pk):
         return Response(serializer.data)
 
 
+@cache_page(60 * 15)
 @api_view(['GET'])
 def api_periods_list(request):
 
@@ -395,6 +416,7 @@ def api_periods_list(request):
         return Response(serializer.data)
 
 
+@cache_page(60 * 15)
 @api_view(['GET'])
 def api_periods_detail(request, pk):
     try:
@@ -405,6 +427,7 @@ def api_periods_detail(request, pk):
     if request.method == 'GET':
         serializer = PeriodSerializer(periods)
         return Response(serializer.data)
+
 
 
 class google_services_detail(DetailView):
@@ -419,6 +442,7 @@ class google_services_detail(DetailView):
         return context
 
 
+
 class google_services(ListView):
     context_object_name = 'google_service'
     template_name = 'gug/google_service.html'
@@ -429,6 +453,7 @@ class google_services(ListView):
     def get_context_data(self, **kwargs):
         context = super(google_services, self).get_context_data(**kwargs)
         return context
+
 
 
 def get_titles(request, dspace_id):
