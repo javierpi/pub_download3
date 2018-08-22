@@ -18,7 +18,7 @@ from django import forms
 from django.forms import formset_factory
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.db.models import Count, Sum
+from django.db.models import Count, Sum, Min, Max
 from django.db import connection
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
@@ -188,37 +188,26 @@ def dspace_detail2(request):
         return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail})
 
 
-# class index(ListView):
 @cache_page(60 * 15)
 def index(request):
     context_object_name = 'periods'
-    template_name = 'gug/index.html'
-
-    
 
     form = IndexForm()
       
     context = {}
     context['periods'] = Period.objects.annotate(cuantity=Sum('stats__cuantity')).order_by('-start_date')
-    context['google_services'] = Google_service.objects.annotate(cuantity=Sum('stats__cuantity'))
+    context['google_services'] = Google_service.objects.annotate(cuantity=Sum('stats__cuantity'),monthCount=Count('stats__period', distinct=True))
     context['google_services_sums'] = Google_service.objects.aggregate(cuantity=Sum('stats__cuantity'))
     q_dspace = " select gug_dspace.id_dspace, gug_dspace.title , sum(cuantity) as sumtotal " \
             " from gug_stats as gs_master " \
             " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \
             " group by id_dspace_id order by sumtotal desc limit 0,10;"
 
-    # cache_key = 'my_unique_key' # needs to be unique
-    # cache_time = 86400 # time in seconds for cache to be valid
-    # context['dspaces'] = cache.get(cache_key) # returns None if no key-value pair
 
-    # if not context['dspaces']:
-        #my_service = Service()
-        #data = service.get_data()
-        # cache.set(cache_key, data, cache_time)
     cursor = connection.cursor()
     cursor.execute(q_dspace)
     context['dspaces'] = cursor.fetchall()
-    #cache.set(cache_key, context['dspaces'], cache_time)
+
 
 
     return render(request, 'gug/index.html', {'form': form,  'table': context })

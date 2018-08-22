@@ -113,7 +113,7 @@
                                     <span class="float-right">
                                          {{ gs.cuantity }}
                                     </span>
-                                    <a href="{% url "gug:google_services_detail" gs.id %}">{{ gs.name }}</a>
+                                    <a href="{% url "gug:google_services_detail" gs.id %}">{{ gs.name }} ({{gs.monthCount}} periods)</a>
                                   </li>
                                 {% endfor%}
                                 <li >
@@ -121,7 +121,7 @@
 
                                          {{ table.google_services_sums.cuantity }}
                                     </span>
-                                    <a href="/stat/?pagesize=10&page=1">Total</a>
+                                    <a href="/stat/?pagesize=10&amp;page=1{% for t in table.google_services %}&amp;gsid={{t.id}}{% endfor%}{% for t in table.periods %}&amp;period={{t.id}}{% endfor%}">Total</a>
                                 </li>
                             </ul>
                         </div>
@@ -167,7 +167,7 @@
                                     <span class="float-right">
                                         {{ table.google_services_sums.cuantity }}
                                     </span>
-                                    <a href="/stat/?pagesize=10&page=1">Total</a>
+                                    <a href="/stat/?pagesize=10&page=1{% for t in table.google_services %}&amp;gsid={{t.id}}{% endfor%}{% for t in table.periods %}&amp;period={{t.id}}{% endfor%}">Total</a>
                                 </li>
                             </ul>
                         </div>
@@ -190,10 +190,11 @@
                             <div class="cf"></div>
                         </div>
                        <div class="dashboard-item-content">
-                            <ul>
+                            
                                 <ul>
                                 <li class="contrast">
-                                    <a href="{% url "gug:periods" %}" title="Periods Detail">Resume</a>
+                                    <a href="/stat/?pagesize=10&amp;page=1{% for t in table.google_services %}&amp;gsid={{t.id}}{% endfor%}{% for t in table.periods %}&amp;period={{t.id}}{% endfor%}"  title="Periods Detail">Resume</a>
+
                                 </li>
                                 <li>
                                     <span class="float-right">
@@ -219,13 +220,8 @@
                                     {% endfor%}
                                   </li>
                                 {% endfor%}
-                                <li >
-                                    <span class="float-right">
-                                         {{table.google_services_sums.cuantity}}
-                                    </span>
-                                    <a href="/stat/?pagesize=10&page=1">Total</a>
-                                </li>
-                            </ul>
+                               
+                            
                             </ul>
                         </div>
                     </div>
