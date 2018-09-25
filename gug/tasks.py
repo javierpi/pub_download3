@@ -8,6 +8,18 @@ import logging
 # python manage.py celery -A ansible3 worker -l info
 ########################################################
 
+@shared_task
+def get_titles():
+    '''
+        Obtiene titulos de las publicaciones que estan vacias.
+        Las obtiene desde repositorio.cepal.org
+    '''
+    call_id = management.call_command(
+        'get_title',
+        verbosity=2,
+        interactive=False)
+    return_vars = json.loads(str(call_id))
+
 
 @shared_task
 def get_GA(header=False):
