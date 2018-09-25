@@ -7,7 +7,7 @@ import gviz_api
 import codecs
 import json
 
-####
+#### 
 ####
 
 from gug.models import Google_service, Period, Publication, Stats, Dspace
@@ -68,7 +68,7 @@ def dspace_detail_tmp(request):
     if request.method == "GET":
         id_dspace = request.GET.get('id_dspace', 1)
         
-        gsid_avalable = list(Google_service.objects.values_list('id', flat=True))
+        gsid_avalable = list(Google_service.objects.values_list('id', flat=True).order_by('pk'))
         period_avalable = list(Period.objects.values_list('id', flat=True))
 
         per_list = ""
@@ -444,17 +444,28 @@ def stat_index_view(request):
 
 
 
-class periods_detail(DetailView):
+def periods_detail(request, pk):
+    context_object_name = 'periods'
     model = Period
-    template_name = 'gug/periods_detail.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(periods_detail, self).get_context_data(**kwargs)
-        context['google_service'] = Google_service.objects.all()
-        context['statistics'] = Stats.objects.values('google_service').filter(period=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by()
-        context['resume'] = Stats.objects.values('google_service').filter(period=self.get_object()).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
-        return context
+     
+    context = {}
+    context['period'] = Period.objects.get(id=pk)
+    context['statistics'] = Stats.objects.values('google_service').filter(period_id=pk).annotate(Count('cuantity'), Sum('cuantity')).order_by()
+    context['resume'] = Stats.objects.values('google_service').filter(period_id=pk).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
 
+    context['google_service'] = Google_service.objects.all()
+    q_dspace = " select gug_dspace.id_dspace, gug_dspace.title , sum(cuantity) as sumtotal " \
+            " from gug_stats as gs_master " \
+            " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \
+            " where gs_master.period_id = " + pk + "" \
+            " group by id_dspace_id order by sumtotal desc limit 0,20;" 
+
+    cursor = connection.cursor()
+    cursor.execute(q_dspace)
+    context['dspaces'] = cursor.fetchall()
+
+    return render(request, 'gug/periods_detail.html', {'table': context })
 
 
 class periods(ListView):
@@ -462,7 +473,7 @@ class periods(ListView):
     template_name = 'gug/periods.html'
 
     def get_queryset(self):
-        return Period.objects.annotate(Count('stats')).annotate(cuantity=Sum('stats__cuantity'))
+        return Period.objects.annotate(Count('stats')).annotate(cuantity=Sum('stats__cuantity')).order_by('-start_date')
 
     def get_context_data(self, **kwargs):
         context = super(periods, self).get_context_data(**kwargs)
