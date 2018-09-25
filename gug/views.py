@@ -85,7 +85,7 @@ def dspace_detail_tmp(request):
         return redirect("/dspace/?id_dspace=" +id_dspace +  gsid + period)
 
 
-
+@cache_page(60 * 15)
 def dspace_detail(request):
     if request.method == "GET":
         form = DspaceForm(request.GET)
@@ -181,8 +181,8 @@ def dspace_detail(request):
         dspace_record = Dspace.objects.get(id_dspace=id_dspace)
         return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table,     'period': period_objs, 'gs': gs, 'dspace_record': dspace_record, 'resume': resume})
 
+
 @api_view(['GET'])
-# @cache_page(60 * 15)
 def dspace_detail1(request):
 
     if request.method == "GET":
