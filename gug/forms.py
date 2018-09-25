@@ -28,9 +28,10 @@ class StatForm(forms.Form):
         ('1000', '1000'),
     )
     gs_choices = Google_service.objects.all().values_list('id', 'name')
-    period_choices = Period.objects.all().values_list('id', 'start_date')
 
+    period_choices = Period.objects.all().values_list('id', 'start_date')
     period = forms.MultipleChoiceField(choices=period_choices, label="Period")
+    
     gsid = forms.MultipleChoiceField(choices=gs_choices, label="Google Service")
     pagesize = forms.ChoiceField(choices=PAGE_SIZE_CHOICES)
 #     detail = forms.BooleanField(label="Detailed report", required=False)
@@ -42,7 +43,7 @@ class StatForm(forms.Form):
         self.fields['page'].initial =  '2'
 
         return super(StatForm, self).__init__(*args, **kwargs)
-
+ 
 class IndexForm(forms.Form):
     id_dspace = forms.IntegerField(required=True,label="Dspace ID")
 
