@@ -3,7 +3,7 @@ from .views import google_services, periods, google_services_detail,\
     periods_detail, stat_index_view, index, dspace_detail, api_publication_detail, \
     api_periods_list, api_periods_detail, get_titles, dspace_detail_tmp
 from .apis import get_data
-
+ 
 
 app_name = 'gug'
 
@@ -20,7 +20,8 @@ urlpatterns = [
     url(r'^gs/(?P<pk>\d+)$', google_services_detail.as_view(), name='google_services_detail'),
 
     url(r'^periods/$', periods.as_view(), name='periods'),
-    url(r'^periods/(?P<pk>\d+)$', periods_detail.as_view(), name='periods_detail'),
+    # url(r'^periods/(?P<pk>\d+)$', periods_detail.as_view(), name='periods_detail'),
+    url(r'^periods/(?P<pk>\d+)$', periods_detail, name='periods_detail'),
 
     url(r'^dspace/$', dspace_detail, name='dspace_detail'),
     url(r'^dspace_tmp/$', dspace_detail_tmp, name='dspace_detail_tmp'),
