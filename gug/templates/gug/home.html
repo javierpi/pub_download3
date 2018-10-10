@@ -37,6 +37,23 @@
 				{% trans 'Periods' %}
 			</span>
     </a>
+    {% if user.is_authenticated  %}
+        <a href="{% url "gug:get_GA" %}" class="sidebar-link icon">
+            <span class="sidebar-link-label">
+            <span class="sidebar-link-icon jet-demo-icon-github"></span>
+                {% trans 'Import data' %}
+            </span>
+            
+        </a>
+        <a href="{% url "gug:get_titles" %}" class="sidebar-link icon">
+            <span class="sidebar-link-label">
+            <span class="sidebar-link-icon jet-demo-icon-github"></span>
+                {% trans 'Get titles from DSpace' %}
+            </span>
+            
+        </a>
+    
+    {% endif %}
 
 
 {% endblock %}

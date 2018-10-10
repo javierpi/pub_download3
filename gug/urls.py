@@ -1,18 +1,17 @@
 from django.conf.urls import url, include
 from .views import google_services, periods, google_services_detail,\
     periods_detail, stat_index_view, index, dspace_detail, api_publication_detail, \
-    api_periods_list, api_periods_detail, get_titles, dspace_detail_tmp
+    api_periods_list, api_periods_detail, get_titles, dspace_detail_tmp, get_ga
 from .apis import get_data
+#from .tasks import get_GA
  
 
 app_name = 'gug'
 
 urlpatterns = [
-    # url(r'^$', index.as_view(), name='index'),
     url(r'^$', index, name='index'),
     url(r'^stat/$', stat_index_view, name='stat_index_paginated'),
 
-    # url(r'^api/', include((router.urls, 'app_name'), namespace='instance_name')),
     url(r'^api-auth/', include('rest_framework.urls')),
 
 
@@ -32,9 +31,9 @@ urlpatterns = [
 
     # API to get data
     url(r'^get_data/$', get_data.as_view()),
-    #    url(r'^api/chart/data/(?P<pk>\d+)/(?P<ctype>[\w]+)/$', ChartData2.as_view()),
 
     # Commands
-    url(r'^get_title/(?P<dspace_id>[0-9]+)$', get_titles, name='get_titles')
+    url(r'^get_titles/$', get_titles, name='get_titles'),
+    url(r'^get_ga/$', get_ga, name='get_GA')
 ]
-# urlpatterns = format_suffix_patterns(urlpatterns)
+

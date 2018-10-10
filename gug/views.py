@@ -13,6 +13,7 @@ import json
 from gug.models import Google_service, Period, Publication, Stats, Dspace
 from gug.forms import StatForm, DspaceForm, IndexForm
 from gug.serializers import PeriodSerializer, StatsSerializer, StatsSerializer3
+from gug.tasks import get_GA
 
 from django import forms
 from django.forms import formset_factory
@@ -543,13 +544,20 @@ class google_services(ListView):
 
 
 
-def get_titles(request, dspace_id):
-    print(int(dspace_id))
+def get_titles(request):
     try:
-        # management.call_command('get_title', dspace_id=int(dspace_id), verbosity=2, interactive=False)
         management.call_command('get_title', verbosity=2)
     except:
         print("Unexpected error:", sys.exc_info()[0])
         raise
 
-    return redirect('/dspace/?id_dspace=' + dspace_id + '&gsid=3')
+    return redirect('/')
+
+def get_ga(request):
+    try:
+        get_GA()
+    except:
+        print("Unexpected error:", sys.exc_info()[0])
+        raise
+
+    return redirect('/')
