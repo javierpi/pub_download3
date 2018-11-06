@@ -1,11 +1,11 @@
 from __future__ import unicode_literals
 from django.contrib import admin
-from .models import Period, Google_service, Publication, Stats, Dspace, Service_type
+from .models import Period, Google_service, Publication, Stats, Dspace, Service_type, Service_group
 from jet.filters import RelatedFieldAjaxListFilter
 
 
 class Google_service_Admin(admin.ModelAdmin):
-    list_display = ('name', 'client_secret_path', 'service', 'version', 'view_id', 'active')
+    list_display = ('name', 'client_secret_path', 'service', 'group', 'version', 'view_id', 'active')
 
 
 class Publication_Admin(admin.ModelAdmin):
@@ -32,3 +32,4 @@ admin.site.register(Publication, Publication_Admin)
 admin.site.register(Stats, Stats_Admin)
 admin.site.register(Dspace, Dspace_Admin)
 admin.site.register(Service_type)
+admin.site.register(Service_group)

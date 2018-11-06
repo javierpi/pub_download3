@@ -127,6 +127,52 @@
                         </div>
                     </div>
                 </div>
+            <!-- </div>
+            <div class="dashboard-column-wrapper"> -->
+                <div class="dashboard-column first">
+                    <div class="dashboard-item collapsible deletable draggable" data-module-id="1">
+                        <div class="dashboard-item-header">
+                            <span class="dashboard-item-header-drag icon-grid"></span>
+                            <span class="dashboard-item-header-buttons">
+
+                            </span>
+                            <span class="dashboard-item-header-title">
+                                    <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                                    <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                                    Google Services Minisitios
+                            </span>
+                            <div class="cf"></div>
+                        </div>
+                       <div class="dashboard-item-content">
+                            <ul>
+                                <li class="contrast">
+                                    <a href="{% url "gug:google_services" %}" title="Google Services Detail">Resume</a>
+                                </li>
+                                <li>
+                                    <span class="float-right">
+                                            Downloads
+                                    </span>
+                                    Services
+                                </li>
+                                {% for gs in table.google_services_minisitios %}
+                                  <li>
+                                    <span class="float-right">
+                                         {{ gs.cuantity }}
+                                    </span>
+                                    <a href="{% url "gug:google_services_detail" gs.id %}">{{ gs.name }}</a>
+                                  </li>
+                                {% endfor%}
+                                <li >
+                                    <span class="float-right">
+
+                                         {{ table.google_services_sums_minisitios.cuantity }}
+                                    </span>
+                                    <a href="/stat/?pagesize=10&amp;page=1{% for t in table.google_services %}&amp;gsid={{t.id}}{% endfor%}{% for t in table.periods %}&amp;period={{t.id}}{% endfor%}">Total</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="dashboard-column-wrapper">
                 <div class="dashboard-column ">

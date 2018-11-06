@@ -59,6 +59,16 @@ class Service_type(models.Model):
         return str(self.service)
 
 
+class Service_group(models.Model):
+    name = models.CharField(max_length=200)
+    class Meta:
+        verbose_name_plural = 'Service groups'
+        verbose_name = 'Service group'
+
+    def __str__(self):
+        return str(self.name)
+
+
 class Google_service(models.Model):
     name = models.CharField(max_length=200)
     scope = models.CharField(max_length=200)
@@ -66,6 +76,7 @@ class Google_service(models.Model):
     secret_json = models.TextField(default='{}', blank=True, null=True, validators=[validate_json])
     client_secret_path = models.CharField(max_length=100, default='')
     service = models.ForeignKey(Service_type, on_delete=models.CASCADE, null=True)
+    group = models.ForeignKey(Service_group, default=1, on_delete=models.CASCADE, null=True)
     version = models.CharField(max_length=2, default='')
     view_id = models.CharField(max_length=30, default='', help_text="In Google Analytics is View Id, in Google Webmaster is protocol+domain")
     active = models.BooleanField('active', default=True)

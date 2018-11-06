@@ -10629,3 +10629,32 @@ Traceback (most recent call last):
   File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/resolvers.py", line 636, in _reverse_with_prefix
     raise NoReverseMatch(msg)
 django.urls.exceptions.NoReverseMatch: Reverse for 'get_GA' not found. 'get_GA' is not a valid view function or pattern name.
+2018-11-05 20:07:33,315 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 558, in get_ga
+    get_GA()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/tasks.py", line 58, in get_GA
+    analytics = build(service, version, discoveryServiceUrl=discovery, cache_discovery=False)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/googleapiclient/_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/googleapiclient/discovery.py", line 225, in build
+    credentials=credentials)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/googleapiclient/_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/googleapiclient/discovery.py", line 358, in build_from_document
+    credentials = _auth.default_credentials()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/googleapiclient/_auth.py", line 42, in default_credentials
+    credentials, _ = google.auth.default()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/google/auth/_default.py", line 306, in default
+    raise exceptions.DefaultCredentialsError(_HELP_MESSAGE)
+google.auth.exceptions.DefaultCredentialsError: Could not automatically determine credentials. Please set GOOGLE_APPLICATION_CREDENTIALS or explicitly create credentials and re-run the application. For more information, please see https://developers.google.com/accounts/docs/application-default-credentials.

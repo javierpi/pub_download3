@@ -10,7 +10,7 @@ import json
 #### 
 ####
 
-from gug.models import Google_service, Period, Publication, Stats, Dspace
+from gug.models import Google_service, Period, Publication, Stats, Dspace, Service_group
 from gug.forms import StatForm, DspaceForm, IndexForm
 from gug.serializers import PeriodSerializer, StatsSerializer, StatsSerializer3
 from gug.tasks import get_GA
@@ -289,7 +289,7 @@ def dspace_detail2(request):
         return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail, 'resume': resume, 'period': period_objs})
 
 
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 def index(request):
     context_object_name = 'periods'
 
@@ -297,8 +297,10 @@ def index(request):
       
     context = {}
     context['periods'] = Period.objects.annotate(cuantity=Sum('stats__cuantity')).order_by('-start_date')
-    context['google_services'] = Google_service.objects.annotate(cuantity=Sum('stats__cuantity'))
-    context['google_services_sums'] = Google_service.objects.aggregate(cuantity=Sum('stats__cuantity'))
+    context['google_services'] = Google_service.objects.filter(group=1).annotate(cuantity=Sum('stats__cuantity'))
+    context['google_services_minisitios'] = Google_service.objects.filter(group=2).annotate(cuantity=Sum('stats__cuantity'))
+    context['google_services_sums'] = Google_service.objects.filter(group=1).aggregate(cuantity=Sum('stats__cuantity'))
+    context['google_services_sums_minisitios'] = Google_service.objects.filter(group=2).aggregate(cuantity=Sum('stats__cuantity'))
     q_dspace = " select gug_dspace.id_dspace, gug_dspace.title , sum(cuantity) as sumtotal " \
             " from gug_stats as gs_master " \
             " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \
@@ -525,7 +527,7 @@ class google_services_detail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(google_services_detail, self).get_context_data(**kwargs)
         context['periods'] = Period.objects.all()
-        context['statistics'] = Stats.objects.values('period', 'period__start_date').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by('period__start_date')
+        context['statistics'] = Stats.objects.values('period', 'period__start_date').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by('-period__start_date')
         context['resume'] = Stats.objects.values('google_service').filter(google_service=self.get_object()).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
         return context
 

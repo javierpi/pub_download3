@@ -114,10 +114,10 @@ WSGI_APPLICATION = 'publications.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pub_download',
+        'NAME': 'pub_download2',
         'USER': 'pub_user',
         'PASSWORD': 'pub_pass',
-        'HOST': 'localhost',
+        'HOST': '10.0.0.2',
         'PORT': '',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
