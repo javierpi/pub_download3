@@ -450,14 +450,22 @@ def stat_index_view(request):
 def periods_detail(request, pk):
     context_object_name = 'periods'
     model = Period
+    grupos = Service_group.objects.all()
 
-     
     context = {}
-    context['period'] = Period.objects.get(id=pk)
-    context['statistics'] = Stats.objects.values('google_service').filter(period_id=pk).annotate(Count('cuantity'), Sum('cuantity')).order_by()
-    context['resume'] = Stats.objects.values('google_service').filter(period_id=pk).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+    google_services_groups = []
 
+    context['period'] = Period.objects.get(id=pk)
     context['google_service'] = Google_service.objects.all()
+    context['statistics'] = Stats.objects.values('google_service').filter(period_id=pk).annotate(Count('cuantity'), Sum('cuantity')).order_by()
+    for grupo in grupos:
+        group_stat = Stats.objects.values('google_service').filter(google_service_id__group=grupo.id).filter(period_id=pk).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+        google_services_groups.append({'name': grupo.name, 'values': Google_service.objects.values('id', 'name', 'view_id').filter(group=grupo.id), 'resume': group_stat})
+
+        
+    context['group_statistics'] = google_services_groups
+    context['resume'] = Stats.objects.values('google_service').filter(period_id=pk).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+    
     q_dspace = " select gug_dspace.id_dspace, gug_dspace.title , sum(cuantity) as sumtotal " \
             " from gug_stats as gs_master " \
             " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \

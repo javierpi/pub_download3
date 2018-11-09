@@ -71,19 +71,27 @@
   <div class="dashboard-container columns_2 cf">
     <div class="dashboard-column-wrapper">
       <div class="dashboard-column ">
+        {% for group in table.group_statistics %}
         <div class="dashboard-item collapsible deletable draggable" data-module-id="4">
-          <div class="dashboard-item-header">
-              <span class="dashboard-item-header-drag icon-grid"></span>
-              <span class="dashboard-item-header-buttons">
-              </span>
-              <span class="dashboard-item-header-title">
-                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
-                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                      Services
-              </span>
-              <div class="cf"></div>
-          </div>
+          
+            <div class="dashboard-item-header">
+                <span class="dashboard-item-header-drag icon-grid"></span>
+                <span class="dashboard-item-header-buttons">
+                </span>
+                <span class="dashboard-item-header-title">
+                        <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                        <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                       
+                        
+                          {{ group.name }}
+
+                </span>
+                <div class="cf"></div>
+            </div>
+          
+          
           <div class="dashboard-item-content">
+            
             <div class="dashboard-container columns_1 cf">
               <div class="dashboard-column ui-droppable ">
                 <table id="result_list">
@@ -109,9 +117,11 @@
                       </thead>
 
                       <tbody>
-                        {% for gs in table.google_service %}
+                         <!--for gs in table.google_service -->
+                          {% for gs in group.values %}
+
                           <tr>
-                            <td><a href="{% url "gug:stat_index_paginated" %}?period={{table.period.id}}&amp;gsid={{gs.id}}&amp;page=1&amp;pagesize=10">{{ gs }}</a></td>
+                            <td><a href="{% url "gug:stat_index_paginated" %}?period={{table.period.id}}&amp;gsid={{gs.id}}&amp;page=1&amp;pagesize=10">{{ gs.name }}</a></td>
 
                             <td>{{ gs.view_id }}</td>
 
@@ -134,17 +144,21 @@
                     <tfooter>
                       <tr>
                           <th colspan="1">Total</th>
-                          <th>{{ table.statistics|length }}</th>
-                          <th class="text-right">{{ table.resume.totalrecords }}</th>
-                          <th class="text-right">{{ table.resume.totalcuantity }}</th>
+                          <th>{{ group.values|length }}</th>
+                          <th class="text-right">{{ group.resume.totalrecords }}</th>
+                          <th class="text-right">{{ group.resume.totalcuantity }}</th>
 
                       </tr>
                     </tfooter>
                    </table>
                    </div>
               </div>
+            
           </div>
+
         </div>
+        {% endfor%}
+          
       </div>
     </div>
     <div class="dashboard-column-wrapper">
@@ -208,3 +222,65 @@
 
 
 {% endblock %}
+<div class="dashboard-item-content">
+            <div class="dashboard-container columns_1 cf">
+              <div class="dashboard-column ui-droppable ">
+                <table id="result_list">
+                  <thead>
+                    <tr>
+                      <th scope="col"  class="column-id_dspace">
+                        <div class="text">Service</div>
+                        <div class="clear"></div>
+                      </th>
+                        <th scope="col"  class="column-title">
+                           <div class="text">View</div>
+                           <div class="clear"></div>
+                        </th>
+                        <th scope="col"  class="column-title">
+                           <div class="text">Records</div>
+                           <div class="clear"></div>
+                        </th>
+                        <th scope="col"  class="column-title">
+                           <div class="text">Downloads</div>
+                           <div class="clear"></div>
+                        </th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {% for gs in table.google_service %}
+                          <tr>
+                            <td><a href="{% url "gug:stat_index_paginated" %}?period={{table.period.id}}&amp;gsid={{gs.id}}&amp;page=1&amp;pagesize=10">{{ gs }}</a></td>
+
+                            <td>{{ gs.view_id }}</td>
+
+
+                              {% for statistic in table.statistics %}
+                                {% if gs.id == statistic.google_service %}
+                                <td class="text-right">
+                                  {{ statistic.cuantity__count }}
+                                </td>
+                                <td class="text-right">
+                                  {{ statistic.cuantity__sum }}
+                                </td>
+                                {% endif %}
+                              {% endfor%}
+
+                          </tr>
+                        {% endfor%}
+
+                    </tbody>
+                    <tfooter>
+                      <tr>
+                          <th colspan="1">Total</th>
+                          <th>{{ table.statistics|length }}</th>
+                          <th class="text-right">{{ table.resume.totalrecords }}</th>
+                          <th class="text-right">{{ table.resume.totalcuantity }}</th>
+
+                      </tr>
+                    </tfooter>
+                   </table>
+                   </div>
+              </div>
+          </div>
+        </div>

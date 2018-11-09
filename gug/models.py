@@ -78,7 +78,7 @@ class Google_service(models.Model):
     service = models.ForeignKey(Service_type, on_delete=models.CASCADE, null=True)
     group = models.ForeignKey(Service_group, default=1, on_delete=models.CASCADE, null=True)
     version = models.CharField(max_length=2, default='')
-    view_id = models.CharField(max_length=30, default='', help_text="In Google Analytics is View Id, in Google Webmaster is protocol+domain")
+    view_id = models.CharField(max_length=60, default='', help_text="In Google Analytics is View Id, in Google Webmaster is protocol+domain")
     active = models.BooleanField('active', default=True)
 #    hidden = models.BooleanField('Hidden in application', default=False)
     report = models.TextField(default='{}', validators=[validate_json], help_text="Transformed variables are view_id, start_date and end_date.")
