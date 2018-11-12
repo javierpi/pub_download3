@@ -10919,3 +10919,196 @@ Traceback (most recent call last):
   File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1706, in add_fields
     "Choices are: %s" % (name, ", ".join(names)))
 django.core.exceptions.FieldError: Cannot resolve keyword 'view' into field. Choices are: active, client_secret_path, discovery, group, group_id, id, name, report, scope, secret_json, service, service_id, stats, version, view_id
+2018-11-12 13:40:10,985 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 305, in index
+    group_stat = Stats.objects.values('google_service').filter(google_service_id__group=grupo.id).filter(period_id=pk).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+NameError: name 'pk' is not defined
+2018-11-12 13:57:06,203 ERROR django.request Internal Server Error: /stat/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')  ) AS 'sumags1' , sum(cuantity) as sumtotal from gug_stats as gs_master where ' at line 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 395, in stat_index_view
+    cursor.execute(query_resume)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')  ) AS 'sumags1' , sum(cuantity) as sumtotal from gug_stats as gs_master where ' at line 1")
+2018-11-12 15:24:29,841 ERROR django.request Internal Server Error: /periods/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 815, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 454, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 452, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 568, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 668, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '"Y-F"' from 'period.start_date|date"Y-F"'
+2018-11-12 15:25:04,383 ERROR django.request Internal Server Error: /periods/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 815, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 454, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 452, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 568, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 668, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '"Y-F"' from 'period.start_date|date"Y-F"'

@@ -211,110 +211,162 @@
 {% block content %}
 <!--style="heigth: auto; overflow-x: auto;"-->
 <div id="content" class="flex">
-    <div class="dashboard-container columns_1 cf">
-      <div class="dashboard-column-wrapper">
-        
-
-        <div class="dashboard-container columns_2 cf">
-          <div class="dashboard-column-wrapper">
-            <div class="dashboard-column first">
-              <div class="dashboard-item collapsible collapsed deletable draggable" data-module-id="1">
-                  <div class="dashboard-item-header">
-                      <span class="dashboard-item-header-drag icon-grid"></span>
-                      <span class="dashboard-item-header-buttons">
-
-
-                      </span>
-                      <span class="dashboard-item-header-title">
-                              <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
-                              <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                              Form
-                      </span>
-                      <div class="cf"></div>
-                  </div>
-                  <div class="dashboard-item-content">
-                    <ul>
-                      <li>
-                              <form action="" method="get" >
-                                   {% csrf_token %}
-                                  
-                                   {{ form.as_table }}
-                                  
-                                   {% block submit_buttons_bottom %}
-                                        <div class="submit-row">
-                                            <input type="submit" value="{% trans 'Go' %}" class="default" name="_save" />
-                                        </div>
-                                    {% endblock %}
-                                    {% block admin_change_form_document_ready %}{% endblock %}
-
-                              </form>
-                            </li>
-                          </ul>
-       
-                  </div>
-              </div>
-            </div>
+  <div class="dashboard-container columns_1 cf">
+    <div class="dashboard-item collapsible deletable draggable" data-module-id="2">
+      <div class="dashboard-item-header">
+        <span class="dashboard-item-header-drag icon-grid"></span>
+        <span class="dashboard-item-header-buttons"></span>
+        <span class="dashboard-item-header-title">
+          <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+          <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>   Content
+        </span>
+        <div class="cf"></div>
+      </div>
+      <div class="dashboard-item-content contrast" style="height: auto;">
+        <div class="padding center">
+          <ul class="inline bordered">
+            <li>
+              <div class="big">{{ dspace_record.id_dspace }}</div><div class="dim">ID DSpace</div>
+            </li>
+            <li>
+              <div class="big">{{ dspace_record.title }}</div><div class="dim">Title</div>
+            </li>
+            {% if user.is_authenticated  %}
+              <li>
+                <div class="big">{{ dspace_record.post_title1 }}</div><div class="dim">Post Title 1</div>
+              </li>
+              <li>
+                <div class="big">{{ dspace_record.post_title2 }}</div><div class="dim">Post Title 2</div>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-column-wrapper">
+      <div class="dashboard-column first">
+        <div class="dashboard-item collapsible collapsed deletable draggable" data-module-id="1">
+          <div class="dashboard-item-header">
+            <span class="dashboard-item-header-drag icon-grid"></span>
+            <span class="dashboard-item-header-buttons"></span>
+            <span class="dashboard-item-header-title">
+              <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+              <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                        Form
+            </span>
+            <div class="cf"></div>
           </div>
-          <div class="dashboard-column-wrapper">
-            <div class="dashboard-column ">
-              <div class="dashboard-item collapsible deletable draggable" data-module-id="2">
-                <div class="dashboard-item-header">
-                    <span class="dashboard-item-header-drag icon-grid"></span>
-                    <span class="dashboard-item-header-buttons">
-
-                    </span>
-                    <span class="dashboard-item-header-title">
-                            <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
-                            <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                            Content
-                    </span>
-                    <div class="cf"></div>
-                </div>
-                <div class="dashboard-item-content contrast" style="height: auto;">
-                  <div class="padding center">
-                    <ul class="inline bordered">
-                      <li>
-                        <div class="big">{{ dspace_record.id_dspace }}</div><div class="dim">ID DSpace</div>
-                      </li>
-                      <li>
-                        <div class="big">{{ dspace_record.title }}</div><div class="dim">Title</div>
-                      </li>
-                      {% if user.is_authenticated  %}
-                        <li>
-                          Post Title 1: {{ dspace_record.post_title1 }}
-                        </li>
-                        <li>
-                          Post Title 2: {{ dspace_record.post_title2 }}
-                        </li>
-                      {% endif %}
-                    </ul>
-                    </div>
+          <div class="dashboard-item-content">
+            <ul>
+              <li>
+                <form action="" method="get" >
+                 {% csrf_token %}
+                 {{ form.as_table }}
+                 {% block submit_buttons_bottom %}
+                  <div class="submit-row">
+                      <input type="submit" value="{% trans 'Go' %}" class="default" name="_save" />
+                  </div>
+                  {% endblock %}
+                  {% block admin_change_form_document_ready %}{% endblock %}
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <!-- </div>
+    </div>
+  
+    <div class="dashboard-column-wrapper">
+      <div class="dashboard-column "> -->
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="4">
+          <div class="dashboard-item-header">
+            <span class="dashboard-item-header-drag icon-grid"></span>
+            <span class="dashboard-item-header-buttons"></span>
+            <span class="dashboard-item-header-title">
+              <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+              <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+              Data Results
+            </span>
+            <div class="cf"></div>
+          </div>
+          <div class="dashboard-item-content">
+            <div class="dashboard-container columns_1 cf">
+              <div class="dashboard-column ui-droppable ui-sortable">
+                {% regroup stats by publication__tfile as tfile_list %}
+                  <table id="result_list">
+                    <thead>
+                      <tr>
+                      {% for fieldname in table.headers %}
+                        <th scope="col" class="column-title">
+                        {% if forloop.counter0 >= 1 and not forloop.last %}
+                           <div class="text"><span class="float-right">{{ fieldname|join:"<br/>" }}</span></div>
+                        {% else %}
+                          <div class="text"><span class="float-right">{{ fieldname }}</span></div>
+                        {% endif %}
+                           <div class="clear"></div>
+                        </th>
+                      {% endfor %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for row in table.rows %}
+                        <tr class="{% cycle 'row1' 'row2' %}">
+                          {% for val in row %}
+                            {% if forloop.counter0 == 0 %}
+                              <th>
+                                {{val|date:"Y - F" }}
+                              </th>
+                            {% else %}
+                              <th class="text-right"><span class="float-right">
+                                {{val|default_if_none:"0"}}
+                              </span></th>
+                            {% endif %}
+                          {% endfor %}
+                        </tr>
+                      {% endfor%}
+                      {% for st in stats %}
+                        <tr class="{% cycle 'row1' 'row2' %}">
+                          <th class="field-title">{{ st.period__start_date}}</th>
+                          {% if detail == 'on' %}
+                            <td>{{ st.publication__tfile }}</td>
+                          {% endif %}
+                          <td><span class="float-right">{{ st.cuantity }}</span></td>
+                        </tr>
+                      {% endfor%}
+                    </tbody>
+                    <tfooter>
+                      {% for row in table.resume %}
+                        <tr class="row1">
+                          {% for val in row %}
+                            <th class="text-right"><span class="float-right">
+                              {{val|default_if_none:"0"}}
+                            </span></th>
+                          {% endfor %}
+                        </tr>
+                      {% endfor%}
+                    </tfooter>
+                  </table>
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
-
-
-  <div class="dashboard-container columns_2 cf">
     <div class="dashboard-column-wrapper">
       <div class="dashboard-column first">
         <div class="dashboard-item collapsible deletable draggable" data-module-id="31">
           <div class="dashboard-item-header">
-              <span class="dashboard-item-header-drag icon-grid"></span>
-              <span class="dashboard-item-header-buttons">
-              </span>
-              <span class="dashboard-item-header-title">
-                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
-                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                      Graphs 1
-              </span>
-              <div class="cf"></div>
+            <span class="dashboard-item-header-drag icon-grid"></span>
+            <span class="dashboard-item-header-buttons">
+            </span>
+            <span class="dashboard-item-header-title">
+                    <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                    <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                    Graphs 1
+            </span>
+            <div class="cf"></div>
           </div>
           <div class="dashboard-item-content contrast" style="heigth: auto; overflow-x: auto;">
-
             <div class="padding center">
                 <div id="dashboard_div1">
                   <div id="chart_div1" style="border: 1px solid #ccc"></div>
@@ -325,187 +377,13 @@
         </div>
       </div>
     </div>
-    <div class="dashboard-column-wrapper">
-      <div class="dashboard-column ">
-        <div class="dashboard-item collapsible deletable draggable" data-module-id="4">
-          <div class="dashboard-item-header">
-              <span class="dashboard-item-header-drag icon-grid"></span>
-              <span class="dashboard-item-header-buttons">
-              </span>
-              <span class="dashboard-item-header-title">
-                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
-                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                      Data Results
-              </span>
-              <div class="cf"></div>
-          </div>
-          <div class="dashboard-item-content">
-            <div class="dashboard-container columns_1 cf">
-                <div class="dashboard-column ui-droppable ui-sortable">
-                {% regroup stats by publication__tfile as tfile_list %}
-                  <table id="result_list">
-                    <thead>
-                      <tr>
-                      {% for fieldname in table.headers %}
-                        <th scope="col" class="column-title">
-                        {% if forloop.counter0 >= 1 and not forloop.last %}
-                           <div class="text">{{ fieldname|join:"<br/>" }}</div>
-                        {% else %}
-                          <div class="text">{{ fieldname }}</div>
-                        {% endif %}
-                           <div class="clear"></div>
-                        </th>
-                      {% endfor %}
-                      </tr>
-
-                      
-                    </thead>
-                    <tbody>
-                      {% for row in table.rows %}
-                      <tr class="{% cycle 'row1' 'row2' %}">
-                        {% for val in row %}
-                          {% if forloop.counter0 == 0 %}
-                            <th>
-                              {{val|urlize}}
-                            </th>
-                          {% else %}
-                            <th class="text-right">
-                              {{val|default_if_none:"0"}}
-                            </td>
-                          {% endif %}
-                        {% endfor %}
-                      </tr>
-                    {% endfor%}
-
-                      {% for st in stats %}
-                        <tr class="{% cycle 'row1' 'row2' %}">
-                          <th class="field-title">{{ st.period__start_date}}</th>
-
-                          {% if detail == 'on' %}
-                            <td>{{ st.publication__tfile }}</td>
-                          {% endif %}
-                          <td>{{ st.cuantity }}</td>
-
-                        </tr>
-                      {% endfor%}
-                    </tbody>
-                    <tfooter>
-                      {% for row in table.resume %}
-                      <tr class="row1">
-                        {% for val in row %}
-                          <th class="text-right">
-                            {{val|default_if_none:""}}
-                          </th>
-                        {% endfor %}
-                      </tr>
-                    {% endfor%}
-
-                      
-                    </tfooter>
-                  </table>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="dashboard-column">
-          <div class="dashboard-item-content deletable draggable padding center"  data-module-id="100"></div>
-        </div>
   </div>
-
+</div>
 
 
 {% endblock %}
 
 
-
-                         regroup stats by publication__tfile as tfile_list %}
-                         for filename in tfile_list %}
-                          <tr class="{% cycle 'row1' 'row2' %}">
-                            <th class="field-title" colspan="3">{{ filename.grouper }}</th>
-                          </tr>
-                           for periods in filename.list %}
-                            <tr class="{% cycle 'row1' 'row2' %}">
-                              <td></td>
-                              <td>{{periods.period__start_date}}</td>
-                              <td>{{periods.cuantity}}</td>
-                            </tr>
-                           endfor%}
-                          <tr class="row1">
-                            <th colspan="2">&nbsp;&nbsp;&nbsp;subTotal {{ filename.list|length }} periods</th>
-                            <th class="text-right">{{ periods.cuantity__sum }}</th>
-                          </tr>
-                         endfor%}
-                       else %}
-
-<table id="result_list">
-  <!--tr class=" cycle 'row1' 'row2' }"-->
-  <thead>
-    <tr>
-      {% for fieldname in stats %}
-        <th scope="col" class="column-title">
-        {% if forloop.counter0 == 0 and not forloop.last %}
-           <div class="text">{{ fieldname|join:"<br/>" }}</div>
-        {% else %}
-          <div class="text">{{ fieldname }}</div>
-        {% endif %}
-           <div class="clear"></div>
-        </th>
-      {% endfor %}
-    </tr>
-  </thead>
-  <tbody>
-    {% for row in stats %}
-      <tr>
-        {% for val in row %}
-          {% if forloop.counter0 == 0 %}
-            <th>
-              <a href="{% url 'gug:dspace_detail' %}?id_dspace={{val|urlize}}{% for t in gs %}&amp;gsid={{t}}{% endfor%}">{{val|urlize}}</a>
-            </th>
-          {% else %}
-            <td class="text-right">
-              {{val|default_if_none:"0"}}
-            </td>
-          {% endif %}
-        {% endfor %}
-      </tr>
-    {% endfor%}
-  </tbody>
-  <tfooter>
-     {% for row in table.resume %}
-      <tr>
-        {% for val in row %}
-          <th>
-            {{val|default_if_none:""}}
-          </th>
-        {% endfor %}
-      </tr>
-    {% endfor%}
-  </tfooter>
-</table>
-
-<!--div class="dashboard-item collapsible deletable draggable" data-module-id="32">
-          <div class="dashboard-item-header">
-              <span class="dashboard-item-header-drag icon-grid"></span>
-              <span class="dashboard-item-header-buttons">
-              </span>
-              <span class="dashboard-item-header-title">
-                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
-                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                      Graphs 2
-              </span>
-              <div class="cf"></div>
-          </div>
-          <div class="dashboard-item-content contrast" style="heigth: auto; overflow-x: auto;">
-            <div class="padding center">
-                <div id="dashboard_div2">
-                  <div id="chart_div2" style="border: 1px solid #ccc"></div>
-                  <div id="filter_div2"></div>
-                </div>
-            </div>
-          </div>
-        </div-->
 
 
         <div class="dashboard-item collapsible deletable draggable" data-module-id="33">

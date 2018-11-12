@@ -297,24 +297,31 @@ def index(request):
       
     context = {}
     context['periods'] = Period.objects.annotate(cuantity=Sum('stats__cuantity')).order_by('-start_date')
-    context['google_services'] = Google_service.objects.filter(group=1).annotate(cuantity=Sum('stats__cuantity'))
-    context['google_services_minisitios'] = Google_service.objects.filter(group=2).annotate(cuantity=Sum('stats__cuantity'))
-    context['google_services_sums'] = Google_service.objects.filter(group=1).aggregate(cuantity=Sum('stats__cuantity'))
-    context['google_services_sums_minisitios'] = Google_service.objects.filter(group=2).aggregate(cuantity=Sum('stats__cuantity'))
+    context['statistics'] = Stats.objects.values('google_service').annotate(Count('cuantity'), Sum('cuantity')).order_by()
+    ###########
+    grupos = Service_group.objects.all()
+    google_services_groups = []
+    for grupo in grupos:
+        group_stat = Stats.objects.values('google_service').filter(google_service_id__group=grupo.id).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+        google_services_groups.append({'name': grupo.name, 'values': Google_service.objects.values('id', 'name', 'view_id').filter(group=grupo.id), 'resume': group_stat})
+
+    context['group_statistics'] = google_services_groups
+    context['resume'] = Stats.objects.values('google_service').aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+    ############
+    #context['google_services'] = Google_service.objects.filter(group=1).annotate(cuantity=Sum('stats__cuantity'))
+    #context['google_services_minisitios'] = Google_service.objects.filter(group=2).annotate(cuantity=Sum('stats__cuantity'))
+    #context['google_services_sums'] = Google_service.objects.filter(group=1).aggregate(cuantity=Sum('stats__cuantity'))
+    #context['google_services_sums_minisitios'] = Google_service.objects.filter(group=2).aggregate(cuantity=Sum('stats__cuantity'))
     q_dspace = " select gug_dspace.id_dspace, gug_dspace.title , sum(cuantity) as sumtotal " \
             " from gug_stats as gs_master " \
             " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \
             " group by id_dspace_id order by sumtotal desc limit 0,10;"
 
-
     cursor = connection.cursor()
     cursor.execute(q_dspace)
     context['dspaces'] = cursor.fetchall()
 
-
-
     return render(request, 'gug/index.html', {'form': form,  'table': context })
-
    
 
 def iter_csv(rows, pseudo_buffer):
@@ -462,7 +469,6 @@ def periods_detail(request, pk):
         group_stat = Stats.objects.values('google_service').filter(google_service_id__group=grupo.id).filter(period_id=pk).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
         google_services_groups.append({'name': grupo.name, 'values': Google_service.objects.values('id', 'name', 'view_id').filter(group=grupo.id), 'resume': group_stat})
 
-        
     context['group_statistics'] = google_services_groups
     context['resume'] = Stats.objects.values('google_service').filter(period_id=pk).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
     

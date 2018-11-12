@@ -40,47 +40,38 @@
     <div class="dashboard-column-wrapper">
       <div class="dashboard-column first">
         <div class="dashboard-item collapsible deletable draggable" data-module-id="1">
-            <div class="dashboard-item-header">
-                <span class="dashboard-item-header-drag icon-grid"></span>
-                <span class="dashboard-item-header-buttons">
-
-                </span>
-                <span class="dashboard-item-header-title">
-                        <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
-                        <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                        Form
-                </span>
-                <div class="cf"></div>
-            </div>
-           <div class="dashboard-item-content">
-                <ul>
-                    <li>
-                        <form action="" method="get" >
-                             {% csrf_token %}
-                             {{ form.as_table }}
-                             {% block submit_buttons_bottom %}
-                                  <div class="submit-row">
-                                      <input type="submit" value="{% trans 'Go' %}" class="default" name="_save" />
-                                  </div>
-                              {% endblock %}
-
-                        </form>
-                    </li>
-                </ul>
-            </div>
+          <div class="dashboard-item-header">
+            <span class="dashboard-item-header-drag icon-grid"></span>
+            <span class="dashboard-item-header-buttons"></span>
+            <span class="dashboard-item-header-title">
+              <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+              <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>Form
+            </span>
+            <div class="cf"></div>
+          </div>
+          <div class="dashboard-item-content">
+            <ul>
+              <li>
+                <form action="" method="get" >
+                  {% csrf_token %}
+                  {{ form.as_table }}
+                  {% block submit_buttons_bottom %}
+                    <div class="submit-row">
+                        <input type="submit" value="{% trans 'Go' %}" class="default" name="_save" />
+                    </div>
+                  {% endblock %}
+                </form>
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="dashboard-item collapsible deletable draggable" data-module-id="2">
           <div class="dashboard-item-header">
               <span class="dashboard-item-header-drag icon-grid"></span>
-              <span class="dashboard-item-header-buttons">
-
-              </span>
+              <span class="dashboard-item-header-buttons"></span>
               <span class="dashboard-item-header-title">
-                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
-                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-
-                Results
-              </span>
+                <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>Results</span>
               <div class="cf"></div>
           </div>
           <div class="dashboard-item-content">

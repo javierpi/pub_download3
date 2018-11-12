@@ -50,8 +50,9 @@
           <table class="table table-striped">
 		      <thead>
 		        <tr>
-		          <th>Start date</th>
-		          <th>End date</th>
+              <th>Period</th>
+		          <th>Start</th>
+		          <th>End</th>
 		          <th>Records</th>
               <th>Downloads</th>
 		        </tr>
@@ -59,7 +60,8 @@
       			<tbody>
 			        {% for period in periods %}
 			          <tr>
-			            <td><a href="{% url "gug:periods_detail" period.id %}">{{ period.start_date }}</a></td>
+                  <td><a href="{% url 'gug:periods_detail' period.id %}">{{ period.start_date|date:"Y-F" }}</a></td>
+			            <td>{{ period.start_date }}</td>
 			            <td>{{ period.end_date }}</td>
 			            <td>{{ period.stats__count }}</td>
                   <td>{{ period.cuantity }}</td>
