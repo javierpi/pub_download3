@@ -11112,3 +11112,719 @@ Traceback (most recent call last):
   File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 668, in __init__
     "from '%s'" % (token[upto:], token))
 django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '"Y-F"' from 'period.start_date|date"Y-F"'
+2018-11-14 19:18:13,694 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 186, in dspace_detail
+    table.update({'group_statistics', group_statistics})
+TypeError: unhashable type: 'list'
+2018-11-14 21:40:21,357 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'principal  and id_dspace = 40155  and period_id in (18,17,16,15,14,13,12,11,10,9' at line 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 194, in dspace_detail
+    cursor.execute(query_resume)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'principal  and id_dspace = 40155  and period_id in (18,17,16,15,14,13,12,11,10,9' at line 1")
+2018-11-15 12:01:38,906 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 130, in dspace_detail
+    fields.append(title.group.name)
+AttributeError: 'str' object has no attribute 'group'
+2018-11-15 12:02:31,818 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 130, in dspace_detail
+    fields.append(title.group.name)
+AttributeError: 'str' object has no attribute 'group'
+2018-11-15 12:03:24,811 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 130, in dspace_detail
+    fields.append(title.group.name)
+AttributeError: 'dict' object has no attribute 'group'
+2018-11-15 12:03:48,161 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 130, in dspace_detail
+    fields.append(title.group)
+AttributeError: 'dict' object has no attribute 'group'
+2018-11-15 12:04:42,581 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1683, in add_fields
+    join_info = self.setup_joins(name.split(LOOKUP_SEP), opts, alias, allow_many=allow_m2m)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1448, in setup_joins
+    names, opts, allow_many, fail_on_missing=True)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1379, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'group.name' into field. Choices are: active, client_secret_path, discovery, group, group_id, id, name, report, scope, secret_json, service, service_id, stats, version, view_id
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 127, in dspace_detail
+    gstitles = Google_service.objects.values('group', 'group.name').filter(pk__in=gsid).annotate(dcount=Count('group'))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 742, in values
+    clone = self._values(*fields, **expressions)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 737, in _values
+    clone.query.set_values(fields)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1935, in set_values
+    self.add_fields(field_names, True)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1706, in add_fields
+    "Choices are: %s" % (name, ", ".join(names)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'group.name' into field. Choices are: active, client_secret_path, discovery, group, group_id, id, name, report, scope, secret_json, service, service_id, stats, version, view_id
+2018-11-15 12:06:00,657 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 130, in dspace_detail
+    fields.append(title.group)
+AttributeError: 'dict' object has no attribute 'group'
+2018-11-15 12:06:20,014 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 130, in dspace_detail
+    fields.append(title.group__name)
+AttributeError: 'dict' object has no attribute 'group__name'
+2018-11-15 12:06:30,648 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 130, in dspace_detail
+    fields.append(title.group.name)
+AttributeError: 'dict' object has no attribute 'group'
+2018-11-15 15:14:34,102 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' sum(cuantity) as sumtotal from gug_stats as gs_master  inner join gug_dspace on' at line 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 167, in dspace_detail
+    cursor.execute(group_sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' sum(cuantity) as sumtotal from gug_stats as gs_master  inner join gug_dspace on' at line 1")
+2018-11-15 18:35:11,407 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1242, 'Subquery returns more than 1 row')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 167, in dspace_detail
+    cursor.execute(group_sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1242, 'Subquery returns more than 1 row')
+2018-11-15 18:59:52,111 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 165, in dspace_detail
+    " ) AS '" + sumvar + "' ,"
+TypeError: sequence item 0: expected str instance, int found
+2018-11-15 19:10:28,594 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 152, in dspace_detail
+    gsid2 = list(Google_service.objects.filter(group_id=groupn, pk__in=gsid).values_list('id', flat=True)).distinct()
+AttributeError: 'list' object has no attribute 'distinct'
+2018-11-15 19:11:51,504 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 169, in dspace_detail
+    " ) AS '" + sumvar + "' ,"
+TypeError: sequence item 0: expected str instance, int found
+2018-11-15 19:15:13,591 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 169, in dspace_detail
+    " ) AS '" + sumvar + "' ,"
+TypeError: sequence item 0: expected str instance, int found
+2018-11-15 19:18:08,516 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 154, in dspace_detail
+    print('arregla', ','.join(gsid2))
+TypeError: sequence item 0: expected str instance, int found
+2018-11-15 19:23:41,483 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 154, in dspace_detail
+    print(','.join(gsid2))
+TypeError: sequence item 0: expected str instance, int found
+2018-11-15 20:40:52,502 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1066, "Not unique table/alias: 'gug_dspace'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 177, in dspace_detail
+    cursor.execute(group_sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1066, "Not unique table/alias: 'gug_dspace'")
+2018-11-15 20:57:49,301 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 176, in dspace_detail
+    " and period_id in (" + ','.join(period) + ")  ) AS '" + sumvar + "' ,"
+UnboundLocalError: local variable 'gsn' referenced before assignment
+2018-11-15 21:01:01,394 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'gug_google_service.group_id' in 'where clause'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 198, in dspace_detail
+    cursor.execute(group_query_resume)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'gug_google_service.group_id' in 'where clause'")
+2018-11-15 21:03:06,575 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 140, in dspace_detail
+    " and id_dspace = " + id_dspace + " "
+UnboundLocalError: local variable 'groupids' referenced before assignment
+2018-11-15 21:03:41,321 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'gug_google_service.group_id' in 'where clause'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 202, in dspace_detail
+    cursor.execute(group_query_resume)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'gug_google_service.group_id' in 'where clause'")
+2018-11-15 21:44:31,322 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 83, in get
+    data_table = gviz_api.DataTable(fields_description)
+UnboundLocalError: local variable 'fields_description' referenced before assignment
+2018-11-15 21:45:24,085 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 83, in get
+    data_table = gviz_api.DataTable(fields_description)
+UnboundLocalError: local variable 'fields_description' referenced before assignment
+2018-11-15 21:46:22,342 ERROR django.request Internal Server Error: /get_data/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 83, in get
+    data_table = gviz_api.DataTable(fields_description)
+UnboundLocalError: local variable 'fields_description' referenced before assignment
+2018-11-16 13:28:39,832 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 196, in dspace_detail
+    query_grp_serv += "(select sum(cuantity)  " \
+UnboundLocalError: local variable 'query_grp_serv' referenced before assignment
+2018-11-16 13:44:39,135 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 213, in dspace_detail
+    google_services_groups.append({'name': grupo.name, 'values': group_list})
+NameError: name 'grupo' is not defined
+2018-11-16 13:48:55,511 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 211, in dspace_detail
+    print('group_name= ', gstitles[groupn])
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 282, in __getitem__
+    raise TypeError
+TypeError
+2018-11-16 13:52:37,535 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 211, in dspace_detail
+    group_name = Service_group.objects.get(groupn).values('name')
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 394, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1150, in build_filter
+    arg, value = filter_expr
+ValueError: need more than 1 value to unpack
+2018-11-16 13:53:28,710 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 211, in dspace_detail
+    group_name = Service_group.objects.get(pk=groupn).values('name')
+AttributeError: 'Service_group' object has no attribute 'values'
+2018-11-16 13:53:44,677 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 211, in dspace_detail
+    group_name = Service_group.objects.get(pk=groupn).value('name')
+AttributeError: 'Service_group' object has no attribute 'value'
+2018-11-16 14:37:07,568 ERROR django.request Internal Server Error: /dspace/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 292, in dspace_detail
+    return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table,  'period': period_objs, 'gs': gs, 'dspace_record': dspace_record, 'resume': resume})
+NameError: name 'resume' is not defined

@@ -86,45 +86,33 @@ def dspace_detail_tmp(request):
         return redirect("/dspace/?id_dspace=" +id_dspace +  gsid + period)
 
 
-@cache_page(60 * 15)
+# @cache_page(60 * 15)
 def dspace_detail(request):
     if request.method == "GET":
         form = DspaceForm(request.GET)
         
-        # gsid = request.GET.getlist('gsid', 1)
         gsid_avalable = list(Google_service.objects.values_list('id', flat=True))
         gs_list = []
         for x in gsid_avalable:
             gs_list.append(str(x))
         gsid = request.GET.getlist('gsid', gs_list)
+        gstitles = Google_service.objects.filter(pk__in=gsid)
+        gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
 
-        #period = request.GET.getlist('period', 1)
         period_avalable = list(Period.objects.values_list('id', flat=True))
         per_list = []
         for x in period_avalable:
             per_list.append(str(x))
         period = request.GET.getlist('period', per_list)
 
-
         id_dspace = request.GET.get('id_dspace', 1)
-        
-        # gs = Google_service.objects.filter(pk__in=gsid)
-        gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
-
-        # detail = request.GET.get('detail', 'off')
-        # if form.is_valid():
-        #     print('form valido')
-        # else:
-        #     print('form NO valido !!!! ')
-        #     form = StatForm(request.GET)
-        
-        gstitles = Google_service.objects.filter(pk__in=gsid)
 
         fields = ['Period']
         for title in gstitles:
             fields.append(title.name.split(' '))
         fields.append('Total Downloads')
         table = {'headers': fields}
+
         query_resume_inicial = "select  'Total' as tit1, "
         query_resume_rows = ""
         query_resume_final = ", sum(cuantity) as sumtotal " \
@@ -134,53 +122,189 @@ def dspace_detail(request):
                             " and id_dspace = " + id_dspace + " " 
         query_resume_final += " and period_id in (" + ','.join(period) + ") "
 
-        query_inicial = "select gug_period.start_date , "
-        query_rows = ""
-        query_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master " \
+        #### --    BY GROUP ----
+        ## group headers
+        gstitles = Google_service.objects.values('group', 'group__name').filter(pk__in=gsid).annotate(dcount=Count('group'))
+        fields2 = ['Period']
+        for title in gstitles:
+            fields2.append(title)
+        fields2.append('Total Downloads')
+        #
+        groupid_avalable = list(Google_service.objects.select_related('group').filter(pk__in=gsid).values_list('group_id', flat=True).distinct())
+        group_list = []
+        for x in groupid_avalable:
+            group_list.append(str(x))
+        groupids = group_list
+        ## group resumes
+        group_query_resume_inicial = "select  'Total' as tit1, "
+        group_query_resume_rows = ""
+        group_query_resume_final = ", sum(cuantity) as sumtotal " \
+                            " from gug_stats as gs_master " \
+                            " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id "\
+                            " inner join gug_google_service on gs_master.google_service_id = gug_google_service.id " \
+                            " where gug_google_service.group_id in (" + ','.join(groupids) + ") " \
+                            " and gs_master.google_service_id in (" + ','.join(gsid) + ") " \
+                            " and id_dspace = " + id_dspace + " " 
+        group_query_resume_final += " and period_id in (" + ','.join(period) + ") "
+        #
+
+        group_query_inicial = "select gug_period.start_date , "
+        group_query_rows = ""
+        group_query_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master " \
                     " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id "\
                     " inner join gug_period on gs_master.period_id = gug_period.id  " \
+                    " inner join gug_google_service on gs_master.google_service_id = gug_google_service.id " \
                     " where gs_master.google_service_id in (" + ','.join(gsid) + ") " \
                     " and period_id in (" + ','.join(period) + ") " \
                     " and id_dspace = " + id_dspace + " " \
                     " group by gs_master.period_id order by gug_period.start_date desc "
         num_cols = 0
-        for gsn in gsid:
+        google_services_groups = []
+        for groupn in groupids:
+            gsid2 = list(Google_service.objects.filter(group_id=groupn, pk__in=gsid).values_list('id', flat=True).distinct())
+            group_list2 = []
+            for x in gsid2:
+                group_list2.append(str(x))
+            groupids2 = group_list2
+
+            gstitles = Google_service.objects.filter(group_id=groupn, pk__in=gsid)
+            fields = ['Period']
+            for title in gstitles:
+                fields.append(title.name.split(' '))
+            fields.append('Total Downloads')
+
             num_cols += 1
             sumvar = "sumags" + str(num_cols)
             scolvar = "colags" + str(num_cols)
-            query_resume_rows += "(select sum(cuantity) as " + sumvar + " " \
-                                " from gug_stats as gs1 " \
-                                " inner join gug_dspace on gs1.id_dspace_id = gug_dspace.id "\
-                                " where google_service_id = " + str(gsn) + " " \
+            fromvar = "gs" + str(num_cols)
+            group_query_resume_rows += "(select sum(cuantity) as " + sumvar + " " \
+                                " from gug_stats as " + fromvar + " " \
+                                " inner join gug_dspace on " + fromvar + ".id_dspace_id = gug_dspace.id "\
+                                " where google_service_id in (" + ','.join(groupids2) + ") " \
                                 " and id_dspace = " + id_dspace + " " \
                                 " and period_id in (" + ','.join(period) + ")  ) AS '" + sumvar + "' ,"
-            query_rows += "(select sum(cuantity)  " \
+            group_query_rows += "(select sum(cuantity)  as " + sumvar + " " \
+                        " from gug_stats as " + fromvar + "" \
+                        " inner join gug_dspace on " + fromvar + ".id_dspace_id = gug_dspace.id  " \
+                        " where google_service_id in (" + ','.join(groupids2) + ") " \
+                        " and period_id =  gs_master.period_id " \
+                        " and id_dspace = " + id_dspace + " " \
+                        " ) AS '" + sumvar + "' ,"
+
+            ## Group detail
+            query_grp_inicial = "select gug_period.start_date , "
+            query_grp_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master " \
+                    " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id "\
+                    " inner join gug_period on gs_master.period_id = gug_period.id  " \
+                    " where gs_master.google_service_id in (" + ','.join(groupids2) + ") " \
+                    " and period_id in (" + ','.join(period) + ") " \
+                    " and id_dspace = " + id_dspace + " " \
+                    " group by gs_master.period_id order by gug_period.start_date desc "
+            query_grp_serv = ''
+
+            query_grp_resume_inicial = "select  'Total' as tit1, "
+            query_grp_resume_rows = ""
+            query_grp_resume_final = ", sum(cuantity) as sumtotal " \
+                                " from gug_stats as gs_master " \
+                                " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id "\
+                                " inner join gug_google_service on gs_master.google_service_id = gug_google_service.id " \
+                                " where gs_master.google_service_id in (" + ','.join(groupids2) + ") " \
+                                " and period_id in (" + ','.join(period) + ") " \
+                                " and id_dspace = " + id_dspace + " " 
+            for gsA in groupids2:
+                query_grp_serv += "(select sum(cuantity)  " \
                         " from gug_stats " \
                         " inner join gug_dspace on gug_stats.id_dspace_id = gug_dspace.id  " \
-                        " where google_service_id = " + str(gsn) + " " \
+                        " where google_service_id = " + str(gsA) + " " \
                         " and id_dspace = " + id_dspace + " " \
                         " and period_id =  gs_master.period_id " \
                         " ) AS '" + sumvar + "' ,"
+                query_grp_resume_rows += "(select sum(cuantity) as " + sumvar + " " \
+                                    " from gug_stats as gs1 " \
+                                    " inner join gug_dspace on gs1.id_dspace_id = gug_dspace.id "\
+                                    " where google_service_id = " + str(gsA) + " " \
+                                    " and id_dspace = " + id_dspace + " " \
+                                    " and period_id in (" + ','.join(period) + ")  ) AS '" + sumvar + "' ,"
 
+            query_grp = query_grp_inicial + query_grp_serv[:-1] + query_grp_final
+            grp_resume = query_grp_resume_inicial + query_grp_resume_rows[:-1] + query_grp_resume_final
+            cursor = connection.cursor()
+            cursor.execute(query_grp)
+            group_list = cursor.fetchall()
+            ## para resume
+            # cursor = connection.cursor()
+            cursor.execute(grp_resume)
+            resume_list = cursor.fetchall()
 
-        query_resume = query_resume_inicial + query_resume_rows[:-1] + query_resume_final
+            group_name = Service_group.objects.get(pk=groupn).name
+            google_services_groups.append({'name': group_name, 'values': group_list, 'headers': fields, 'resume': resume_list})
+
+            
+        group_sql = group_query_inicial + group_query_rows[:-1] + group_query_final 
         cursor = connection.cursor()
-        cursor.execute(query_resume)
-        resume = cursor.fetchall()
+        cursor.execute(group_sql)
+        group_list = cursor.fetchall()
+
+        group_query_resume = group_query_resume_inicial + group_query_resume_rows[:-1] + group_query_resume_final
+        cursor = connection.cursor()
+        cursor.execute(group_query_resume)
+        group_resume = cursor.fetchall()
+        #### --
+
+        # query_inicial = "select gug_period.start_date , "
+        # query_rows = ""
+        # query_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master " \
+        #             " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id "\
+        #             " inner join gug_period on gs_master.period_id = gug_period.id  " \
+        #             " where gs_master.google_service_id in (" + ','.join(gsid) + ") " \
+        #             " and period_id in (" + ','.join(period) + ") " \
+        #             " and id_dspace = " + id_dspace + " " \
+        #             " group by gs_master.period_id order by gug_period.start_date desc "
+
+        # num_cols = 0
+        # for gsn in gsid:
+        #     num_cols += 1
+        #     sumvar = "sumags" + str(num_cols)
+        #     scolvar = "colags" + str(num_cols)
+        #     query_resume_rows += "(select sum(cuantity) as " + sumvar + " " \
+        #                         " from gug_stats as gs1 " \
+        #                         " inner join gug_dspace on gs1.id_dspace_id = gug_dspace.id "\
+        #                         " where google_service_id = " + str(gsn) + " " \
+        #                         " and id_dspace = " + id_dspace + " " \
+        #                         " and period_id in (" + ','.join(period) + ")  ) AS '" + sumvar + "' ,"
+        #     query_rows += "(select sum(cuantity)  " \
+        #                 " from gug_stats " \
+        #                 " inner join gug_dspace on gug_stats.id_dspace_id = gug_dspace.id  " \
+        #                 " where google_service_id = " + str(gsn) + " " \
+        #                 " and id_dspace = " + id_dspace + " " \
+        #                 " and period_id =  gs_master.period_id " \
+        #                 " ) AS '" + sumvar + "' ,"
+
 
         period_objs = Period.objects.filter(pk__in=period)
-        final_sql = query_inicial + query_rows[:-1] + query_final 
-        print(final_sql)
-        cursor = connection.cursor()
-        cursor.execute(final_sql)
-        stat_list = cursor.fetchall()
 
+        # query_resume = query_resume_inicial + query_resume_rows[:-1] + query_resume_final
+        # cursor = connection.cursor()
+        # cursor.execute(query_resume)
+        # resume = cursor.fetchall()
 
-        table.update({'rows': stat_list})
+        
+        # final_sql = query_inicial + query_rows[:-1] + query_final 
+        # # print('final_sql = ', final_sql)
+        # cursor = connection.cursor()
+        # cursor.execute(final_sql)
+        # stat_list = cursor.fetchall()
+
+        # table.update({'rows': stat_list})
+        table.update({'groupheaders': fields2})
+        table.update({'group_rows': group_list})
+        table.update({'group_resume': group_resume})
+        table.update({'group_statistics': google_services_groups})
         table.update({'period': period})
-        table.update({'resume': resume})
+        # table.update({'resume': resume})
         dspace_record = Dspace.objects.get(id_dspace=id_dspace)
-        return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table,     'period': period_objs, 'gs': gs, 'dspace_record': dspace_record, 'resume': resume})
+        return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table,  'period': period_objs, 'gs': gs, 'dspace_record': dspace_record})
+        # , 'resume': resume
 
 
 @api_view(['GET'])
@@ -307,11 +431,7 @@ def index(request):
 
     context['group_statistics'] = google_services_groups
     context['resume'] = Stats.objects.values('google_service').aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
-    ############
-    #context['google_services'] = Google_service.objects.filter(group=1).annotate(cuantity=Sum('stats__cuantity'))
-    #context['google_services_minisitios'] = Google_service.objects.filter(group=2).annotate(cuantity=Sum('stats__cuantity'))
-    #context['google_services_sums'] = Google_service.objects.filter(group=1).aggregate(cuantity=Sum('stats__cuantity'))
-    #context['google_services_sums_minisitios'] = Google_service.objects.filter(group=2).aggregate(cuantity=Sum('stats__cuantity'))
+
     q_dspace = " select gug_dspace.id_dspace, gug_dspace.title , sum(cuantity) as sumtotal " \
             " from gug_stats as gs_master " \
             " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \

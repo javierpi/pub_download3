@@ -21,7 +21,6 @@ class get_data(APIView):
         detail = request.GET.get('detail', 'off')
         period = request.GET.getlist('period', 1)
         by = request.GET.get('by', '')
-        print('by', by)
         if by == 'file':
             query_final = "select "\
                 " gug_publication.tfile, "\
@@ -59,7 +58,7 @@ class get_data(APIView):
                 " group by gug_publication.tfile, period_id " \
                 " order by gug_publication.tfile, gug_period.start_date asc "
 
-        print(query_final)
+        # print(query_final)
         cursor = connection.cursor()
         cursor.execute(query_final)
         stats = cursor.fetchall()

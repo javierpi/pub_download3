@@ -273,35 +273,31 @@
             </ul>
           </div>
         </div>
-      <!-- </div>
-    </div>
-  
-    <div class="dashboard-column-wrapper">
-      <div class="dashboard-column "> -->
-        <div class="dashboard-item collapsible deletable draggable" data-module-id="4">
+        <div class="dashboard-item collapsible deletable draggable" data-module-id="5">
           <div class="dashboard-item-header">
             <span class="dashboard-item-header-drag icon-grid"></span>
             <span class="dashboard-item-header-buttons"></span>
             <span class="dashboard-item-header-title">
               <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
               <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-              Data Results
+              All Groups 
             </span>
             <div class="cf"></div>
           </div>
           <div class="dashboard-item-content">
             <div class="dashboard-container columns_1 cf">
               <div class="dashboard-column ui-droppable ui-sortable">
-                {% regroup stats by publication__tfile as tfile_list %}
                   <table id="result_list">
                     <thead>
                       <tr>
-                      {% for fieldname in table.headers %}
+                      {% for fieldname in table.groupheaders %}
                         <th scope="col" class="column-title">
                         {% if forloop.counter0 >= 1 and not forloop.last %}
-                           <div class="text"><span class="float-right">{{ fieldname|join:"<br/>" }}</span></div>
-                        {% else %}
+                           <div class="text"><span class="float-right">{{ fieldname.group__name }}</span></div>
+                        {% elif forloop.last %}
                           <div class="text"><span class="float-right">{{ fieldname }}</span></div>
+                        {% else %}
+                          <div class="text">{{ fieldname }}</div>
                         {% endif %}
                            <div class="clear"></div>
                         </th>
@@ -309,7 +305,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for row in table.rows %}
+                      {% for row in table.group_rows %}
                         <tr class="{% cycle 'row1' 'row2' %}">
                           {% for val in row %}
                             {% if forloop.counter0 == 0 %}
@@ -335,7 +331,7 @@
                       {% endfor%}
                     </tbody>
                     <tfooter>
-                      {% for row in table.resume %}
+                      {% for row in table.group_resume %}
                         <tr class="row1">
                           {% for val in row %}
                             <th class="text-right"><span class="float-right">
@@ -350,7 +346,76 @@
               </div>
           </div>
         </div>
-      </div>
+        {% for group in table.group_statistics %}
+            <div class="dashboard-item collapsible deletable draggable collapsed" data-module-id="{{ group.name }}">
+            <div class="dashboard-item-header">
+              <span class="dashboard-item-header-drag icon-grid"></span>
+              <span class="dashboard-item-header-buttons"></span>
+              <span class="dashboard-item-header-title">
+                <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                {{ group.name }}: Detail
+              </span>
+              <div class="cf"></div>
+            </div>
+            <div class="dashboard-item-content">
+              <div class="dashboard-container columns_1 cf">
+                <div class="dashboard-column ui-droppable ui-sortable">
+                  <table id="result_list">
+                    <thead>
+                      <tr>
+                        
+                      {% for fieldname in group.headers %}
+                        <th scope="col" class="column-title">
+                        {% if forloop.counter0 >= 1 and not forloop.last %}
+                           <div class="text">{{ fieldname|join:"<br/>" }}</div>
+                        {% elif forloop.last %}
+                          <div class="text">{{ fieldname }}</div>
+                        {% else %}
+                          <div class="text">{{ fieldname }}</div>
+                        {% endif %}
+                           <div class="clear"></div>
+                        </th>
+                      {% endfor %}
+                      
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for gs in group.values %}
+                        <tr>
+                          {% for val in gs %}
+                            {% if forloop.counter0 == 0 %}
+                              <th>
+                                {{val|date:"Y - F" }}
+                              </th>
+                            {% else %}
+                              <td class="text-right">
+                                {{val|default_if_none:"0"}}
+                              </td>
+                            {% endif %}
+                          {% endfor %}
+                        </tr>
+                      {% endfor%}
+                    </tbody>
+                    <tfooter>
+                      {% for row in group.resume %}
+                        <tr class="row1">
+                          {% for val in row %}
+                            <th class="text-right">
+                              {{val|default_if_none:"0"}}
+                            </th>
+                          {% endfor %}
+                        </tr>
+                      {% endfor%}
+                    </tfooter>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+        
     </div>
     <div class="dashboard-column-wrapper">
       <div class="dashboard-column first">
@@ -384,8 +449,82 @@
 {% endblock %}
 
 
-
-
+<div class="dashboard-item collapsible deletable draggable" data-module-id="4">
+          <div class="dashboard-item-header">
+            <span class="dashboard-item-header-drag icon-grid"></span>
+            <span class="dashboard-item-header-buttons"></span>
+            <span class="dashboard-item-header-title">
+              <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+              <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+              Data Results
+            </span>
+            <div class="cf"></div>
+          </div>
+          <div class="dashboard-item-content">
+            <div class="dashboard-container columns_1 cf">
+              <div class="dashboard-column ui-droppable ui-sortable">
+                 <!--regroup stats by publication__tfile as tfile_list -->
+                  <table id="result_list">
+                    <thead>
+                      <tr>
+                      {% for fieldname in table.headers %}
+                        <th scope="col" class="column-title">
+                        {% if forloop.counter0 >= 1 and not forloop.last %}
+                           <div class="text">{{ fieldname|join:"<br/>" }}</div>
+                        {% elif forloop.last %}
+                          <div class="text">{{ fieldname }}</div>
+                        {% else %}
+                          <div class="text">{{ fieldname }}</div>
+                        {% endif %}
+                           <div class="clear"></div>
+                        </th>
+                      {% endfor %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for row in table.rows %}
+                        <tr class="{% cycle 'row1' 'row2' %}">
+                          {% for val in row %}
+                            {% if forloop.counter0 == 0 %}
+                              <th>
+                                {{val|date:"Y - F" }}
+                              </th>
+                            {% else %}
+                              <td class="text-right">
+                                {{val|default_if_none:"0"}}
+                              </td>
+                            {% endif %}
+                          {% endfor %}
+                        </tr>
+                      {% endfor%}
+                      {% for st in stats %}
+                        <tr class="{% cycle 'row1' 'row2' %}">
+                          <th class="field-title">{{ st.period__start_date}}</th>
+                          {% if detail == 'on' %}
+                            <td>{{ st.publication__tfile }}</td>
+                          {% endif %}
+                          <td>{{ st.cuantity }}</td>
+                        </tr>
+                      {% endfor%}
+                    </tbody>
+                    <tfooter>
+                      {% for row in table.resume %}
+                        <tr class="row1">
+                          {% for val in row %}
+                            <th class="text-right">
+                              {{val|default_if_none:"0"}}
+                            </th>
+                          {% endfor %}
+                        </tr>
+                      {% endfor%}
+                    </tfooter>
+                  </table>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+----------------------
         <div class="dashboard-item collapsible deletable draggable" data-module-id="33">
           <div class="dashboard-item-header">
               <span class="dashboard-item-header-drag icon-grid"></span>
