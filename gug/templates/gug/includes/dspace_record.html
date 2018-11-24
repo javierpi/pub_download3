@@ -1,0 +1,31 @@
+<div class="dashboard-item collapsible deletable draggable" data-module-id="2">
+      <div class="dashboard-item-header">
+        <span class="dashboard-item-header-drag icon-grid"></span>
+        <span class="dashboard-item-header-buttons"></span>
+        <span class="dashboard-item-header-title">
+          <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+          <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>   Content
+        </span>
+        <div class="cf"></div>
+      </div>
+      <div class="dashboard-item-content contrast" style="height: auto;">
+        <div class="padding center">
+          <ul class="inline bordered">
+            <li>
+              <div class="big">{{ dspace_record.id_dspace }}</div><div class="dim">ID DSpace</div>
+            </li>
+            <li>
+              <div class="big">{{ dspace_record.title }}</div><div class="dim">Title</div>
+            </li>
+            {% if user.is_authenticated  %}
+              <li>
+                <div class="big">{{ dspace_record.post_title1 }}</div><div class="dim">Post Title 1</div>
+              </li>
+              <li>
+                <div class="big">{{ dspace_record.post_title2 }}</div><div class="dim">Post Title 2</div>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>

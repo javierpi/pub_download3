@@ -1,7 +1,10 @@
 from django.conf.urls import url, include
 from .views import google_services, periods, google_services_detail,\
     periods_detail, stat_index_view, index, dspace_detail, api_publication_detail, \
-    api_periods_list, api_periods_detail, get_titles, dspace_detail_tmp, get_ga
+    api_periods_list, api_periods_detail, get_titles,  get_ga, dspace_detail_byfile
+
+# dspace_detail_tmp
+
 from .apis import get_data
 #from .tasks import get_GA
  
@@ -23,7 +26,9 @@ urlpatterns = [
     url(r'^periods/(?P<pk>\d+)$', periods_detail, name='periods_detail'),
 
     url(r'^dspace/$', dspace_detail, name='dspace_detail'),
-    url(r'^dspace_tmp/$', dspace_detail_tmp, name='dspace_detail_tmp'),
+    # url(r'^dspace_tmp/$', dspace_detail_tmp, name='dspace_detail_tmp'),
+    url(r'^dspace_tmp/(?P<id_dspace>\d+)$', dspace_detail_byfile, name='dspace_detail_byfile'),
+    
 
     url(r'^api/publication/(?P<pk>[0-9]+)$', api_publication_detail, name='publication-detail'),
     url(r'^api/periods/$', api_periods_list, name='api_periods_list'),

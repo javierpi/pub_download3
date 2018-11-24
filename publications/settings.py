@@ -111,13 +111,14 @@ WSGI_APPLICATION = 'publications.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pub_download',
         'USER': 'pub_user',
         'PASSWORD': 'pub_pass',
-        'HOST': 'localhost',
+        'HOST': '10.0.0.2',
         'PORT': '',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
@@ -125,6 +126,21 @@ DATABASES = {
     }
 
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'pub_download',
+#         'USER': 'pub_user',
+#         'PASSWORD': 'pub_pass',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         }
+#     }
+
+# }
 
 CACHES = {
     'default': {

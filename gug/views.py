@@ -65,26 +65,43 @@ class Echo:
         """Write the value by returning it, instead of storing in a buffer."""
         return value
 
-def dspace_detail_tmp(request):
-    if request.method == "GET":
-        id_dspace = request.GET.get('id_dspace', 1)
+# def dspace_detail_tmp(request):
+#     if request.method == "GET":
+#         id_dspace = request.GET.get('id_dspace', 1)
         
-        gsid_avalable = list(Google_service.objects.values_list('id', flat=True).order_by('pk'))
-        period_avalable = list(Period.objects.values_list('id', flat=True))
+#         gsid_avalable = list(Google_service.objects.values_list('id', flat=True).order_by('pk'))
+#         period_avalable = list(Period.objects.values_list('id', flat=True))
 
-        per_list = ""
-        for x in period_avalable:
-            per_list += '&period='+str(x)
+#         per_list = ""
+#         for x in period_avalable:
+#             per_list += '&period='+str(x)
 
-        gs_list = ""
-        for x in gsid_avalable:
-            gs_list += '&gsid=' + str(x)
+#         gs_list = ""
+#         for x in gsid_avalable:
+#             gs_list += '&gsid=' + str(x)
 
-        period = per_list
-        gsid = gs_list
-        print("/dspace/?id_dspace=" +id_dspace +  gsid + period)
-        return redirect("/dspace/?id_dspace=" +id_dspace +  gsid + period)
+#         period = per_list
+#         gsid = gs_list
+#         print("/dspace/?id_dspace=" +id_dspace +  gsid + period)
+#         return redirect("/dspace/?id_dspace=" +id_dspace +  gsid + period)
 
+
+def dspace_detail_byfile(request, id_dspace):
+    # files_list = Publication.objects.filter(id_dspace=id_dspace).aggregate(bla=sum(Stats.cuantity))
+    q1 = " select id_dspace, gug_publication.id, gug_publication.tfile, "\
+                " sum(cuantity) as sumtotal from gug_stats as gs_master" \
+                " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \
+                " inner join gug_publication on gs_master.publication_id = gug_publication.id " \
+                " where id_dspace = " + id_dspace + " " \
+                " group by gug_publication.tfile"
+    cursor = connection.cursor()
+    cursor.execute(q1)
+    files_list = cursor.fetchall()
+
+#    Stats.objects.filter(id_dspace=id_dspace).values('publication__tfile').annotate(records=Count('cuantity'), sum=Sum('cuantity')).order_by()
+    dspace_record = Dspace.objects.get(id_dspace=id_dspace)
+    return render(request, 'gug/dspace_detail_byfile.html', {'dspace_record': dspace_record, 'files_list': files_list})
+    #return render(request, 'gug/dspace_detail_byfile.html', {'form': form, 'table': table,  'period': period_objs, 'gs': gs, 'dspace_record': dspace_record})
 
 # @cache_page(60 * 15)
 def dspace_detail(request):
@@ -250,6 +267,18 @@ def dspace_detail(request):
         cursor.execute(group_query_resume)
         group_resume = cursor.fetchall()
         #### --
+        ## By filename
+        q1 = " select id_dspace, gug_publication.id, gug_publication.tfile, "\
+                " sum(cuantity) as sumtotal from gug_stats as gs_master" \
+                " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \
+                " inner join gug_publication on gs_master.publication_id = gug_publication.id " \
+                " where id_dspace = " + id_dspace + " " \
+                " and period_id in (" + ','.join(period) + ") " \
+                " and gs_master.google_service_id in (" + ','.join(gsid) + ") " \
+                " group by gug_publication.tfile"
+        cursor = connection.cursor()
+        cursor.execute(q1)
+        files_list = cursor.fetchall()
 
         # query_inicial = "select gug_period.start_date , "
         # query_rows = ""
@@ -303,7 +332,7 @@ def dspace_detail(request):
         table.update({'period': period})
         # table.update({'resume': resume})
         dspace_record = Dspace.objects.get(id_dspace=id_dspace)
-        return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table,  'period': period_objs, 'gs': gs, 'dspace_record': dspace_record})
+        return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table,  'period': period_objs, 'gs': gs, 'dspace_record': dspace_record, 'files_list': files_list})
         # , 'resume': resume
 
 

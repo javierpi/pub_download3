@@ -11828,3 +11828,491 @@ Traceback (most recent call last):
   File "/home/deployer/pub_download3/publications/gug/views.py", line 292, in dspace_detail
     return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table,  'period': period_objs, 'gs': gs, 'dspace_record': dspace_record, 'resume': resume})
 NameError: name 'resume' is not defined
+2018-11-23 20:02:54,416 ERROR django.request Internal Server Error: /dspace_tmp/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: dspace_detail_byfile() missing 1 required positional argument: 'id_dspace'
+2018-11-23 20:03:24,436 ERROR django.request Internal Server Error: /dspace_tmp/42001
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: dspace_detail_byfile() got an unexpected keyword argument 'pk'
+2018-11-23 20:04:24,536 ERROR django.request Internal Server Error: /dspace_tmp/42001
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: dspace_detail_byfile() got an unexpected keyword argument 'pk'
+2018-11-23 20:04:45,311 ERROR django.request Internal Server Error: /dspace_tmp/42001
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 90, in dspace_detail_byfile
+    Publication.object.get(id_dspace=id_dspace)
+AttributeError: type object 'Publication' has no attribute 'object'
+2018-11-23 20:11:02,224 ERROR django.request Internal Server Error: /dspace_tmp/42001
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 92, in dspace_detail_byfile
+    return render(request, 'gug/dspace_detail_byfile.html', {'dspace_record': dspace_record})
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 488, in parse
+    self.unclosed_block_tag(parse_until)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 549, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 1: 'block'. Looking for one of: endblock.
+2018-11-23 20:20:59,368 ERROR django.request Internal Server Error: /dspace_tmp/42001
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 92, in dspace_detail_byfile
+    return render(request, 'gug/dspace_detail_byfile.html', {'dspace_record': dspace_record, 'files_list': files_list})
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/defaulttags.py", line 167, in render
+    values = list(values)
+TypeError: 'Publication' object is not iterable
+2018-11-23 20:21:37,853 ERROR django.request Internal Server Error: /dspace_tmp/42001
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 92, in dspace_detail_byfile
+    return render(request, 'gug/dspace_detail_byfile.html', {'dspace_record': dspace_record, 'files_list': files_list})
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/defaulttags.py", line 167, in render
+    values = list(values)
+TypeError: 'Publication' object is not iterable
+2018-11-23 20:22:24,229 ERROR django.request Internal Server Error: /dspace_tmp/42001
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 92, in dspace_detail_byfile
+    return render(request, 'gug/dspace_detail_byfile.html', {'dspace_record': dspace_record, 'files_list': files_list})
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/defaulttags.py", line 167, in render
+    values = list(values)
+TypeError: 'Publication' object is not iterable
+2018-11-23 20:22:49,360 ERROR django.request Internal Server Error: /dspace_tmp/42001
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 92, in dspace_detail_byfile
+    return render(request, 'gug/dspace_detail_byfile.html', {'dspace_record': dspace_record, 'files_list': files_list})
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/defaulttags.py", line 167, in render
+    values = list(values)
+TypeError: 'Publication' object is not iterable
+2018-11-23 20:25:07,516 ERROR django.request Internal Server Error: /dspace_tmp/38713
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 90, in dspace_detail_byfile
+    files_list = Publication.objects.get(id_dspace=id_dspace)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/query.py", line 407, in get
+    (self.model._meta.object_name, num)
+gug.models.MultipleObjectsReturned: get() returned more than one Publication -- it returned 5!
+2018-11-23 20:32:48,243 ERROR django.request Internal Server Error: /dspace_tmp/38713
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 90, in dspace_detail_byfile
+    files_list = Publication.objects.filter(id_dspace=id_dspace).aggregate(bla=sum(stats__cuantity))
+NameError: name 'stats__cuantity' is not defined
+2018-11-23 20:37:20,457 ERROR django.request Internal Server Error: /dspace_tmp/38713
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 90, in dspace_detail_byfile
+    files_list = Publication.objects.filter(id_dspace=id_dspace).annotate(bla=sum(stats__cuantity))
+NameError: name 'stats__cuantity' is not defined
+2018-11-23 20:37:48,906 ERROR django.request Internal Server Error: /dspace_tmp/38713
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 90, in dspace_detail_byfile
+    files_list = Publication.objects.filter(id_dspace=id_dspace).annotate(bla=sum(cuantity))
+NameError: name 'cuantity' is not defined
+2018-11-23 20:37:59,992 ERROR django.request Internal Server Error: /dspace_tmp/38713
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 90, in dspace_detail_byfile
+    files_list = Publication.objects.filter(id_dspace=id_dspace).annotate(bla=sum(stats.cuantity))
+NameError: name 'stats' is not defined
+2018-11-23 20:38:10,569 ERROR django.request Internal Server Error: /dspace_tmp/38713
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 90, in dspace_detail_byfile
+    files_list = Publication.objects.filter(id_dspace=id_dspace).annotate(bla=sum(Stats.cuantity))
+TypeError: 'DeferredAttribute' object is not iterable
+2018-11-23 20:38:25,440 ERROR django.request Internal Server Error: /dspace_tmp/38713
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 90, in dspace_detail_byfile
+    files_list = Publication.objects.filter(id_dspace=id_dspace).aggregate(bla=sum(Stats.cuantity))
+TypeError: 'DeferredAttribute' object is not iterable
+2018-11-23 20:41:16,116 ERROR django.request Internal Server Error: /dspace_tmp/38713
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1683, in add_fields
+    join_info = self.setup_joins(name.split(LOOKUP_SEP), opts, alias, allow_many=allow_m2m)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1448, in setup_joins
+    names, opts, allow_many, fail_on_missing=True)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1379, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'tfile' into field. Choices are: cuantity, google_service, google_service_id, id, id_dspace, id_dspace_id, period, period_id, publication, publication_id
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 91, in dspace_detail_byfile
+    files_list = Stats.objects.filter(id_dspace=id_dspace).values('publication', 'tfile').annotate(Count('cuantity'), Sum('cuantity')).order_by()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/query.py", line 742, in values
+    clone = self._values(*fields, **expressions)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/query.py", line 737, in _values
+    clone.query.set_values(fields)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1935, in set_values
+    self.add_fields(field_names, True)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1706, in add_fields
+    "Choices are: %s" % (name, ", ".join(names)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'tfile' into field. Choices are: cuantity, google_service, google_service_id, id, id_dspace, id_dspace_id, period, period_id, publication, publication_id
+2018-11-23 20:45:18,342 ERROR django.request Internal Server Error: /dspace_tmp/38713
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 91, in dspace_detail_byfile
+    files_list = Stats.objects.filter(id_dspace=id_dspace).values('publication__tfile').aggregate(Count('cuantity'), Sum('cuantity')).order_by()
+AttributeError: 'dict' object has no attribute 'order_by'
+2018-11-23 21:20:25,269 ERROR django.request Internal Server Error: /dspace_tmp/38713
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 102, in dspace_detail_byfile
+    print('query=', files_list.query)
+AttributeError: 'tuple' object has no attribute 'query'
+2018-11-23 21:22:47,363 ERROR django.request Internal Server Error: /dspace_tmp/38713
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 475, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 103, in dspace_detail_byfile
+    return render(request, 'gug/dspace_detail_byfile.html', {'dspace_record': dspace_record, 'files_list': files_list})
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/defaulttags.py", line 815, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 477, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 533, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 70: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
