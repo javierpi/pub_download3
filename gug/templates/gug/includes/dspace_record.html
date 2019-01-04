@@ -17,6 +17,14 @@
             <li>
               <div class="big">{{ dspace_record.title }}</div><div class="dim">Title</div>
             </li>
+            <li>
+              <div class="big">
+              <ul>
+                {% for wa in dspace_record.workarea.all %}
+                  <li>{{ wa }}</li>
+                {%  endfor %}
+              </ul></div><div class="dim">Workareas</div>
+            </li>
             {% if user.is_authenticated  %}
               <li>
                 <div class="big">{{ dspace_record.post_title1 }}</div><div class="dim">Post Title 1</div>

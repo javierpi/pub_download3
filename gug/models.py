@@ -92,11 +92,22 @@ class Google_service(models.Model):
         # + ' :(Grpid:' + str(group.id)
 
 
+class WorkArea(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self):
+        return str(self.name)
+
+
 class Dspace(models.Model):
     id_dspace = models.PositiveIntegerField(default=0, help_text="ID Dspace", unique=True)
     title = models.CharField(max_length=600, default='')
     post_title1 = models.CharField(max_length=300, default='')
     post_title2 = models.CharField(max_length=200, default='')
+    workarea = models.ManyToManyField(WorkArea, related_name='workareas', blank=True)
 
     def __str__(self):
         return str(self.id_dspace) + ' ' + self.title.split('|')[0]

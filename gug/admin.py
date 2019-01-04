@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.contrib import admin
-from .models import Period, Google_service, Publication, Stats, Dspace, Service_type, Service_group
+from .models import Period, Google_service, Publication, Stats, Dspace, Service_type, Service_group,\
+					WorkArea
 from jet.filters import RelatedFieldAjaxListFilter
 
 
@@ -33,3 +34,5 @@ admin.site.register(Stats, Stats_Admin)
 admin.site.register(Dspace, Dspace_Admin)
 admin.site.register(Service_type)
 admin.site.register(Service_group)
+admin.site.register(WorkArea)
+

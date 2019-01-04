@@ -10,7 +10,7 @@ import json
 #### 
 ####
 
-from gug.models import Google_service, Period, Publication, Stats, Dspace, Service_group
+from gug.models import Google_service, Period, Publication, Stats, Dspace, Service_group, WorkArea
 from gug.forms import StatForm, DspaceForm, IndexForm
 from gug.serializers import PeriodSerializer, StatsSerializer, StatsSerializer3
 from gug.tasks import get_GA
@@ -65,25 +65,25 @@ class Echo:
         """Write the value by returning it, instead of storing in a buffer."""
         return value
 
-# def dspace_detail_tmp(request):
-#     if request.method == "GET":
-#         id_dspace = request.GET.get('id_dspace', 1)
+def dspace_detail_tmp(request):
+    if request.method == "GET":
+        id_dspace = request.GET.get('id_dspace', 1)
         
-#         gsid_avalable = list(Google_service.objects.values_list('id', flat=True).order_by('pk'))
-#         period_avalable = list(Period.objects.values_list('id', flat=True))
+        gsid_avalable = list(Google_service.objects.values_list('id', flat=True).order_by('pk'))
+        period_avalable = list(Period.objects.values_list('id', flat=True))
 
-#         per_list = ""
-#         for x in period_avalable:
-#             per_list += '&period='+str(x)
+        per_list = ""
+        for x in period_avalable:
+            per_list += '&period='+str(x)
 
-#         gs_list = ""
-#         for x in gsid_avalable:
-#             gs_list += '&gsid=' + str(x)
+        gs_list = ""
+        for x in gsid_avalable:
+            gs_list += '&gsid=' + str(x)
 
-#         period = per_list
-#         gsid = gs_list
-#         print("/dspace/?id_dspace=" +id_dspace +  gsid + period)
-#         return redirect("/dspace/?id_dspace=" +id_dspace +  gsid + period)
+        period = per_list
+        gsid = gs_list
+        print("/dspace/?id_dspace=" +id_dspace +  gsid + period)
+        return redirect("/dspace/?id_dspace=" +id_dspace +  gsid + period)
 
 
 def dspace_detail_byfile(request, id_dspace):
@@ -96,7 +96,7 @@ def dspace_detail_byfile(request, id_dspace):
                 " group by gug_publication.tfile"
     cursor = connection.cursor()
     cursor.execute(q1)
-    files_list = cursor.fetchall()
+    files_list = cursor.fetchall() 
 
 #    Stats.objects.filter(id_dspace=id_dspace).values('publication__tfile').annotate(records=Count('cuantity'), sum=Sum('cuantity')).order_by()
     dspace_record = Dspace.objects.get(id_dspace=id_dspace)
@@ -520,16 +520,17 @@ def stat_index_view(request):
         gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
         gstitles = Google_service.objects.filter(pk__in=gsid)
 
-        fields = ['Dspace ID', 'Title']
+        fields = ['Dspace ID', 'Title', 'Workareas']
         for title in gstitles:
             fields.append(title.name.split(' '))
         fields.append('Total Downloads')
         table = {'headers': fields}
-        query_resume_inicial = "select  'Total' as tit1, count(*) as tit2, "
+        query_resume_inicial = "select  'Total' as tit1, '' as subt, count(*) as tit2, "
         query_resume_rows = ""
         query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ")"
         query_resume_final += " and period_id in (" + ','.join(period) + ") "
-        query_inicial = "select gug_dspace.id_dspace, gug_dspace.title , "
+        #query_inicial = "select gug_dspace.id_dspace, gug_dspace.title , "
+        query_inicial = "select gug_dspace.id_dspace, gug_dspace.title ,  ( SELECT GROUP_CONCAT(gug_workarea.name SEPARATOR ', ') FROM gug_dspace_workarea inner join gug_workarea on gug_dspace_workarea.workarea_id = gug_workarea.id where gug_dspace_workarea.dspace_id = gs_master.id_dspace_id GROUP BY dspace_id) as areasdetrabajo,"
         query_rows = ""
         query_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id where gs_master.google_service_id in (" + ','.join(gsid) + ") and period_id in (" + ','.join(period) + ") group by id_dspace_id order by sumtotal desc "
         num_cols = 0
@@ -645,6 +646,13 @@ class periods(ListView):
         context = super(periods, self).get_context_data(**kwargs)
         return context
 
+def workareas(request):
+    work_area_list = WorkArea.objects.all().annotate(cuenta=Count('workareas'))
+    # qq = Stats.objects.values('id_dspace', 'id_dspace__workarea').annotate(Count('cuantity'), Sum('cuantity')).order_by('id_dspace__workarea', 'id_dspace')
+    # qq = Stats.objects.values('id_dspace__workarea').annotate(Count('cuantity'), Sum('cuantity')).order_by('id_dspace__workarea')
+    # qq = Stats.objects.values('id_dspace__workarea', 'id_dspace__workarea__name').annotate(Count('id_dspace'), Sum('cuantity')).order_by('id_dspace__workarea')
+    return render(request, 'gug/workarea.html', {'work_area_list': work_area_list})
+
 
 @cache_page(60 * 15)
 @api_view(['GET'])
@@ -667,6 +675,7 @@ def api_periods_list(request):
         periods = Period.objects.all()
         serializer = PeriodSerializer(periods, many=True)
         return Response(serializer.data)
+
 
 
 @cache_page(60 * 15)

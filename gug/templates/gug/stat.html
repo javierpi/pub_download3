@@ -84,7 +84,7 @@
 
                       {% for fieldname in table.headers %}
                         <th scope="col" class="column-title">
-                        {% if forloop.counter0 >= 2 and not forloop.last %}
+                        {% if forloop.counter0 >= 3 and not forloop.last %}
                            <div class="text">{{ fieldname|join:"<br/>" }}</div>
                         {% else %}
                           <div class="text">{{ fieldname }}</div>
