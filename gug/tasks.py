@@ -116,7 +116,7 @@ def tospanish(workarea):
         return 'Asuntos de Género'
     elif workarea == 'comércio internacional e integração' or workarea == 'international trade and integration' or workarea[:10] == 'comercio i' or workarea[:15] == 'international t' :
         return 'Comercio internacional e integración'
-    elif workarea == 'desenvolvimento econômico' or workarea[:5] == 'econo' or workarea == 'desar' or workarea == 'desa' or workarea[:8] == 'desarro':
+    elif workarea == 'desenvolvimento econômico' or workarea[:5] == 'econo' or workarea == 'desar' or workarea == 'desa' or workarea[:7] == 'desarro':
         return 'Desarrollo económico'
     elif workarea == 'recursos naturais e infraestrutura' or workarea == 'natural resources and infrastructure' or workarea[:12] == 'natural reso' or workarea[:6] == 'recurs' :
         return 'Recursos naturales e infraestructura'    
