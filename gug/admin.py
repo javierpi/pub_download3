@@ -6,7 +6,7 @@ from jet.filters import RelatedFieldAjaxListFilter
 
 
 class Google_service_Admin(admin.ModelAdmin):
-    list_display = ('name', 'client_secret_path', 'service', 'group', 'version', 'view_id', 'active')
+    list_display = ('name', 'client_secret_path', 'service', 'group', 'version', 'view_id', 'last_update', 'active')
 
 
 class Publication_Admin(admin.ModelAdmin):
@@ -14,7 +14,7 @@ class Publication_Admin(admin.ModelAdmin):
 
 
 class Period_Admin(admin.ModelAdmin):
-    list_display = ('start_date', 'end_date', 'active')
+    list_display = ('start_date', 'end_date', 'active', 'last_update')
 
 
 class Dspace_Admin(admin.ModelAdmin):

@@ -13105,3 +13105,839 @@ Traceback (most recent call last):
   File "/home/deployer/pub_download3/publications/gug/tasks.py", line 184, in save_record
     pub = Publication.objects.get(id_dspace=dsp, tfile=file)
 UnboundLocalError: local variable 'dsp' referenced before assignment
+2019-01-05 15:12:24,520 ERROR django.request Internal Server Error: /workareas/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 605, in workareas
+    if request.get == "/workareas/":
+AttributeError: 'WSGIRequest' object has no attribute 'get'
+2019-01-05 15:12:37,557 ERROR django.request Internal Server Error: /workareas/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 139, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view gug.views.workareas didn't return an HttpResponse object. It returned None instead.
+2019-01-05 15:14:03,179 ERROR django.request Internal Server Error: /workareas/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 595, in workareas
+    print('request.WSGIRequest=', request.WSGIRequest)
+AttributeError: 'WSGIRequest' object has no attribute 'WSGIRequest'
+2019-01-05 15:28:54,262 ERROR django.request Internal Server Error: /workareas/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 606, in workareas
+    context['work_area_list'] = work_area_list
+NameError: name 'context' is not defined
+2019-01-05 15:32:40,864 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 420, in index
+    context['work_area_list'] = workareas(request, period='None')
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 160, in _wrapped_view
+    return middleware.process_response(request, response)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/middleware/cache.py", line 80, in process_response
+    if response.streaming or response.status_code not in (200, 304):
+AttributeError: 'tuple' object has no attribute 'streaming'
+2019-01-05 15:41:41,877 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 420, in index
+    context['work_area_list'] = workareas(request, period='None')
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 160, in _wrapped_view
+    return middleware.process_response(request, response)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/middleware/cache.py", line 80, in process_response
+    if response.streaming or response.status_code not in (200, 304):
+AttributeError: 'tuple' object has no attribute 'streaming'
+2019-01-05 15:43:34,926 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 420, in index
+    context['work_area_list'] = workareas(request, period='None')
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 160, in _wrapped_view
+    return middleware.process_response(request, response)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/middleware/cache.py", line 80, in process_response
+    if response.streaming or response.status_code not in (200, 304):
+AttributeError: 'tuple' object has no attribute 'streaming'
+2019-01-05 15:44:40,747 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 420, in index
+    context['work_area_list'] = workareas(request, period='None')
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 160, in _wrapped_view
+    return middleware.process_response(request, response)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/middleware/cache.py", line 80, in process_response
+    if response.streaming or response.status_code not in (200, 304):
+AttributeError: 'dict' object has no attribute 'streaming'
+2019-01-05 15:46:09,389 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 401, in index
+    work_area_list = workareas(request, period='None')
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 160, in _wrapped_view
+    return middleware.process_response(request, response)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/middleware/cache.py", line 80, in process_response
+    if response.streaming or response.status_code not in (200, 304):
+AttributeError: 'dict' object has no attribute 'streaming'
+2019-01-05 15:47:29,342 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 401, in index
+    work_area_list = workareas(request, period='None')
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 160, in _wrapped_view
+    return middleware.process_response(request, response)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/middleware/cache.py", line 80, in process_response
+    if response.streaming or response.status_code not in (200, 304):
+AttributeError: 'tuple' object has no attribute 'streaming'
+2019-01-05 15:48:08,471 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 401, in index
+    work_area_list = {workareas(request, period='None')}
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 160, in _wrapped_view
+    return middleware.process_response(request, response)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/middleware/cache.py", line 80, in process_response
+    if response.streaming or response.status_code not in (200, 304):
+AttributeError: 'tuple' object has no attribute 'streaming'
+2019-01-05 15:48:43,751 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 401, in index
+    work_area_list = {'work_area_list': workareas(request, period='None')}
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 160, in _wrapped_view
+    return middleware.process_response(request, response)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/middleware/cache.py", line 80, in process_response
+    if response.streaming or response.status_code not in (200, 304):
+AttributeError: 'tuple' object has no attribute 'streaming'
+2019-01-05 15:51:50,463 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 401, in index
+    work_area_list = workareas(request, period='None')
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 160, in _wrapped_view
+    return middleware.process_response(request, response)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/middleware/cache.py", line 80, in process_response
+    if response.streaming or response.status_code not in (200, 304):
+AttributeError: 'tuple' object has no attribute 'streaming'
+2019-01-05 15:52:22,289 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 401, in index
+    work_area_list = workareas(request, period='None')
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 616, in workareas
+    return response(work_area_list)
+NameError: name 'response' is not defined
+2019-01-05 16:39:26,870 ERROR django.request Internal Server Error: /periods/25
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 582, in periods_detail
+    work_area_list = workareas(request, period=pk)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 605, in workareas
+    " where gs_master.period_id = " + pk + "" \
+NameError: name 'pk' is not defined
+2019-01-05 16:39:39,919 ERROR django.request Internal Server Error: /periods/25
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id  inner join gug_' at line 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 582, in periods_detail
+    work_area_list = workareas(request, period=pk)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 612, in workareas
+    cursor.execute(waq)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id  inner join gug_' at line 1")
+2019-01-05 16:48:05,759 ERROR django.request Internal Server Error: /workareas/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 608, in workareas
+    " where gs_master.period_id = " + period + "" \
+TypeError: must be str, not NoneType
+2019-01-05 16:55:41,150 ERROR django.request Internal Server Error: /workareas/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 622, in workareas
+    waq = waq_i + waq_w + waq_f
+UnboundLocalError: local variable 'waq_w' referenced before assignment
+2019-01-05 16:56:52,328 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'None' in 'where clause'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 401, in index
+    work_area_list = workareas(request, period='None')
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 626, in workareas
+    cursor.execute(waq)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'None' in 'where clause'")
+2019-01-05 16:58:05,335 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'None' in 'where clause'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 401, in index
+    work_area_list = workareas(request, period='None')
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 627, in workareas
+    cursor.execute(waq)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'None' in 'where clause'")
+2019-01-05 19:01:38,704 ERROR django.request Internal Server Error: /gs/4
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/detail.py", line 106, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 683, in get_context_data
+    context['work_area_list'] = workareas(request, period=None, google_service=self.get_object())
+NameError: name 'request' is not defined
+2019-01-05 19:03:15,171 ERROR django.request Internal Server Error: /gs/4
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/detail.py", line 106, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 683, in get_context_data
+    context['work_area_list'] = workareas('request', period=None, google_service=self.get_object())
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 619, in workareas
+    waq_w = waq_w + " gs_master.google_service_id in (" + google_service + ")"
+TypeError: must be str, not Google_service
+2019-01-05 19:04:05,639 ERROR django.request Internal Server Error: /gs/4
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/detail.py", line 106, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 683, in get_context_data
+    context['work_area_list'] = workareas('request', period=None, google_service=str(self.get_object().id))
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 631, in workareas
+    return render(request, 'gug/workarea.html', {'table': context})
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 173, in render
+    with context.bind_template(self):
+  File "/usr/lib/python3.6/contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/context.py", line 250, in bind_template
+    updates.update(processor(self.request))
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/context_processors.py", line 40, in debug
+    if settings.DEBUG and request.META.get('REMOTE_ADDR') in settings.INTERNAL_IPS:
+AttributeError: 'str' object has no attribute 'META'
+2019-01-05 19:05:22,085 ERROR django.request Internal Server Error: /gs/4
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/detail.py", line 106, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 683, in get_context_data
+    g_id = self.getlist()
+AttributeError: 'google_services_detail' object has no attribute 'getlist'
+2019-01-05 19:06:29,415 ERROR django.request Internal Server Error: /gs/4
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/detail.py", line 106, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 685, in get_context_data
+    context['work_area_list'] = workareas('request', period=None, google_service=str(g_id.id))
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 631, in workareas
+    return render(request, 'gug/workarea.html', {'table': context})
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 173, in render
+    with context.bind_template(self):
+  File "/usr/lib/python3.6/contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/context.py", line 250, in bind_template
+    updates.update(processor(self.request))
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/context_processors.py", line 40, in debug
+    if settings.DEBUG and request.META.get('REMOTE_ADDR') in settings.INTERNAL_IPS:
+AttributeError: 'str' object has no attribute 'META'
+2019-01-05 19:07:33,624 ERROR django.request Internal Server Error: /gs/4
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/detail.py", line 106, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 686, in get_context_data
+    context['work_area_list'] = workareas('request', period=None, google_service=str(g_id.id))
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 631, in workareas
+    return render(request, 'gug/workarea.html', {'table': context})
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 173, in render
+    with context.bind_template(self):
+  File "/usr/lib/python3.6/contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/context.py", line 250, in bind_template
+    updates.update(processor(self.request))
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/context_processors.py", line 40, in debug
+    if settings.DEBUG and request.META.get('REMOTE_ADDR') in settings.INTERNAL_IPS:
+AttributeError: 'str' object has no attribute 'META'
+2019-01-05 19:08:17,980 ERROR django.request Internal Server Error: /gs/4
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and  gs_master.google_service_id in (4) group by gug_dspace_workarea.workarea_id' at line 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/detail.py", line 106, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 686, in get_context_data
+    context['work_area_list'] = workareas('request', period='', google_service=str(g_id.id))
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 627, in workareas
+    cursor.execute(waq)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and  gs_master.google_service_id in (4) group by gug_dspace_workarea.workarea_id' at line 1")
+2019-01-05 19:09:45,735 ERROR django.request Internal Server Error: /gs/4
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and  gs_master.google_service_id in (4) group by gug_dspace_workarea.workarea_id' at line 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/detail.py", line 106, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 686, in get_context_data
+    context['work_area_list'] = workareas('function', period='', google_service=str(g_id.id))
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 627, in workareas
+    cursor.execute(waq)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and  gs_master.google_service_id in (4) group by gug_dspace_workarea.workarea_id' at line 1")
+2019-01-05 19:18:35,649 ERROR django.request Internal Server Error: /gs/4
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/detail.py", line 106, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 688, in get_context_data
+    return render(request, 'gug/google_service_detail.html', {'table': context})
+NameError: name 'request' is not defined
+2019-01-05 19:18:51,624 ERROR django.request Internal Server Error: /gs/4
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/detail.py", line 106, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 688, in get_context_data
+    return render('request', 'gug/google_service_detail.html', {'table': context})
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/base.py", line 173, in render
+    with context.bind_template(self):
+  File "/usr/lib/python3.6/contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/context.py", line 250, in bind_template
+    updates.update(processor(self.request))
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/template/context_processors.py", line 40, in debug
+    if settings.DEBUG and request.META.get('REMOTE_ADDR') in settings.INTERNAL_IPS:
+AttributeError: 'str' object has no attribute 'META'
+2019-01-05 19:39:55,955 ERROR django.request Internal Server Error: /gs/4
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 685, in google_services_detail
+    context['periods'] = Period.objects.all()
+NameError: name 'context' is not defined
+2019-01-05 19:40:25,874 ERROR django.request Internal Server Error: /gs/4
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 689, in google_services_detail
+    g_id = self.get_object()
+NameError: name 'self' is not defined
+2019-01-05 20:09:52,850 ERROR django.request Internal Server Error: /stat/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 470, in stat_index_view
+    gs = Google_service.objects.values_list('id', flat=True).filter(pk__in=gsid)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/lookups.py", line 210, in get_prep_lookup
+    rhs_value = self.lhs.output_field.get_prep_value(rhs_value)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 947, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+2019-01-05 20:23:09,269 ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 403, in index
+    work_area_list = workareas('function', period=None,google_service=None)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 134, in _wrapped_view
+    result = middleware.process_request(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/middleware/cache.py", line 128, in process_request
+    if request.method not in ('GET', 'HEAD'):
+AttributeError: 'str' object has no attribute 'method'
+2019-01-06 14:47:54,121 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/tasks.py", line 32, in get_GA
+    period.last_update = now()
+NameError: name 'now' is not defined

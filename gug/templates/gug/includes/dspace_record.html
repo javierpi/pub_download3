@@ -19,19 +19,22 @@
             </li>
             <li>
               <div class="big">
-              <ul>
                 {% for wa in dspace_record.workarea.all %}
-                  <li>{{ wa }}</li>
-                {%  endfor %}
-              </ul></div><div class="dim">Workareas</div>
+                  {{ wa }} {% if not forloop.last%}, {% endif %}
+                {% endfor %}
+              </div><div class="dim">Workareas</div>
             </li>
+          </ul>
+          <ul class="inline bordered">
             {% if user.is_authenticated  %}
               <li>
                 <div class="big">{{ dspace_record.post_title1 }}</div><div class="dim">Post Title 1</div>
               </li>
+              {% if dspace_record.post_title2 %}
               <li>
                 <div class="big">{{ dspace_record.post_title2 }}</div><div class="dim">Post Title 2</div>
               </li>
+              {% endif %}
             {% endif %}
           </ul>
         </div>

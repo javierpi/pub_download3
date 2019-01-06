@@ -1,0 +1,28 @@
+<div class="dashboard-item-content">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Downloads</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for download in table.work_area_list %}
+				<tr>
+					{% for field in download %}
+						{% if forloop.counter0 > 0%}
+							{% if forloop.counter0 == 1 %}
+							<th>{{field}}</th>
+							{% else %}
+							<td class="text-right"><span class="float-right">{{field}}</span></td>
+							{% endif %}
+						{% endif %}
+						
+					{% endfor%}
+				</tr>
+			{% endfor%}
+		</tbody>
+	</table>
+</div>
+                
+

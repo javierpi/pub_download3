@@ -2,6 +2,7 @@ from apiclient.discovery import build
 from google.oauth2 import service_account
 from celery import shared_task
 from gug.models import Google_service, Period, Publication, Stats, Dspace, WorkArea
+from datetime import datetime
 import json
 import logging
 ########################################################
@@ -29,6 +30,8 @@ def get_GA(header=False):
     for period in periods:
         start_date = str(period.start_date)
         end_date = str(period.end_date)
+        period.last_update = datetime.now()
+        period.save()
 
         for gs in gservices:
             scope = gs.scope
@@ -52,6 +55,8 @@ def get_GA(header=False):
             # delete all stats from this report
 
             delete_stat(gs, period)
+            gs.last_update = datetime.now()
+            gs.save()
             # raise
 
             if discovery:
@@ -98,6 +103,7 @@ def get_GA(header=False):
                         url = keys
                         save_record(gs, period, url, title, cantidad, '')
                         # print(output_row)
+       
 
 
 def delete_stat(gs, period):

@@ -71,6 +71,7 @@
   <div class="dashboard-container columns_2 cf">
     <div class="dashboard-column-wrapper">
       <div class="dashboard-column ">
+
         <div class="dashboard-item collapsible deletable draggable" data-module-id="14">
             <div class="dashboard-item-header">
                 <span class="dashboard-item-header-drag icon-grid"></span>
@@ -128,6 +129,7 @@
               </div>
             </div>
           </div>
+          
         
         {% for group in table.group_statistics %}
         <div class="dashboard-item collapsible deletable draggable collapsed" data-module-id="4">
@@ -200,7 +202,18 @@
           </div>
         </div>
       {% endfor%}
-          
+          <div class="dashboard-item collapsible deletable draggable collapsed" data-module-id="3">
+            <div class="dashboard-item-header">
+                <span class="dashboard-item-header-drag icon-grid"></span>
+                <span class="dashboard-item-header-buttons"></span>
+                <span class="dashboard-item-header-title">
+                    <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                    <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                        Workareas</span>
+                <div class="cf"></div>
+            </div>
+              {% include "gug/includes/workareas.html" %}
+        </div>
       </div>
     </div>
     <div class="dashboard-column-wrapper">

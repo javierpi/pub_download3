@@ -41,9 +41,7 @@
 
 
   </div>
-  <!-- work_area_list =  work_area_list <br/> -->
-  
-  <div class="row">
+    <div class="row">
     <div class="col-xs-12">
       <div class="tabbable"> <!-- Only required for left/right tabs -->
 
@@ -52,20 +50,18 @@
           <table class="table table-striped">
 		      <thead>
 		        <tr>
+              <th>ID</th>
               <th>Name</th>
-		          <th># Publications </th>
-		          <th>Records</th>
               <th>Downloads</th>
 		        </tr>
 		      </thead>
       			<tbody>
-			        {% for workarea in work_area_list %}
+			        {% for download in table.work_area_list %}
 			          <tr>
-
-                  <td>{{ workarea.name }}</td>
-                  <td>{{ workarea.cuenta }}</td>
-			            <td>{{ period.stats__count }}</td>
-                  <td>{{ period.cuantity }}</td>
+                  {% for field in download %}
+                      <td>{{field}}</td>
+                  {% endfor%}
+			         
 
 			          </tr>
 			        {% endfor%}

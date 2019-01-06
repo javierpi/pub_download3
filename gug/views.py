@@ -43,8 +43,9 @@ from django.core import management
 from .management.commands import get_title
 from .serializers import StatsSerializer
 
+cache_time = 60 * 15
 
-@cache_page(60 * 15)
+@cache_page(cache_time)
 @csrf_exempt
 def stat_list(request):
     """
@@ -87,7 +88,6 @@ def dspace_detail_tmp(request):
 
 
 def dspace_detail_byfile(request, id_dspace):
-    # files_list = Publication.objects.filter(id_dspace=id_dspace).aggregate(bla=sum(Stats.cuantity))
     q1 = " select id_dspace, gug_publication.id, gug_publication.tfile, "\
                 " sum(cuantity) as sumtotal from gug_stats as gs_master" \
                 " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \
@@ -98,12 +98,11 @@ def dspace_detail_byfile(request, id_dspace):
     cursor.execute(q1)
     files_list = cursor.fetchall() 
 
-#    Stats.objects.filter(id_dspace=id_dspace).values('publication__tfile').annotate(records=Count('cuantity'), sum=Sum('cuantity')).order_by()
     dspace_record = Dspace.objects.get(id_dspace=id_dspace)
     return render(request, 'gug/dspace_detail_byfile.html', {'dspace_record': dspace_record, 'files_list': files_list})
-    #return render(request, 'gug/dspace_detail_byfile.html', {'form': form, 'table': table,  'period': period_objs, 'gs': gs, 'dspace_record': dspace_record})
 
-# @cache_page(60 * 15)
+
+@cache_page(cache_time)
 def dspace_detail(request):
     if request.method == "GET":
         form = DspaceForm(request.GET)
@@ -280,60 +279,15 @@ def dspace_detail(request):
         cursor.execute(q1)
         files_list = cursor.fetchall()
 
-        # query_inicial = "select gug_period.start_date , "
-        # query_rows = ""
-        # query_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master " \
-        #             " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id "\
-        #             " inner join gug_period on gs_master.period_id = gug_period.id  " \
-        #             " where gs_master.google_service_id in (" + ','.join(gsid) + ") " \
-        #             " and period_id in (" + ','.join(period) + ") " \
-        #             " and id_dspace = " + id_dspace + " " \
-        #             " group by gs_master.period_id order by gug_period.start_date desc "
-
-        # num_cols = 0
-        # for gsn in gsid:
-        #     num_cols += 1
-        #     sumvar = "sumags" + str(num_cols)
-        #     scolvar = "colags" + str(num_cols)
-        #     query_resume_rows += "(select sum(cuantity) as " + sumvar + " " \
-        #                         " from gug_stats as gs1 " \
-        #                         " inner join gug_dspace on gs1.id_dspace_id = gug_dspace.id "\
-        #                         " where google_service_id = " + str(gsn) + " " \
-        #                         " and id_dspace = " + id_dspace + " " \
-        #                         " and period_id in (" + ','.join(period) + ")  ) AS '" + sumvar + "' ,"
-        #     query_rows += "(select sum(cuantity)  " \
-        #                 " from gug_stats " \
-        #                 " inner join gug_dspace on gug_stats.id_dspace_id = gug_dspace.id  " \
-        #                 " where google_service_id = " + str(gsn) + " " \
-        #                 " and id_dspace = " + id_dspace + " " \
-        #                 " and period_id =  gs_master.period_id " \
-        #                 " ) AS '" + sumvar + "' ,"
-
-
         period_objs = Period.objects.filter(pk__in=period)
-
-        # query_resume = query_resume_inicial + query_resume_rows[:-1] + query_resume_final
-        # cursor = connection.cursor()
-        # cursor.execute(query_resume)
-        # resume = cursor.fetchall()
-
-        
-        # final_sql = query_inicial + query_rows[:-1] + query_final 
-        # # print('final_sql = ', final_sql)
-        # cursor = connection.cursor()
-        # cursor.execute(final_sql)
-        # stat_list = cursor.fetchall()
-
-        # table.update({'rows': stat_list})
         table.update({'groupheaders': fields2})
         table.update({'group_rows': group_list})
         table.update({'group_resume': group_resume})
         table.update({'group_statistics': google_services_groups})
         table.update({'period': period})
-        # table.update({'resume': resume})
         dspace_record = Dspace.objects.get(id_dspace=id_dspace)
         return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table,  'period': period_objs, 'gs': gs, 'dspace_record': dspace_record, 'files_list': files_list})
-        # , 'resume': resume
+
 
 
 @api_view(['GET'])
@@ -351,7 +305,6 @@ def dspace_detail1(request):
             dspace_record = Dspace.objects.get(id_dspace=id_dspace)
             period_objs = Period.objects.filter(pk__in=period)
             if detail == 'on':
-                # values('id_dspace__id_dspace', 'period__start_date', 'publication__tfile').\
                 stat_list = Stats.objects.select_related('id_dspace', 'period').\
                     filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid, period__in=period).\
                     values('period__start_date', 'publication__tfile').\
@@ -435,20 +388,21 @@ def dspace_detail2(request):
         stat_list.update({'rows': stats})
         stat_list.update({'resume': resume})
 
-        # resume = Stats.objects.values('google_service').filter(id_dspace__id_dspace=id_dspace, google_service__in=gsid, period__in=period).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
-
-        # return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table,     'gs': gs, 'dspace_record': dspace_record, 'detail': detail})
         return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail})
         return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail, 'resume': resume, 'period': period_objs})
 
 
-#@cache_page(60 * 15)
+@cache_page(cache_time)
 def index(request):
     context_object_name = 'periods'
 
     form = IndexForm()
       
     context = {}
+    
+    work_area_list = workareas('function', period=None,google_service=None)
+    context['work_area_list'] = work_area_list
+
     context['periods'] = Period.objects.annotate(cuantity=Sum('stats__cuantity')).order_by('-start_date')
     context['statistics'] = Stats.objects.values('google_service').annotate(Count('cuantity'), Sum('cuantity')).order_by()
     ###########
@@ -469,7 +423,7 @@ def index(request):
     cursor = connection.cursor()
     cursor.execute(q_dspace)
     context['dspaces'] = cursor.fetchall()
-
+    
     return render(request, 'gug/index.html', {'form': form,  'table': context })
    
 
@@ -480,11 +434,11 @@ def iter_csv(rows, pseudo_buffer):
         yield writer.writerow(row)
 
 
-@cache_page(60 * 15)
+
+@cache_page(cache_time)
 @api_view(['GET'])
 def stat_index_view(request):
     if request.method == "GET":
-        # ArticleFormSet = formset_factory(StatForm, extra=0)
         form = StatForm(request.GET)
 
         if form.is_valid():
@@ -493,7 +447,6 @@ def stat_index_view(request):
             print('form NO valido !!!! ')
             form = StatForm(request.GET)
 
-        #form.page = 2
         gsid_avalable = list(Google_service.objects.values_list('id', flat=True))
 
         period_avalable = list(Period.objects.values_list('id', flat=True))
@@ -529,7 +482,6 @@ def stat_index_view(request):
         query_resume_rows = ""
         query_resume_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master where gs_master.google_service_id in (" + ','.join(gsid) + ")"
         query_resume_final += " and period_id in (" + ','.join(period) + ") "
-        #query_inicial = "select gug_dspace.id_dspace, gug_dspace.title , "
         query_inicial = "select gug_dspace.id_dspace, gug_dspace.title ,  ( SELECT GROUP_CONCAT(gug_workarea.name SEPARATOR ', ') FROM gug_dspace_workarea inner join gug_workarea on gug_dspace_workarea.workarea_id = gug_workarea.id where gug_dspace_workarea.dspace_id = gs_master.id_dspace_id GROUP BY dspace_id) as areasdetrabajo,"
         query_rows = ""
         query_final = ", sum(cuantity) as sumtotal from gug_stats as gs_master inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id where gs_master.google_service_id in (" + ','.join(gsid) + ") and period_id in (" + ','.join(period) + ") group by id_dspace_id order by sumtotal desc "
@@ -570,7 +522,6 @@ def stat_index_view(request):
                 for col in list(range(0, len(fields))):
                     if col == 1:
                         row.append('"' + str(record[col]) + '"')
-                        # row.append(str(record[col]))
                     else:
                         row.append(record[col])
                 rows.append(row)
@@ -603,7 +554,7 @@ def stat_index_view(request):
             return render(request, 'gug/stat.html', {'form': form, 'table': table, 'period': period_objs, 'gs': gsid, 'resume': resume, 'pagesize': pagesize})
 
 
-
+@cache_page(cache_time)
 def periods_detail(request, pk):
     context_object_name = 'periods'
     model = Period
@@ -631,6 +582,9 @@ def periods_detail(request, pk):
     cursor = connection.cursor()
     cursor.execute(q_dspace)
     context['dspaces'] = cursor.fetchall()
+    work_area_list = workareas('function', period=pk, google_service=None)
+    context['work_area_list'] = work_area_list
+
 
     return render(request, 'gug/periods_detail.html', {'table': context })
 
@@ -646,12 +600,41 @@ class periods(ListView):
         context = super(periods, self).get_context_data(**kwargs)
         return context
 
-def workareas(request):
-    work_area_list = WorkArea.objects.all().annotate(cuenta=Count('workareas'))
-    # qq = Stats.objects.values('id_dspace', 'id_dspace__workarea').annotate(Count('cuantity'), Sum('cuantity')).order_by('id_dspace__workarea', 'id_dspace')
-    # qq = Stats.objects.values('id_dspace__workarea').annotate(Count('cuantity'), Sum('cuantity')).order_by('id_dspace__workarea')
-    # qq = Stats.objects.values('id_dspace__workarea', 'id_dspace__workarea__name').annotate(Count('id_dspace'), Sum('cuantity')).order_by('id_dspace__workarea')
-    return render(request, 'gug/workarea.html', {'work_area_list': work_area_list})
+# @cache_page(cache_time)
+def workareas(request, period=None, google_service=None):
+    context = {}
+    waq_i = " select gug_dspace_workarea.workarea_id, gug_workarea.name, sum(cuantity) as sumtotal" \
+          " from gug_stats as gs_master" \
+          " inner join gug_dspace on gs_master.id_dspace_id = gug_dspace.id " \
+          " inner join gug_dspace_workarea on gug_dspace.id_dspace = gug_dspace_workarea.dspace_id" \
+          " inner join gug_workarea on gug_dspace_workarea.workarea_id = gug_workarea.id" 
+    waq_w = ''
+
+
+    if period != None or google_service != None:
+        waq_w = " where "
+    if period != None:
+        waq_w = waq_w + " gs_master.period_id = " + period + "" 
+        if google_service != None:
+            waq_w = waq_w + " and "
+
+    if google_service != None:
+        waq_w = waq_w + " gs_master.google_service_id in (" + google_service + ")"
+
+    waq_f = " group by gug_dspace_workarea.workarea_id " \
+            " order by gug_workarea.name "
+
+    waq = waq_i + waq_w + waq_f
+    #print('waq', waq)
+    cursor = connection.cursor()
+    cursor.execute(waq)
+    work_area_list = cursor.fetchall()
+    context['work_area_list'] = work_area_list
+    if request != 'function':
+        return render(request, 'gug/workarea.html', {'table': context})
+    else:
+        #print('function')
+        return work_area_list
 
 
 @cache_page(60 * 15)
@@ -692,16 +675,26 @@ def api_periods_detail(request, pk):
 
 
 
-class google_services_detail(DetailView):
+# class google_services_detail(DetailView):
+def google_services_detail(request, pk):
     model = Google_service
     template_name = 'gug/google_service_detail.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(google_services_detail, self).get_context_data(**kwargs)
-        context['periods'] = Period.objects.all()
-        context['statistics'] = Stats.objects.values('period', 'period__start_date').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by('-period__start_date')
-        context['resume'] = Stats.objects.values('google_service').filter(google_service=self.get_object()).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
-        return context
+    #def get_context_data(self, **kwargs):
+    # context = super(google_services_detail, self).get_context_data(**kwargs)
+    # context['statistics'] = Stats.objects.values('period', 'period__start_date').filter(google_service=self.get_object()).annotate(Count('cuantity'), Sum('cuantity')).order_by('-period__start_date')
+    # context['resume'] = Stats.objects.values('google_service').filter(google_service=self.get_object()).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+    gs = Google_service.objects.get(pk=pk)
+    context = {}
+    context['google_service'] = gs
+    context['periods'] = Period.objects.all()
+    context['statistics'] = Stats.objects.values('period', 'period__start_date').filter(google_service=gs).annotate(Count('cuantity'), Sum('cuantity')).order_by('-period__start_date')
+    context['resume'] = Stats.objects.values('google_service').filter(google_service=gs).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+    g_id = gs.id
+    # print('g_id', g_id.id)
+    context['work_area_list'] = workareas('function', period=None, google_service=str(g_id))
+    # return context
+    return render(request, 'gug/google_service_detail.html', {'table': context})
 
 
 

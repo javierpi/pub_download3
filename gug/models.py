@@ -35,6 +35,7 @@ class Period(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     active = models.BooleanField('active', default=True)
+    last_update = models.DateField(auto_now=True)
     # closed = models.BooleanField('Data on this period is gotten', default=False)
 
     class Meta:
@@ -82,6 +83,7 @@ class Google_service(models.Model):
     active = models.BooleanField('active', default=True)
 #    hidden = models.BooleanField('Hidden in application', default=False)
     report = models.TextField(default='{}', validators=[validate_json], help_text="Transformed variables are view_id, start_date and end_date.")
+    last_update = models.DateField(auto_now=True)
 
     class Meta:
         verbose_name_plural = 'Google Services'

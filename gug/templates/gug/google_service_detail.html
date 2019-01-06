@@ -20,7 +20,7 @@
       data.addColumn('number', 'Records');
       data.addColumn('number', 'Downloads');
       data.addRows([
-      {% for statistic in statistics %}[new Date({{statistic.period__start_date|date:"Y"}}, {{statistic.period__start_date|date:"m"}}, {{statistic.period__start_date|date:"d"}}),{{statistic.cuantity__count|urlize}}, {{statistic.cuantity__sum|urlize}}]{% if not forloop.last %},{% endif %}{% endfor%}
+      {% for statistic in table.statistics %}[new Date('{{statistic.period__start_date|date:"Y"}}-{{statistic.period__start_date|date:"m"}}-{{statistic.period__start_date|date:"d"}}T00:00:00-0400'),{{statistic.cuantity__count|urlize}}, {{statistic.cuantity__sum|urlize}}]{% if not forloop.last %},{% endif %}{% endfor%}
       ]);
 
       // Create our data table out of JSON data loaded from server.
@@ -75,19 +75,19 @@
             <span class="dashboard-item-header-title">
               <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
               <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                    Google Services: {{ google_service.name }}
+                    Google Services: {{ table.google_service.name }}
             </span>
             <div class="cf"></div>
           </div>
           <div class="dashboard-item-content">
             <ul>
-              <li>Scope: {{ google_service.scope }}</li>
-              <li>Discovery: {{ google_service.discovery }}</li>
-              <li>View ID: {{ google_service.view_id }}</li>
-              <li>Service: {{ google_service.service }}</li>
-              <li>Version: {{ google_service.version }}</li>
-              <li>Is Active: {{ google_service.active }}</li>
-              <li>Report: {{ google_service.report }}</li>
+              <li>Scope: {{ table.google_service.scope }}</li>
+              <li>Discovery: {{ table.google_service.discovery }}</li>
+              <li>View ID: {{ table.google_service.view_id }}</li>
+              <li>Service: {{ table.google_service.service }}</li>
+              <li>Version: {{ table.google_service.version }}</li>
+              <li>Is Active: {{ table.google_service.active }}</li>
+              <li>Report: {{ table.google_service.report }}</li>
             </ul>
           </div>
         </div>
@@ -112,6 +112,18 @@
             <div id="chart_div" style="width: 700px; height: 450px"></div>
           </div>
         </div>
+        <div class="dashboard-item collapsible deletable draggable collapsed" data-module-id="3">
+                <div class="dashboard-item-header">
+                    <span class="dashboard-item-header-drag icon-grid"></span>
+                    <span class="dashboard-item-header-buttons"></span>
+                    <span class="dashboard-item-header-title">
+                        <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                        <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                            Workareas</span>
+                    <div class="cf"></div>
+                </div>
+                  {% include "gug/includes/workareas.html" %}
+            </div>
       </div>
     </div>
     <div class="dashboard-column ">
@@ -137,10 +149,10 @@
                 </tr>
               </thead>
               <tbody>
-                {% for statistic in statistics %}
+                {% for statistic in table.statistics %}
                   <tr>
                     <th>
-                      <a href="{% url "gug:stat_index_paginated" %}?period={{statistic.period}}&amp;gsid={{google_service.id}}&amp;pagesize=10&amp;page=1">
+                      <a href="{% url "gug:stat_index_paginated" %}?period={{statistic.period}}&amp;gsid={{table.google_service.id}}&amp;pagesize=10&amp;page=1">
                         {{ statistic.period__start_date }}
                       </a>
                     </th>
@@ -155,9 +167,9 @@
               </tbody>
               <tfooter>
                 <tr>
-                  <th colspan="1">Total {{ statistics|length }} periods</th>
-                  <th class="text-right">{{ resume.totalrecords }}</th>
-                  <th class="text-right">{{ resume.totalcuantity }}</th>
+                  <th colspan="1">Total {{ table.statistics|length }} periods</th>
+                  <th class="text-right">{{ table.resume.totalrecords }}</th>
+                  <th class="text-right">{{ table.resume.totalcuantity }}</th>
                 </tr>
               </tfooter>
             </table>
