@@ -20,11 +20,15 @@ class Period_Admin(admin.ModelAdmin):
 class Dspace_Admin(admin.ModelAdmin):
     list_display = ('id_dspace', 'title')
     search_fields = ['title']
+    list_filter = ('workarea',)
 
 
 class Stats_Admin(admin.ModelAdmin):
     list_display = ('google_service', 'period', 'id_dspace', 'publication', 'cuantity')
     list_filter = ('google_service', ('period', RelatedFieldAjaxListFilter), )
+
+class Service_type_Admin(admin.ModelAdmin):
+    list_display = ('service', 'max_month_before')
 
 
 admin.site.register(Period, Period_Admin)
@@ -32,7 +36,7 @@ admin.site.register(Google_service, Google_service_Admin)
 admin.site.register(Publication, Publication_Admin)
 admin.site.register(Stats, Stats_Admin)
 admin.site.register(Dspace, Dspace_Admin)
-admin.site.register(Service_type)
+admin.site.register(Service_type, Service_type_Admin)
 admin.site.register(Service_group)
 admin.site.register(WorkArea)
 

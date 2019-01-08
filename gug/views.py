@@ -13,7 +13,7 @@ import json
 from gug.models import Google_service, Period, Publication, Stats, Dspace, Service_group, WorkArea
 from gug.forms import StatForm, DspaceForm, IndexForm
 from gug.serializers import PeriodSerializer, StatsSerializer, StatsSerializer3
-from gug.tasks import get_GA
+from gug.tasks import get_GA, get_wa
 
 from django import forms
 from django.forms import formset_factory
@@ -728,3 +728,14 @@ def get_ga(request):
         raise
 
     return redirect('/')
+
+
+def get_workareas(request):
+    try:
+        get_wa()
+    except:
+        print("Unexpected error:", sys.exc_info()[0])
+        raise
+
+    return redirect('/')
+    

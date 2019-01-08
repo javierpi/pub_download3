@@ -13941,3 +13941,2300 @@ Traceback (most recent call last):
   File "/home/javier/hd1/Codigo/pub_download/publications/gug/tasks.py", line 32, in get_GA
     period.last_update = now()
 NameError: name 'now' is not defined
+2019-01-08 13:44:47,228 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 95, in get_GA
+    save_record(gs, period, url, title, cantidad, workareas)
+UnboundLocalError: local variable 'workareas' referenced before assignment
+2019-01-08 15:10:04,827 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 35, in get_GA
+    raise
+RuntimeError: No active exception to reraise
+2019-01-08 15:16:45,117 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 35, in get_GA
+    max_prev = date.today().timedelta(month=-gs.service.max_month_before)
+NameError: name 'date' is not defined
+2019-01-08 15:17:21,109 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 35, in get_GA
+    max_prev = date.today().timedelta(month=-gs.service.max_month_before)
+AttributeError: 'datetime.date' object has no attribute 'timedelta'
+2019-01-08 15:18:55,280 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 35, in get_GA
+    max_prev = datetime.today().timedelta(month=-gs.service.max_month_before)
+AttributeError: 'datetime.datetime' object has no attribute 'timedelta'
+2019-01-08 15:20:10,659 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 35, in get_GA
+    max_prev = datetime.today() - timedelta(month=gs.service.max_month_before)
+TypeError: 'month' is an invalid keyword argument for this function
+2019-01-08 15:21:56,580 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 35, in get_GA
+    max_prev = datetime.today() - timedelta(months=gs.service.max_month_before)
+TypeError: 'months' is an invalid keyword argument for this function
+2019-01-08 15:24:02,574 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 38, in get_GA
+    raise
+RuntimeError: No active exception to reraise
+2019-01-08 15:26:14,869 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 37, in get_GA
+    if max_prev < period.end_date:
+TypeError: can't compare datetime.datetime to datetime.date
+2019-01-08 15:27:17,560 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 42, in get_GA
+    raise
+RuntimeError: No active exception to reraise
+2019-01-08 15:27:49,558 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 42, in get_GA
+    raise
+RuntimeError: No active exception to reraise
+2019-01-08 15:28:11,140 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 42, in get_GA
+    raise
+RuntimeError: No active exception to reraise
+2019-01-08 15:29:20,315 ERROR django.request Internal Server Error: /get_ga/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 725, in get_ga
+    get_GA()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/local.py", line 191, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/celery/app/task.py", line 375, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 43, in get_GA
+    raise
+RuntimeError: No active exception to reraise
+2019-01-08 16:07:31,699 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas()
+TypeError: get_workareas() missing 1 required positional argument: 'request'
+2019-01-08 16:09:38,244 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas(request)
+RuntimeError: maximum recursion depth exceeded
+2019-01-08 16:10:18,889 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas()
+TypeError: get_workareas() missing 1 required positional argument: 'request'
+2019-01-08 16:11:44,142 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas()
+TypeError: get_workareas() missing 1 required positional argument: 'request'
+2019-01-08 16:13:22,267 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_workareas()
+TypeError: get_workareas() missing 1 required positional argument: 'request'
+2019-01-08 16:14:08,116 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: get_workareas() takes 0 positional arguments but 1 was given
+2019-01-08 16:15:34,946 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: get_workareas() takes 0 positional arguments but 1 was given
+2019-01-08 16:15:56,605 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_wa()
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 210, in get_wa
+    dsp = Dspace.objects.get(id_dspace=id_dspace)
+NameError: name 'id_dspace' is not defined
+2019-01-08 16:21:59,807 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_wa()
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 213, in get_wa
+    dsp = Dspace.objects.get(id_dspace=id_dspace)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 394, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 68, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/fields/__init__.py", line 1826, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+2019-01-08 16:29:56,242 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_wa()
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 210, in get_wa
+    dsp = Dspace.objects.get(id_dspace=id_dspace)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 394, in get
+    clone = self.filter(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1253, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1277, in _add_q
+    split_subq=split_subq,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1215, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1085, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/lookups.py", line 68, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/fields/__init__.py", line 1826, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+2019-01-08 16:31:16,411 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_wa()
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 210, in get_wa
+    if int(id_dspace):
+ValueError: invalid literal for int() with base 10: ''
+2019-01-08 16:48:16,913 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_wa()
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 211, in get_wa
+    dsp = Dspace.objects.get(id_dspace=id_dspace)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+gug.models.DoesNotExist: Dspace matching query does not exist.
+2019-01-08 16:54:20,974 ERROR django.request Internal Server Error: /get_workareas/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 211, in get_wa
+    dsp = Dspace.objects.get(id_dspace=id_dspace)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+gug.models.DoesNotExist: Dspace matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 735, in get_workareas
+    get_wa()
+  File "/home/deployer/pub_download3/publications/gug/tasks.py", line 215, in get_wa
+    except DoesNotExist:
+NameError: name 'DoesNotExist' is not defined

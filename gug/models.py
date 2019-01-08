@@ -51,6 +51,7 @@ class Period(models.Model):
 
 class Service_type(models.Model):
     service = models.CharField(max_length=20, default='')
+    max_month_before = models.PositiveSmallIntegerField(default=0, help_text="Month service deliver stats")
 
     class Meta:
         verbose_name_plural = 'Service types'
