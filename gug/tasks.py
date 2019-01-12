@@ -1,8 +1,9 @@
 from apiclient.discovery import build
 from google.oauth2 import service_account
 from celery import shared_task
+from django.core.exceptions import ObjectDoesNotExist
 from gug.models import Google_service, Period, Publication, Stats, Dspace, WorkArea
-from datetime import datetime
+from datetime import datetime, timedelta, date
 import json
 import logging
 ########################################################
@@ -30,10 +31,17 @@ def get_GA(header=False):
     for period in periods:
         start_date = str(period.start_date)
         end_date = str(period.end_date)
-        period.last_update = datetime.now()
-        period.save()
-
         for gs in gservices:
+            max_prev = date.today() - timedelta(days=(gs.service.max_month_before*31))
+            if max_prev > period.end_date or max_prev > period.start_date:
+                # print(max_prev)
+                print(gs.service.max_month_before)
+                print('max_prev > period.end_date', max_prev, ' > ' , period.end_date)
+                continue
+            else:
+                print('Obteniendo')
+                continue
+
             scope = gs.scope
             discovery = (gs.discovery)
             secret_json = gs.secret_json
@@ -46,17 +54,13 @@ def get_GA(header=False):
             report = report.replace('start_date', start_date)
             report = report.replace('end_date', end_date)
             report = json.loads(report)
-            # print(report)
 
             credentials = service_account.Credentials.from_service_account_file(client_secret_path, scopes=scope)
             if credentials is None:
                 print("BAD CREDENTIALS")
 
             # delete all stats from this report
-
             delete_stat(gs, period)
-            gs.last_update = datetime.now()
-            gs.save()
             # raise
 
             if discovery:
@@ -72,6 +76,7 @@ def get_GA(header=False):
                     dimensionHeaders = columnHeader.get('dimensions', [])
                     metricHeaders = columnHeader.get('metricHeader', {}).get('metricHeaderEntries', [])
 
+                workareas = None
                 for row in report.get('data', {}).get('rows', []):
                     dimensions = row.get('dimensions', [])
                     dateRangeValues = row.get('metrics', [])
@@ -102,14 +107,12 @@ def get_GA(header=False):
                         title = ''
                         url = keys
                         save_record(gs, period, url, title, cantidad, '')
-                        # print(output_row)
-       
 
+            gs.last_update = datetime.now()
+            gs.save()
 
-def delete_stat(gs, period):
-    print('deleting stats for period:', period, ' and gs:', gs)
-    Stats.objects.filter(google_service=gs, period=period).delete()
-
+        period.last_update = datetime.now()
+        period.save()
 
 def tospanish(workarea):
     if workarea == 'assuntos de gênero' or workarea == 'gender affairs' or workarea[:10] == 'asuntos de' or workarea[:9] == 'gender eq' or workarea[:10] == 'igualdad d' :
@@ -135,11 +138,9 @@ def tospanish(workarea):
 
     else:
         return workarea.capitalize()
-    
-    
-def save_record(gs, period, url, title, cantidad, workareas=None):
-    #print(gs.id, period.id, url, title, cantidad)
-    n_url = url.split('?')[0]
+
+def clean_url(n_url):
+    n_url = n_url.split('?')[0]
     n_url = n_url.replace('http://', '')
     n_url = n_url.replace('https://', '')
     n_url = n_url.replace('repositorio.cepal.org', '')
@@ -147,6 +148,93 @@ def save_record(gs, period, url, title, cantidad, workareas=None):
     n_url = n_url.replace('/handle', '')
     n_url = n_url.replace('/id/', '')
     n_url = n_url.replace('/11362/', '')
+    return n_url
+
+# @shared_task
+def get_wa():
+    scope = 'https://www.googleapis.com/auth/analytics.readonly'
+    discovery = ('https://analyticsreporting.googleapis.com/$discovery/rest')
+    client_secret_path = 'DownloadPublicaciones-a610ebc17b1e.json'
+    service = 'analytics'
+    version = 'v4'
+    # 94626449
+    report = '{ "reportRequests": [ { "viewId": "94646409", "dateRanges": [{"startDate": "2017-01-01", "endDate": "2019-12-30"}], \
+                            "metrics": [{"expression": "ga:totalEvents"}],"dimensions": [{"name": "ga:eventLabel"}, {"name": "ga:pageTitle"}, {"name": "ga:dimension1"}],"pageSize": 20000,"orderBys": [{"fieldName": "ga:totalEvents", "sortOrder": "DESCENDING"}], \
+                            "dimensionFilterClauses": [{"operator": "AND"},{"filters": [{"dimensionName": "ga:eventLabel", "operator": "PARTIAL", "expressions": ["/bitstream/", ".pdf"] }]}] }]}'
+    report = json.loads(report)
+    credentials = service_account.Credentials.from_service_account_file(client_secret_path, scopes=scope)
+    if credentials is None:
+        print("BAD CREDENTIALS")
+
+    # if discovery:
+    analytics = build(service, version, discoveryServiceUrl=discovery, cache_discovery=False)
+    response = analytics.reports().batchGet(body=report).execute()
+   
+    for report in response.get('reports', []):
+        columnHeader = report.get('columnHeader', {})
+        dimensionHeaders = columnHeader.get('dimensions', [])
+        metricHeaders = columnHeader.get('metricHeader', {}).get('metricHeaderEntries', [])
+
+    workareas = None
+    for row in report.get('data', {}).get('rows', []):
+        dimensions = row.get('dimensions', [])
+        dateRangeValues = row.get('metrics', [])
+
+        for header, dimension in zip(dimensionHeaders, dimensions):
+            # print('Header=' + header + ': ' + dimension)
+            if header == 'ga:eventLabel':
+                url = dimension
+            if header == 'ga:pageTitle':
+                title = dimension
+            if header == 'ga:dimension1':
+                workareas = dimension
+        for i, values in enumerate(dateRangeValues):
+            for metricHeader, value in zip(metricHeaders, values.get('values')):
+                # print(metricHeader.get('name') + ': ' + value)
+                if metricHeader.get('name') == 'ga:totalEvents':
+                    cantidad = value
+        # save_record(gs, period, url, title, cantidad, workareas)
+        n_url = clean_url(url)
+        wka_list = []
+        id_dspace = n_url.split("/")[0]
+
+        for workarea in workareas.split(','):
+            workarea = tospanish(workarea.strip().lower())
+            if len(workarea) > 3:
+                try:
+                    wka = WorkArea.objects.get(name=workarea)
+                except WorkArea.DoesNotExist:
+                    wka = WorkArea(name=workarea)
+                    wka.save()
+                wka_list.append(wka)
+
+        try:
+            dsp = Dspace.objects.get(id_dspace=id_dspace)
+        except ValueError:
+            print('ValueError in id_dspace')
+            print('url = ', url)
+        except ObjectDoesNotExist:
+            print('DoesNotExist')
+
+        else:
+            dsp.workarea.set(wka_list)
+
+
+def delete_stat(gs, period):
+    print('deleting stats for period:', period, ' and gs:', gs)
+    Stats.objects.filter(google_service=gs, period=period).delete()
+
+def save_record(gs, period, url, title, cantidad, workareas=None):
+    #print(gs.id, period.id, url, title, cantidad)
+    # n_url = url.split('?')[0]
+    # n_url = n_url.replace('http://', '')
+    # n_url = n_url.replace('https://', '')
+    # n_url = n_url.replace('repositorio.cepal.org', '')
+    # n_url = n_url.replace('/bitstream', '')
+    # n_url = n_url.replace('/handle', '')
+    # n_url = n_url.replace('/id/', '')
+    # n_url = n_url.replace('/11362/', '')
+    n_url = clean_url(url)
 
     id_dspace = n_url.split("/")[0]
     file = n_url.split("/")[-1]
@@ -160,45 +248,28 @@ def save_record(gs, period, url, title, cantidad, workareas=None):
     title = title.split('|')[0]
 
     if isNum(id_dspace) and int(cantidad) > 0:
-        wka_list = []
-        for workarea in workareas.split(','):
-            workarea = tospanish(workarea.strip().lower())
-            if len(workarea) > 3:
-                try:
-                    wka = WorkArea.objects.get(name=workarea)
-                except WorkArea.DoesNotExist:
-                    wka = WorkArea(name=workarea)
-                    wka.save()
-                wka_list.append(wka)
+        dsp, created = Dspace.objects.update_or_create(
+                id_dspace=id_dspace,
+                defaults={
+                    'title': title,
+                    'post_title1': post_title1,
+                    'post_title2': post_title2
+                    }
+                )
+        try:
+            pub = Publication.objects.get(id_dspace=dsp, tfile=file)
+        except Publication.DoesNotExist:
+            pub = Publication(id_dspace=dsp, tfile=file)
+            pub.save()
 
         try:
-            dsp, created = Dspace.objects.update_or_create(
-                    id_dspace=id_dspace,
-                    defaults={
-                        'title': title,
-                        'post_title1': post_title1,
-                        'post_title2': post_title2
-                        }
-                    )
-        except:
-            print('OperationalError')
-        else:
-            dsp.workarea.set(wka_list)
-
-            try:
-                pub = Publication.objects.get(id_dspace=dsp, tfile=file)
-            except Publication.DoesNotExist:
-                pub = Publication(id_dspace=dsp, tfile=file)
-                pub.save()
-
-            try:
-                stat = Stats.objects.get(google_service=gs, period=period, publication=pub, id_dspace=dsp)
-                can = stat.cuantity + int(cantidad)
-                stat.cuantity = can
-                stat.save()
-            except Stats.DoesNotExist:
-                stats = Stats(google_service=gs, period=period, publication=pub, id_dspace=dsp, cuantity=cantidad)
-                stats.save()
+            stat = Stats.objects.get(google_service=gs, period=period, publication=pub, id_dspace=dsp)
+            can = stat.cuantity + int(cantidad)
+            stat.cuantity = can
+            stat.save()
+        except Stats.DoesNotExist:
+            stats = Stats(google_service=gs, period=period, publication=pub, id_dspace=dsp, cuantity=cantidad)
+            stats.save()
 
 
 def isNum(data):

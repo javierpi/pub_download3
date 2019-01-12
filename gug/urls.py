@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from .views import google_services, periods, google_services_detail,\
     periods_detail, stat_index_view, index, dspace_detail, api_publication_detail, \
-    api_periods_list, api_periods_detail, get_titles,  get_ga, dspace_detail_byfile, \
+    api_periods_list, api_periods_detail, get_titles, get_ga, get_workareas, dspace_detail_byfile, \
     dspace_detail_tmp, workareas
 
 # 
@@ -43,6 +43,8 @@ urlpatterns = [
 
     # Commands
     url(r'^get_titles/$', get_titles, name='get_titles'),
-    url(r'^get_ga/$', get_ga, name='get_GA')
+    url(r'^get_ga/$', get_ga, name='get_GA'),
+    url(r'^get_workareas/$', get_workareas, name='get_workareas')
+    
 ]
 
