@@ -28,6 +28,7 @@ before_script:
 test:
   script:
   # - python setup.py test
+  - cd publications
   - pip install -r requirements.txt
   - pip install tox flake8  # you can also use tox
   - tox -e py36,flake8
@@ -35,6 +36,7 @@ test:
 run:
   script:
   # - python setup.py bdist_wheel
+  - cd publications
   - pip install -r requirements.txt
   # an alternative approach is to install and run:
   - pip install dist/*
