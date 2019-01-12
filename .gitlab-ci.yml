@@ -32,8 +32,7 @@ test:
   # - python setup.py test
   - pwd
   - pip install -r requeriments.txt
-  - pip install tox flake8  # you can also use tox
-  - tox -e py36,flake8
+
 
 run:
   script:
