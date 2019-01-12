@@ -40,7 +40,7 @@ run:
   - pwd
   - pip install -r requeriments.txt
   # an alternative approach is to install and run:
-  - pip install dist/*
+  #- pip install dist/*
   # run the command here
   artifacts:
     paths:
