@@ -6,7 +6,7 @@ image: python:3.4
 
 
 services:
-  - mariadb:latest
+  - mysql:latest
   
 
 # Change pip's cache directory to be inside the project directory since we can
