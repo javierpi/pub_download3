@@ -22,6 +22,10 @@ variables:
   Database: pub_download
 
 
+connect:
+  image: mariadb
+  script:
+  - echo "SELECT 'OK';" | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql "$MYSQL_DATABASE"
 
 # Pip's cache doesn't store the python packages
 # https://pip.pypa.io/en/stable/reference/pip_install/#caching
