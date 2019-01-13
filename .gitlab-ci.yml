@@ -8,11 +8,20 @@ image: python:3.4
 services:
   - mariadb:latest
   
-  
+
 # Change pip's cache directory to be inside the project directory since we can
 # only cache local items.
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  # Configure mysql environment variables (https://hub.docker.com/_/mysql/)
+  MYSQL_DATABASE: pub_download
+  MYSQL_ROOT_PASSWORD: serverpass
+  Host: mysql
+  User: root
+  Password: serverpass
+  Database: pub_download
+
+
 
 # Pip's cache doesn't store the python packages
 # https://pip.pypa.io/en/stable/reference/pip_install/#caching
