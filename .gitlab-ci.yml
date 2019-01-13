@@ -44,7 +44,7 @@ before_script:
   - pip install virtualenv
   - virtualenv venv
   - source venv/bin/activate
-  - mysql -u $User -p$Password $Database < pub_downloads.sql
+  # - mysql -u $User -p$Password $Database < pub_downloads.sql
 
 test:
   script:
