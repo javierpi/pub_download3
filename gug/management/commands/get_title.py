@@ -5,6 +5,7 @@ from gug.models import Dspace
 import subprocess
 from bs4 import BeautifulSoup
 import urllib.request as urllib2
+import urllib.error
 
 class Command(BaseCommand):
       help = 'Get publications title from repositorio.cepal.org when they are blanks'
@@ -27,10 +28,27 @@ class Command(BaseCommand):
                         id_dspace = dspace_title.id_dspace
                         site = proto + str(subdo) + str(urls)  + str(dspace_title.id_dspace)
                         print(site)
-                        try:
-                              URLObject = urllib2.urlopen(site)
-                        except:
-                              print('Some error')
+                        try: 
+                            URLObject = urllib2.urlopen(site)
+                        except urllib2.HTTPError as e:
+                            # checksLogger.error('HTTPError = ' + str(e.code))
+                            print('HTTPError = ' + str(e.code))
+                        except urllib2.URLError as e:
+                            #checksLogger.error('URLError = ' + str(e.reason))
+                            print('URLError = ' + str(e.reason))
+                        except httplib.HTTPException as e:
+                            #checksLogger.error('HTTPException')
+                            print('HTTPException')
+                        except Exception:
+                            import traceback
+                            #checksLogger.error('generic exception: ' + traceback.format_exc())
+                            print('generic exception: ' + traceback.format_exc())
+
+                        # try:
+                        #       URLObject = urllib2.urlopen(site)
+                        # except:
+                        #       print('Some error')
+
                         else:
                               html = BeautifulSoup(URLObject.read(), features="html.parser")
                               title = html.find('title')

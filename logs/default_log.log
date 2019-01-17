@@ -16238,3 +16238,39 @@ Traceback (most recent call last):
   File "/home/deployer/pub_download3/publications/gug/tasks.py", line 215, in get_wa
     except DoesNotExist:
 NameError: name 'DoesNotExist' is not defined
+2019-01-17 13:09:08,541 ERROR django.request Internal Server Error: /get_titles/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/publications/gug/management/commands/get_title.py", line 32, in handle
+    URLObject = urllib2.urlopen(site)
+  File "/usr/lib/python3.4/urllib/request.py", line 161, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.4/urllib/request.py", line 469, in open
+    response = meth(req, response)
+  File "/usr/lib/python3.4/urllib/request.py", line 579, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/usr/lib/python3.4/urllib/request.py", line 507, in error
+    return self._call_chain(*args)
+  File "/usr/lib/python3.4/urllib/request.py", line 441, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.4/urllib/request.py", line 587, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 716, in get_titles
+    management.call_command('get_title', verbosity=2)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/management/__init__.py", line 141, in call_command
+    return command.execute(*args, **defaults)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/management/base.py", line 335, in execute
+    output = self.handle(*args, **options)
+  File "/home/deployer/pub_download3/publications/gug/management/commands/get_title.py", line 34, in handle
+    checksLogger.error('HTTPError = ' + str(e.code))
+NameError: name 'checksLogger' is not defined
