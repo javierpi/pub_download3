@@ -40,7 +40,6 @@ def get_GA(header=False):
                 continue
             else:
                 print('Obteniendo')
-                continue
 
             scope = gs.scope
             discovery = (gs.discovery)
