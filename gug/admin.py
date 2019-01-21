@@ -18,7 +18,7 @@ class Period_Admin(admin.ModelAdmin):
 
 
 class Dspace_Admin(admin.ModelAdmin):
-    list_display = ('id_dspace', 'title')
+    list_display = ('id_dspace', 'title', 'wacount')
     search_fields = ['title']
     list_filter = ('workarea',)
 
@@ -30,6 +30,9 @@ class Stats_Admin(admin.ModelAdmin):
 class Service_type_Admin(admin.ModelAdmin):
     list_display = ('service', 'max_month_before')
 
+class WorkArea_Admin(admin.ModelAdmin):
+    list_display = ('name',)
+
 
 admin.site.register(Period, Period_Admin)
 admin.site.register(Google_service, Google_service_Admin)
@@ -38,5 +41,5 @@ admin.site.register(Stats, Stats_Admin)
 admin.site.register(Dspace, Dspace_Admin)
 admin.site.register(Service_type, Service_type_Admin)
 admin.site.register(Service_group)
-admin.site.register(WorkArea)
+admin.site.register(WorkArea, WorkArea_Admin)
 

@@ -100,6 +100,7 @@ class WorkArea(models.Model):
     class Meta:
         ordering = ["name"]
 
+
     def __str__(self):
         return str(self.name)
 
@@ -116,6 +117,10 @@ class Dspace(models.Model):
 
     def title_short(self):
         return self.title.split('|')[0]
+
+    def wacount(self):
+        return self.workarea.count()
+
 
     @staticmethod
     def autocomplete_search_fields():
