@@ -157,7 +157,8 @@ def get_wa():
     service = 'analytics'
     version = 'v4'
     # 94626449
-    report = '{ "reportRequests": [ { "viewId": "94646409", "dateRanges": [{"startDate": "2017-01-01", "endDate": "2019-12-30"}], \
+    # 94646409
+    report = '{ "reportRequests": [ { "viewId": "94626449", "dateRanges": [{"startDate": "2017-01-01", "endDate": "2019-12-30"}], \
                             "metrics": [{"expression": "ga:totalEvents"}],"dimensions": [{"name": "ga:eventLabel"}, {"name": "ga:pageTitle"}, {"name": "ga:dimension1"}],"pageSize": 20000,"orderBys": [{"fieldName": "ga:totalEvents", "sortOrder": "DESCENDING"}], \
                             "dimensionFilterClauses": [{"operator": "AND"},{"filters": [{"dimensionName": "ga:eventLabel", "operator": "PARTIAL", "expressions": ["/bitstream/", ".pdf"] }]}] }]}'
     report = json.loads(report)
@@ -187,11 +188,11 @@ def get_wa():
                 title = dimension
             if header == 'ga:dimension1':
                 workareas = dimension
-        for i, values in enumerate(dateRangeValues):
-            for metricHeader, value in zip(metricHeaders, values.get('values')):
-                # print(metricHeader.get('name') + ': ' + value)
-                if metricHeader.get('name') == 'ga:totalEvents':
-                    cantidad = value
+        # for i, values in enumerate(dateRangeValues):
+        #     for metricHeader, value in zip(metricHeaders, values.get('values')):
+        #         # print(metricHeader.get('name') + ': ' + value)
+        #         if metricHeader.get('name') == 'ga:totalEvents':
+        #             cantidad = value
         # save_record(gs, period, url, title, cantidad, workareas)
         n_url = clean_url(url)
         wka_list = []
@@ -213,10 +214,11 @@ def get_wa():
             print('ValueError in id_dspace')
             print('url = ', url)
         except ObjectDoesNotExist:
-            print('DoesNotExist')
+            print('id_dspace Does Not Exist: ', id_dspace)
 
         else:
             dsp.workarea.set(wka_list)
+            dsp.save()
 
 
 def delete_stat(gs, period):
