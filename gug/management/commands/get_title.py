@@ -6,6 +6,7 @@ import subprocess
 from bs4 import BeautifulSoup
 import urllib.request as urllib2
 import urllib.error
+import ssl
 
 class Command(BaseCommand):
       help = 'Get publications title from repositorio.cepal.org when they are blanks'
@@ -18,6 +19,7 @@ class Command(BaseCommand):
             # title = models.CharField(max_length=600, default='')
             # post_title1 = models.CharField(max_length=300, default='')
             # post_title2 = models.CharField(max_length=200, default='')
+            context = ssl._create_unverified_context()
             dspace_titles = Dspace.objects.filter(title__exact='').order_by('id_dspace')
             for dspace_title in dspace_titles:
                   try:
@@ -29,7 +31,7 @@ class Command(BaseCommand):
                         site = proto + str(subdo) + str(urls)  + str(dspace_title.id_dspace)
                         print(site)
                         try: 
-                            URLObject = urllib2.urlopen(site)
+                            URLObject = urllib2.urlopen(site, context=context)
                         except urllib2.HTTPError as e:
                             # checksLogger.error('HTTPError = ' + str(e.code))
                             print('HTTPError = ' + str(e.code))
