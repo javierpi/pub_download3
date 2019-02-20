@@ -112,6 +112,8 @@ def get_GA(header=False):
 
         period.last_update = datetime.now()
         period.save()
+        
+    get_titles()
 
 def tospanish(workarea):
     if workarea == 'assuntos de gênero' or workarea == 'gender affairs' or workarea[:10] == 'asuntos de' or workarea[:9] == 'gender eq' or workarea[:10] == 'igualdad d' :
