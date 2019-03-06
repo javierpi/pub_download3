@@ -2,6 +2,7 @@ from apiclient.discovery import build
 from google.oauth2 import service_account
 from celery import shared_task
 from django.core.exceptions import ObjectDoesNotExist
+from django.core import management
 from gug.models import Google_service, Period, Publication, Stats, Dspace, WorkArea
 from datetime import datetime, timedelta, date
 import json
@@ -18,8 +19,7 @@ def get_titles():
     '''
     call_id = management.call_command(
         'get_title',
-        verbosity=2,
-        interactive=False)
+        verbosity=2)
     return_vars = json.loads(str(call_id))
 
 
@@ -251,14 +251,23 @@ def save_record(gs, period, url, title, cantidad, workareas=None):
     title = title.split('|')[0]
 
     if isNum(id_dspace) and int(cantidad) > 0:
-        dsp, created = Dspace.objects.update_or_create(
-                id_dspace=id_dspace,
-                defaults={
-                    'title': title,
-                    'post_title1': post_title1,
-                    'post_title2': post_title2
-                    }
-                )
+        
+        # dsp, created = Dspace.objects.update_or_create(
+        #     id_dspace=id_dspace,
+        #     defaults={
+        #         'title': title,
+        #         'post_title1': post_title1,
+        #         'post_title2': post_title2
+        #         }
+        #     )
+        
+        dsp, created = Dspace.objects.get_or_create(id_dspace=id_dspace)
+        if len(title.strip()) > 0 :
+            dsp.title = title
+            dsp.post_title1 = post_title1
+            dsp.post_title2 = post_title2
+            dsp.save()
+
         try:
             pub = Publication.objects.get(id_dspace=dsp, tfile=file)
         except Publication.DoesNotExist:
