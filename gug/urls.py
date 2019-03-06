@@ -6,7 +6,7 @@ from .views import google_services, periods, google_services_detail,\
 
 # 
 
-from .apis import get_data
+from .apis import get_data, get_report
 #from .tasks import get_GA
  
 
@@ -40,6 +40,8 @@ urlpatterns = [
 
     # API to get data
     url(r'^get_data/$', get_data.as_view()),
+    url(r'^get_report/$', get_report.as_view()),
+    
 
     # Commands
     url(r'^get_titles/$', get_titles, name='get_titles'),
