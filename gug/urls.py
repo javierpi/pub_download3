@@ -40,7 +40,7 @@ urlpatterns = [
 
     # API to get data
     url(r'^get_data/$', get_data.as_view()),
-    url(r'^get_report/$', get_report.as_view()),
+    url(r'^get_report/$', get_report.as_view() , name='get_report'),
     
 
     # Commands

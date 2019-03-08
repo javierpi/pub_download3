@@ -16673,3 +16673,2233 @@ Traceback (most recent call last):
   File "/home/deployer/pub_download3/publications/gug/apis.py", line 74, in get
     num_cols += 1
 UnboundLocalError: local variable 'num_cols' referenced before assignment
+2019-03-07 12:47:56,874 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 132, in get
+    data.append({"period": stat[0], "cuantity": int(stat[1])})
+ValueError: invalid literal for int() with base 10: 'Balance Preliminar de las Economías de América Latina y el Caribe 2018 '
+2019-03-07 12:55:30,995 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 132, in get
+    data.append({"id_dspace": stat[0], "title": stat[1], "grupo1": int(stat[2])})
+ValueError: invalid literal for int() with base 10: 'Desarrollo económico'
+2019-03-07 12:58:32,988 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 132, in get
+    data.append({"id_dspace": stat[0], "title": stat[1], "wa": stat[2],"grupo1": int(stat[3])})
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+2019-03-07 13:16:07,056 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 132, in get
+    if int(stat[3]) is None:
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+2019-03-07 13:38:56,932 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 105, in get
+    python_obj = json.dumps(stats)
+  File "/usr/lib/python3.4/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python3.4/json/encoder.py", line 192, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.4/json/encoder.py", line 250, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.4/json/encoder.py", line 173, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: Decimal('10921') is not JSON serializable
+2019-03-07 14:04:58,462 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 79, in get
+    items = [dict(zip([key[0] for key in cursor.description], row)) for row in stats]
+TypeError: 'int' object is not iterable
+2019-03-07 15:05:19,389 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 78, in get
+    if csv_output == 'on':
+NameError: name 'csv_output' is not defined
+2019-03-07 15:05:58,625 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 400, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'dict'>`
+2019-03-07 15:08:36,720 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 93, in get
+    for record in stats:
+TypeError: 'int' object is not iterable
+2019-03-07 15:10:06,532 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 103, in get
+    pseudo_buffer = Echo()
+NameError: name 'Echo' is not defined
+2019-03-07 15:10:49,056 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 112, in get
+    writer = csv.writer(pseudo_buffer)
+NameError: name 'csv' is not defined
+2019-03-07 15:11:58,450 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 114, in get
+    response = StreamingHttpResponse(iter_csv(rows, Echo()), content_type="text/csv")
+NameError: name 'StreamingHttpResponse' is not defined
+2019-03-07 15:12:53,279 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 118, in get
+    response = StreamingHttpResponse(iter_csv(rows, Echo()), content_type="text/csv")
+NameError: name 'iter_csv' is not defined
+2019-03-07 15:17:07,922 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 122, in get
+    row.append(record[col])
+IndexError: tuple index out of range
+2019-03-07 15:19:07,488 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 122, in get
+    row.append(record[col])
+IndexError: tuple index out of range
+2019-03-07 15:20:24,952 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 122, in get
+    row.append(record[col])
+IndexError: tuple index out of range
+2019-03-07 15:31:46,336 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 113, in get
+    row.append(head.group__name)
+AttributeError: 'str' object has no attribute 'group__name'
+2019-03-07 15:32:57,475 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 52, in get
+    fields.append(title.group__name)
+AttributeError: 'dict' object has no attribute 'group__name'
+2019-03-07 15:34:13,267 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 52, in get
+    fields.append(title[1])
+KeyError: 1
+2019-03-07 17:40:02,600 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 66, in get
+    fields2.update({'group_' + title['group__id'] : ("number", title['group__name'])})
+KeyError: 'group__id'
+2019-03-07 17:45:09,202 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 170, in get
+    json2 = data_table.ToJSon(columns_order=("id_dspace", "title","wa", "grupo1"))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 933, in _ToJSonObj
+    col_obj = {"id": col_dict[col_id]["id"],
+KeyError: 'grupo1'
+2019-03-07 17:47:35,908 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 66, in get
+    fields2.update({'group_' + title['group__id'] : ("number", title['group__name'])})
+TypeError: Can't convert 'int' object to str implicitly
+2019-03-07 17:52:57,271 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 70, in get
+    print(columns_order.items())
+AttributeError: 'list' object has no attribute 'items'
+2019-03-07 17:59:08,049 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 70, in get
+    print(columns_order.values())
+AttributeError: 'list' object has no attribute 'values'
+2019-03-07 18:02:08,230 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 172, in get
+    json2 = data_table.ToJSon(columns_order=(",".join(columns_order)))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 933, in _ToJSonObj
+    col_obj = {"id": col_dict[col_id]["id"],
+KeyError: 'i'
+2019-03-07 18:04:05,421 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 172, in get
+    json2 = data_table.ToJSon(columns_order=(",".join(columns_order)))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 933, in _ToJSonObj
+    col_obj = {"id": col_dict[col_id]["id"],
+KeyError: 'i'
+2019-03-07 18:05:57,944 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 172, in get
+    json2 = data_table.ToJSon(columns_order=(string_order))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 933, in _ToJSonObj
+    col_obj = {"id": col_dict[col_id]["id"],
+KeyError: 'i'
+2019-03-07 18:06:51,248 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 176, in get
+    python_obj = json.loads(json2)
+NameError: name 'json2' is not defined
+2019-03-07 18:18:09,764 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 177, in get
+    json2 = data_table.ToJSon(columns_order=(string_order))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 933, in _ToJSonObj
+    col_obj = {"id": col_dict[col_id]["id"],
+KeyError: '"'
+2019-03-07 18:19:19,462 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 177, in get
+    json2 = data_table.ToJSon(columns_order=(columns_order))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 933, in _ToJSonObj
+    col_obj = {"id": col_dict[col_id]["id"],
+KeyError: '"id_dspace"'
+2019-03-07 18:20:03,606 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 177, in get
+    json2 = data_table.ToJSon(columns_order=columns_order)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 933, in _ToJSonObj
+    col_obj = {"id": col_dict[col_id]["id"],
+KeyError: '"id_dspace"'
+2019-03-07 18:24:34,875 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 178, in get
+    json2 = data_table.ToJSon(columns_order=columns_order)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 933, in _ToJSonObj
+    col_obj = {"id": col_dict[col_id]["id"],
+KeyError: '"id_dspace"'
+2019-03-07 18:25:26,418 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 178, in get
+    json2 = data_table.ToJSon(columns_order=(columns_order))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 933, in _ToJSonObj
+    col_obj = {"id": col_dict[col_id]["id"],
+KeyError: '"id_dspace"'
+2019-03-07 18:26:05,705 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 178, in get
+    json2 = data_table.ToJSon(columns_order=(columns_order))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 933, in _ToJSonObj
+    col_obj = {"id": col_dict[col_id]["id"],
+KeyError: '"title"'
+2019-03-07 18:26:53,614 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 178, in get
+    json2 = data_table.ToJSon(columns_order=(columns_order))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 933, in _ToJSonObj
+    col_obj = {"id": col_dict[col_id]["id"],
+KeyError: 'SUMA'
+2019-03-07 18:35:44,729 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 162, in get
+    val3 = int(stat[4])
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+2019-03-07 18:36:04,669 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 175, in get
+    json2 = data_table.ToJSon(columns_order=(columns_order), order_by="suma")
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 942, in _ToJSonObj
+    for row, cp in self._PreparedData(order_by):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 672, in _PreparedData
+    sorted_data.sort(key=lambda x: x[0].get(key))
+TypeError: unorderable types: NoneType() < NoneType()
+2019-03-07 18:40:33,189 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 180, in get
+    json2 = data_table.ToJSon(columns_order=(columns_order), order_by="suma")
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 942, in _ToJSonObj
+    for row, cp in self._PreparedData(order_by):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 672, in _PreparedData
+    sorted_data.sort(key=lambda x: x[0].get(key))
+TypeError: unorderable types: NoneType() < NoneType()
+2019-03-07 18:40:58,166 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 180, in get
+    json2 = data_table.ToJSon(columns_order=(columns_order))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 945, in _ToJSonObj
+    value = self.CoerceValue(row.get(col, None), col_dict[col]["type"])
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 236, in CoerceValue
+    raise DataTableException("Wrong type %s when expected number" % t_value)
+gviz_api.DataTableException: Wrong type <class 'decimal.Decimal'> when expected number
+2019-03-07 18:41:48,538 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 180, in get
+    json2 = data_table.ToJSon(columns_order=(columns_order))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 945, in _ToJSonObj
+    value = self.CoerceValue(row.get(col, None), col_dict[col]["type"])
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 236, in CoerceValue
+    raise DataTableException("Wrong type %s when expected number" % t_value)
+gviz_api.DataTableException: Wrong type <class 'decimal.Decimal'> when expected number
+2019-03-07 18:42:00,574 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 180, in get
+    json2 = data_table.ToJSon(columns_order=(columns_order))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 945, in _ToJSonObj
+    value = self.CoerceValue(row.get(col, None), col_dict[col]["type"])
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 236, in CoerceValue
+    raise DataTableException("Wrong type %s when expected number" % t_value)
+gviz_api.DataTableException: Wrong type <class 'decimal.Decimal'> when expected number
+2019-03-07 19:45:16,899 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 140, in get
+    rows.append(str(stat[0]), str(stat[1]), str(stat[2]), stat[3], stat[4], stat[5], stat[6], int(stat[7]))
+TypeError: append() takes exactly one argument (8 given)
+2019-03-07 21:01:34,494 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 65, in get
+    fields_rows.append(title['group__name'])
+AttributeError: 'dict' object has no attribute 'append'
+2019-03-08 11:42:24,408 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'period_id = 2 and      gs_master.id_dspace_id = gs1.id_dspace_id    GROUP by id_' at line 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 132, in get
+    cursor.execute(final_sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'period_id = 2 and      gs_master.id_dspace_id = gs1.id_dspace_id    GROUP by id_' at line 1")
+2019-03-08 11:48:17,478 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 197, in get
+    json2 = data_table.ToJSon(columns_order=(columns_order), order_by="-suma")
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 1006, in ToJSon
+    encoded_response_str = DataTableJSONEncoder().encode(self._ToJSonObj(columns_order, order_by))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 942, in _ToJSonObj
+    for row, cp in self._PreparedData(order_by):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 672, in _PreparedData
+    sorted_data.sort(key=lambda x: x[0].get(key))
+TypeError: unorderable types: NoneType() < NoneType()
+2019-03-08 11:57:14,041 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 179, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 11:58:29,851 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 180, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 12:01:59,238 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 168, in get
+    mhead = json.loads(head)[0]
+  File "/usr/lib/python3.4/json/__init__.py", line 318, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.4/json/decoder.py", line 343, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.4/json/decoder.py", line 361, in raw_decode
+    raise ValueError(errmsg("Expecting value", s, err.value)) from None
+ValueError: Expecting value: line 1 column 1 (char 0)
+2019-03-08 12:03:14,434 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 168, in get
+    mhead = json.loads(head)
+  File "/usr/lib/python3.4/json/__init__.py", line 318, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.4/json/decoder.py", line 343, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.4/json/decoder.py", line 361, in raw_decode
+    raise ValueError(errmsg("Expecting value", s, err.value)) from None
+ValueError: Expecting value: line 1 column 1 (char 0)
+2019-03-08 12:04:35,751 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 167, in get
+    mhead = json.loads(fields2)
+  File "/usr/lib/python3.4/json/__init__.py", line 312, in loads
+    s.__class__.__name__))
+TypeError: the JSON object must be str, not 'dict'
+2019-03-08 12:17:16,250 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 170, in get
+    print('head=',head[''])
+TypeError: string indices must be integers
+2019-03-08 12:26:39,951 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 182, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 12:31:28,436 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 182, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 12:37:43,776 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 63, in get
+    fields2.update({'title': ("string", "Title")})
+AttributeError: 'list' object has no attribute 'update'
+2019-03-08 12:38:12,417 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 170, in get
+    print('fields2[head]',fields2[head])
+TypeError: list indices must be integers, not dict
+2019-03-08 12:39:16,294 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 207, in get
+    data_table = gviz_api.DataTable(fields2)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 167, in __init__
+    self.__columns = self.TableDescriptionParser(table_description)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 482, in TableDescriptionParser
+    parsed_col = DataTable.ColumnTypeParser(desc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 343, in ColumnTypeParser
+    "tuple, got %s." % type(description))
+gviz_api.DataTableException: Description error: expected either string or tuple, got <class 'dict'>.
+2019-03-08 12:41:10,443 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 207, in get
+    data_table = gviz_api.DataTable(fields2.items())
+AttributeError: 'list' object has no attribute 'items'
+2019-03-08 12:42:26,072 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 207, in get
+    data_table = gviz_api.DataTable(list(fields2.values()))
+AttributeError: 'list' object has no attribute 'values'
+2019-03-08 12:43:00,938 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 207, in get
+    data_table = gviz_api.DataTable(list(fields2))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 167, in __init__
+    self.__columns = self.TableDescriptionParser(table_description)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 482, in TableDescriptionParser
+    parsed_col = DataTable.ColumnTypeParser(desc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 343, in ColumnTypeParser
+    "tuple, got %s." % type(description))
+gviz_api.DataTableException: Description error: expected either string or tuple, got <class 'dict'>.
+2019-03-08 12:44:26,075 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 182, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 12:50:53,282 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 186, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 12:52:05,277 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 170, in get
+    if fields2[col].find('string'):
+AttributeError: 'dict' object has no attribute 'find'
+2019-03-08 12:53:59,503 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 172, in get
+    if head_value.find('string'):
+AttributeError: 'dict' object has no attribute 'find'
+2019-03-08 12:56:43,214 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 172, in get
+    if head_value.find('string'):
+AttributeError: 'dict' object has no attribute 'find'
+2019-03-08 13:00:40,993 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 170, in get
+    if head_value.find('string'):
+AttributeError: 'dict_values' object has no attribute 'find'
+2019-03-08 13:01:44,131 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 169, in get
+    head_type = head_value[0]
+TypeError: 'dict_values' object does not support indexing
+2019-03-08 13:04:35,518 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 172, in get
+    if head_type.find('string'):
+AttributeError: 'tuple' object has no attribute 'find'
+2019-03-08 13:07:24,696 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 189, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 13:09:03,459 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 189, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 13:09:53,750 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 189, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 13:12:10,165 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 192, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 13:15:21,526 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 192, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 13:17:15,323 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 192, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 13:20:10,115 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 192, in get
+    raise
+RuntimeError: No active exception to reraise
+2019-03-08 13:21:58,160 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 219, in get
+    data_table = gviz_api.DataTable(list(fields2))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 167, in __init__
+    self.__columns = self.TableDescriptionParser(table_description)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 482, in TableDescriptionParser
+    parsed_col = DataTable.ColumnTypeParser(desc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 343, in ColumnTypeParser
+    "tuple, got %s." % type(description))
+gviz_api.DataTableException: Description error: expected either string or tuple, got <class 'dict'>.
+2019-03-08 13:24:05,415 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 211, in get
+    data_table = gviz_api.DataTable(list(fields2.values()))
+AttributeError: 'list' object has no attribute 'values'
+2019-03-08 13:40:32,280 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 211, in get
+    data_table = gviz_api.DataTable(fields2)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 167, in __init__
+    self.__columns = self.TableDescriptionParser(table_description)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 482, in TableDescriptionParser
+    parsed_col = DataTable.ColumnTypeParser(desc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/gviz_api.py", line 343, in ColumnTypeParser
+    "tuple, got %s." % type(description))
+gviz_api.DataTableException: Description error: expected either string or tuple, got <class 'dict'>.
+2019-03-08 13:41:54,137 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 211, in get
+    data_table = gviz_api.DataTable(fields2.items())
+AttributeError: 'list' object has no attribute 'items'
+2019-03-08 14:38:47,313 ERROR django.request Internal Server Error: /admin/gug/service_group/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'gug_service_group.order' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/contrib/admin/options.py", line 575, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/contrib/admin/options.py", line 1708, in changelist_view
+    selection_note=_('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 254, in __len__
+    self._fetch_all()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 1179, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/compiler.py", line 1068, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 247, in execute
+    res = self._query(query)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 412, in _query
+    rowcount = self._do_query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/cursors.py", line 375, in _do_query
+    db.query(q)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/MySQLdb/connections.py", line 276, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'gug_service_group.order' in 'field list'")
+2019-03-08 14:49:20,711 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 50, in get
+    gstitles = Service_group.objects.values('group_id', 'group_name').annotate(dcount=Count('group_id'))
+NameError: name 'Service_group' is not defined
+2019-03-08 14:49:50,635 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1683, in add_fields
+    join_info = self.setup_joins(name.split(LOOKUP_SEP), opts, alias, allow_many=allow_m2m)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1448, in setup_joins
+    names, opts, allow_many, fail_on_missing=True)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1379, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'group_id' into field. Choices are: google_service, id, name, order
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 50, in get
+    gstitles = Service_group.objects.values('group_id', 'group_name').annotate(dcount=Count('group_id'))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 742, in values
+    clone = self._values(*fields, **expressions)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 737, in _values
+    clone.query.set_values(fields)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1935, in set_values
+    self.add_fields(field_names, True)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1706, in add_fields
+    "Choices are: %s" % (name, ", ".join(names)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'group_id' into field. Choices are: google_service, id, name, order
+2019-03-08 14:51:16,481 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 67, in get
+    fields.append(title['group__name'] )
+KeyError: 'group__name'
+2019-03-08 14:51:59,328 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/apis.py", line 83, in get
+    for x in groupid_avalable:
+NameError: name 'groupid_avalable' is not defined
+2019-03-08 15:12:07,431 ERROR django.request Internal Server Error: /api/publication/5607
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 644, in api_publication_detail
+    publication = Publication.objects.get(pk=pk)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+gug.models.DoesNotExist: Publication matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 645, in api_publication_detail
+    except publication.DoesNotExist:
+UnboundLocalError: local variable 'publication' referenced before assignment
+2019-03-08 15:18:31,939 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+2019-03-08 15:25:28,508 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+2019-03-08 15:27:21,133 ERROR django.request Internal Server Error: /get_report/2/csv
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+2019-03-08 15:28:16,919 ERROR django.request Internal Server Error: /get_report/2/csv
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+2019-03-08 15:29:49,415 ERROR django.request Internal Server Error: /get_report/2/csv
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/decorators.py", line 53, in handler
+    return func(*args, **kwargs)
+TypeError: __init__() got multiple values for argument 'output'
+2019-03-08 15:30:16,682 ERROR django.request Internal Server Error: /get_report/2/csv
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 400, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'gug.apis.get_report'>`
+2019-03-08 15:34:05,291 ERROR django.request Internal Server Error: /get_report/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: get() missing 2 required positional arguments: 'period' and 'output'
+2019-03-08 15:40:22,739 ERROR django.request Internal Server Error: /periods/27
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 589, in periods_detail
+    return render(request, 'gug/periods_detail.html', {'table': context })
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/resolvers.py", line 636, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'get_report' with arguments '(<Period: 2019 - February>,)' not found. 1 pattern(s) tried: ['get_report/$']

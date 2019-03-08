@@ -496,7 +496,7 @@ def stat_index_view(request):
         cursor = connection.cursor()
         cursor.execute(query_resume)
         resume = cursor.fetchall()
-
+ 
         period_objs = Period.objects.filter(pk__in=period)
 
         if csv_output == 'on':
@@ -642,7 +642,7 @@ def workareas(request, period=None, google_service=None):
 def api_publication_detail(request, pk):
     try:
         publication = Publication.objects.get(pk=pk)
-    except publication.DoesNotExist:
+    except Publication.DoesNotExist:
         return HttpResponse(status=404)
 
     if request.method == 'GET':

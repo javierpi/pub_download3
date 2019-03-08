@@ -63,9 +63,11 @@ class Service_type(models.Model):
 
 class Service_group(models.Model):
     name = models.CharField(max_length=200)
+    order = models.PositiveSmallIntegerField(default=0)
     class Meta:
         verbose_name_plural = 'Service groups'
         verbose_name = 'Service group'
+        ordering = ["order"]
 
     def __str__(self):
         return str(self.name)
