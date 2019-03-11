@@ -140,17 +140,18 @@ def dspace_detail(request):
 
         #### --    BY GROUP ----
         ## group headers
-        gstitles = Google_service.objects.values('group', 'group__name').filter(pk__in=gsid).annotate(dcount=Count('group'))
+        gstitles = Google_service.objects.values('group', 'group__name').filter(pk__in=gsid).order_by('group__order').annotate(dcount=Count('group'))
+        # gstitles = Service_group.objects.values('id', 'name').annotate(dcount=Count('id'))
         fields2 = ['Period']
         for title in gstitles:
             fields2.append(title)
         fields2.append('Total Downloads')
         #
-        groupid_avalable = list(Google_service.objects.select_related('group').filter(pk__in=gsid).values_list('group_id', flat=True).distinct())
-        group_list = []
+        groupid_avalable = list(Google_service.objects.select_related('group').filter(pk__in=gsid).order_by('group__order').values_list('group_id', flat=True).distinct())
+        groupids = []
         for x in groupid_avalable:
-            group_list.append(str(x))
-        groupids = group_list
+            groupids.append(str(x))
+        # groupids = group_list
         ## group resumes
         group_query_resume_inicial = "select  'Total' as tit1, "
         group_query_resume_rows = ""
@@ -177,7 +178,7 @@ def dspace_detail(request):
         num_cols = 0
         google_services_groups = []
         for groupn in groupids:
-            gsid2 = list(Google_service.objects.filter(group_id=groupn, pk__in=gsid).values_list('id', flat=True).distinct())
+            gsid2 = list(Google_service.objects.filter(group_id=groupn, pk__in=gsid).order_by('group__order').values_list('id', flat=True).distinct())
             group_list2 = []
             for x in gsid2:
                 group_list2.append(str(x))
@@ -288,7 +289,7 @@ def dspace_detail(request):
         dspace_record = Dspace.objects.get(id_dspace=id_dspace)
         return render(request, 'gug/dspace_detail.html', {'form': form, 'table': table,  'period': period_objs, 'gs': gs, 'dspace_record': dspace_record, 'files_list': files_list})
 
-
+ 
 
 @api_view(['GET'])
 def dspace_detail1(request):
