@@ -22,8 +22,6 @@ cache:
     - venv/
 
 before_script:
-  - apt-get update -qy
-  - apt-get install -y python-dev python-pip
   - python -V               # Print out python version for debugging
   - pip install virtualenv
   - virtualenv venv --python=python3.4
