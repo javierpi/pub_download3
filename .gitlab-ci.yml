@@ -5,27 +5,11 @@
 image: python:3.4
 
 
-services:
-  - mysql:latest
-  
-
 # Change pip's cache directory to be inside the project directory since we can
 # only cache local items.
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   # Configure mysql environment variables (https://hub.docker.com/_/mysql/)
-  MYSQL_DATABASE: pub_download
-  MYSQL_ROOT_PASSWORD: serverpass
-  Host: mysql
-  User: root
-  Password: serverpass
-  Database: pub_download
-
-
-connect:
-  image: mariadb
-  script:
-  - echo "SELECT 'OK';" | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql "$MYSQL_DATABASE"
 
 # Pip's cache doesn't store the python packages
 # https://pip.pypa.io/en/stable/reference/pip_install/#caching
@@ -42,10 +26,9 @@ before_script:
   - apt-get install -y python-dev python-pip
   - python -V               # Print out python version for debugging
   - pip install virtualenv
-  - virtualenv venv
+  - virtualenv venv --python=python3.4
   - source venv/bin/activate
 
-#  - mysql -u $User -p$Password $Database < pub_downloads.sql
 
 test:
   script:
