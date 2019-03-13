@@ -35,7 +35,7 @@ test:
 pages:
   stage: test
   dependencies:
-  - prepare
+  - install
   image: mysql
   script:
   - install_dependencies
