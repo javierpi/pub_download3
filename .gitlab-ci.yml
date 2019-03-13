@@ -21,7 +21,6 @@ variables:
 
 before_script:
   - python -V               # Print out python version for debugging
-  - mysql -V
   - pip install virtualenv
   - virtualenv venv --python=python3
   - source venv/bin/activate
@@ -29,6 +28,7 @@ before_script:
 
 mysql_build:
   stage: prepare
+  image: mysql
   script:
   - mysql --version
   - echo "SELECT 'OK';" | mysql --user=root --password="${MYSQL_ROOT_PASSWORD}" --host=mysql "${MYSQL_DATABASE}"
