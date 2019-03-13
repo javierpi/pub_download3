@@ -25,13 +25,13 @@ before_script:
   - pip install virtualenv
   - virtualenv venv --python=python3
   - source venv/bin/activate
+  - pip install -r requeriments.txt
 
 
 test:
   script:
   # - python setup.py test
   - pwd
-  - pip install -r requeriments.txt
   - pip install tox flake8  # you can also use tox
   - tox -e py36,flake8
 
@@ -40,7 +40,7 @@ run:
   script:
   # - python setup.py bdist_wheel
   - pwd
-  - pip install -r requeriments.txt
+  
   # an alternative approach is to install and run:
   #- pip install dist/*
   # run the command here
