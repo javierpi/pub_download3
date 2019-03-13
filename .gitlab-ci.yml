@@ -34,13 +34,13 @@ test:
 
 pages:
   stage: test
+  dependencies:
+   - prepare
+
   image: mysql
   script:
   - install_dependencies
   - make_documentation
-  # - pip install sphinx sphinx-rtd-theme
-  # - cd docs ; make html
-  # - mv build/html/ ../public/
   artifacts:
     paths:
     - public
@@ -68,7 +68,6 @@ pages:
     virtualenv venv --python=python3
     source venv/bin/activate
     pip install -r requeriments.txt
-    mkdir venv/public
   }
   function make_documentation() {
     source venv/bin/activate
