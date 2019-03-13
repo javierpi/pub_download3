@@ -19,10 +19,7 @@ install:
   stage: prepare
   script:
   - install_dependencies
-  artifacts:
-    paths:
-    - public
-
+  - make_documentation
 
 # test:
 #   stage: prepare
@@ -31,16 +28,13 @@ install:
 #   - pip install tox flake8  # you can also use tox
 #   - tox -e py34,flake8
 
-pages:
-  stage: prepare
-  image: mysql
-  script:
-  - make_documentation
-  artifacts:
-    paths:
-    - public
-  only:
-  - master
+# pages:
+#   stage: prepare
+#   image: mysql
+#   script:
+#   - make_documentation
+#   only:
+#   - master
 
 
 .auto_devops: &auto_devops |
