@@ -3,7 +3,12 @@
 # https://hub.docker.com/r/library/python/tags/
 # image: python:latest
 image: python:3.4
+# services:
+#   - mysql:latest
 
+# variables:
+#   MYSQL_DATABASE: ${MYSQL_DATABASE}
+#   MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
 # Change pip's cache directory to be inside the project directory since we can
 # only cache local items.
@@ -22,40 +27,52 @@ variables:
 
 before_script:
   - python -V               # Print out python version for debugging
+  - mysql -V
   - pip install virtualenv
   - virtualenv venv --python=python3
   - source venv/bin/activate
   - pip install -r requeriments.txt
 
-
-test:
+mysql_build:
+  variables:
+    MYSQL_DATABASE: hello_world_test
+    MYSQL_ROOT_PASSWORD: mysql
+  services:
+  - mysql
+  image: mysql
+  before_script:
+  - mysql --version
   script:
-  # - python setup.py test
-  - pwd
-  - pip install tox flake8  # you can also use tox
-  - tox -e py36,flake8
+  - echo "SELECT 'OK';" | mysql --user=root --password="${MYSQL_ROOT_PASSWORD}" --host=mysql "${MYSQL_DATABASE}"
+
+# test:
+#   script:
+#   # - python setup.py test
+#   - pwd
+#   - pip install tox flake8  # you can also use tox
+#   - tox -e py34,flake8
 
 
-run:
-  script:
-  # - python setup.py bdist_wheel
-  - pwd
+# run:
+#   script:
+#   # - python setup.py bdist_wheel
+#   - pwd
   
-  # an alternative approach is to install and run:
-  #- pip install dist/*
-  # run the command here
-  artifacts:
-    paths:
-    - dist/*.whl
+#   # an alternative approach is to install and run:
+#   #- pip install dist/*
+#   # run the command here
+#   artifacts:
+#     paths:
+#     - dist/*.whl
 
 
-pages:
-  script:
-  - pip install sphinx sphinx-rtd-theme
-  - cd docs ; make html
-  - mv build/html/ ../public/
-  artifacts:
-    paths:
-    - public
-  only:
-  - master
+# pages:
+#   script:
+#   - pip install sphinx sphinx-rtd-theme
+#   - cd docs ; make html
+#   - mv build/html/ ../public/
+#   artifacts:
+#     paths:
+#     - public
+#   only:
+#   - master
