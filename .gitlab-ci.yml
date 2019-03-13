@@ -31,6 +31,17 @@ test:
   - pip install tox flake8  # you can also use tox
   - tox -e py34,flake8
 
+pages:
+  stage: test
+  script:
+  - pip install sphinx sphinx-rtd-theme
+  - cd docs ; make html
+  - mv build/html/ ../public/
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
 
 mysql_build:
   stage: prepare
@@ -54,13 +65,3 @@ mysql_build:
 #     - dist/*.whl
 
 
-# pages:
-#   script:
-#   - pip install sphinx sphinx-rtd-theme
-#   - cd docs ; make html
-#   - mv build/html/ ../public/
-#   artifacts:
-#     paths:
-#     - public
-#   only:
-#   - master
