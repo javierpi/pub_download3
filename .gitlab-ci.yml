@@ -38,7 +38,6 @@ pages:
   - install
   image: mysql
   script:
-  - install_dependencies
   - make_documentation
   artifacts:
     paths:
