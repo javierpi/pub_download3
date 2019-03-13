@@ -19,13 +19,18 @@ cache:
     - .cache/pip
     - venv/
 
-before_script:
-  image: python
+test:
+  stage: test
+  script:
   - python -V               # Print out python version for debugging
   - pip install virtualenv
   - virtualenv venv --python=python3
   - source venv/bin/activate
   - pip install -r requeriments.txt
+  - pwd
+  - pip install tox flake8  # you can also use tox
+  - tox -e py34,flake8
+
 
 mysql_build:
   stage: prepare
@@ -34,13 +39,6 @@ mysql_build:
   - mysql --version
   - echo "SELECT 'OK';" | mysql --user=root --password="${MYSQL_ROOT_PASSWORD}" --host=mysql "${MYSQL_DATABASE}"
 
-test:
-  stage: test
-  script:
-  # - python setup.py test
-  - pwd
-  - pip install tox flake8  # you can also use tox
-  - tox -e py34,flake8
 
 
 # run:
