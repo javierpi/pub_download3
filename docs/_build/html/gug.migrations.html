@@ -1,0 +1,1008 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>gug.migrations package &#8212; pub_download 1.0.2 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="gug-migrations-package">
+<h1>gug.migrations package<a class="headerlink" href="#gug-migrations-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-gug.migrations.0001_initial">
+<span id="gug-migrations-0001-initial-module"></span><h2>gug.migrations.0001_initial module<a class="headerlink" href="#module-gug.migrations.0001_initial" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0001_initial.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0001_initial.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0001_initial.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0001_initial.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0001_initial.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = []</em><a class="headerlink" href="#gug.migrations.0001_initial.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0001_initial.Migration.initial">
+<code class="descname">initial</code><em class="property"> = True</em><a class="headerlink" href="#gug.migrations.0001_initial.Migration.initial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0001_initial.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Domain', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('ref', &lt;django.db.models.fields.CharField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;)]&gt;, &lt;CreateModel  name='Google_service', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('scope', &lt;django.db.models.fields.CharField&gt;), ('discovery', &lt;django.db.models.fields.CharField&gt;), ('secret_json', &lt;django.db.models.fields.TextField&gt;)]&gt;, &lt;CreateModel  name='Metric', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('ref', &lt;django.db.models.fields.CharField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('description', &lt;django.db.models.fields.TextField&gt;), ('domain', &lt;django.db.models.fields.related.ForeignKey&gt;)]&gt;, &lt;CreateModel  name='Period', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('start_date', &lt;django.db.models.fields.DateField&gt;), ('end_date', &lt;django.db.models.fields.DateField&gt;)]&gt;, &lt;AlterUniqueTogether  name='metric', unique_together={('domain', 'ref')}&gt;]</em><a class="headerlink" href="#gug.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0002_auto_20180718_0021">
+<span id="gug-migrations-0002-auto-20180718-0021-module"></span><h2>gug.migrations.0002_auto_20180718_0021 module<a class="headerlink" href="#module-gug.migrations.0002_auto_20180718_0021" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0002_auto_20180718_0021.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0002_auto_20180718_0021.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0002_auto_20180718_0021.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0002_auto_20180718_0021.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0002_auto_20180718_0021.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0001_initial')]</em><a class="headerlink" href="#gug.migrations.0002_auto_20180718_0021.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0002_auto_20180718_0021.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='service', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AddField  model_name='google_service', name='version', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AddField  model_name='google_service', name='view_id', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0002_auto_20180718_0021.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0003_google_service_client_secret_path">
+<span id="gug-migrations-0003-google-service-client-secret-path-module"></span><h2>gug.migrations.0003_google_service_client_secret_path module<a class="headerlink" href="#module-gug.migrations.0003_google_service_client_secret_path" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0003_google_service_client_secret_path.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0003_google_service_client_secret_path.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0003_google_service_client_secret_path.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0003_google_service_client_secret_path.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0003_google_service_client_secret_path.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0002_auto_20180718_0021')]</em><a class="headerlink" href="#gug.migrations.0003_google_service_client_secret_path.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0003_google_service_client_secret_path.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='client_secret_path', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0003_google_service_client_secret_path.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0004_publication_stats">
+<span id="gug-migrations-0004-publication-stats-module"></span><h2>gug.migrations.0004_publication_stats module<a class="headerlink" href="#module-gug.migrations.0004_publication_stats" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0004_publication_stats.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0004_publication_stats.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0004_publication_stats.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0004_publication_stats.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0004_publication_stats.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0003_google_service_client_secret_path')]</em><a class="headerlink" href="#gug.migrations.0004_publication_stats.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0004_publication_stats.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Publication', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('turl', &lt;django.db.models.fields.CharField&gt;), ('title', &lt;django.db.models.fields.CharField&gt;)]&gt;, &lt;CreateModel  name='Stats', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('cuantity', &lt;django.db.models.fields.BigIntegerField&gt;), ('google_service', &lt;django.db.models.fields.related.ForeignKey&gt;), ('period', &lt;django.db.models.fields.related.ForeignKey&gt;), ('publication', &lt;django.db.models.fields.related.ForeignKey&gt;)]&gt;]</em><a class="headerlink" href="#gug.migrations.0004_publication_stats.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0005_auto_20180718_0131">
+<span id="gug-migrations-0005-auto-20180718-0131-module"></span><h2>gug.migrations.0005_auto_20180718_0131 module<a class="headerlink" href="#module-gug.migrations.0005_auto_20180718_0131" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0005_auto_20180718_0131.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0005_auto_20180718_0131.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0005_auto_20180718_0131.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0005_auto_20180718_0131.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0005_auto_20180718_0131.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0004_publication_stats')]</em><a class="headerlink" href="#gug.migrations.0005_auto_20180718_0131.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0005_auto_20180718_0131.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  name='stats', options={'ordering': ['google_service', 'publication', 'period'], 'verbose_name': 'STATS', 'verbose_name_plural': 'STATS'}&gt;, &lt;AlterUniqueTogether  name='stats', unique_together={('google_service', 'period', 'publication')}&gt;]</em><a class="headerlink" href="#gug.migrations.0005_auto_20180718_0131.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0006_auto_20180718_0257">
+<span id="gug-migrations-0006-auto-20180718-0257-module"></span><h2>gug.migrations.0006_auto_20180718_0257 module<a class="headerlink" href="#module-gug.migrations.0006_auto_20180718_0257" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0006_auto_20180718_0257.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0006_auto_20180718_0257.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0006_auto_20180718_0257.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0006_auto_20180718_0257.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0006_auto_20180718_0257.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0005_auto_20180718_0131')]</em><a class="headerlink" href="#gug.migrations.0006_auto_20180718_0257.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0006_auto_20180718_0257.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='publication', name='title', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0006_auto_20180718_0257.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0007_auto_20180718_0306">
+<span id="gug-migrations-0007-auto-20180718-0306-module"></span><h2>gug.migrations.0007_auto_20180718_0306 module<a class="headerlink" href="#module-gug.migrations.0007_auto_20180718_0306" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0007_auto_20180718_0306.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0007_auto_20180718_0306.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0007_auto_20180718_0306.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0007_auto_20180718_0306.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0007_auto_20180718_0306.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0006_auto_20180718_0257')]</em><a class="headerlink" href="#gug.migrations.0007_auto_20180718_0306.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0007_auto_20180718_0306.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='publication', name='title', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0007_auto_20180718_0306.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0008_auto_20180718_1359">
+<span id="gug-migrations-0008-auto-20180718-1359-module"></span><h2>gug.migrations.0008_auto_20180718_1359 module<a class="headerlink" href="#module-gug.migrations.0008_auto_20180718_1359" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0008_auto_20180718_1359.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0008_auto_20180718_1359.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0008_auto_20180718_1359.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0008_auto_20180718_1359.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0008_auto_20180718_1359.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0007_auto_20180718_0306')]</em><a class="headerlink" href="#gug.migrations.0008_auto_20180718_1359.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0008_auto_20180718_1359.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Dspace', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('id_dspace', &lt;django.db.models.fields.PositiveSmallIntegerField&gt;)]&gt;, &lt;AlterField  model_name='stats', name='google_service', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='publication', name='id_dspace', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0008_auto_20180718_1359.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0009_auto_20180718_1433">
+<span id="gug-migrations-0009-auto-20180718-1433-module"></span><h2>gug.migrations.0009_auto_20180718_1433 module<a class="headerlink" href="#module-gug.migrations.0009_auto_20180718_1433" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0009_auto_20180718_1433.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0009_auto_20180718_1433.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0009_auto_20180718_1433.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0009_auto_20180718_1433.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0009_auto_20180718_1433.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0008_auto_20180718_1359')]</em><a class="headerlink" href="#gug.migrations.0009_auto_20180718_1433.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0009_auto_20180718_1433.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;RenameField  model_name='publication', old_name='turl', new_name='tfile'&gt;]</em><a class="headerlink" href="#gug.migrations.0009_auto_20180718_1433.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0010_auto_20180718_1434">
+<span id="gug-migrations-0010-auto-20180718-1434-module"></span><h2>gug.migrations.0010_auto_20180718_1434 module<a class="headerlink" href="#module-gug.migrations.0010_auto_20180718_1434" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0010_auto_20180718_1434.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0010_auto_20180718_1434.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0010_auto_20180718_1434.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0010_auto_20180718_1434.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0010_auto_20180718_1434.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0009_auto_20180718_1433')]</em><a class="headerlink" href="#gug.migrations.0010_auto_20180718_1434.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0010_auto_20180718_1434.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterUniqueTogether  name='publication', unique_together={('id_dspace', 'tfile')}&gt;]</em><a class="headerlink" href="#gug.migrations.0010_auto_20180718_1434.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0011_auto_20180718_1549">
+<span id="gug-migrations-0011-auto-20180718-1549-module"></span><h2>gug.migrations.0011_auto_20180718_1549 module<a class="headerlink" href="#module-gug.migrations.0011_auto_20180718_1549" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0011_auto_20180718_1549.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0011_auto_20180718_1549.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0011_auto_20180718_1549.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0011_auto_20180718_1549.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0011_auto_20180718_1549.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0010_auto_20180718_1434')]</em><a class="headerlink" href="#gug.migrations.0011_auto_20180718_1549.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0011_auto_20180718_1549.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  name='publication', options={'ordering': ['id_dspace', 'tfile']}&gt;, &lt;AddField  model_name='dspace', name='title', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0011_auto_20180718_1549.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0012_remove_publication_title">
+<span id="gug-migrations-0012-remove-publication-title-module"></span><h2>gug.migrations.0012_remove_publication_title module<a class="headerlink" href="#module-gug.migrations.0012_remove_publication_title" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0012_remove_publication_title.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0012_remove_publication_title.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0012_remove_publication_title.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0012_remove_publication_title.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0012_remove_publication_title.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0011_auto_20180718_1549')]</em><a class="headerlink" href="#gug.migrations.0012_remove_publication_title.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0012_remove_publication_title.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;RemoveField  model_name='publication', name='title'&gt;]</em><a class="headerlink" href="#gug.migrations.0012_remove_publication_title.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0013_stats_id_dspace">
+<span id="gug-migrations-0013-stats-id-dspace-module"></span><h2>gug.migrations.0013_stats_id_dspace module<a class="headerlink" href="#module-gug.migrations.0013_stats_id_dspace" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0013_stats_id_dspace.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0013_stats_id_dspace.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0013_stats_id_dspace.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0013_stats_id_dspace.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0013_stats_id_dspace.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0012_remove_publication_title')]</em><a class="headerlink" href="#gug.migrations.0013_stats_id_dspace.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0013_stats_id_dspace.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='stats', name='id_dspace', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0013_stats_id_dspace.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0014_auto_20180718_1552">
+<span id="gug-migrations-0014-auto-20180718-1552-module"></span><h2>gug.migrations.0014_auto_20180718_1552 module<a class="headerlink" href="#module-gug.migrations.0014_auto_20180718_1552" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0014_auto_20180718_1552.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0014_auto_20180718_1552.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0014_auto_20180718_1552.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0014_auto_20180718_1552.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0014_auto_20180718_1552.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0013_stats_id_dspace')]</em><a class="headerlink" href="#gug.migrations.0014_auto_20180718_1552.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0014_auto_20180718_1552.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterUniqueTogether  name='stats', unique_together={('google_service', 'period', 'id_dspace', 'publication')}&gt;]</em><a class="headerlink" href="#gug.migrations.0014_auto_20180718_1552.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0015_auto_20180718_1630">
+<span id="gug-migrations-0015-auto-20180718-1630-module"></span><h2>gug.migrations.0015_auto_20180718_1630 module<a class="headerlink" href="#module-gug.migrations.0015_auto_20180718_1630" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0015_auto_20180718_1630.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0015_auto_20180718_1630.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0015_auto_20180718_1630.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0015_auto_20180718_1630.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0015_auto_20180718_1630.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0014_auto_20180718_1552')]</em><a class="headerlink" href="#gug.migrations.0015_auto_20180718_1630.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0015_auto_20180718_1630.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='dspace', name='id_dspace', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0015_auto_20180718_1630.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0016_period_active">
+<span id="gug-migrations-0016-period-active-module"></span><h2>gug.migrations.0016_period_active module<a class="headerlink" href="#module-gug.migrations.0016_period_active" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0016_period_active.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0016_period_active.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0016_period_active.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0016_period_active.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0016_period_active.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0015_auto_20180718_1630')]</em><a class="headerlink" href="#gug.migrations.0016_period_active.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0016_period_active.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='period', name='active', field=&lt;django.db.models.fields.BooleanField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0016_period_active.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0017_auto_20180718_1912">
+<span id="gug-migrations-0017-auto-20180718-1912-module"></span><h2>gug.migrations.0017_auto_20180718_1912 module<a class="headerlink" href="#module-gug.migrations.0017_auto_20180718_1912" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0017_auto_20180718_1912.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0017_auto_20180718_1912.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0017_auto_20180718_1912.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0017_auto_20180718_1912.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0017_auto_20180718_1912.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0016_period_active')]</em><a class="headerlink" href="#gug.migrations.0017_auto_20180718_1912.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0017_auto_20180718_1912.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='google_service', name='view_id', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0017_auto_20180718_1912.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0018_google_service_active">
+<span id="gug-migrations-0018-google-service-active-module"></span><h2>gug.migrations.0018_google_service_active module<a class="headerlink" href="#module-gug.migrations.0018_google_service_active" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0018_google_service_active.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0018_google_service_active.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0018_google_service_active.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0018_google_service_active.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0018_google_service_active.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0017_auto_20180718_1912')]</em><a class="headerlink" href="#gug.migrations.0018_google_service_active.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0018_google_service_active.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='active', field=&lt;django.db.models.fields.BooleanField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0018_google_service_active.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0019_google_service_report">
+<span id="gug-migrations-0019-google-service-report-module"></span><h2>gug.migrations.0019_google_service_report module<a class="headerlink" href="#module-gug.migrations.0019_google_service_report" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0019_google_service_report.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0019_google_service_report.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0019_google_service_report.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0019_google_service_report.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0019_google_service_report.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0018_google_service_active')]</em><a class="headerlink" href="#gug.migrations.0019_google_service_report.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0019_google_service_report.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='report', field=&lt;django.db.models.fields.TextField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0019_google_service_report.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0020_auto_20180718_2101">
+<span id="gug-migrations-0020-auto-20180718-2101-module"></span><h2>gug.migrations.0020_auto_20180718_2101 module<a class="headerlink" href="#module-gug.migrations.0020_auto_20180718_2101" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0020_auto_20180718_2101.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0020_auto_20180718_2101.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0020_auto_20180718_2101.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0020_auto_20180718_2101.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0020_auto_20180718_2101.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0019_google_service_report')]</em><a class="headerlink" href="#gug.migrations.0020_auto_20180718_2101.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0020_auto_20180718_2101.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='google_service', name='discovery', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0020_auto_20180718_2101.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0021_service_type">
+<span id="gug-migrations-0021-service-type-module"></span><h2>gug.migrations.0021_service_type module<a class="headerlink" href="#module-gug.migrations.0021_service_type" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0021_service_type.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0021_service_type.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0021_service_type.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0021_service_type.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0021_service_type.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0020_auto_20180718_2101')]</em><a class="headerlink" href="#gug.migrations.0021_service_type.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0021_service_type.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Service_type', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('service', &lt;django.db.models.fields.CharField&gt;)]&gt;]</em><a class="headerlink" href="#gug.migrations.0021_service_type.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0022_google_service_service_t">
+<span id="gug-migrations-0022-google-service-service-t-module"></span><h2>gug.migrations.0022_google_service_service_t module<a class="headerlink" href="#module-gug.migrations.0022_google_service_service_t" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0022_google_service_service_t.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0022_google_service_service_t.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0022_google_service_service_t.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0022_google_service_service_t.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0022_google_service_service_t.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0021_service_type')]</em><a class="headerlink" href="#gug.migrations.0022_google_service_service_t.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0022_google_service_service_t.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='service_t', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0022_google_service_service_t.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0023_remove_google_service_service">
+<span id="gug-migrations-0023-remove-google-service-service-module"></span><h2>gug.migrations.0023_remove_google_service_service module<a class="headerlink" href="#module-gug.migrations.0023_remove_google_service_service" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0023_remove_google_service_service.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0023_remove_google_service_service.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0023_remove_google_service_service.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0023_remove_google_service_service.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0023_remove_google_service_service.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0022_google_service_service_t')]</em><a class="headerlink" href="#gug.migrations.0023_remove_google_service_service.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0023_remove_google_service_service.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;RemoveField  model_name='google_service', name='service'&gt;]</em><a class="headerlink" href="#gug.migrations.0023_remove_google_service_service.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0024_auto_20180719_1345">
+<span id="gug-migrations-0024-auto-20180719-1345-module"></span><h2>gug.migrations.0024_auto_20180719_1345 module<a class="headerlink" href="#module-gug.migrations.0024_auto_20180719_1345" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0024_auto_20180719_1345.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0024_auto_20180719_1345.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0024_auto_20180719_1345.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0024_auto_20180719_1345.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0024_auto_20180719_1345.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0023_remove_google_service_service')]</em><a class="headerlink" href="#gug.migrations.0024_auto_20180719_1345.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0024_auto_20180719_1345.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;RenameField  model_name='google_service', old_name='service_t', new_name='service'&gt;]</em><a class="headerlink" href="#gug.migrations.0024_auto_20180719_1345.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0025_auto_20180719_1351">
+<span id="gug-migrations-0025-auto-20180719-1351-module"></span><h2>gug.migrations.0025_auto_20180719_1351 module<a class="headerlink" href="#module-gug.migrations.0025_auto_20180719_1351" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0025_auto_20180719_1351.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0025_auto_20180719_1351.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0025_auto_20180719_1351.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0025_auto_20180719_1351.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0025_auto_20180719_1351.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0024_auto_20180719_1345')]</em><a class="headerlink" href="#gug.migrations.0025_auto_20180719_1351.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0025_auto_20180719_1351.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='google_service', name='report', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AlterField  model_name='google_service', name='view_id', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0025_auto_20180719_1351.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0026_auto_20180724_2017">
+<span id="gug-migrations-0026-auto-20180724-2017-module"></span><h2>gug.migrations.0026_auto_20180724_2017 module<a class="headerlink" href="#module-gug.migrations.0026_auto_20180724_2017" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0026_auto_20180724_2017.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0026_auto_20180724_2017.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0026_auto_20180724_2017.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0026_auto_20180724_2017.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0026_auto_20180724_2017.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0025_auto_20180719_1351')]</em><a class="headerlink" href="#gug.migrations.0026_auto_20180724_2017.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0026_auto_20180724_2017.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  name='period', options={'ordering': ['start_date']}&gt;]</em><a class="headerlink" href="#gug.migrations.0026_auto_20180724_2017.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0027_auto_20180724_2030">
+<span id="gug-migrations-0027-auto-20180724-2030-module"></span><h2>gug.migrations.0027_auto_20180724_2030 module<a class="headerlink" href="#module-gug.migrations.0027_auto_20180724_2030" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0027_auto_20180724_2030.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0027_auto_20180724_2030.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0027_auto_20180724_2030.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0027_auto_20180724_2030.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0027_auto_20180724_2030.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0026_auto_20180724_2017')]</em><a class="headerlink" href="#gug.migrations.0027_auto_20180724_2030.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0027_auto_20180724_2030.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;RenameField  model_name='dspace', old_name='id_dspace', new_name='mid'&gt;]</em><a class="headerlink" href="#gug.migrations.0027_auto_20180724_2030.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0028_auto_20180724_2035">
+<span id="gug-migrations-0028-auto-20180724-2035-module"></span><h2>gug.migrations.0028_auto_20180724_2035 module<a class="headerlink" href="#module-gug.migrations.0028_auto_20180724_2035" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0028_auto_20180724_2035.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0028_auto_20180724_2035.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0028_auto_20180724_2035.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0028_auto_20180724_2035.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0028_auto_20180724_2035.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0027_auto_20180724_2030')]</em><a class="headerlink" href="#gug.migrations.0028_auto_20180724_2035.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0028_auto_20180724_2035.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;RenameField  model_name='dspace', old_name='mid', new_name='id_dspace'&gt;]</em><a class="headerlink" href="#gug.migrations.0028_auto_20180724_2035.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0029_auto_20180726_1603">
+<span id="gug-migrations-0029-auto-20180726-1603-module"></span><h2>gug.migrations.0029_auto_20180726_1603 module<a class="headerlink" href="#module-gug.migrations.0029_auto_20180726_1603" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0029_auto_20180726_1603.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0029_auto_20180726_1603.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0029_auto_20180726_1603.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0029_auto_20180726_1603.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0029_auto_20180726_1603.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0028_auto_20180724_2035')]</em><a class="headerlink" href="#gug.migrations.0029_auto_20180726_1603.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0029_auto_20180726_1603.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterUniqueTogether  name='metric', unique_together=set()&gt;, &lt;RemoveField  model_name='metric', name='domain'&gt;, &lt;AlterModelOptions  name='google_service', options={'verbose_name': 'Google Service', 'verbose_name_plural': 'Google Services'}&gt;, &lt;AlterModelOptions  name='service_type', options={'verbose_name': 'Service type', 'verbose_name_plural': 'Service types'}&gt;, &lt;DeleteModel  name='Domain'&gt;, &lt;DeleteModel  name='Metric'&gt;]</em><a class="headerlink" href="#gug.migrations.0029_auto_20180726_1603.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0030_dspace_post_title">
+<span id="gug-migrations-0030-dspace-post-title-module"></span><h2>gug.migrations.0030_dspace_post_title module<a class="headerlink" href="#module-gug.migrations.0030_dspace_post_title" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0030_dspace_post_title.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0030_dspace_post_title.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0030_dspace_post_title.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0030_dspace_post_title.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0030_dspace_post_title.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0029_auto_20180726_1603')]</em><a class="headerlink" href="#gug.migrations.0030_dspace_post_title.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0030_dspace_post_title.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='dspace', name='post_title', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0030_dspace_post_title.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0031_auto_20180726_1658">
+<span id="gug-migrations-0031-auto-20180726-1658-module"></span><h2>gug.migrations.0031_auto_20180726_1658 module<a class="headerlink" href="#module-gug.migrations.0031_auto_20180726_1658" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0031_auto_20180726_1658.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0031_auto_20180726_1658.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0031_auto_20180726_1658.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0031_auto_20180726_1658.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0031_auto_20180726_1658.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0030_dspace_post_title')]</em><a class="headerlink" href="#gug.migrations.0031_auto_20180726_1658.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0031_auto_20180726_1658.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;RemoveField  model_name='dspace', name='post_title'&gt;, &lt;AddField  model_name='dspace', name='post_title1', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0031_auto_20180726_1658.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0032_dspace_post_title2">
+<span id="gug-migrations-0032-dspace-post-title2-module"></span><h2>gug.migrations.0032_dspace_post_title2 module<a class="headerlink" href="#module-gug.migrations.0032_dspace_post_title2" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0032_dspace_post_title2.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0032_dspace_post_title2.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0032_dspace_post_title2.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0032_dspace_post_title2.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0032_dspace_post_title2.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0031_auto_20180726_1658')]</em><a class="headerlink" href="#gug.migrations.0032_dspace_post_title2.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0032_dspace_post_title2.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='dspace', name='post_title2', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0032_dspace_post_title2.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0033_auto_20180804_1939">
+<span id="gug-migrations-0033-auto-20180804-1939-module"></span><h2>gug.migrations.0033_auto_20180804_1939 module<a class="headerlink" href="#module-gug.migrations.0033_auto_20180804_1939" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0033_auto_20180804_1939.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0033_auto_20180804_1939.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0033_auto_20180804_1939.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0033_auto_20180804_1939.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0033_auto_20180804_1939.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0032_dspace_post_title2')]</em><a class="headerlink" href="#gug.migrations.0033_auto_20180804_1939.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0033_auto_20180804_1939.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddIndex  model_name='stats', index=&lt;Index: fields='id_dspace, google_service, period'&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0033_auto_20180804_1939.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0034_google_service_hidden">
+<span id="gug-migrations-0034-google-service-hidden-module"></span><h2>gug.migrations.0034_google_service_hidden module<a class="headerlink" href="#module-gug.migrations.0034_google_service_hidden" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0034_google_service_hidden.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0034_google_service_hidden.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0034_google_service_hidden.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0034_google_service_hidden.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0034_google_service_hidden.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0033_auto_20180804_1939')]</em><a class="headerlink" href="#gug.migrations.0034_google_service_hidden.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0034_google_service_hidden.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='hidden', field=&lt;django.db.models.fields.BooleanField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0034_google_service_hidden.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0035_remove_google_service_hidden">
+<span id="gug-migrations-0035-remove-google-service-hidden-module"></span><h2>gug.migrations.0035_remove_google_service_hidden module<a class="headerlink" href="#module-gug.migrations.0035_remove_google_service_hidden" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0035_remove_google_service_hidden.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0035_remove_google_service_hidden.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0035_remove_google_service_hidden.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0035_remove_google_service_hidden.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0035_remove_google_service_hidden.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0034_google_service_hidden')]</em><a class="headerlink" href="#gug.migrations.0035_remove_google_service_hidden.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0035_remove_google_service_hidden.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;RemoveField  model_name='google_service', name='hidden'&gt;]</em><a class="headerlink" href="#gug.migrations.0035_remove_google_service_hidden.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0036_service_group">
+<span id="gug-migrations-0036-service-group-module"></span><h2>gug.migrations.0036_service_group module<a class="headerlink" href="#module-gug.migrations.0036_service_group" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0036_service_group.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0036_service_group.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0036_service_group.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0036_service_group.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0036_service_group.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0035_remove_google_service_hidden')]</em><a class="headerlink" href="#gug.migrations.0036_service_group.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0036_service_group.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Service_group', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;)], options={'verbose_name': 'Service group', 'verbose_name_plural': 'Service groups'}&gt;]</em><a class="headerlink" href="#gug.migrations.0036_service_group.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0037_google_service_group">
+<span id="gug-migrations-0037-google-service-group-module"></span><h2>gug.migrations.0037_google_service_group module<a class="headerlink" href="#module-gug.migrations.0037_google_service_group" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0037_google_service_group.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0037_google_service_group.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0037_google_service_group.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0037_google_service_group.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0037_google_service_group.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0036_service_group')]</em><a class="headerlink" href="#gug.migrations.0037_google_service_group.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0037_google_service_group.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='group', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0037_google_service_group.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0038_auto_20181106_1436">
+<span id="gug-migrations-0038-auto-20181106-1436-module"></span><h2>gug.migrations.0038_auto_20181106_1436 module<a class="headerlink" href="#module-gug.migrations.0038_auto_20181106_1436" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0038_auto_20181106_1436.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0038_auto_20181106_1436.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0038_auto_20181106_1436.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0038_auto_20181106_1436.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0038_auto_20181106_1436.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0037_google_service_group')]</em><a class="headerlink" href="#gug.migrations.0038_auto_20181106_1436.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0038_auto_20181106_1436.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='google_service', name='view_id', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0038_auto_20181106_1436.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0039_workarea">
+<span id="gug-migrations-0039-workarea-module"></span><h2>gug.migrations.0039_workarea module<a class="headerlink" href="#module-gug.migrations.0039_workarea" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0039_workarea.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0039_workarea.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0039_workarea.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0039_workarea.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0039_workarea.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0038_auto_20181106_1436')]</em><a class="headerlink" href="#gug.migrations.0039_workarea.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0039_workarea.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='WorkArea', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;)]&gt;]</em><a class="headerlink" href="#gug.migrations.0039_workarea.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0040_dspace_workarea">
+<span id="gug-migrations-0040-dspace-workarea-module"></span><h2>gug.migrations.0040_dspace_workarea module<a class="headerlink" href="#module-gug.migrations.0040_dspace_workarea" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0040_dspace_workarea.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0040_dspace_workarea.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0040_dspace_workarea.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0040_dspace_workarea.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0040_dspace_workarea.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0039_workarea')]</em><a class="headerlink" href="#gug.migrations.0040_dspace_workarea.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0040_dspace_workarea.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='dspace', name='workarea', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0040_dspace_workarea.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0041_auto_20190102_1603">
+<span id="gug-migrations-0041-auto-20190102-1603-module"></span><h2>gug.migrations.0041_auto_20190102_1603 module<a class="headerlink" href="#module-gug.migrations.0041_auto_20190102_1603" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0041_auto_20190102_1603.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0041_auto_20190102_1603.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0041_auto_20190102_1603.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0041_auto_20190102_1603.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0041_auto_20190102_1603.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0040_dspace_workarea')]</em><a class="headerlink" href="#gug.migrations.0041_auto_20190102_1603.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0041_auto_20190102_1603.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;RemoveField  model_name='dspace', name='workarea'&gt;, &lt;AddField  model_name='dspace', name='workarea', field=&lt;django.db.models.fields.related.ManyToManyField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0041_auto_20190102_1603.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0042_auto_20190102_1611">
+<span id="gug-migrations-0042-auto-20190102-1611-module"></span><h2>gug.migrations.0042_auto_20190102_1611 module<a class="headerlink" href="#module-gug.migrations.0042_auto_20190102_1611" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0042_auto_20190102_1611.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0042_auto_20190102_1611.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0042_auto_20190102_1611.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0042_auto_20190102_1611.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0042_auto_20190102_1611.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0041_auto_20190102_1603')]</em><a class="headerlink" href="#gug.migrations.0042_auto_20190102_1611.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0042_auto_20190102_1611.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='workarea', name='name', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0042_auto_20190102_1611.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0043_auto_20190102_1613">
+<span id="gug-migrations-0043-auto-20190102-1613-module"></span><h2>gug.migrations.0043_auto_20190102_1613 module<a class="headerlink" href="#module-gug.migrations.0043_auto_20190102_1613" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0043_auto_20190102_1613.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0043_auto_20190102_1613.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0043_auto_20190102_1613.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0043_auto_20190102_1613.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0043_auto_20190102_1613.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0042_auto_20190102_1611')]</em><a class="headerlink" href="#gug.migrations.0043_auto_20190102_1613.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0043_auto_20190102_1613.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  name='workarea', options={'ordering': ['name']}&gt;]</em><a class="headerlink" href="#gug.migrations.0043_auto_20190102_1613.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0044_period_last_update">
+<span id="gug-migrations-0044-period-last-update-module"></span><h2>gug.migrations.0044_period_last_update module<a class="headerlink" href="#module-gug.migrations.0044_period_last_update" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0044_period_last_update.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0044_period_last_update.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0044_period_last_update.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0044_period_last_update.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0044_period_last_update.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0043_auto_20190102_1613')]</em><a class="headerlink" href="#gug.migrations.0044_period_last_update.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0044_period_last_update.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='period', name='last_update', field=&lt;django.db.models.fields.DateField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0044_period_last_update.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0045_google_service_last_update">
+<span id="gug-migrations-0045-google-service-last-update-module"></span><h2>gug.migrations.0045_google_service_last_update module<a class="headerlink" href="#module-gug.migrations.0045_google_service_last_update" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0045_google_service_last_update.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0045_google_service_last_update.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0045_google_service_last_update.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0045_google_service_last_update.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0045_google_service_last_update.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0044_period_last_update')]</em><a class="headerlink" href="#gug.migrations.0045_google_service_last_update.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0045_google_service_last_update.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='last_update', field=&lt;django.db.models.fields.DateField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0045_google_service_last_update.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0046_service_type_max_month_before">
+<span id="gug-migrations-0046-service-type-max-month-before-module"></span><h2>gug.migrations.0046_service_type_max_month_before module<a class="headerlink" href="#module-gug.migrations.0046_service_type_max_month_before" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0046_service_type_max_month_before.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0046_service_type_max_month_before.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0046_service_type_max_month_before.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0046_service_type_max_month_before.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0046_service_type_max_month_before.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0045_google_service_last_update')]</em><a class="headerlink" href="#gug.migrations.0046_service_type_max_month_before.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0046_service_type_max_month_before.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='service_type', name='max_month_before', field=&lt;django.db.models.fields.PositiveSmallIntegerField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0046_service_type_max_month_before.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations.0047_auto_20190308_1439">
+<span id="gug-migrations-0047-auto-20190308-1439-module"></span><h2>gug.migrations.0047_auto_20190308_1439 module<a class="headerlink" href="#module-gug.migrations.0047_auto_20190308_1439" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.migrations.0047_auto_20190308_1439.Migration">
+<em class="property">class </em><code class="descclassname">gug.migrations.0047_auto_20190308_1439.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/migrations/0047_auto_20190308_1439.html#Migration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.migrations.0047_auto_20190308_1439.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gug.migrations.0047_auto_20190308_1439.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gug', '0046_service_type_max_month_before')]</em><a class="headerlink" href="#gug.migrations.0047_auto_20190308_1439.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.migrations.0047_auto_20190308_1439.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  name='service_group', options={'ordering': ['order'], 'verbose_name': 'Service group', 'verbose_name_plural': 'Service groups'}&gt;, &lt;AddField  model_name='service_group', name='order', field=&lt;django.db.models.fields.PositiveSmallIntegerField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0047_auto_20190308_1439.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gug.migrations">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gug.migrations" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pub_download</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Javier Pi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/gug.migrations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,265 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>grappelli.views package &#8212; pub_download 1.0.2 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="grappelli-views-package">
+<h1>grappelli.views package<a class="headerlink" href="#grappelli-views-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-grappelli.views.related">
+<span id="grappelli-views-related-module"></span><h2>grappelli.views.related module<a class="headerlink" href="#module-grappelli.views.related" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="grappelli.views.related.AutocompleteLookup">
+<em class="property">class </em><code class="descclassname">grappelli.views.related.</code><code class="descname">AutocompleteLookup</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#AutocompleteLookup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.AutocompleteLookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#grappelli.views.related.RelatedLookup" title="grappelli.views.related.RelatedLookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">grappelli.views.related.RelatedLookup</span></code></a></p>
+<dl class="method">
+<dt id="grappelli.views.related.AutocompleteLookup.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#AutocompleteLookup.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.AutocompleteLookup.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.views.related.AutocompleteLookup.get_data">
+<code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#AutocompleteLookup.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.AutocompleteLookup.get_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.views.related.AutocompleteLookup.get_final_ordering">
+<code class="descname">get_final_ordering</code><span class="sig-paren">(</span><em>model</em>, <em>previous_lookup_parts=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#AutocompleteLookup.get_final_ordering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.AutocompleteLookup.get_final_ordering" title="Permalink to this definition">¶</a></dt>
+<dd><p>This recursive function returns the final lookups
+for the default ordering of a model.</p>
+<p>Considering the models below, <cite>get_final_ordering(Book)</cite> will return
+<cite>[‘-type__name’, ‘name’]</cite> instead of the simple <cite>[‘-type’, ‘name’]</cite>
+one would get using <cite>Book._meta.ordering</cite>.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>class BookType(Model):</dt>
+<dd><p class="first">name = CharField(max_length=50)</p>
+<dl class="last docutils">
+<dt>class Meta:</dt>
+<dd>ordering = [‘name’]</dd>
+</dl>
+</dd>
+<dt>class Book(Model):</dt>
+<dd><p class="first">name = CharField(max_length=50)
+type = ForeignKey(BookType)</p>
+<dl class="last docutils">
+<dt>class Meta:</dt>
+<dd>ordering = [‘-type’, ‘name’]</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.views.related.AutocompleteLookup.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#AutocompleteLookup.get_queryset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.AutocompleteLookup.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.views.related.AutocompleteLookup.get_searched_queryset">
+<code class="descname">get_searched_queryset</code><span class="sig-paren">(</span><em>qs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#AutocompleteLookup.get_searched_queryset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.AutocompleteLookup.get_searched_queryset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.views.related.AutocompleteLookup.request_is_valid">
+<code class="descname">request_is_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#AutocompleteLookup.request_is_valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.AutocompleteLookup.request_is_valid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="grappelli.views.related.M2MLookup">
+<em class="property">class </em><code class="descclassname">grappelli.views.related.</code><code class="descname">M2MLookup</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#M2MLookup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.M2MLookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#grappelli.views.related.RelatedLookup" title="grappelli.views.related.RelatedLookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">grappelli.views.related.RelatedLookup</span></code></a></p>
+<p>M2M Lookup</p>
+<dl class="method">
+<dt id="grappelli.views.related.M2MLookup.get_data">
+<code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#M2MLookup.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.M2MLookup.get_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="grappelli.views.related.RelatedLookup">
+<em class="property">class </em><code class="descclassname">grappelli.views.related.</code><code class="descname">RelatedLookup</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#RelatedLookup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.RelatedLookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.base.View</span></code></p>
+<p>Related Lookup</p>
+<dl class="method">
+<dt id="grappelli.views.related.RelatedLookup.check_user_permission">
+<code class="descname">check_user_permission</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#RelatedLookup.check_user_permission"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.RelatedLookup.check_user_permission" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.views.related.RelatedLookup.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#RelatedLookup.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.RelatedLookup.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.views.related.RelatedLookup.get_data">
+<code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#RelatedLookup.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.RelatedLookup.get_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.views.related.RelatedLookup.get_filtered_queryset">
+<code class="descname">get_filtered_queryset</code><span class="sig-paren">(</span><em>qs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#RelatedLookup.get_filtered_queryset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.RelatedLookup.get_filtered_queryset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.views.related.RelatedLookup.get_model">
+<code class="descname">get_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#RelatedLookup.get_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.RelatedLookup.get_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.views.related.RelatedLookup.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#RelatedLookup.get_queryset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.RelatedLookup.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.views.related.RelatedLookup.get_return_value">
+<code class="descname">get_return_value</code><span class="sig-paren">(</span><em>obj</em>, <em>obj_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#RelatedLookup.get_return_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.RelatedLookup.get_return_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.views.related.RelatedLookup.request_is_valid">
+<code class="descname">request_is_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#RelatedLookup.request_is_valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.RelatedLookup.request_is_valid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="grappelli.views.related.ajax_response">
+<code class="descclassname">grappelli.views.related.</code><code class="descname">ajax_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#ajax_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.ajax_response" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="grappelli.views.related.get_autocomplete_search_fields">
+<code class="descclassname">grappelli.views.related.</code><code class="descname">get_autocomplete_search_fields</code><span class="sig-paren">(</span><em>model</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#get_autocomplete_search_fields"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.get_autocomplete_search_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the fields to be used for autocomplete of the given model,
+first using the autocomplete_search_fields() static method when defined on
+the model.
+If the staticmethod is not declared, looks for the fields value in the
+GRAPPELLI_AUTOCOMPLETE_SEARCH_FIELDS setting for the given app/model.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="grappelli.views.related.get_label">
+<code class="descclassname">grappelli.views.related.</code><code class="descname">get_label</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#get_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.get_label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="grappelli.views.related.import_from">
+<code class="descclassname">grappelli.views.related.</code><code class="descname">import_from</code><span class="sig-paren">(</span><em>module</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/related.html#import_from"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.related.import_from" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-grappelli.views.switch">
+<span id="grappelli-views-switch-module"></span><h2>grappelli.views.switch module<a class="headerlink" href="#module-grappelli.views.switch" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="grappelli.views.switch.switch_user">
+<code class="descclassname">grappelli.views.switch.</code><code class="descname">switch_user</code><span class="sig-paren">(</span><em>request</em>, <em>object_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/views/switch.html#switch_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.views.switch.switch_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-grappelli.views">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-grappelli.views" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pub_download</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Javier Pi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/grappelli.views.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

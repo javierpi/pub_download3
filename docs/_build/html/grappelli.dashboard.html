@@ -1,0 +1,871 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>grappelli.dashboard package &#8212; pub_download 1.0.2 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="grappelli-dashboard-package">
+<h1>grappelli.dashboard package<a class="headerlink" href="#grappelli-dashboard-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="grappelli.dashboard.management.html">grappelli.dashboard.management package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grappelli.dashboard.management.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="grappelli.dashboard.management.commands.html">grappelli.dashboard.management.commands package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="grappelli.dashboard.management.commands.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="grappelli.dashboard.management.commands.html#module-grappelli.dashboard.management.commands.customdashboard">grappelli.dashboard.management.commands.customdashboard module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="grappelli.dashboard.management.commands.html#module-grappelli.dashboard.management.commands">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="grappelli.dashboard.management.html#module-grappelli.dashboard.management">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="grappelli.dashboard.templatetags.html">grappelli.dashboard.templatetags package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grappelli.dashboard.templatetags.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grappelli.dashboard.templatetags.html#module-grappelli.dashboard.templatetags.grp_dashboard_tags">grappelli.dashboard.templatetags.grp_dashboard_tags module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grappelli.dashboard.templatetags.html#module-grappelli.dashboard.templatetags">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-grappelli.dashboard.apps">
+<span id="grappelli-dashboard-apps-module"></span><h2>grappelli.dashboard.apps module<a class="headerlink" href="#module-grappelli.dashboard.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="grappelli.dashboard.apps.DashboardConfig">
+<em class="property">class </em><code class="descclassname">grappelli.dashboard.apps.</code><code class="descname">DashboardConfig</code><span class="sig-paren">(</span><em>app_name</em>, <em>app_module</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/apps.html#DashboardConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.apps.DashboardConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="attribute">
+<dt id="grappelli.dashboard.apps.DashboardConfig.label">
+<code class="descname">label</code><em class="property"> = 'grappelli.dashboard'</em><a class="headerlink" href="#grappelli.dashboard.apps.DashboardConfig.label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.apps.DashboardConfig.name">
+<code class="descname">name</code><em class="property"> = 'grappelli.dashboard'</em><a class="headerlink" href="#grappelli.dashboard.apps.DashboardConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.apps.DashboardConfig.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Grappelli Dashboard'</em><a class="headerlink" href="#grappelli.dashboard.apps.DashboardConfig.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-grappelli.dashboard.dashboards">
+<span id="grappelli-dashboard-dashboards-module"></span><h2>grappelli.dashboard.dashboards module<a class="headerlink" href="#module-grappelli.dashboard.dashboards" title="Permalink to this headline">¶</a></h2>
+<p>Module where grappelli dashboard classes are defined.</p>
+<dl class="class">
+<dt id="grappelli.dashboard.dashboards.Dashboard">
+<em class="property">class </em><code class="descclassname">grappelli.dashboard.dashboards.</code><code class="descname">Dashboard</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/dashboards.html#Dashboard"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.dashboards.Dashboard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for dashboards.
+The Dashboard class is a simple python list that has three additional
+properties:</p>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">title</span></code></dt>
+<dd>The dashboard title, by default, it is displayed above the dashboard
+in a <code class="docutils literal notranslate"><span class="pre">h2</span></code> tag. Default value: ‘Dashboard’.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">template</span></code></dt>
+<dd>The template to use to render the dashboard.
+Default value: ‘admin_tools/dashboard/dashboard.html’</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">columns</span></code></dt>
+<dd>An integer that represents the number of columns for the dashboard.
+Default value: 2.</dd>
+</dl>
+<p>If you want to customize the look of your dashboard and it’s modules, you
+can declare css stylesheets and/or javascript files to include when
+rendering the dashboard (these files should be placed in your
+media path), for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">admin_tools.dashboard</span> <span class="k">import</span> <span class="n">Dashboard</span>
+
+<span class="k">class</span> <span class="nc">MyDashboard</span><span class="p">(</span><span class="n">Dashboard</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Media</span><span class="p">:</span>
+        <span class="n">css</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;all&#39;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s1">&#39;css/mydashboard.css&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;css/mystyles.css&#39;</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">}</span>
+        <span class="n">js</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s1">&#39;js/mydashboard.js&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;js/myscript.js&#39;</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<p>Here’s an example of a custom dashboard:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">reverse</span>
+<span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="k">import</span> <span class="n">ugettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">admin_tools.dashboard</span> <span class="k">import</span> <span class="n">modules</span><span class="p">,</span> <span class="n">Dashboard</span>
+
+<span class="k">class</span> <span class="nc">MyDashboard</span><span class="p">(</span><span class="n">Dashboard</span><span class="p">):</span>
+
+    <span class="c1"># we want a 3 columns layout</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="mi">3</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyDashboard</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># append an app list module for &quot;Applications&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">AppList</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Applications&#39;</span><span class="p">),</span>
+            <span class="n">exclude</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;django.contrib.*&#39;</span><span class="p">,),</span>
+        <span class="p">))</span>
+
+        <span class="c1"># append an app list module for &quot;Administration&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">AppList</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Administration&#39;</span><span class="p">),</span>
+            <span class="n">models</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;django.contrib.*&#39;</span><span class="p">,),</span>
+        <span class="p">))</span>
+
+        <span class="c1"># append a recent actions module</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">RecentActions</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Recent Actions&#39;</span><span class="p">),</span>
+            <span class="n">limit</span><span class="o">=</span><span class="mi">5</span>
+        <span class="p">))</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="grappelli.dashboard.dashboards.Dashboard.children">
+<code class="descname">children</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.dashboards.Dashboard.children" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.dashboards.Dashboard.columns">
+<code class="descname">columns</code><em class="property"> = 2</em><a class="headerlink" href="#grappelli.dashboard.dashboards.Dashboard.columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.dashboard.dashboards.Dashboard.get_id">
+<code class="descname">get_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/dashboards.html#Dashboard.get_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.dashboards.Dashboard.get_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal method used to distinguish different dashboards in js code.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.dashboard.dashboards.Dashboard.init_with_context">
+<code class="descname">init_with_context</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/dashboards.html#Dashboard.init_with_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.dashboards.Dashboard.init_with_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sometimes you may need to access context or request variables to build
+your dashboard, this is what the <code class="docutils literal notranslate"><span class="pre">init_with_context()</span></code> method is for.
+This method is called just before the display with a
+<code class="docutils literal notranslate"><span class="pre">django.template.RequestContext</span></code> as unique argument, so you can
+access to all context variables and to the <code class="docutils literal notranslate"><span class="pre">django.http.HttpRequest</span></code>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.dashboards.Dashboard.media">
+<code class="descname">media</code><a class="headerlink" href="#grappelli.dashboard.dashboards.Dashboard.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.dashboards.Dashboard.template">
+<code class="descname">template</code><em class="property"> = 'grappelli/dashboard/dashboard.html'</em><a class="headerlink" href="#grappelli.dashboard.dashboards.Dashboard.template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.dashboards.Dashboard.title">
+<code class="descname">title</code><em class="property"> = 'Dashboard'</em><a class="headerlink" href="#grappelli.dashboard.dashboards.Dashboard.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="grappelli.dashboard.dashboards.DefaultIndexDashboard">
+<em class="property">class </em><code class="descclassname">grappelli.dashboard.dashboards.</code><code class="descname">DefaultIndexDashboard</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/dashboards.html#DefaultIndexDashboard"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.dashboards.DefaultIndexDashboard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#grappelli.dashboard.dashboards.Dashboard" title="grappelli.dashboard.dashboards.Dashboard"><code class="xref py py-class docutils literal notranslate"><span class="pre">grappelli.dashboard.dashboards.Dashboard</span></code></a></p>
+<p>The default dashboard displayed on the admin index page.
+To change the default dashboard you’ll have to type the following from the
+commandline in your project root directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">customdashboard</span>
+</pre></div>
+</div>
+<p>And then set the <cite>GRAPPELLI_INDEX_DASHBOARD`</cite> settings variable to
+point to your custom index dashboard class.</p>
+<dl class="method">
+<dt id="grappelli.dashboard.dashboards.DefaultIndexDashboard.init_with_context">
+<code class="descname">init_with_context</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/dashboards.html#DefaultIndexDashboard.init_with_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.dashboards.DefaultIndexDashboard.init_with_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sometimes you may need to access context or request variables to build
+your dashboard, this is what the <code class="docutils literal notranslate"><span class="pre">init_with_context()</span></code> method is for.
+This method is called just before the display with a
+<code class="docutils literal notranslate"><span class="pre">django.template.RequestContext</span></code> as unique argument, so you can
+access to all context variables and to the <code class="docutils literal notranslate"><span class="pre">django.http.HttpRequest</span></code>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.dashboards.DefaultIndexDashboard.media">
+<code class="descname">media</code><a class="headerlink" href="#grappelli.dashboard.dashboards.DefaultIndexDashboard.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-grappelli.dashboard.modules">
+<span id="grappelli-dashboard-modules-module"></span><h2>grappelli.dashboard.modules module<a class="headerlink" href="#module-grappelli.dashboard.modules" title="Permalink to this headline">¶</a></h2>
+<p>Module where grappelli dashboard modules classes are defined.</p>
+<dl class="class">
+<dt id="grappelli.dashboard.modules.AppList">
+<em class="property">class </em><code class="descclassname">grappelli.dashboard.modules.</code><code class="descname">AppList</code><span class="sig-paren">(</span><em>title=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#AppList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.AppList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#grappelli.dashboard.modules.DashboardModule" title="grappelli.dashboard.modules.DashboardModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">grappelli.dashboard.modules.DashboardModule</span></code></a>, <a class="reference internal" href="#grappelli.dashboard.utils.AppListElementMixin" title="grappelli.dashboard.utils.AppListElementMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">grappelli.dashboard.utils.AppListElementMixin</span></code></a></p>
+<p>Module that lists installed apps and their models.</p>
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.AppList.exclude">
+<code class="descname">exclude</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.AppList.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.dashboard.modules.AppList.init_with_context">
+<code class="descname">init_with_context</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#AppList.init_with_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.AppList.init_with_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like for the <code class="xref py py-class docutils literal notranslate"><span class="pre">Dashboard</span></code> class, dashboard
+modules have a <code class="docutils literal notranslate"><span class="pre">init_with_context</span></code> method that is called with a
+<code class="docutils literal notranslate"><span class="pre">django.template.RequestContext</span></code> instance as unique argument.</p>
+<p>This gives you enough flexibility to build complex modules, for
+example, let’s build a “history” dashboard module, that will list the
+last ten visited pages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grappelli.dashboard</span> <span class="k">import</span> <span class="n">modules</span>
+
+<span class="k">class</span> <span class="nc">HistoryDashboardModule</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">LinkList</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;History&#39;</span>
+
+    <span class="k">def</span> <span class="nf">init_with_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span>
+        <span class="c1"># we use sessions to store the visited pages stack</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="c1"># add the current page to the history</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span>
+        <span class="p">})</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">history</span> <span class="o">=</span> <span class="n">history</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">history</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.AppList.models">
+<code class="descname">models</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.AppList.models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.AppList.template">
+<code class="descname">template</code><em class="property"> = 'grappelli/dashboard/modules/app_list.html'</em><a class="headerlink" href="#grappelli.dashboard.modules.AppList.template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.AppList.title">
+<code class="descname">title</code><em class="property"> = 'Applications'</em><a class="headerlink" href="#grappelli.dashboard.modules.AppList.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="grappelli.dashboard.modules.DashboardModule">
+<em class="property">class </em><code class="descclassname">grappelli.dashboard.modules.</code><code class="descname">DashboardModule</code><span class="sig-paren">(</span><em>title=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#DashboardModule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for all dashboard modules.
+Dashboard modules have the following properties:</p>
+<dl class="docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">collapsible</span></code></dt>
+<dd>Boolean that determines whether the module is collapsible, this
+allows users to show/hide module content. Default: <code class="docutils literal notranslate"><span class="pre">True</span></code>.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">column</span></code></dt>
+<dd>Integer that corresponds to the column.
+Default: None.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">title</span></code></dt>
+<dd>String that contains the module title, make sure you use the django
+gettext functions if your application is multilingual.
+Default value: ‘’.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">title_url</span></code></dt>
+<dd>String that contains the module title URL. If given the module
+title will be a link to this URL. Default value: <code class="docutils literal notranslate"><span class="pre">None</span></code>.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">css_classes</span></code></dt>
+<dd>A list of css classes to be added to the module <code class="docutils literal notranslate"><span class="pre">div</span></code> class
+attribute. Default value: <code class="docutils literal notranslate"><span class="pre">None</span></code>.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pre_content</span></code></dt>
+<dd>Text or HTML content to display above the module content.
+Default value: <code class="docutils literal notranslate"><span class="pre">None</span></code>.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">post_content</span></code></dt>
+<dd>Text or HTML content to display under the module content.
+Default value: <code class="docutils literal notranslate"><span class="pre">None</span></code>.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">template</span></code></dt>
+<dd>The template to use to render the module.
+Default value: ‘grappelli/dashboard/module.html’.</dd>
+</dl>
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.DashboardModule.children">
+<code class="descname">children</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.children" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.DashboardModule.collapsible">
+<code class="descname">collapsible</code><em class="property"> = True</em><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.collapsible" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.DashboardModule.column">
+<code class="descname">column</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.column" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.DashboardModule.css_classes">
+<code class="descname">css_classes</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.css_classes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.dashboard.modules.DashboardModule.init_with_context">
+<code class="descname">init_with_context</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#DashboardModule.init_with_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.init_with_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like for the <code class="xref py py-class docutils literal notranslate"><span class="pre">Dashboard</span></code> class, dashboard
+modules have a <code class="docutils literal notranslate"><span class="pre">init_with_context</span></code> method that is called with a
+<code class="docutils literal notranslate"><span class="pre">django.template.RequestContext</span></code> instance as unique argument.</p>
+<p>This gives you enough flexibility to build complex modules, for
+example, let’s build a “history” dashboard module, that will list the
+last ten visited pages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grappelli.dashboard</span> <span class="k">import</span> <span class="n">modules</span>
+
+<span class="k">class</span> <span class="nc">HistoryDashboardModule</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">LinkList</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;History&#39;</span>
+
+    <span class="k">def</span> <span class="nf">init_with_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span>
+        <span class="c1"># we use sessions to store the visited pages stack</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="c1"># add the current page to the history</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span>
+        <span class="p">})</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">history</span> <span class="o">=</span> <span class="n">history</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">history</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.dashboard.modules.DashboardModule.is_empty">
+<code class="descname">is_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#DashboardModule.is_empty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the module has no content and False otherwise.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.DashboardModule.post_content">
+<code class="descname">post_content</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.post_content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.DashboardModule.pre_content">
+<code class="descname">pre_content</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.pre_content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.dashboard.modules.DashboardModule.render_css_classes">
+<code class="descname">render_css_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#DashboardModule.render_css_classes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.render_css_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string containing the css classes for the module.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.DashboardModule.show_title">
+<code class="descname">show_title</code><em class="property"> = True</em><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.show_title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.DashboardModule.template">
+<code class="descname">template</code><em class="property"> = 'grappelli/dashboard/module.html'</em><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.DashboardModule.title">
+<code class="descname">title</code><em class="property"> = ''</em><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.DashboardModule.title_url">
+<code class="descname">title_url</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.DashboardModule.title_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="grappelli.dashboard.modules.Feed">
+<em class="property">class </em><code class="descclassname">grappelli.dashboard.modules.</code><code class="descname">Feed</code><span class="sig-paren">(</span><em>title=None</em>, <em>feed_url=None</em>, <em>limit=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#Feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.Feed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#grappelli.dashboard.modules.DashboardModule" title="grappelli.dashboard.modules.DashboardModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">grappelli.dashboard.modules.DashboardModule</span></code></a></p>
+<p>Class that represents a feed dashboard module.</p>
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.Feed.feed_url">
+<code class="descname">feed_url</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.Feed.feed_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.dashboard.modules.Feed.init_with_context">
+<code class="descname">init_with_context</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#Feed.init_with_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.Feed.init_with_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like for the <code class="xref py py-class docutils literal notranslate"><span class="pre">Dashboard</span></code> class, dashboard
+modules have a <code class="docutils literal notranslate"><span class="pre">init_with_context</span></code> method that is called with a
+<code class="docutils literal notranslate"><span class="pre">django.template.RequestContext</span></code> instance as unique argument.</p>
+<p>This gives you enough flexibility to build complex modules, for
+example, let’s build a “history” dashboard module, that will list the
+last ten visited pages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grappelli.dashboard</span> <span class="k">import</span> <span class="n">modules</span>
+
+<span class="k">class</span> <span class="nc">HistoryDashboardModule</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">LinkList</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;History&#39;</span>
+
+    <span class="k">def</span> <span class="nf">init_with_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span>
+        <span class="c1"># we use sessions to store the visited pages stack</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="c1"># add the current page to the history</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span>
+        <span class="p">})</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">history</span> <span class="o">=</span> <span class="n">history</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">history</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.Feed.limit">
+<code class="descname">limit</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.Feed.limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.Feed.template">
+<code class="descname">template</code><em class="property"> = 'grappelli/dashboard/modules/feed.html'</em><a class="headerlink" href="#grappelli.dashboard.modules.Feed.template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.Feed.title">
+<code class="descname">title</code><em class="property"> = 'RSS Feed'</em><a class="headerlink" href="#grappelli.dashboard.modules.Feed.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="grappelli.dashboard.modules.Group">
+<em class="property">class </em><code class="descclassname">grappelli.dashboard.modules.</code><code class="descname">Group</code><span class="sig-paren">(</span><em>title=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#Group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.Group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#grappelli.dashboard.modules.DashboardModule" title="grappelli.dashboard.modules.DashboardModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">grappelli.dashboard.modules.DashboardModule</span></code></a></p>
+<p>Represents a group of modules.</p>
+<p>Here’s an example of modules group:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grappelli.dashboard</span> <span class="k">import</span> <span class="n">modules</span><span class="p">,</span> <span class="n">Dashboard</span>
+
+<span class="k">class</span> <span class="nc">MyDashboard</span><span class="p">(</span><span class="n">Dashboard</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">Dashboard</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">Group</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My group&quot;</span><span class="p">,</span>
+            <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">modules</span><span class="o">.</span><span class="n">AppList</span><span class="p">(</span>
+                    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Administration&#39;</span><span class="p">,</span>
+                    <span class="n">models</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;django.contrib.*&#39;</span><span class="p">,)</span>
+                <span class="p">),</span>
+                <span class="n">modules</span><span class="o">.</span><span class="n">AppList</span><span class="p">(</span>
+                    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Applications&#39;</span><span class="p">,</span>
+                    <span class="n">exclude</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;django.contrib.*&#39;</span><span class="p">,)</span>
+                <span class="p">)</span>
+            <span class="p">]</span>
+        <span class="p">))</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="grappelli.dashboard.modules.Group.init_with_context">
+<code class="descname">init_with_context</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#Group.init_with_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.Group.init_with_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like for the <code class="xref py py-class docutils literal notranslate"><span class="pre">Dashboard</span></code> class, dashboard
+modules have a <code class="docutils literal notranslate"><span class="pre">init_with_context</span></code> method that is called with a
+<code class="docutils literal notranslate"><span class="pre">django.template.RequestContext</span></code> instance as unique argument.</p>
+<p>This gives you enough flexibility to build complex modules, for
+example, let’s build a “history” dashboard module, that will list the
+last ten visited pages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grappelli.dashboard</span> <span class="k">import</span> <span class="n">modules</span>
+
+<span class="k">class</span> <span class="nc">HistoryDashboardModule</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">LinkList</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;History&#39;</span>
+
+    <span class="k">def</span> <span class="nf">init_with_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span>
+        <span class="c1"># we use sessions to store the visited pages stack</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="c1"># add the current page to the history</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span>
+        <span class="p">})</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">history</span> <span class="o">=</span> <span class="n">history</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">history</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.dashboard.modules.Group.is_empty">
+<code class="descname">is_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#Group.is_empty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.Group.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>A group of modules is considered empty if it has no children or if
+all its children are empty.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.Group.template">
+<code class="descname">template</code><em class="property"> = 'grappelli/dashboard/modules/group.html'</em><a class="headerlink" href="#grappelli.dashboard.modules.Group.template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="grappelli.dashboard.modules.LinkList">
+<em class="property">class </em><code class="descclassname">grappelli.dashboard.modules.</code><code class="descname">LinkList</code><span class="sig-paren">(</span><em>title=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#LinkList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.LinkList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#grappelli.dashboard.modules.DashboardModule" title="grappelli.dashboard.modules.DashboardModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">grappelli.dashboard.modules.DashboardModule</span></code></a></p>
+<p>A module that displays a list of links.</p>
+<dl class="method">
+<dt id="grappelli.dashboard.modules.LinkList.init_with_context">
+<code class="descname">init_with_context</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#LinkList.init_with_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.LinkList.init_with_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like for the <code class="xref py py-class docutils literal notranslate"><span class="pre">Dashboard</span></code> class, dashboard
+modules have a <code class="docutils literal notranslate"><span class="pre">init_with_context</span></code> method that is called with a
+<code class="docutils literal notranslate"><span class="pre">django.template.RequestContext</span></code> instance as unique argument.</p>
+<p>This gives you enough flexibility to build complex modules, for
+example, let’s build a “history” dashboard module, that will list the
+last ten visited pages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grappelli.dashboard</span> <span class="k">import</span> <span class="n">modules</span>
+
+<span class="k">class</span> <span class="nc">HistoryDashboardModule</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">LinkList</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;History&#39;</span>
+
+    <span class="k">def</span> <span class="nf">init_with_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span>
+        <span class="c1"># we use sessions to store the visited pages stack</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="c1"># add the current page to the history</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span>
+        <span class="p">})</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">history</span> <span class="o">=</span> <span class="n">history</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">history</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.LinkList.template">
+<code class="descname">template</code><em class="property"> = 'grappelli/dashboard/modules/link_list.html'</em><a class="headerlink" href="#grappelli.dashboard.modules.LinkList.template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.LinkList.title">
+<code class="descname">title</code><em class="property"> = 'Links'</em><a class="headerlink" href="#grappelli.dashboard.modules.LinkList.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="grappelli.dashboard.modules.ModelList">
+<em class="property">class </em><code class="descclassname">grappelli.dashboard.modules.</code><code class="descname">ModelList</code><span class="sig-paren">(</span><em>title=None</em>, <em>models=None</em>, <em>exclude=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#ModelList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.ModelList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#grappelli.dashboard.modules.DashboardModule" title="grappelli.dashboard.modules.DashboardModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">grappelli.dashboard.modules.DashboardModule</span></code></a>, <a class="reference internal" href="#grappelli.dashboard.utils.AppListElementMixin" title="grappelli.dashboard.utils.AppListElementMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">grappelli.dashboard.utils.AppListElementMixin</span></code></a></p>
+<p>Module that lists a set of models.</p>
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.ModelList.exclude">
+<code class="descname">exclude</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.ModelList.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.dashboard.modules.ModelList.init_with_context">
+<code class="descname">init_with_context</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#ModelList.init_with_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.ModelList.init_with_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like for the <code class="xref py py-class docutils literal notranslate"><span class="pre">Dashboard</span></code> class, dashboard
+modules have a <code class="docutils literal notranslate"><span class="pre">init_with_context</span></code> method that is called with a
+<code class="docutils literal notranslate"><span class="pre">django.template.RequestContext</span></code> instance as unique argument.</p>
+<p>This gives you enough flexibility to build complex modules, for
+example, let’s build a “history” dashboard module, that will list the
+last ten visited pages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grappelli.dashboard</span> <span class="k">import</span> <span class="n">modules</span>
+
+<span class="k">class</span> <span class="nc">HistoryDashboardModule</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">LinkList</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;History&#39;</span>
+
+    <span class="k">def</span> <span class="nf">init_with_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span>
+        <span class="c1"># we use sessions to store the visited pages stack</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="c1"># add the current page to the history</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span>
+        <span class="p">})</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">history</span> <span class="o">=</span> <span class="n">history</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">history</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.ModelList.models">
+<code class="descname">models</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.ModelList.models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.ModelList.template">
+<code class="descname">template</code><em class="property"> = 'grappelli/dashboard/modules/model_list.html'</em><a class="headerlink" href="#grappelli.dashboard.modules.ModelList.template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="grappelli.dashboard.modules.RecentActions">
+<em class="property">class </em><code class="descclassname">grappelli.dashboard.modules.</code><code class="descname">RecentActions</code><span class="sig-paren">(</span><em>title=None</em>, <em>limit=10</em>, <em>include_list=None</em>, <em>exclude_list=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#RecentActions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.RecentActions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#grappelli.dashboard.modules.DashboardModule" title="grappelli.dashboard.modules.DashboardModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">grappelli.dashboard.modules.DashboardModule</span></code></a></p>
+<p>Module that lists the recent actions for the current user.</p>
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.RecentActions.exclude_list">
+<code class="descname">exclude_list</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.RecentActions.exclude_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.RecentActions.include_list">
+<code class="descname">include_list</code><em class="property"> = None</em><a class="headerlink" href="#grappelli.dashboard.modules.RecentActions.include_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.dashboard.modules.RecentActions.init_with_context">
+<code class="descname">init_with_context</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/modules.html#RecentActions.init_with_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.modules.RecentActions.init_with_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like for the <code class="xref py py-class docutils literal notranslate"><span class="pre">Dashboard</span></code> class, dashboard
+modules have a <code class="docutils literal notranslate"><span class="pre">init_with_context</span></code> method that is called with a
+<code class="docutils literal notranslate"><span class="pre">django.template.RequestContext</span></code> instance as unique argument.</p>
+<p>This gives you enough flexibility to build complex modules, for
+example, let’s build a “history” dashboard module, that will list the
+last ten visited pages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">grappelli.dashboard</span> <span class="k">import</span> <span class="n">modules</span>
+
+<span class="k">class</span> <span class="nc">HistoryDashboardModule</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">LinkList</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;History&#39;</span>
+
+    <span class="k">def</span> <span class="nf">init_with_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span>
+        <span class="c1"># we use sessions to store the visited pages stack</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="c1"># add the current page to the history</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">context</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">]</span>
+        <span class="p">})</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">history</span> <span class="o">=</span> <span class="n">history</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">history</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.RecentActions.limit">
+<code class="descname">limit</code><em class="property"> = 10</em><a class="headerlink" href="#grappelli.dashboard.modules.RecentActions.limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.RecentActions.template">
+<code class="descname">template</code><em class="property"> = 'grappelli/dashboard/modules/recent_actions.html'</em><a class="headerlink" href="#grappelli.dashboard.modules.RecentActions.template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.modules.RecentActions.title">
+<code class="descname">title</code><em class="property"> = 'Recent Actions'</em><a class="headerlink" href="#grappelli.dashboard.modules.RecentActions.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-grappelli.dashboard.registry">
+<span id="grappelli-dashboard-registry-module"></span><h2>grappelli.dashboard.registry module<a class="headerlink" href="#module-grappelli.dashboard.registry" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="grappelli.dashboard.registry.Registry">
+<em class="property">class </em><code class="descclassname">grappelli.dashboard.registry.</code><code class="descname">Registry</code><a class="reference internal" href="_modules/grappelli/dashboard/registry.html#Registry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.registry.Registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Registry for application dashboards.</p>
+<dl class="classmethod">
+<dt id="grappelli.dashboard.registry.Registry.register">
+<em class="property">classmethod </em><code class="descname">register</code><span class="sig-paren">(</span><em>klass</em>, <em>app_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/registry.html#Registry.register"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.registry.Registry.register" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.dashboard.registry.Registry.registry">
+<code class="descname">registry</code><em class="property"> = {}</em><a class="headerlink" href="#grappelli.dashboard.registry.Registry.registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="grappelli.dashboard.registry.autodiscover">
+<code class="descclassname">grappelli.dashboard.registry.</code><code class="descname">autodiscover</code><span class="sig-paren">(</span><em>blacklist=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/registry.html#autodiscover"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.registry.autodiscover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Automagically discover custom dashboards and menus for installed apps.
+Optionally you can pass a <code class="docutils literal notranslate"><span class="pre">blacklist</span></code> of apps that you don’t want to
+provide their own app index dashboard.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="grappelli.dashboard.registry.register">
+<code class="descclassname">grappelli.dashboard.registry.</code><code class="descname">register</code><span class="sig-paren">(</span><em>cls</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/registry.html#register"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.registry.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register a custom dashboard into the global registry.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-grappelli.dashboard.utils">
+<span id="grappelli-dashboard-utils-module"></span><h2>grappelli.dashboard.utils module<a class="headerlink" href="#module-grappelli.dashboard.utils" title="Permalink to this headline">¶</a></h2>
+<p>Admin ui common utilities.</p>
+<dl class="class">
+<dt id="grappelli.dashboard.utils.AppListElementMixin">
+<em class="property">class </em><code class="descclassname">grappelli.dashboard.utils.</code><code class="descname">AppListElementMixin</code><a class="reference internal" href="_modules/grappelli/dashboard/utils.html#AppListElementMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.utils.AppListElementMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Mixin class used by both the AppListDashboardModule and the
+AppListMenuItem (to honor the DRY concept).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="grappelli.dashboard.utils.filter_models">
+<code class="descclassname">grappelli.dashboard.utils.</code><code class="descname">filter_models</code><span class="sig-paren">(</span><em>request</em>, <em>models</em>, <em>exclude</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/utils.html#filter_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.utils.filter_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (model, perm,) for all models that match models/exclude patterns
+and are visible by current user.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="grappelli.dashboard.utils.get_admin_site">
+<code class="descclassname">grappelli.dashboard.utils.</code><code class="descname">get_admin_site</code><span class="sig-paren">(</span><em>context=None</em>, <em>request=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/utils.html#get_admin_site"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.utils.get_admin_site" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="grappelli.dashboard.utils.get_admin_site_name">
+<code class="descclassname">grappelli.dashboard.utils.</code><code class="descname">get_admin_site_name</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/utils.html#get_admin_site_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.utils.get_admin_site_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="grappelli.dashboard.utils.get_avail_models">
+<code class="descclassname">grappelli.dashboard.utils.</code><code class="descname">get_avail_models</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/utils.html#get_avail_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.utils.get_avail_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (model, perm,) for all models user can possibly see</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="grappelli.dashboard.utils.get_index_dashboard">
+<code class="descclassname">grappelli.dashboard.utils.</code><code class="descname">get_index_dashboard</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/dashboard/utils.html#get_index_dashboard"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.dashboard.utils.get_index_dashboard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the admin dashboard defined in settings (or the default one).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-grappelli.dashboard">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-grappelli.dashboard" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pub_download</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Javier Pi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/grappelli.dashboard.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,527 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>grappelli.tests package &#8212; pub_download 1.0.2 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="grappelli-tests-package">
+<h1>grappelli.tests package<a class="headerlink" href="#grappelli-tests-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-grappelli.tests.admin">
+<span id="grappelli-tests-admin-module"></span><h2>grappelli.tests.admin module<a class="headerlink" href="#module-grappelli.tests.admin" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="grappelli.tests.admin.CategoryOptions">
+<em class="property">class </em><code class="descclassname">grappelli.tests.admin.</code><code class="descname">CategoryOptions</code><span class="sig-paren">(</span><em>model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/admin.html#CategoryOptions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.admin.CategoryOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.admin.options.ModelAdmin</span></code></p>
+<dl class="attribute">
+<dt id="grappelli.tests.admin.CategoryOptions.list_display">
+<code class="descname">list_display</code><em class="property"> = ('id', 'name')</em><a class="headerlink" href="#grappelli.tests.admin.CategoryOptions.list_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.admin.CategoryOptions.list_display_links">
+<code class="descname">list_display_links</code><em class="property"> = ('name',)</em><a class="headerlink" href="#grappelli.tests.admin.CategoryOptions.list_display_links" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.admin.CategoryOptions.media">
+<code class="descname">media</code><a class="headerlink" href="#grappelli.tests.admin.CategoryOptions.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="grappelli.tests.admin.EntryOptions">
+<em class="property">class </em><code class="descclassname">grappelli.tests.admin.</code><code class="descname">EntryOptions</code><span class="sig-paren">(</span><em>model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/admin.html#EntryOptions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.admin.EntryOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.admin.options.ModelAdmin</span></code></p>
+<dl class="method">
+<dt id="grappelli.tests.admin.EntryOptions.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/admin.html#EntryOptions.get_queryset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.admin.EntryOptions.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a QuerySet of all model instances that can be edited by the
+admin site. This is used by changelist_view.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.admin.EntryOptions.list_display">
+<code class="descname">list_display</code><em class="property"> = ('id', 'title', 'category', 'category_alt', 'user')</em><a class="headerlink" href="#grappelli.tests.admin.EntryOptions.list_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.admin.EntryOptions.list_display_links">
+<code class="descname">list_display_links</code><em class="property"> = ('title',)</em><a class="headerlink" href="#grappelli.tests.admin.EntryOptions.list_display_links" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.admin.EntryOptions.media">
+<code class="descname">media</code><a class="headerlink" href="#grappelli.tests.admin.EntryOptions.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-grappelli.tests.models">
+<span id="grappelli-tests-models-module"></span><h2>grappelli.tests.models module<a class="headerlink" href="#module-grappelli.tests.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="grappelli.tests.models.Category">
+<em class="property">class </em><code class="descclassname">grappelli.tests.models.</code><code class="descname">Category</code><span class="sig-paren">(</span><em>id</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/models.html#Category"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.models.Category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="exception">
+<dt id="grappelli.tests.models.Category.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#grappelli.tests.models.Category.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="grappelli.tests.models.Category.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#grappelli.tests.models.Category.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="grappelli.tests.models.Category.autocomplete_search_fields">
+<em class="property">static </em><code class="descname">autocomplete_search_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/models.html#Category.autocomplete_search_fields"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.models.Category.autocomplete_search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Category.entries">
+<code class="descname">entries</code><a class="headerlink" href="#grappelli.tests.models.Category.entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Category.entriesalt">
+<code class="descname">entriesalt</code><a class="headerlink" href="#grappelli.tests.models.Category.entriesalt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Category.id">
+<code class="descname">id</code><a class="headerlink" href="#grappelli.tests.models.Category.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Category.name">
+<code class="descname">name</code><a class="headerlink" href="#grappelli.tests.models.Category.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Category.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#grappelli.tests.models.Category.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.models.Category.related_label">
+<code class="descname">related_label</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/models.html#Category.related_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.models.Category.related_label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="grappelli.tests.models.Entry">
+<em class="property">class </em><code class="descclassname">grappelli.tests.models.</code><code class="descname">Entry</code><span class="sig-paren">(</span><em>id</em>, <em>title</em>, <em>category</em>, <em>category_alt</em>, <em>date</em>, <em>body</em>, <em>user</em>, <em>createdate</em>, <em>updatedate</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/models.html#Entry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.models.Entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="exception">
+<dt id="grappelli.tests.models.Entry.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#grappelli.tests.models.Entry.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="grappelli.tests.models.Entry.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#grappelli.tests.models.Entry.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="grappelli.tests.models.Entry.autocomplete_search_fields">
+<em class="property">static </em><code class="descname">autocomplete_search_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/models.html#Entry.autocomplete_search_fields"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.models.Entry.autocomplete_search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.body">
+<code class="descname">body</code><a class="headerlink" href="#grappelli.tests.models.Entry.body" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.category">
+<code class="descname">category</code><a class="headerlink" href="#grappelli.tests.models.Entry.category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.category_alt">
+<code class="descname">category_alt</code><a class="headerlink" href="#grappelli.tests.models.Entry.category_alt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.category_alt_id">
+<code class="descname">category_alt_id</code><a class="headerlink" href="#grappelli.tests.models.Entry.category_alt_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.category_id">
+<code class="descname">category_id</code><a class="headerlink" href="#grappelli.tests.models.Entry.category_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.createdate">
+<code class="descname">createdate</code><a class="headerlink" href="#grappelli.tests.models.Entry.createdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.date">
+<code class="descname">date</code><a class="headerlink" href="#grappelli.tests.models.Entry.date" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.models.Entry.get_next_by_createdate">
+<code class="descname">get_next_by_createdate</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateField: createdate&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#grappelli.tests.models.Entry.get_next_by_createdate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.models.Entry.get_next_by_date">
+<code class="descname">get_next_by_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#grappelli.tests.models.Entry.get_next_by_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.models.Entry.get_next_by_updatedate">
+<code class="descname">get_next_by_updatedate</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateField: updatedate&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#grappelli.tests.models.Entry.get_next_by_updatedate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.models.Entry.get_previous_by_createdate">
+<code class="descname">get_previous_by_createdate</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateField: createdate&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#grappelli.tests.models.Entry.get_previous_by_createdate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.models.Entry.get_previous_by_date">
+<code class="descname">get_previous_by_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#grappelli.tests.models.Entry.get_previous_by_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.models.Entry.get_previous_by_updatedate">
+<code class="descname">get_previous_by_updatedate</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateField: updatedate&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#grappelli.tests.models.Entry.get_previous_by_updatedate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.id">
+<code class="descname">id</code><a class="headerlink" href="#grappelli.tests.models.Entry.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#grappelli.tests.models.Entry.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.title">
+<code class="descname">title</code><a class="headerlink" href="#grappelli.tests.models.Entry.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.updatedate">
+<code class="descname">updatedate</code><a class="headerlink" href="#grappelli.tests.models.Entry.updatedate" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.user">
+<code class="descname">user</code><a class="headerlink" href="#grappelli.tests.models.Entry.user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="grappelli.tests.models.Entry.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#grappelli.tests.models.Entry.user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-grappelli.tests.test_checks">
+<span id="grappelli-tests-test-checks-module"></span><h2>grappelli.tests.test_checks module<a class="headerlink" href="#module-grappelli.tests.test_checks" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="grappelli.tests.test_checks.AutocompleteSearchFieldsChecksTests">
+<em class="property">class </em><code class="descclassname">grappelli.tests.test_checks.</code><code class="descname">AutocompleteSearchFieldsChecksTests</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_checks.html#AutocompleteSearchFieldsChecksTests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_checks.AutocompleteSearchFieldsChecksTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.test.testcases.TestCase</span></code></p>
+<dl class="method">
+<dt id="grappelli.tests.test_checks.AutocompleteSearchFieldsChecksTests.test_fails_for_Entry_broken_field_name">
+<code class="descname">test_fails_for_Entry_broken_field_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_checks.html#AutocompleteSearchFieldsChecksTests.test_fails_for_Entry_broken_field_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_checks.AutocompleteSearchFieldsChecksTests.test_fails_for_Entry_broken_field_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.test_checks.AutocompleteSearchFieldsChecksTests.test_passes_for_Entry">
+<code class="descname">test_passes_for_Entry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_checks.html#AutocompleteSearchFieldsChecksTests.test_passes_for_Entry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_checks.AutocompleteSearchFieldsChecksTests.test_passes_for_Entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="grappelli.tests.test_checks.ChecksTests">
+<em class="property">class </em><code class="descclassname">grappelli.tests.test_checks.</code><code class="descname">ChecksTests</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_checks.html#ChecksTests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_checks.ChecksTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.test.testcases.TestCase</span></code></p>
+<dl class="method">
+<dt id="grappelli.tests.test_checks.ChecksTests.test_run_checks">
+<code class="descname">test_run_checks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_checks.html#ChecksTests.test_run_checks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_checks.ChecksTests.test_run_checks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-grappelli.tests.test_dashboard">
+<span id="grappelli-tests-test-dashboard-module"></span><h2>grappelli.tests.test_dashboard module<a class="headerlink" href="#module-grappelli.tests.test_dashboard" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-grappelli.tests.test_related">
+<span id="grappelli-tests-test-related-module"></span><h2>grappelli.tests.test_related module<a class="headerlink" href="#module-grappelli.tests.test_related" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="grappelli.tests.test_related.RelatedTests">
+<em class="property">class </em><code class="descclassname">grappelli.tests.test_related.</code><code class="descname">RelatedTests</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_related.html#RelatedTests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_related.RelatedTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.test.testcases.TestCase</span></code></p>
+<dl class="method">
+<dt id="grappelli.tests.test_related.RelatedTests.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_related.html#RelatedTests.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_related.RelatedTests.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create users, categories and entries</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.test_related.RelatedTests.test_autocomplete_lookup">
+<code class="descname">test_autocomplete_lookup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_related.html#RelatedTests.test_autocomplete_lookup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_related.RelatedTests.test_autocomplete_lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test autocomplete lookup</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.test_related.RelatedTests.test_m2m_lookup">
+<code class="descname">test_m2m_lookup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_related.html#RelatedTests.test_m2m_lookup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_related.RelatedTests.test_m2m_lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test M2M lookup</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.test_related.RelatedTests.test_related_lookup">
+<code class="descname">test_related_lookup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_related.html#RelatedTests.test_related_lookup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_related.RelatedTests.test_related_lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test related lookup</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.test_related.RelatedTests.test_setup">
+<code class="descname">test_setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_related.html#RelatedTests.test_setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_related.RelatedTests.test_setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test setup</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-grappelli.tests.test_switch">
+<span id="grappelli-tests-test-switch-module"></span><h2>grappelli.tests.test_switch module<a class="headerlink" href="#module-grappelli.tests.test_switch" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="grappelli.tests.test_switch.SwitchTests">
+<em class="property">class </em><code class="descclassname">grappelli.tests.test_switch.</code><code class="descname">SwitchTests</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_switch.html#SwitchTests"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_switch.SwitchTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.test.testcases.TestCase</span></code></p>
+<dl class="method">
+<dt id="grappelli.tests.test_switch.SwitchTests.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_switch.html#SwitchTests.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_switch.SwitchTests.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create superusers and editors</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.test_switch.SwitchTests.test_switch_editor001_user001">
+<code class="descname">test_switch_editor001_user001</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_switch.html#SwitchTests.test_switch_editor001_user001"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_switch.SwitchTests.test_switch_editor001_user001" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test switching from editor001 to user001</p>
+<p>That should not work, because editor001 is not a superuser</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.test_switch.SwitchTests.test_switch_login">
+<code class="descname">test_switch_login</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_switch.html#SwitchTests.test_switch_login"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_switch.SwitchTests.test_switch_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test login users</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.test_switch.SwitchTests.test_switch_superuser001_editor001">
+<code class="descname">test_switch_superuser001_editor001</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_switch.html#SwitchTests.test_switch_superuser001_editor001"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_switch.SwitchTests.test_switch_superuser001_editor001" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test switching from superuser001 to Editor001</p>
+<p>That should work.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.test_switch.SwitchTests.test_switch_superuser001_superuser002">
+<code class="descname">test_switch_superuser001_superuser002</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_switch.html#SwitchTests.test_switch_superuser001_superuser002"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_switch.SwitchTests.test_switch_superuser001_superuser002" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test switching from superuser001 to superuser002</p>
+<p>That should not work, because one superuser is not allowed to login
+as another superuser (given the standard grappelli settings)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="grappelli.tests.test_switch.SwitchTests.test_switch_superuser001_user001">
+<code class="descname">test_switch_superuser001_user001</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/grappelli/tests/test_switch.html#SwitchTests.test_switch_superuser001_user001"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#grappelli.tests.test_switch.SwitchTests.test_switch_superuser001_user001" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test switching from superuser001 to user001</p>
+<p>That should not work, because user001 is not found</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-grappelli.tests.urls">
+<span id="grappelli-tests-urls-module"></span><h2>grappelli.tests.urls module<a class="headerlink" href="#module-grappelli.tests.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-grappelli.tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-grappelli.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pub_download</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Javier Pi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/grappelli.tests.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,395 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>gug.tasks &#8212; pub_download 1.0.2 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for gug.tasks</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">apiclient.discovery</span> <span class="k">import</span> <span class="n">build</span>
+<span class="kn">from</span> <span class="nn">google.oauth2</span> <span class="k">import</span> <span class="n">service_account</span>
+<span class="kn">from</span> <span class="nn">celery</span> <span class="k">import</span> <span class="n">shared_task</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ObjectDoesNotExist</span>
+<span class="kn">from</span> <span class="nn">django.core</span> <span class="k">import</span> <span class="n">management</span>
+<span class="kn">from</span> <span class="nn">gug.models</span> <span class="k">import</span> <span class="n">Google_service</span><span class="p">,</span> <span class="n">Period</span><span class="p">,</span> <span class="n">Publication</span><span class="p">,</span> <span class="n">Stats</span><span class="p">,</span> <span class="n">Dspace</span><span class="p">,</span> <span class="n">WorkArea</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">date</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="c1">########################################################</span>
+<span class="c1"># python manage.py celery -A ansible3 worker -l info</span>
+<span class="c1">########################################################</span>
+
+<span class="nd">@shared_task</span>
+<span class="k">def</span> <span class="nf">get_titles</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Obtiene titulos de las publicaciones que estan vacias.</span>
+<span class="sd">        Las obtiene desde repositorio.cepal.org</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">call_id</span> <span class="o">=</span> <span class="n">management</span><span class="o">.</span><span class="n">call_command</span><span class="p">(</span>
+        <span class="s1">&#39;get_title&#39;</span><span class="p">,</span>
+        <span class="n">verbosity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">return_vars</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">call_id</span><span class="p">))</span>
+
+
+<span class="nd">@shared_task</span>
+<span class="k">def</span> <span class="nf">get_GA</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;googleapiclient.discovery_cache&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+    <span class="n">gservices</span> <span class="o">=</span> <span class="n">Google_service</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">periods</span> <span class="o">=</span> <span class="n">Period</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">period</span> <span class="ow">in</span> <span class="n">periods</span><span class="p">:</span>
+        <span class="n">start_date</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">period</span><span class="o">.</span><span class="n">start_date</span><span class="p">)</span>
+        <span class="n">end_date</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">period</span><span class="o">.</span><span class="n">end_date</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">gs</span> <span class="ow">in</span> <span class="n">gservices</span><span class="p">:</span>
+            <span class="n">max_prev</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">max_month_before</span><span class="o">*</span><span class="mi">31</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">max_prev</span> <span class="o">&gt;</span> <span class="n">period</span><span class="o">.</span><span class="n">end_date</span> <span class="ow">or</span> <span class="n">max_prev</span> <span class="o">&gt;</span> <span class="n">period</span><span class="o">.</span><span class="n">start_date</span><span class="p">:</span>
+                <span class="c1"># print(max_prev)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">max_month_before</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;max_prev &gt; period.end_date&#39;</span><span class="p">,</span> <span class="n">max_prev</span><span class="p">,</span> <span class="s1">&#39; &gt; &#39;</span> <span class="p">,</span> <span class="n">period</span><span class="o">.</span><span class="n">end_date</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Obteniendo&#39;</span><span class="p">)</span>
+
+            <span class="n">scope</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">scope</span>
+            <span class="n">discovery</span> <span class="o">=</span> <span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">discovery</span><span class="p">)</span>
+            <span class="n">secret_json</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">secret_json</span>
+            <span class="n">client_secret_path</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">client_secret_path</span>
+            <span class="n">service</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">service</span><span class="p">)</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">version</span>
+            <span class="n">view_id</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">view_id</span>
+            <span class="n">report</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">report</span>
+            <span class="n">report</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;view_id&#39;</span><span class="p">,</span> <span class="n">view_id</span><span class="p">)</span>
+            <span class="n">report</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;start_date&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="p">)</span>
+            <span class="n">report</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;end_date&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+            <span class="n">report</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+
+            <span class="n">credentials</span> <span class="o">=</span> <span class="n">service_account</span><span class="o">.</span><span class="n">Credentials</span><span class="o">.</span><span class="n">from_service_account_file</span><span class="p">(</span><span class="n">client_secret_path</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">scope</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">credentials</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;BAD CREDENTIALS&quot;</span><span class="p">)</span>
+
+            <span class="c1"># delete all stats from this report</span>
+            <span class="n">delete_stat</span><span class="p">(</span><span class="n">gs</span><span class="p">,</span> <span class="n">period</span><span class="p">)</span>
+            <span class="c1"># raise</span>
+
+            <span class="k">if</span> <span class="n">discovery</span><span class="p">:</span>
+                <span class="n">analytics</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">discoveryServiceUrl</span><span class="o">=</span><span class="n">discovery</span><span class="p">,</span> <span class="n">cache_discovery</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="n">analytics</span><span class="o">.</span><span class="n">reports</span><span class="p">()</span><span class="o">.</span><span class="n">batchGet</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">report</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">analytics</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="n">analytics</span><span class="o">.</span><span class="n">searchanalytics</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">siteUrl</span><span class="o">=</span><span class="n">view_id</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">report</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">service</span> <span class="o">==</span> <span class="s1">&#39;analytics&#39;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reports&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+                    <span class="n">columnHeader</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;columnHeader&#39;</span><span class="p">,</span> <span class="p">{})</span>
+                    <span class="n">dimensionHeaders</span> <span class="o">=</span> <span class="n">columnHeader</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dimensions&#39;</span><span class="p">,</span> <span class="p">[])</span>
+                    <span class="n">metricHeaders</span> <span class="o">=</span> <span class="n">columnHeader</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;metricHeader&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;metricHeaderEntries&#39;</span><span class="p">,</span> <span class="p">[])</span>
+
+                <span class="n">workareas</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">report</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rows&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+                    <span class="n">dimensions</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dimensions&#39;</span><span class="p">,</span> <span class="p">[])</span>
+                    <span class="n">dateRangeValues</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;metrics&#39;</span><span class="p">,</span> <span class="p">[])</span>
+
+                    <span class="k">for</span> <span class="n">header</span><span class="p">,</span> <span class="n">dimension</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dimensionHeaders</span><span class="p">,</span> <span class="n">dimensions</span><span class="p">):</span>
+                        <span class="c1"># print(&#39;Header=&#39; + header + &#39;: &#39; + dimension)</span>
+                        <span class="k">if</span> <span class="n">header</span> <span class="o">==</span> <span class="s1">&#39;ga:eventLabel&#39;</span><span class="p">:</span>
+                            <span class="n">url</span> <span class="o">=</span> <span class="n">dimension</span>
+
+                        <span class="k">if</span> <span class="n">header</span> <span class="o">==</span> <span class="s1">&#39;ga:pageTitle&#39;</span><span class="p">:</span>
+                            <span class="n">title</span> <span class="o">=</span> <span class="n">dimension</span>
+
+                        <span class="k">if</span> <span class="n">header</span> <span class="o">==</span> <span class="s1">&#39;ga:dimension1&#39;</span><span class="p">:</span>
+                            <span class="n">workareas</span> <span class="o">=</span> <span class="n">dimension</span>
+
+                    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dateRangeValues</span><span class="p">):</span>
+                        <span class="k">for</span> <span class="n">metricHeader</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">metricHeaders</span><span class="p">,</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;values&#39;</span><span class="p">)):</span>
+                            <span class="c1"># print(metricHeader.get(&#39;name&#39;) + &#39;: &#39; + value)</span>
+                            <span class="k">if</span> <span class="n">metricHeader</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;ga:totalEvents&#39;</span><span class="p">:</span>
+                                <span class="n">cantidad</span> <span class="o">=</span> <span class="n">value</span>
+                    <span class="n">save_record</span><span class="p">(</span><span class="n">gs</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">cantidad</span><span class="p">,</span> <span class="n">workareas</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">service</span> <span class="o">==</span> <span class="s1">&#39;webmasters&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;rows&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;rows&#39;</span><span class="p">]:</span>
+                        <span class="n">keys</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;keys&#39;</span><span class="p">])</span>
+                        <span class="n">output_row</span> <span class="o">=</span> <span class="p">[</span><span class="n">keys</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;clicks&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;impressions&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;ctr&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]]</span>
+                        <span class="n">cantidad</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;clicks&#39;</span><span class="p">]</span>
+                        <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                        <span class="n">url</span> <span class="o">=</span> <span class="n">keys</span>
+                        <span class="n">save_record</span><span class="p">(</span><span class="n">gs</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">cantidad</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+            <span class="n">gs</span><span class="o">.</span><span class="n">last_update</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="n">gs</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="n">period</span><span class="o">.</span><span class="n">last_update</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">period</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        
+    <span class="n">get_titles</span><span class="p">()</span>
+
+<div class="viewcode-block" id="tospanish"><a class="viewcode-back" href="../../gug.html#gug.tasks.tospanish">[docs]</a><span class="k">def</span> <span class="nf">tospanish</span><span class="p">(</span><span class="n">workarea</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;assuntos de gênero&#39;</span> <span class="ow">or</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;gender affairs&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;asuntos de&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">9</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;gender eq&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;igualdad d&#39;</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Asuntos de Género&#39;</span>
+    <span class="k">elif</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;comércio internacional e integração&#39;</span> <span class="ow">or</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;international trade and integration&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;comercio i&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">15</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;international t&#39;</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Comercio internacional e integración&#39;</span>
+    <span class="k">elif</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;desenvolvimento econômico&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;econo&#39;</span> <span class="ow">or</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;desar&#39;</span> <span class="ow">or</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;desa&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;desarro&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Desarrollo económico&#39;</span>
+    <span class="k">elif</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;recursos naturais e infraestrutura&#39;</span> <span class="ow">or</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;natural resources and infrastructure&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;natural reso&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;recurs&#39;</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Recursos naturales e infraestructura&#39;</span>    
+    <span class="k">elif</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;desenvolvimento social&#39;</span> <span class="ow">or</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;social development&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;soci&#39;</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Desarrollo Social&#39;</span>
+    <span class="k">elif</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;sustainable development and human settlements&#39;</span> <span class="ow">or</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;desenvolvimento sustentável e assentamentos humanos&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">15</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;desenvolvimento&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">13</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;sustainable d&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">14</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;desarrollo sos&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Desarrollo sostenible y asentamientos humanos&#39;</span>
+    <span class="k">elif</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;planning for development&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;plan&#39;</span>  <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;planning for&#39;</span> <span class="ow">or</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;planejamento para o desenvolvimento&#39;</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Planificación para el desarrollo&#39;</span>
+    <span class="k">elif</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;statistics&#39;</span> <span class="ow">or</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;estatísticas&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;esta&#39;</span> <span class="ow">or</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;statisti&#39;</span> <span class="ow">or</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;stat&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Estadísticas&#39;</span>    
+    <span class="k">elif</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;population and development&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;population&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;população &#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;poblac&#39;</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Población y desarrollo&#39;</span>    
+    <span class="k">elif</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;desenvolvimento produtivo e empresarial&#39;</span> <span class="ow">or</span> <span class="n">workarea</span> <span class="o">==</span> <span class="s1">&#39;productivity and management&#39;</span> <span class="ow">or</span> <span class="n">workarea</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;product&#39;</span><span class="p">:</span>
+         <span class="k">return</span> <span class="s1">&#39;Desarrollo productivo y empresarial&#39;</span>    
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">workarea</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="clean_url"><a class="viewcode-back" href="../../gug.html#gug.tasks.clean_url">[docs]</a><span class="k">def</span> <span class="nf">clean_url</span><span class="p">(</span><span class="n">n_url</span><span class="p">):</span>
+    <span class="n">n_url</span> <span class="o">=</span> <span class="n">n_url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n_url</span> <span class="o">=</span> <span class="n">n_url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;http://&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">n_url</span> <span class="o">=</span> <span class="n">n_url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">n_url</span> <span class="o">=</span> <span class="n">n_url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;repositorio.cepal.org&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">n_url</span> <span class="o">=</span> <span class="n">n_url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/bitstream&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">n_url</span> <span class="o">=</span> <span class="n">n_url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/handle&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">n_url</span> <span class="o">=</span> <span class="n">n_url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/id/&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">n_url</span> <span class="o">=</span> <span class="n">n_url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/11362/&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">n_url</span></div>
+
+<span class="c1"># @shared_task</span>
+<div class="viewcode-block" id="get_wa"><a class="viewcode-back" href="../../gug.html#gug.tasks.get_wa">[docs]</a><span class="k">def</span> <span class="nf">get_wa</span><span class="p">():</span>
+    <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/auth/analytics.readonly&#39;</span>
+    <span class="n">discovery</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;https://analyticsreporting.googleapis.com/$discovery/rest&#39;</span><span class="p">)</span>
+    <span class="n">client_secret_path</span> <span class="o">=</span> <span class="s1">&#39;DownloadPublicaciones-a610ebc17b1e.json&#39;</span>
+    <span class="n">service</span> <span class="o">=</span> <span class="s1">&#39;analytics&#39;</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;v4&#39;</span>
+    <span class="c1"># 94626449</span>
+    <span class="c1"># 94646409</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="s1">&#39;{ &quot;reportRequests&quot;: [ { &quot;viewId&quot;: &quot;94626449&quot;, &quot;dateRanges&quot;: [{&quot;startDate&quot;: &quot;2017-01-01&quot;, &quot;endDate&quot;: &quot;2019-12-30&quot;}], </span><span class="se">\</span>
+<span class="s1">                            &quot;metrics&quot;: [{&quot;expression&quot;: &quot;ga:totalEvents&quot;}],&quot;dimensions&quot;: [{&quot;name&quot;: &quot;ga:eventLabel&quot;}, {&quot;name&quot;: &quot;ga:pageTitle&quot;}, {&quot;name&quot;: &quot;ga:dimension1&quot;}],&quot;pageSize&quot;: 20000,&quot;orderBys&quot;: [{&quot;fieldName&quot;: &quot;ga:totalEvents&quot;, &quot;sortOrder&quot;: &quot;DESCENDING&quot;}], </span><span class="se">\</span>
+<span class="s1">                            &quot;dimensionFilterClauses&quot;: [{&quot;operator&quot;: &quot;AND&quot;},{&quot;filters&quot;: [{&quot;dimensionName&quot;: &quot;ga:eventLabel&quot;, &quot;operator&quot;: &quot;PARTIAL&quot;, &quot;expressions&quot;: [&quot;/bitstream/&quot;, &quot;.pdf&quot;] }]}] }]}&#39;</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+    <span class="n">credentials</span> <span class="o">=</span> <span class="n">service_account</span><span class="o">.</span><span class="n">Credentials</span><span class="o">.</span><span class="n">from_service_account_file</span><span class="p">(</span><span class="n">client_secret_path</span><span class="p">,</span> <span class="n">scopes</span><span class="o">=</span><span class="n">scope</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">credentials</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;BAD CREDENTIALS&quot;</span><span class="p">)</span>
+
+    <span class="c1"># if discovery:</span>
+    <span class="n">analytics</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">discoveryServiceUrl</span><span class="o">=</span><span class="n">discovery</span><span class="p">,</span> <span class="n">cache_discovery</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">analytics</span><span class="o">.</span><span class="n">reports</span><span class="p">()</span><span class="o">.</span><span class="n">batchGet</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">report</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+   
+    <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;reports&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">columnHeader</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;columnHeader&#39;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">dimensionHeaders</span> <span class="o">=</span> <span class="n">columnHeader</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dimensions&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">metricHeaders</span> <span class="o">=</span> <span class="n">columnHeader</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;metricHeader&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;metricHeaderEntries&#39;</span><span class="p">,</span> <span class="p">[])</span>
+
+    <span class="n">workareas</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">report</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rows&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">dimensions</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dimensions&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">dateRangeValues</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;metrics&#39;</span><span class="p">,</span> <span class="p">[])</span>
+
+        <span class="k">for</span> <span class="n">header</span><span class="p">,</span> <span class="n">dimension</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dimensionHeaders</span><span class="p">,</span> <span class="n">dimensions</span><span class="p">):</span>
+            <span class="c1"># print(&#39;Header=&#39; + header + &#39;: &#39; + dimension)</span>
+            <span class="k">if</span> <span class="n">header</span> <span class="o">==</span> <span class="s1">&#39;ga:eventLabel&#39;</span><span class="p">:</span>
+                <span class="n">url</span> <span class="o">=</span> <span class="n">dimension</span>
+            <span class="k">if</span> <span class="n">header</span> <span class="o">==</span> <span class="s1">&#39;ga:pageTitle&#39;</span><span class="p">:</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">dimension</span>
+            <span class="k">if</span> <span class="n">header</span> <span class="o">==</span> <span class="s1">&#39;ga:dimension1&#39;</span><span class="p">:</span>
+                <span class="n">workareas</span> <span class="o">=</span> <span class="n">dimension</span>
+        <span class="c1"># for i, values in enumerate(dateRangeValues):</span>
+        <span class="c1">#     for metricHeader, value in zip(metricHeaders, values.get(&#39;values&#39;)):</span>
+        <span class="c1">#         # print(metricHeader.get(&#39;name&#39;) + &#39;: &#39; + value)</span>
+        <span class="c1">#         if metricHeader.get(&#39;name&#39;) == &#39;ga:totalEvents&#39;:</span>
+        <span class="c1">#             cantidad = value</span>
+        <span class="c1"># save_record(gs, period, url, title, cantidad, workareas)</span>
+        <span class="n">n_url</span> <span class="o">=</span> <span class="n">clean_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">wka_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">id_dspace</span> <span class="o">=</span> <span class="n">n_url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">workarea</span> <span class="ow">in</span> <span class="n">workareas</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">):</span>
+            <span class="n">workarea</span> <span class="o">=</span> <span class="n">tospanish</span><span class="p">(</span><span class="n">workarea</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">workarea</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">wka</span> <span class="o">=</span> <span class="n">WorkArea</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">workarea</span><span class="p">)</span>
+                <span class="k">except</span> <span class="n">WorkArea</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+                    <span class="n">wka</span> <span class="o">=</span> <span class="n">WorkArea</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">workarea</span><span class="p">)</span>
+                    <span class="n">wka</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="n">wka_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wka</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">dsp</span> <span class="o">=</span> <span class="n">Dspace</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_dspace</span><span class="o">=</span><span class="n">id_dspace</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ValueError in id_dspace&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;url = &#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">ObjectDoesNotExist</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;id_dspace Does Not Exist: &#39;</span><span class="p">,</span> <span class="n">id_dspace</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dsp</span><span class="o">.</span><span class="n">workarea</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">wka_list</span><span class="p">)</span>
+            <span class="n">dsp</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="delete_stat"><a class="viewcode-back" href="../../gug.html#gug.tasks.delete_stat">[docs]</a><span class="k">def</span> <span class="nf">delete_stat</span><span class="p">(</span><span class="n">gs</span><span class="p">,</span> <span class="n">period</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;deleting stats for period:&#39;</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="s1">&#39; and gs:&#39;</span><span class="p">,</span> <span class="n">gs</span><span class="p">)</span>
+    <span class="n">Stats</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">google_service</span><span class="o">=</span><span class="n">gs</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="save_record"><a class="viewcode-back" href="../../gug.html#gug.tasks.save_record">[docs]</a><span class="k">def</span> <span class="nf">save_record</span><span class="p">(</span><span class="n">gs</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">cantidad</span><span class="p">,</span> <span class="n">workareas</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1">#print(gs.id, period.id, url, title, cantidad)</span>
+    <span class="c1"># n_url = url.split(&#39;?&#39;)[0]</span>
+    <span class="c1"># n_url = n_url.replace(&#39;http://&#39;, &#39;&#39;)</span>
+    <span class="c1"># n_url = n_url.replace(&#39;https://&#39;, &#39;&#39;)</span>
+    <span class="c1"># n_url = n_url.replace(&#39;repositorio.cepal.org&#39;, &#39;&#39;)</span>
+    <span class="c1"># n_url = n_url.replace(&#39;/bitstream&#39;, &#39;&#39;)</span>
+    <span class="c1"># n_url = n_url.replace(&#39;/handle&#39;, &#39;&#39;)</span>
+    <span class="c1"># n_url = n_url.replace(&#39;/id/&#39;, &#39;&#39;)</span>
+    <span class="c1"># n_url = n_url.replace(&#39;/11362/&#39;, &#39;&#39;)</span>
+    <span class="n">n_url</span> <span class="o">=</span> <span class="n">clean_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="n">id_dspace</span> <span class="o">=</span> <span class="n">n_url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="n">n_url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="p">[:</span><span class="mi">599</span><span class="p">]</span>
+    <span class="n">post_title1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">post_title2</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">title</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">post_title1</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">title</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">post_title2</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">isNum</span><span class="p">(</span><span class="n">id_dspace</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">int</span><span class="p">(</span><span class="n">cantidad</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        
+        <span class="c1"># dsp, created = Dspace.objects.update_or_create(</span>
+        <span class="c1">#     id_dspace=id_dspace,</span>
+        <span class="c1">#     defaults={</span>
+        <span class="c1">#         &#39;title&#39;: title,</span>
+        <span class="c1">#         &#39;post_title1&#39;: post_title1,</span>
+        <span class="c1">#         &#39;post_title2&#39;: post_title2</span>
+        <span class="c1">#         }</span>
+        <span class="c1">#     )</span>
+        
+        <span class="n">dsp</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Dspace</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">id_dspace</span><span class="o">=</span><span class="n">id_dspace</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="n">dsp</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+            <span class="n">dsp</span><span class="o">.</span><span class="n">post_title1</span> <span class="o">=</span> <span class="n">post_title1</span>
+            <span class="n">dsp</span><span class="o">.</span><span class="n">post_title2</span> <span class="o">=</span> <span class="n">post_title2</span>
+            <span class="n">dsp</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pub</span> <span class="o">=</span> <span class="n">Publication</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_dspace</span><span class="o">=</span><span class="n">dsp</span><span class="p">,</span> <span class="n">tfile</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Publication</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+            <span class="n">pub</span> <span class="o">=</span> <span class="n">Publication</span><span class="p">(</span><span class="n">id_dspace</span><span class="o">=</span><span class="n">dsp</span><span class="p">,</span> <span class="n">tfile</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+            <span class="n">pub</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">stat</span> <span class="o">=</span> <span class="n">Stats</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">google_service</span><span class="o">=</span><span class="n">gs</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">,</span> <span class="n">publication</span><span class="o">=</span><span class="n">pub</span><span class="p">,</span> <span class="n">id_dspace</span><span class="o">=</span><span class="n">dsp</span><span class="p">)</span>
+            <span class="n">can</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">cuantity</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">cantidad</span><span class="p">)</span>
+            <span class="n">stat</span><span class="o">.</span><span class="n">cuantity</span> <span class="o">=</span> <span class="n">can</span>
+            <span class="n">stat</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">Stats</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+            <span class="n">stats</span> <span class="o">=</span> <span class="n">Stats</span><span class="p">(</span><span class="n">google_service</span><span class="o">=</span><span class="n">gs</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">,</span> <span class="n">publication</span><span class="o">=</span><span class="n">pub</span><span class="p">,</span> <span class="n">id_dspace</span><span class="o">=</span><span class="n">dsp</span><span class="p">,</span> <span class="n">cuantity</span><span class="o">=</span><span class="n">cantidad</span><span class="p">)</span>
+            <span class="n">stats</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="isNum"><a class="viewcode-back" href="../../gug.html#gug.tasks.isNum">[docs]</a><span class="k">def</span> <span class="nf">isNum</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">pub_download</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Javier Pi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

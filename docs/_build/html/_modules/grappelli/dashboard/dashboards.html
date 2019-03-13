@@ -1,0 +1,289 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>grappelli.dashboard.dashboards &#8212; pub_download 1.0.2 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for grappelli.dashboard.dashboards</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding: utf-8</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module where grappelli dashboard classes are defined.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># DJANGO IMPORTS</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="k">import</span> <span class="n">six</span>
+<span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="k">import</span> <span class="n">ugettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="k">import</span> <span class="n">reverse</span>
+<span class="kn">from</span> <span class="nn">django</span> <span class="k">import</span> <span class="n">forms</span>
+
+<span class="c1"># GRAPPELLI IMPORTS</span>
+<span class="kn">from</span> <span class="nn">grappelli.dashboard</span> <span class="k">import</span> <span class="n">modules</span>
+<span class="kn">from</span> <span class="nn">grappelli.dashboard.utils</span> <span class="k">import</span> <span class="n">get_admin_site_name</span>
+
+
+<div class="viewcode-block" id="Dashboard"><a class="viewcode-back" href="../../../grappelli.dashboard.html#grappelli.dashboard.dashboards.Dashboard">[docs]</a><span class="k">class</span> <span class="nc">Dashboard</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">with_metaclass</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">MediaDefiningClass</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for dashboards.</span>
+<span class="sd">    The Dashboard class is a simple python list that has three additional</span>
+<span class="sd">    properties:</span>
+
+<span class="sd">    ``title``</span>
+<span class="sd">        The dashboard title, by default, it is displayed above the dashboard</span>
+<span class="sd">        in a ``h2`` tag. Default value: &#39;Dashboard&#39;.</span>
+
+<span class="sd">    ``template``</span>
+<span class="sd">        The template to use to render the dashboard.</span>
+<span class="sd">        Default value: &#39;admin_tools/dashboard/dashboard.html&#39;</span>
+
+<span class="sd">    ``columns``</span>
+<span class="sd">        An integer that represents the number of columns for the dashboard.</span>
+<span class="sd">        Default value: 2.</span>
+
+<span class="sd">    If you want to customize the look of your dashboard and it&#39;s modules, you</span>
+<span class="sd">    can declare css stylesheets and/or javascript files to include when</span>
+<span class="sd">    rendering the dashboard (these files should be placed in your</span>
+<span class="sd">    media path), for example::</span>
+
+<span class="sd">        from admin_tools.dashboard import Dashboard</span>
+
+<span class="sd">        class MyDashboard(Dashboard):</span>
+<span class="sd">            class Media:</span>
+<span class="sd">                css = {</span>
+<span class="sd">                    &#39;all&#39;: (</span>
+<span class="sd">                        &#39;css/mydashboard.css&#39;,</span>
+<span class="sd">                        &#39;css/mystyles.css&#39;,</span>
+<span class="sd">                    ),</span>
+<span class="sd">                }</span>
+<span class="sd">                js = (</span>
+<span class="sd">                    &#39;js/mydashboard.js&#39;,</span>
+<span class="sd">                    &#39;js/myscript.js&#39;,</span>
+<span class="sd">                )</span>
+
+<span class="sd">    Here&#39;s an example of a custom dashboard::</span>
+
+<span class="sd">        from django.urls import reverse</span>
+<span class="sd">        from django.utils.translation import ugettext_lazy as _</span>
+<span class="sd">        from admin_tools.dashboard import modules, Dashboard</span>
+
+<span class="sd">        class MyDashboard(Dashboard):</span>
+
+<span class="sd">            # we want a 3 columns layout</span>
+<span class="sd">            columns = 3</span>
+
+<span class="sd">            def __init__(self, **kwargs):</span>
+<span class="sd">                super(MyDashboard, self).__init__(**kwargs)</span>
+
+<span class="sd">                # append an app list module for &quot;Applications&quot;</span>
+<span class="sd">                self.children.append(modules.AppList(</span>
+<span class="sd">                    title=_(&#39;Applications&#39;),</span>
+<span class="sd">                    exclude=(&#39;django.contrib.*&#39;,),</span>
+<span class="sd">                ))</span>
+
+<span class="sd">                # append an app list module for &quot;Administration&quot;</span>
+<span class="sd">                self.children.append(modules.AppList(</span>
+<span class="sd">                    title=_(&#39;Administration&#39;),</span>
+<span class="sd">                    models=(&#39;django.contrib.*&#39;,),</span>
+<span class="sd">                ))</span>
+
+<span class="sd">                # append a recent actions module</span>
+<span class="sd">                self.children.append(modules.RecentActions(</span>
+<span class="sd">                    title=_(&#39;Recent Actions&#39;),</span>
+<span class="sd">                    limit=5</span>
+<span class="sd">                ))</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">title</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Dashboard&#39;</span><span class="p">)</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="s1">&#39;grappelli/dashboard/dashboard.html&#39;</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">children</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="ow">or</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="Dashboard.init_with_context"><a class="viewcode-back" href="../../../grappelli.dashboard.html#grappelli.dashboard.dashboards.Dashboard.init_with_context">[docs]</a>    <span class="k">def</span> <span class="nf">init_with_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sometimes you may need to access context or request variables to build</span>
+<span class="sd">        your dashboard, this is what the ``init_with_context()`` method is for.</span>
+<span class="sd">        This method is called just before the display with a</span>
+<span class="sd">        ``django.template.RequestContext`` as unique argument, so you can</span>
+<span class="sd">        access to all context variables and to the ``django.http.HttpRequest``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Dashboard.get_id"><a class="viewcode-back" href="../../../grappelli.dashboard.html#grappelli.dashboard.dashboards.Dashboard.get_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Internal method used to distinguish different dashboards in js code.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;grp-dashboard&#39;</span></div></div>
+
+
+<div class="viewcode-block" id="DefaultIndexDashboard"><a class="viewcode-back" href="../../../grappelli.dashboard.html#grappelli.dashboard.dashboards.DefaultIndexDashboard">[docs]</a><span class="k">class</span> <span class="nc">DefaultIndexDashboard</span><span class="p">(</span><span class="n">Dashboard</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The default dashboard displayed on the admin index page.</span>
+<span class="sd">    To change the default dashboard you&#39;ll have to type the following from the</span>
+<span class="sd">    commandline in your project root directory::</span>
+
+<span class="sd">        python manage.py customdashboard</span>
+
+<span class="sd">    And then set the `GRAPPELLI_INDEX_DASHBOARD`` settings variable to</span>
+<span class="sd">    point to your custom index dashboard class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DefaultIndexDashboard.init_with_context"><a class="viewcode-back" href="../../../grappelli.dashboard.html#grappelli.dashboard.dashboards.DefaultIndexDashboard.init_with_context">[docs]</a>    <span class="k">def</span> <span class="nf">init_with_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">site_name</span> <span class="o">=</span> <span class="n">get_admin_site_name</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+        <span class="c1"># append a link list module for &quot;quick links&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">LinkList</span><span class="p">(</span>
+            <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Quick links&#39;</span><span class="p">),</span>
+            <span class="n">collapsible</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+                <span class="p">[</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Return to site&#39;</span><span class="p">),</span> <span class="s1">&#39;/&#39;</span><span class="p">],</span>
+                <span class="p">[</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Change password&#39;</span><span class="p">),</span>
+                 <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:password_change&#39;</span> <span class="o">%</span> <span class="n">site_name</span><span class="p">)],</span>
+                <span class="p">[</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Log out&#39;</span><span class="p">),</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:logout&#39;</span> <span class="o">%</span> <span class="n">site_name</span><span class="p">)],</span>
+            <span class="p">]</span>
+        <span class="p">))</span>
+
+        <span class="c1"># append an app list module for &quot;Applications&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">AppList</span><span class="p">(</span>
+            <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Applications&#39;</span><span class="p">),</span>
+            <span class="n">exclude</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;django.contrib.*&#39;</span><span class="p">,),</span>
+        <span class="p">))</span>
+
+        <span class="c1"># append an app list module for &quot;Administration&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">AppList</span><span class="p">(</span>
+            <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Administration&#39;</span><span class="p">),</span>
+            <span class="n">models</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;django.contrib.*&#39;</span><span class="p">,),</span>
+        <span class="p">))</span>
+
+        <span class="c1"># append a recent actions module</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">RecentActions</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Recent Actions&#39;</span><span class="p">),</span> <span class="mi">5</span><span class="p">))</span>
+
+        <span class="c1"># append a feed module</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">Feed</span><span class="p">(</span>
+            <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Latest Django News&#39;</span><span class="p">),</span>
+            <span class="n">feed_url</span><span class="o">=</span><span class="s1">&#39;http://www.djangoproject.com/rss/weblog/&#39;</span><span class="p">,</span>
+            <span class="n">limit</span><span class="o">=</span><span class="mi">5</span>
+        <span class="p">))</span>
+
+        <span class="c1"># append another link list module for &quot;support&quot;.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modules</span><span class="o">.</span><span class="n">LinkList</span><span class="p">(</span>
+            <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Support&#39;</span><span class="p">),</span>
+            <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Django documentation&#39;</span><span class="p">),</span>
+                    <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;http://docs.djangoproject.com/&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;external&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="s1">&#39;_blank&#39;</span><span class="p">,</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Django &quot;django-users&quot; mailing list&#39;</span><span class="p">),</span>
+                    <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;http://groups.google.com/group/django-users&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;external&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># ~= open in new window: True</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Django irc channel&#39;</span><span class="p">),</span>
+                    <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;irc://irc.freenode.net/django&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;external&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="p">},</span>
+            <span class="p">]</span>
+        <span class="p">))</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">pub_download</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Javier Pi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

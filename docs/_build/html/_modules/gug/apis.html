@@ -1,0 +1,398 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>gug.apis &#8212; pub_download 1.0.2 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for gug.apis</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="k">import</span> <span class="n">APIView</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="k">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">rest_framework.renderers</span> <span class="k">import</span> <span class="n">JSONRenderer</span>
+<span class="kn">from</span> <span class="nn">rest_framework.decorators</span> <span class="k">import</span> <span class="n">api_view</span>
+<span class="c1"># from django.http import HttpResponse, , JsonResponse, HttpResponseNotFound</span>
+
+
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">JsonResponse</span><span class="p">,</span> <span class="n">StreamingHttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.db.models</span> <span class="k">import</span> <span class="n">Count</span><span class="p">,</span> <span class="n">Sum</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">connection</span>
+<span class="kn">from</span> <span class="nn">gug.models</span> <span class="k">import</span> <span class="n">Google_service</span><span class="p">,</span> <span class="n">Period</span><span class="p">,</span> <span class="n">Publication</span><span class="p">,</span> <span class="n">Stats</span><span class="p">,</span> <span class="n">Dspace</span><span class="p">,</span> <span class="n">Service_group</span>
+<span class="kn">import</span> <span class="nn">gviz_api</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">codecs</span>
+
+<div class="viewcode-block" id="Echo"><a class="viewcode-back" href="../../gug.html#gug.apis.Echo">[docs]</a><span class="k">class</span> <span class="nc">Echo</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;An object that implements just the write method of the file-like</span>
+<span class="sd">    interface.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Echo.write"><a class="viewcode-back" href="../../gug.html#gug.apis.Echo.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write the value by returning it, instead of storing in a buffer.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">value</span></div></div>
+
+
+<div class="viewcode-block" id="iter_csv"><a class="viewcode-back" href="../../gug.html#gug.apis.iter_csv">[docs]</a><span class="k">def</span> <span class="nf">iter_csv</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">pseudo_buffer</span><span class="p">):</span>
+    <span class="k">yield</span> <span class="n">pseudo_buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">codecs</span><span class="o">.</span><span class="n">BOM_UTF8</span><span class="p">)</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">pseudo_buffer</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span></div>
+
+<span class="c1"># @api_view([&#39;GET&#39;])</span>
+<div class="viewcode-block" id="get_report"><a class="viewcode-back" href="../../gug.html#gug.apis.get_report">[docs]</a><span class="k">class</span> <span class="nc">get_report</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="n">authentication_classes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># def __init__(self, request, period, output):</span>
+    <span class="c1">#     pass</span>
+
+<div class="viewcode-block" id="get_report.get"><a class="viewcode-back" href="../../gug.html#gug.apis.get_report.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">period</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="s1">&#39;json&#39;</span><span class="p">)</span>  <span class="c1">## json; csv; gvdtj (Google Visualization Data Table JSON)</span>
+
+        <span class="n">gsid_avalable</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Google_service</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">gsid</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gsid_avalable</span><span class="p">:</span>
+            <span class="n">gsid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+        <span class="c1">#### --    BY GROUP ----</span>
+        <span class="c1">## group headers</span>
+        <span class="c1"># gstitles = Google_service.objects.values(&#39;group__id&#39;, &#39;group__name&#39;).annotate(dcount=Count(&#39;group__id&#39;))</span>
+        <span class="n">gstitles</span> <span class="o">=</span> <span class="n">Service_group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">dcount</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">))</span>
+
+        <span class="n">fields_iniciales</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ID Dspace&#39;</span><span class="p">,</span> <span class="s1">&#39;Title&#39;</span><span class="p">,</span> <span class="s1">&#39;Work Area&#39;</span><span class="p">]</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">fields_iniciales</span><span class="p">:</span>
+            <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        
+        <span class="n">columns_order</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">columns_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;id_dspace&#39;</span><span class="p">)</span>
+        <span class="n">columns_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+        <span class="n">columns_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;wa&#39;</span><span class="p">)</span>
+
+        <span class="n">fields2</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">fields2</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;id_dspace&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="s2">&quot;ID DSpace&quot;</span><span class="p">)})</span>
+        <span class="n">fields2</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;Title&quot;</span><span class="p">)})</span>
+        <span class="n">fields2</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;wa&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;Work Area&quot;</span><span class="p">)})</span>
+        <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">gstitles</span><span class="p">:</span>
+            <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="p">)</span>
+            <span class="n">columns_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;group_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">title</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>  <span class="p">)</span>
+            <span class="c1"># fields2.append({&#39;group_&#39; + str(title[&#39;group__id&#39;]) : (&quot;number&quot;, title[&#39;group__name&#39;])})</span>
+            <span class="n">fields2</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;group_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">title</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span> <span class="p">:</span> <span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="n">title</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])})</span>
+        <span class="n">fields_finales</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SUMA&#39;</span><span class="p">]</span>
+        <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">fields_finales</span><span class="p">)))</span>
+
+
+        <span class="n">columns_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;suma&#39;</span><span class="p">)</span>
+        <span class="n">fields2</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;suma&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="s2">&quot;SUMA&quot;</span><span class="p">)})</span>
+
+        <span class="c1">#</span>
+        <span class="c1"># groupid_avalable = list(Google_service.objects.select_related(&#39;group&#39;).filter(pk__in=gsid).values_list(&#39;group_id&#39;, flat=True).distinct())</span>
+        <span class="n">groupid_avalable</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Service_group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        
+
+        <span class="n">groupids</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">groupid_avalable</span><span class="p">:</span>
+            <span class="n">groupids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        
+        <span class="c1">## group resumes</span>
+        <span class="n">query_inicial</span> <span class="o">=</span> <span class="s2">&quot; SELECT &quot;</span> \
+                        <span class="s2">&quot;       gug_dspace.id_dspace, &quot;</span>\
+                        <span class="s2">&quot;       gug_dspace.title ,  &quot;</span>\
+                        <span class="s2">&quot;       (&quot;</span>\
+                        <span class="s2">&quot;           SELECT GROUP_CONCAT(gug_workarea.name SEPARATOR &#39;, &#39;)&quot;</span>\
+                        <span class="s2">&quot;           FROM gug_dspace_workarea inner join gug_workarea &quot;</span>\
+                        <span class="s2">&quot;               on gug_dspace_workarea.workarea_id = gug_workarea.id &quot;</span>\
+                        <span class="s2">&quot;           WHERE gug_dspace_workarea.dspace_id = gs_master.id_dspace_id &quot;</span>\
+                        <span class="s2">&quot;           GROUP BY dspace_id &quot;</span>\
+                        <span class="s2">&quot;       ) as areasdetrabajo,&quot;</span>
+        <span class="n">query_rows</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">query_final</span> <span class="o">=</span> <span class="s2">&quot;         , sum(cuantity) as sumtotal &quot;</span>\
+                      <span class="s2">&quot;  FROM gug_stats as gs_master &quot;</span>\
+                      <span class="s2">&quot;  INNER join gug_dspace &quot;</span> \
+                      <span class="s2">&quot;     on gs_master.id_dspace_id = gug_dspace.id&quot;</span> \
+                      <span class="s2">&quot;  INNER join gug_google_service &quot;</span> \
+                      <span class="s2">&quot;     on gs_master.google_service_id = gug_google_service.id &quot;</span>\
+                      <span class="s2">&quot;  WHERE &quot;</span>\
+                      <span class="s2">&quot;        gug_google_service.group_id in (&quot;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">groupids</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;) and &quot;</span> \
+                      <span class="s2">&quot;        period_id = &quot;</span> <span class="o">+</span> <span class="n">period</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> \
+                      <span class="s2">&quot;  GROUP by id_dspace_id&quot;</span>\
+                      <span class="s2">&quot;  ORDER by sumtotal desc &quot;</span>
+
+        <span class="n">num_cols</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">groupn</span> <span class="ow">in</span> <span class="n">groupids</span><span class="p">:</span>
+            <span class="n">gsid2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Google_service</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">group_id</span><span class="o">=</span><span class="n">groupn</span><span class="p">,</span> <span class="n">pk__in</span><span class="o">=</span><span class="n">gsid</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">())</span>
+            <span class="n">groupids2</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gsid2</span><span class="p">:</span>
+                <span class="n">groupids2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+            <span class="n">num_cols</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">sumvar</span> <span class="o">=</span> <span class="s2">&quot;sumags&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num_cols</span><span class="p">)</span>
+            <span class="c1"># scolvar = &quot;colags&quot; + str(num_cols)</span>
+            <span class="n">fromvar</span> <span class="o">=</span> <span class="s2">&quot;gs&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num_cols</span><span class="p">)</span>
+            <span class="n">query_rows</span> <span class="o">+=</span> <span class="s2">&quot; ( SELECT &quot;</span>\
+                          <span class="s2">&quot;     sum(cuantity) as &quot;</span> <span class="o">+</span> <span class="n">sumvar</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span>\
+                          <span class="s2">&quot;   FROM gug_stats as &quot;</span> <span class="o">+</span> <span class="n">fromvar</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> \
+                          <span class="s2">&quot;   WHERE &quot;</span>\
+                          <span class="s2">&quot;     google_service_id in (&quot;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">groupids2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;) and &quot;</span> \
+                          <span class="s2">&quot;     period_id = &quot;</span> <span class="o">+</span> <span class="n">period</span> <span class="o">+</span> <span class="s2">&quot; and &quot;</span>\
+                          <span class="s2">&quot;     gs_master.id_dspace_id = &quot;</span> <span class="o">+</span> <span class="n">fromvar</span> <span class="o">+</span> <span class="s2">&quot;.id_dspace_id &quot;</span>\
+                          <span class="s2">&quot;   GROUP by id_dspace_id &quot;</span>\
+                          <span class="s2">&quot; ) AS &#39;&quot;</span> <span class="o">+</span> <span class="n">sumvar</span> <span class="o">+</span> <span class="s2">&quot;&#39; ,&quot;</span>
+        <span class="n">final_sql</span> <span class="o">=</span> <span class="n">query_inicial</span> <span class="o">+</span> <span class="n">query_rows</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">query_final</span>
+
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">final_sql</span><span class="p">)</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">final_sql</span><span class="p">)</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">output</span> <span class="o">==</span> <span class="s1">&#39;csv&#39;</span><span class="p">:</span>
+            <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">colcount</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">head</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
+            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">stats</span><span class="p">:</span>
+                <span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="c1">## Columnas iniciales del Encabezado</span>
+                <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields_iniciales</span><span class="p">))):</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">stat</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+                    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span> <span class="p">)</span>
+                
+                <span class="c1">## Columnas con nombres de grupo y columnas finales</span>
+                <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fields_iniciales</span><span class="p">),</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fields_iniciales</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">groupids</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields_finales</span><span class="p">)))):</span>
+                    <span class="k">if</span> <span class="n">stat</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">valor</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">valor</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">stat</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+                    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">valor</span><span class="p">)</span>
+                <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                
+
+            <span class="n">pseudo_buffer</span> <span class="o">=</span> <span class="n">Echo</span><span class="p">()</span>
+            <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">pseudo_buffer</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">StreamingHttpResponse</span><span class="p">(</span><span class="n">iter_csv</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">Echo</span><span class="p">()),</span> <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;text/csv&quot;</span><span class="p">)</span>
+            <span class="n">response</span><span class="p">[</span><span class="s1">&#39;Content-Disposition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;attachment; filename=&quot;get_report-id_period_&#39;</span> <span class="o">+</span> <span class="n">period</span> <span class="o">+</span> <span class="s1">&#39;.csv&quot;&#39;</span>
+
+            <span class="k">return</span> <span class="n">response</span>
+        <span class="k">elif</span> <span class="n">output</span> <span class="o">==</span> <span class="s1">&#39;gvdtj&#39;</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">stats</span><span class="p">:</span>
+                <span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields2</span><span class="p">))):</span>
+                    <span class="n">head_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fields2</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+                    <span class="n">head_name</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fields2</span><span class="p">[</span><span class="n">col</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">head_type</span> <span class="o">=</span> <span class="n">head_values</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">head_type</span> <span class="o">==</span> <span class="s1">&#39;string&#39;</span><span class="p">:</span>
+                        <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">head_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">stat</span><span class="p">[</span><span class="n">col</span><span class="p">])</span> <span class="p">})</span>
+                    <span class="k">elif</span> <span class="n">head_type</span> <span class="o">==</span> <span class="s1">&#39;number&#39;</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">stat</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">valor</span> <span class="o">=</span> <span class="mi">0</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">valor</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">stat</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+                        <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">valor</span><span class="p">)</span>
+                        <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">head_name</span><span class="p">:</span> <span class="n">valor</span> <span class="p">})</span>
+
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+                <span class="c1"># if stat[6] is None:</span>
+                <span class="c1">#     val4 = 0</span>
+                <span class="c1"># else:</span>
+                <span class="c1">#     val4 = int(stat[6])</span>
+                <span class="c1"># data.append({&quot;id_dspace&quot;: stat[0], &quot;title&quot;: stat[1], &quot;wa&quot;: stat[2],&quot;group_1&quot;: val1 ,&quot;group_2&quot;: val2, &quot;group_3&quot;: val3, &quot;group_4&quot;: val4, &quot;suma&quot;: val_suma })</span>
+
+            <span class="n">data_table</span> <span class="o">=</span> <span class="n">gviz_api</span><span class="o">.</span><span class="n">DataTable</span><span class="p">(</span><span class="n">fields2</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+            
+            <span class="n">data_table</span><span class="o">.</span><span class="n">LoadData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">string_order</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">columns_order</span><span class="p">))</span>
+            <span class="c1"># Create a JSON string.</span>
+            <span class="n">json2</span> <span class="o">=</span> <span class="n">data_table</span><span class="o">.</span><span class="n">ToJSon</span><span class="p">(</span><span class="n">columns_order</span><span class="o">=</span><span class="p">(</span><span class="n">columns_order</span><span class="p">))</span>
+            <span class="n">python_obj</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json2</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">python_obj</span><span class="p">,</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">output</span> <span class="o">==</span> <span class="s1">&#39;json&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div></div>
+
+
+ 
+<div class="viewcode-block" id="get_data"><a class="viewcode-back" href="../../gug.html#gug.apis.get_data">[docs]</a><span class="k">class</span> <span class="nc">get_data</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="n">authentication_classes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># def get(self, request, dspace_id, gsid, *args, **kwargs):</span>
+
+<div class="viewcode-block" id="get_data.get"><a class="viewcode-back" href="../../gug.html#gug.apis.get_data.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">gsid</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s1">&#39;gsid&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">id_dspace</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id_dspace&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">gs</span> <span class="o">=</span> <span class="n">Google_service</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk__in</span><span class="o">=</span><span class="n">gsid</span><span class="p">)</span>
+        <span class="n">detail</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;detail&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
+        <span class="n">period</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">by</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;by&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">by</span> <span class="o">==</span> <span class="s1">&#39;file&#39;</span><span class="p">:</span>
+            <span class="n">query_final</span> <span class="o">=</span> <span class="s2">&quot;select &quot;</span>\
+                <span class="s2">&quot; gug_publication.tfile, &quot;</span>\
+                <span class="s2">&quot; sum(cuantity) as sumtotal &quot;</span>\
+                <span class="s2">&quot; from gug_stats as gs_master &quot;</span>\
+                <span class="s2">&quot; inner join gug_publication ON gs_master.publication_id = gug_publication.id  &quot;</span>\
+                <span class="s2">&quot; inner join gug_dspace ON gs_master.id_dspace_id = gug_dspace.id  &quot;</span>\
+                <span class="s2">&quot; inner join gug_period ON gs_master.period_id = gug_period.id  &quot;</span>\
+                <span class="s2">&quot; where &quot;</span>\
+                <span class="s2">&quot; gs_master.google_service_id in (&quot;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gsid</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;) &quot;</span> \
+                <span class="s2">&quot; and gs_master.period_id in (&quot;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">period</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;) &quot;</span> \
+                <span class="s2">&quot; and gug_dspace.id_dspace = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">id_dspace</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&quot;</span> \
+                <span class="s2">&quot; group by &quot;</span>\
+                <span class="s2">&quot; gug_publication.tfile&quot;</span>\
+                <span class="s2">&quot; order by gug_publication.tfile asc;&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">query_final</span> <span class="o">=</span> <span class="s2">&quot;select gug_period.start_date, sum(cuantity) as sumtotal from gug_stats as gs_master&quot;</span>\
+                <span class="s2">&quot; inner join gug_dspace ON gs_master.id_dspace_id = gug_dspace.id &quot;</span> \
+                <span class="s2">&quot; inner join gug_period ON gs_master.period_id = gug_period.id &quot;</span> \
+                <span class="s2">&quot; where gs_master.google_service_id in (&quot;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gsid</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;) and &quot;</span>\
+                <span class="s2">&quot; gs_master.period_id in (&quot;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">period</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;) and &quot;</span>\
+                <span class="s2">&quot; gug_dspace.id_dspace = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">id_dspace</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span>\
+                <span class="s2">&quot; group by period_id &quot;</span> \
+                <span class="s2">&quot; order by gug_period.start_date asc &quot;</span>
+        <span class="c1"># dspace_id = int(dspace_id)</span>
+        <span class="c1"># gsid = request.GET.getlist(&#39;gsid&#39;, 1)</span>
+        <span class="k">if</span> <span class="n">detail</span> <span class="o">==</span> <span class="s1">&#39;on&#39;</span><span class="p">:</span>
+            <span class="n">query_final</span> <span class="o">=</span> <span class="s2">&quot;select gug_period.start_date, gug_publication.tfile, sum(cuantity) as sumtotal from gug_stats as gs_master&quot;</span>\
+                <span class="s2">&quot; inner join gug_publication on gs_master.publication_id = gug_publication.id &quot;</span>\
+                <span class="s2">&quot; inner join gug_dspace ON gs_master.id_dspace_id = gug_dspace.id &quot;</span> \
+                <span class="s2">&quot; inner join gug_period ON gs_master.period_id = gug_period.id &quot;</span> \
+                <span class="s2">&quot; where gs_master.google_service_id in (&quot;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gsid</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;) and &quot;</span>\
+                <span class="s2">&quot; gs_master.period_id in (&quot;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">period</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;) and &quot;</span>\
+                <span class="s2">&quot; gug_dspace.id_dspace = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">id_dspace</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span>\
+                <span class="s2">&quot; group by gug_publication.tfile, period_id &quot;</span> \
+                <span class="s2">&quot; order by gug_publication.tfile, gug_period.start_date asc &quot;</span>
+
+        <span class="c1"># print(query_final)</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query_final</span><span class="p">)</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">stats</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">detail</span> <span class="o">==</span> <span class="s1">&#39;on&#39;</span><span class="p">:</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="n">stat</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="n">stat</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;cuantity&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">stat</span><span class="p">[</span><span class="mi">2</span><span class="p">])})</span>
+                <span class="n">fields_description</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;Period&quot;</span><span class="p">),</span>
+                                      <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;File&quot;</span><span class="p">),</span>
+                                      <span class="s2">&quot;cuantity&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="s2">&quot;Downloads&quot;</span><span class="p">)}</span>
+            <span class="k">if</span> <span class="n">by</span> <span class="o">==</span> <span class="s1">&#39;file&#39;</span><span class="p">:</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="n">stat</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;cuantity&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">stat</span><span class="p">[</span><span class="mi">1</span><span class="p">])})</span>
+                <span class="n">fields_description</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;File&quot;</span><span class="p">),</span>
+                                      <span class="s2">&quot;cuantity&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="s2">&quot;Downloads&quot;</span><span class="p">)}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="n">stat</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;cuantity&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">stat</span><span class="p">[</span><span class="mi">1</span><span class="p">])})</span>
+                <span class="n">fields_description</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;period&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;Period&quot;</span><span class="p">),</span>
+                                      <span class="s2">&quot;cuantity&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="s2">&quot;Downloads&quot;</span><span class="p">)}</span>
+
+        <span class="c1"># data_table = gviz_api.DataTable(description)</span>
+        <span class="n">data_table</span> <span class="o">=</span> <span class="n">gviz_api</span><span class="o">.</span><span class="n">DataTable</span><span class="p">(</span><span class="n">fields_description</span><span class="p">)</span>
+        <span class="n">data_table</span><span class="o">.</span><span class="n">LoadData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># Create a JSON string.</span>
+        <span class="k">if</span> <span class="n">detail</span> <span class="o">==</span> <span class="s1">&#39;on&#39;</span><span class="p">:</span>
+            <span class="n">json2</span> <span class="o">=</span> <span class="n">data_table</span><span class="o">.</span><span class="n">ToJSon</span><span class="p">(</span><span class="n">columns_order</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;period&quot;</span><span class="p">,</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="s2">&quot;cuantity&quot;</span><span class="p">),</span> <span class="n">order_by</span><span class="o">=</span><span class="s2">&quot;file&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">by</span> <span class="o">==</span> <span class="s1">&#39;file&#39;</span><span class="p">:</span>
+            <span class="n">json2</span> <span class="o">=</span> <span class="n">data_table</span><span class="o">.</span><span class="n">ToJSon</span><span class="p">(</span><span class="n">columns_order</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="s2">&quot;cuantity&quot;</span><span class="p">),</span> <span class="n">order_by</span><span class="o">=</span><span class="s2">&quot;file&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">json2</span> <span class="o">=</span> <span class="n">data_table</span><span class="o">.</span><span class="n">ToJSon</span><span class="p">(</span><span class="n">columns_order</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;period&quot;</span><span class="p">,</span> <span class="s2">&quot;cuantity&quot;</span><span class="p">),</span> <span class="n">order_by</span><span class="o">=</span><span class="s2">&quot;period&quot;</span><span class="p">)</span>
+
+        <span class="n">python_obj</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json2</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">python_obj</span><span class="p">,</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">pub_download</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Javier Pi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
