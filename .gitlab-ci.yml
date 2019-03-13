@@ -23,11 +23,6 @@ install:
   stage: prepare
   script:
   - install_dependencies
-  # - python -V               # Print out python version for debugging
-  # - pip install virtualenv
-  # - virtualenv venv --python=python3
-  # - source venv/bin/activate
-  # - pip install -r requeriments.txt
   artifacts:
     paths:
     - public
@@ -36,16 +31,18 @@ install:
 test:
   stage: test
   script:
-  - pwd
+  - install_dependencies
   - pip install tox flake8  # you can also use tox
   - tox -e py34,flake8
 
 pages:
   stage: test
   script:
-  - pip install sphinx sphinx-rtd-theme
-  - cd docs ; make html
-  - mv build/html/ ../public/
+  - install_dependencies
+  - make_documentation
+  # - pip install sphinx sphinx-rtd-theme
+  # - cd docs ; make html
+  # - mv build/html/ ../public/
   artifacts:
     paths:
     - public
@@ -73,6 +70,11 @@ pages:
     virtualenv venv --python=python3
     source venv/bin/activate
     pip install -r requeriments.txt
+  }
+  function make_documentation() {
+    pip install sphinx sphinx-rtd-theme
+    cd docs ; make html
+    mv build/html/ ../public/
   }
 before_script:
   - *auto_devops
