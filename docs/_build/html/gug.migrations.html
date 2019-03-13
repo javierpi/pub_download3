@@ -55,7 +55,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0001_initial.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Domain', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('ref', &lt;django.db.models.fields.CharField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;)]&gt;, &lt;CreateModel  name='Google_service', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('scope', &lt;django.db.models.fields.CharField&gt;), ('discovery', &lt;django.db.models.fields.CharField&gt;), ('secret_json', &lt;django.db.models.fields.TextField&gt;)]&gt;, &lt;CreateModel  name='Metric', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('ref', &lt;django.db.models.fields.CharField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('description', &lt;django.db.models.fields.TextField&gt;), ('domain', &lt;django.db.models.fields.related.ForeignKey&gt;)]&gt;, &lt;CreateModel  name='Period', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('start_date', &lt;django.db.models.fields.DateField&gt;), ('end_date', &lt;django.db.models.fields.DateField&gt;)]&gt;, &lt;AlterUniqueTogether  name='metric', unique_together={('domain', 'ref')}&gt;]</em><a class="headerlink" href="#gug.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('ref', &lt;django.db.models.fields.CharField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;)], name='Domain'&gt;, &lt;CreateModel  fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('scope', &lt;django.db.models.fields.CharField&gt;), ('discovery', &lt;django.db.models.fields.CharField&gt;), ('secret_json', &lt;django.db.models.fields.TextField&gt;)], name='Google_service'&gt;, &lt;CreateModel  fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('ref', &lt;django.db.models.fields.CharField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('description', &lt;django.db.models.fields.TextField&gt;), ('domain', &lt;django.db.models.fields.related.ForeignKey&gt;)], name='Metric'&gt;, &lt;CreateModel  fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('start_date', &lt;django.db.models.fields.DateField&gt;), ('end_date', &lt;django.db.models.fields.DateField&gt;)], name='Period'&gt;, &lt;AlterUniqueTogether  unique_together={('domain', 'ref')}, name='metric'&gt;]</em><a class="headerlink" href="#gug.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -74,7 +74,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0002_auto_20180718_0021.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='service', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AddField  model_name='google_service', name='version', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AddField  model_name='google_service', name='view_id', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0002_auto_20180718_0021.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', field=&lt;django.db.models.fields.CharField&gt;, name='service'&gt;, &lt;AddField  model_name='google_service', field=&lt;django.db.models.fields.CharField&gt;, name='version'&gt;, &lt;AddField  model_name='google_service', field=&lt;django.db.models.fields.CharField&gt;, name='view_id'&gt;]</em><a class="headerlink" href="#gug.migrations.0002_auto_20180718_0021.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -93,7 +93,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0003_google_service_client_secret_path.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='client_secret_path', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0003_google_service_client_secret_path.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', field=&lt;django.db.models.fields.CharField&gt;, name='client_secret_path'&gt;]</em><a class="headerlink" href="#gug.migrations.0003_google_service_client_secret_path.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -112,7 +112,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0004_publication_stats.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Publication', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('turl', &lt;django.db.models.fields.CharField&gt;), ('title', &lt;django.db.models.fields.CharField&gt;)]&gt;, &lt;CreateModel  name='Stats', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('cuantity', &lt;django.db.models.fields.BigIntegerField&gt;), ('google_service', &lt;django.db.models.fields.related.ForeignKey&gt;), ('period', &lt;django.db.models.fields.related.ForeignKey&gt;), ('publication', &lt;django.db.models.fields.related.ForeignKey&gt;)]&gt;]</em><a class="headerlink" href="#gug.migrations.0004_publication_stats.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('turl', &lt;django.db.models.fields.CharField&gt;), ('title', &lt;django.db.models.fields.CharField&gt;)], name='Publication'&gt;, &lt;CreateModel  fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('cuantity', &lt;django.db.models.fields.BigIntegerField&gt;), ('google_service', &lt;django.db.models.fields.related.ForeignKey&gt;), ('period', &lt;django.db.models.fields.related.ForeignKey&gt;), ('publication', &lt;django.db.models.fields.related.ForeignKey&gt;)], name='Stats'&gt;]</em><a class="headerlink" href="#gug.migrations.0004_publication_stats.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -131,7 +131,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0005_auto_20180718_0131.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  name='stats', options={'ordering': ['google_service', 'publication', 'period'], 'verbose_name': 'STATS', 'verbose_name_plural': 'STATS'}&gt;, &lt;AlterUniqueTogether  name='stats', unique_together={('google_service', 'period', 'publication')}&gt;]</em><a class="headerlink" href="#gug.migrations.0005_auto_20180718_0131.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  options={'ordering': ['google_service', 'publication', 'period'], 'verbose_name_plural': 'STATS', 'verbose_name': 'STATS'}, name='stats'&gt;, &lt;AlterUniqueTogether  unique_together={('google_service', 'period', 'publication')}, name='stats'&gt;]</em><a class="headerlink" href="#gug.migrations.0005_auto_20180718_0131.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -150,7 +150,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0006_auto_20180718_0257.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='publication', name='title', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0006_auto_20180718_0257.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='publication', field=&lt;django.db.models.fields.CharField&gt;, name='title'&gt;]</em><a class="headerlink" href="#gug.migrations.0006_auto_20180718_0257.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -169,7 +169,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0007_auto_20180718_0306.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='publication', name='title', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0007_auto_20180718_0306.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='publication', field=&lt;django.db.models.fields.CharField&gt;, name='title'&gt;]</em><a class="headerlink" href="#gug.migrations.0007_auto_20180718_0306.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -188,7 +188,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0008_auto_20180718_1359.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Dspace', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('id_dspace', &lt;django.db.models.fields.PositiveSmallIntegerField&gt;)]&gt;, &lt;AlterField  model_name='stats', name='google_service', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='publication', name='id_dspace', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0008_auto_20180718_1359.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('id_dspace', &lt;django.db.models.fields.PositiveSmallIntegerField&gt;)], name='Dspace'&gt;, &lt;AlterField  model_name='stats', field=&lt;django.db.models.fields.related.ForeignKey&gt;, name='google_service'&gt;, &lt;AddField  model_name='publication', field=&lt;django.db.models.fields.related.ForeignKey&gt;, name='id_dspace'&gt;]</em><a class="headerlink" href="#gug.migrations.0008_auto_20180718_1359.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -207,7 +207,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0009_auto_20180718_1433.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;RenameField  model_name='publication', old_name='turl', new_name='tfile'&gt;]</em><a class="headerlink" href="#gug.migrations.0009_auto_20180718_1433.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;RenameField  model_name='publication', new_name='tfile', old_name='turl'&gt;]</em><a class="headerlink" href="#gug.migrations.0009_auto_20180718_1433.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -226,7 +226,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0010_auto_20180718_1434.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterUniqueTogether  name='publication', unique_together={('id_dspace', 'tfile')}&gt;]</em><a class="headerlink" href="#gug.migrations.0010_auto_20180718_1434.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterUniqueTogether  unique_together={('id_dspace', 'tfile')}, name='publication'&gt;]</em><a class="headerlink" href="#gug.migrations.0010_auto_20180718_1434.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -245,7 +245,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0011_auto_20180718_1549.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  name='publication', options={'ordering': ['id_dspace', 'tfile']}&gt;, &lt;AddField  model_name='dspace', name='title', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0011_auto_20180718_1549.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  options={'ordering': ['id_dspace', 'tfile']}, name='publication'&gt;, &lt;AddField  model_name='dspace', field=&lt;django.db.models.fields.CharField&gt;, name='title'&gt;]</em><a class="headerlink" href="#gug.migrations.0011_auto_20180718_1549.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -283,7 +283,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0013_stats_id_dspace.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='stats', name='id_dspace', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0013_stats_id_dspace.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='stats', field=&lt;django.db.models.fields.related.ForeignKey&gt;, name='id_dspace'&gt;]</em><a class="headerlink" href="#gug.migrations.0013_stats_id_dspace.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -302,7 +302,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0014_auto_20180718_1552.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterUniqueTogether  name='stats', unique_together={('google_service', 'period', 'id_dspace', 'publication')}&gt;]</em><a class="headerlink" href="#gug.migrations.0014_auto_20180718_1552.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterUniqueTogether  unique_together={('google_service', 'period', 'id_dspace', 'publication')}, name='stats'&gt;]</em><a class="headerlink" href="#gug.migrations.0014_auto_20180718_1552.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -321,7 +321,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0015_auto_20180718_1630.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='dspace', name='id_dspace', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0015_auto_20180718_1630.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='dspace', field=&lt;django.db.models.fields.PositiveIntegerField&gt;, name='id_dspace'&gt;]</em><a class="headerlink" href="#gug.migrations.0015_auto_20180718_1630.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -340,7 +340,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0016_period_active.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='period', name='active', field=&lt;django.db.models.fields.BooleanField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0016_period_active.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='period', field=&lt;django.db.models.fields.BooleanField&gt;, name='active'&gt;]</em><a class="headerlink" href="#gug.migrations.0016_period_active.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -359,7 +359,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0017_auto_20180718_1912.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='google_service', name='view_id', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0017_auto_20180718_1912.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='google_service', field=&lt;django.db.models.fields.CharField&gt;, name='view_id'&gt;]</em><a class="headerlink" href="#gug.migrations.0017_auto_20180718_1912.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -378,7 +378,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0018_google_service_active.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='active', field=&lt;django.db.models.fields.BooleanField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0018_google_service_active.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', field=&lt;django.db.models.fields.BooleanField&gt;, name='active'&gt;]</em><a class="headerlink" href="#gug.migrations.0018_google_service_active.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -397,7 +397,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0019_google_service_report.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='report', field=&lt;django.db.models.fields.TextField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0019_google_service_report.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', field=&lt;django.db.models.fields.TextField&gt;, name='report'&gt;]</em><a class="headerlink" href="#gug.migrations.0019_google_service_report.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -416,7 +416,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0020_auto_20180718_2101.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='google_service', name='discovery', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0020_auto_20180718_2101.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='google_service', field=&lt;django.db.models.fields.CharField&gt;, name='discovery'&gt;]</em><a class="headerlink" href="#gug.migrations.0020_auto_20180718_2101.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -435,7 +435,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0021_service_type.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Service_type', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('service', &lt;django.db.models.fields.CharField&gt;)]&gt;]</em><a class="headerlink" href="#gug.migrations.0021_service_type.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('service', &lt;django.db.models.fields.CharField&gt;)], name='Service_type'&gt;]</em><a class="headerlink" href="#gug.migrations.0021_service_type.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -454,7 +454,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0022_google_service_service_t.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='service_t', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0022_google_service_service_t.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', field=&lt;django.db.models.fields.related.ForeignKey&gt;, name='service_t'&gt;]</em><a class="headerlink" href="#gug.migrations.0022_google_service_service_t.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -492,7 +492,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0024_auto_20180719_1345.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;RenameField  model_name='google_service', old_name='service_t', new_name='service'&gt;]</em><a class="headerlink" href="#gug.migrations.0024_auto_20180719_1345.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;RenameField  model_name='google_service', new_name='service', old_name='service_t'&gt;]</em><a class="headerlink" href="#gug.migrations.0024_auto_20180719_1345.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -511,7 +511,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0025_auto_20180719_1351.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='google_service', name='report', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AlterField  model_name='google_service', name='view_id', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0025_auto_20180719_1351.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='google_service', field=&lt;django.db.models.fields.TextField&gt;, name='report'&gt;, &lt;AlterField  model_name='google_service', field=&lt;django.db.models.fields.CharField&gt;, name='view_id'&gt;]</em><a class="headerlink" href="#gug.migrations.0025_auto_20180719_1351.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -530,7 +530,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0026_auto_20180724_2017.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  name='period', options={'ordering': ['start_date']}&gt;]</em><a class="headerlink" href="#gug.migrations.0026_auto_20180724_2017.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  options={'ordering': ['start_date']}, name='period'&gt;]</em><a class="headerlink" href="#gug.migrations.0026_auto_20180724_2017.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -549,7 +549,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0027_auto_20180724_2030.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;RenameField  model_name='dspace', old_name='id_dspace', new_name='mid'&gt;]</em><a class="headerlink" href="#gug.migrations.0027_auto_20180724_2030.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;RenameField  model_name='dspace', new_name='mid', old_name='id_dspace'&gt;]</em><a class="headerlink" href="#gug.migrations.0027_auto_20180724_2030.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -568,7 +568,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0028_auto_20180724_2035.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;RenameField  model_name='dspace', old_name='mid', new_name='id_dspace'&gt;]</em><a class="headerlink" href="#gug.migrations.0028_auto_20180724_2035.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;RenameField  model_name='dspace', new_name='id_dspace', old_name='mid'&gt;]</em><a class="headerlink" href="#gug.migrations.0028_auto_20180724_2035.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -587,7 +587,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0029_auto_20180726_1603.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterUniqueTogether  name='metric', unique_together=set()&gt;, &lt;RemoveField  model_name='metric', name='domain'&gt;, &lt;AlterModelOptions  name='google_service', options={'verbose_name': 'Google Service', 'verbose_name_plural': 'Google Services'}&gt;, &lt;AlterModelOptions  name='service_type', options={'verbose_name': 'Service type', 'verbose_name_plural': 'Service types'}&gt;, &lt;DeleteModel  name='Domain'&gt;, &lt;DeleteModel  name='Metric'&gt;]</em><a class="headerlink" href="#gug.migrations.0029_auto_20180726_1603.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterUniqueTogether  unique_together=set(), name='metric'&gt;, &lt;RemoveField  model_name='metric', name='domain'&gt;, &lt;AlterModelOptions  options={'verbose_name_plural': 'Google Services', 'verbose_name': 'Google Service'}, name='google_service'&gt;, &lt;AlterModelOptions  options={'verbose_name_plural': 'Service types', 'verbose_name': 'Service type'}, name='service_type'&gt;, &lt;DeleteModel  name='Domain'&gt;, &lt;DeleteModel  name='Metric'&gt;]</em><a class="headerlink" href="#gug.migrations.0029_auto_20180726_1603.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -606,7 +606,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0030_dspace_post_title.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='dspace', name='post_title', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0030_dspace_post_title.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='dspace', field=&lt;django.db.models.fields.CharField&gt;, name='post_title'&gt;]</em><a class="headerlink" href="#gug.migrations.0030_dspace_post_title.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -625,7 +625,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0031_auto_20180726_1658.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;RemoveField  model_name='dspace', name='post_title'&gt;, &lt;AddField  model_name='dspace', name='post_title1', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0031_auto_20180726_1658.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;RemoveField  model_name='dspace', name='post_title'&gt;, &lt;AddField  model_name='dspace', field=&lt;django.db.models.fields.CharField&gt;, name='post_title1'&gt;]</em><a class="headerlink" href="#gug.migrations.0031_auto_20180726_1658.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -644,7 +644,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0032_dspace_post_title2.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='dspace', name='post_title2', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0032_dspace_post_title2.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='dspace', field=&lt;django.db.models.fields.CharField&gt;, name='post_title2'&gt;]</em><a class="headerlink" href="#gug.migrations.0032_dspace_post_title2.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -663,7 +663,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0033_auto_20180804_1939.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddIndex  model_name='stats', index=&lt;Index: fields='id_dspace, google_service, period'&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0033_auto_20180804_1939.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddIndex  index=&lt;Index: fields='id_dspace, google_service, period'&gt;, model_name='stats'&gt;]</em><a class="headerlink" href="#gug.migrations.0033_auto_20180804_1939.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -682,7 +682,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0034_google_service_hidden.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='hidden', field=&lt;django.db.models.fields.BooleanField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0034_google_service_hidden.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', field=&lt;django.db.models.fields.BooleanField&gt;, name='hidden'&gt;]</em><a class="headerlink" href="#gug.migrations.0034_google_service_hidden.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -720,7 +720,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0036_service_group.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Service_group', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;)], options={'verbose_name': 'Service group', 'verbose_name_plural': 'Service groups'}&gt;]</em><a class="headerlink" href="#gug.migrations.0036_service_group.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  options={'verbose_name_plural': 'Service groups', 'verbose_name': 'Service group'}, fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;)], name='Service_group'&gt;]</em><a class="headerlink" href="#gug.migrations.0036_service_group.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -739,7 +739,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0037_google_service_group.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='group', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0037_google_service_group.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', field=&lt;django.db.models.fields.related.ForeignKey&gt;, name='group'&gt;]</em><a class="headerlink" href="#gug.migrations.0037_google_service_group.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -758,7 +758,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0038_auto_20181106_1436.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='google_service', name='view_id', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0038_auto_20181106_1436.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='google_service', field=&lt;django.db.models.fields.CharField&gt;, name='view_id'&gt;]</em><a class="headerlink" href="#gug.migrations.0038_auto_20181106_1436.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -777,7 +777,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0039_workarea.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='WorkArea', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;)]&gt;]</em><a class="headerlink" href="#gug.migrations.0039_workarea.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;)], name='WorkArea'&gt;]</em><a class="headerlink" href="#gug.migrations.0039_workarea.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -796,7 +796,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0040_dspace_workarea.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='dspace', name='workarea', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0040_dspace_workarea.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='dspace', field=&lt;django.db.models.fields.related.ForeignKey&gt;, name='workarea'&gt;]</em><a class="headerlink" href="#gug.migrations.0040_dspace_workarea.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -815,7 +815,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0041_auto_20190102_1603.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;RemoveField  model_name='dspace', name='workarea'&gt;, &lt;AddField  model_name='dspace', name='workarea', field=&lt;django.db.models.fields.related.ManyToManyField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0041_auto_20190102_1603.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;RemoveField  model_name='dspace', name='workarea'&gt;, &lt;AddField  model_name='dspace', field=&lt;django.db.models.fields.related.ManyToManyField&gt;, name='workarea'&gt;]</em><a class="headerlink" href="#gug.migrations.0041_auto_20190102_1603.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -834,7 +834,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0042_auto_20190102_1611.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='workarea', name='name', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0042_auto_20190102_1611.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='workarea', field=&lt;django.db.models.fields.CharField&gt;, name='name'&gt;]</em><a class="headerlink" href="#gug.migrations.0042_auto_20190102_1611.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -853,7 +853,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0043_auto_20190102_1613.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  name='workarea', options={'ordering': ['name']}&gt;]</em><a class="headerlink" href="#gug.migrations.0043_auto_20190102_1613.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  options={'ordering': ['name']}, name='workarea'&gt;]</em><a class="headerlink" href="#gug.migrations.0043_auto_20190102_1613.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -872,7 +872,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0044_period_last_update.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='period', name='last_update', field=&lt;django.db.models.fields.DateField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0044_period_last_update.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='period', field=&lt;django.db.models.fields.DateField&gt;, name='last_update'&gt;]</em><a class="headerlink" href="#gug.migrations.0044_period_last_update.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -891,7 +891,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0045_google_service_last_update.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', name='last_update', field=&lt;django.db.models.fields.DateField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0045_google_service_last_update.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='google_service', field=&lt;django.db.models.fields.DateField&gt;, name='last_update'&gt;]</em><a class="headerlink" href="#gug.migrations.0045_google_service_last_update.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -910,7 +910,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0046_service_type_max_month_before.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='service_type', name='max_month_before', field=&lt;django.db.models.fields.PositiveSmallIntegerField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0046_service_type_max_month_before.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='service_type', field=&lt;django.db.models.fields.PositiveSmallIntegerField&gt;, name='max_month_before'&gt;]</em><a class="headerlink" href="#gug.migrations.0046_service_type_max_month_before.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -929,7 +929,7 @@
 
 <dl class="attribute">
 <dt id="gug.migrations.0047_auto_20190308_1439.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  name='service_group', options={'ordering': ['order'], 'verbose_name': 'Service group', 'verbose_name_plural': 'Service groups'}&gt;, &lt;AddField  model_name='service_group', name='order', field=&lt;django.db.models.fields.PositiveSmallIntegerField&gt;&gt;]</em><a class="headerlink" href="#gug.migrations.0047_auto_20190308_1439.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  options={'ordering': ['order'], 'verbose_name_plural': 'Service groups', 'verbose_name': 'Service group'}, name='service_group'&gt;, &lt;AddField  model_name='service_group', field=&lt;django.db.models.fields.PositiveSmallIntegerField&gt;, name='order'&gt;]</em><a class="headerlink" href="#gug.migrations.0047_auto_20190308_1439.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

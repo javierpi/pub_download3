@@ -317,8 +317,96 @@ interface.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="gug-forms-module">
-<h2>gug.forms module<a class="headerlink" href="#gug-forms-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-gug.forms">
+<span id="gug-forms-module"></span><h2>gug.forms module<a class="headerlink" href="#module-gug.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.forms.DspaceForm">
+<em class="property">class </em><code class="descclassname">gug.forms.</code><code class="descname">DspaceForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/forms.html#DspaceForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.forms.DspaceForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.forms.Form</span></code></p>
+<dl class="attribute">
+<dt id="gug.forms.DspaceForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'detail': &lt;django.forms.fields.BooleanField object&gt;, 'gsid': &lt;django.forms.fields.MultipleChoiceField object&gt;, 'id_dspace': &lt;django.forms.fields.IntegerField object&gt;, 'period': &lt;django.forms.fields.MultipleChoiceField object&gt;}</em><a class="headerlink" href="#gug.forms.DspaceForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.forms.DspaceForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'detail': &lt;django.forms.fields.BooleanField object&gt;, 'gsid': &lt;django.forms.fields.MultipleChoiceField object&gt;, 'id_dspace': &lt;django.forms.fields.IntegerField object&gt;, 'period': &lt;django.forms.fields.MultipleChoiceField object&gt;}</em><a class="headerlink" href="#gug.forms.DspaceForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.forms.DspaceForm.gs_choices">
+<code class="descname">gs_choices</code><em class="property"> = &lt;QuerySet [(2, 'GWM http Repositorio  (from March 2017)'), (3, 'GWM https Repositorio  (from March 2018)'), (4, 'GA www.cepal.org  (from Jan 2017)'), (5, 'GA Repositorio (from Jan 2017)'), (6, 'GA observatorioplanificacion  (from Jan 2017)'), (7, 'GA  observatoriop10 (from Jan 2017)'), (8, 'GA oig.cepal.org (from Jan 2017)')]&gt;</em><a class="headerlink" href="#gug.forms.DspaceForm.gs_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.forms.DspaceForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gug.forms.DspaceForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.forms.DspaceForm.period_choices">
+<code class="descname">period_choices</code><em class="property"> = &lt;QuerySet [(18, datetime.date(2017, 1, 1)), (17, datetime.date(2017, 2, 1)), (16, datetime.date(2017, 3, 1)), (15, datetime.date(2017, 4, 1)), (14, datetime.date(2017, 5, 1)), (13, datetime.date(2017, 6, 1)), (12, datetime.date(2017, 7, 1)), (11, datetime.date(2017, 8, 1)), (10, datetime.date(2017, 9, 1)), (9, datetime.date(2017, 10, 1)), (8, datetime.date(2017, 11, 1)), (7, datetime.date(2017, 12, 1)), (6, datetime.date(2018, 1, 1)), (5, datetime.date(2018, 2, 1)), (4, datetime.date(2018, 3, 1)), (3, datetime.date(2018, 4, 1)), (2, datetime.date(2018, 5, 1)), (1, datetime.date(2018, 6, 1)), (19, datetime.date(2018, 7, 1)), (20, datetime.date(2018, 8, 1)), '...(remaining elements truncated)...']&gt;</em><a class="headerlink" href="#gug.forms.DspaceForm.period_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gug.forms.IndexForm">
+<em class="property">class </em><code class="descclassname">gug.forms.</code><code class="descname">IndexForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/forms.html#IndexForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.forms.IndexForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.forms.Form</span></code></p>
+<dl class="attribute">
+<dt id="gug.forms.IndexForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'id_dspace': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#gug.forms.IndexForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.forms.IndexForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'id_dspace': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#gug.forms.IndexForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.forms.IndexForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gug.forms.IndexForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gug.forms.StatForm">
+<em class="property">class </em><code class="descclassname">gug.forms.</code><code class="descname">StatForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/forms.html#StatForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.forms.StatForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.forms.Form</span></code></p>
+<dl class="attribute">
+<dt id="gug.forms.StatForm.PAGE_SIZE_CHOICES">
+<code class="descname">PAGE_SIZE_CHOICES</code><em class="property"> = (('10', '10'), ('50', '50'), ('100', '100'), ('500', '500'), ('1000', '1000'))</em><a class="headerlink" href="#gug.forms.StatForm.PAGE_SIZE_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.forms.StatForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'csv_output': &lt;django.forms.fields.BooleanField object&gt;, 'gsid': &lt;django.forms.fields.MultipleChoiceField object&gt;, 'page': &lt;django.forms.fields.IntegerField object&gt;, 'pagesize': &lt;django.forms.fields.ChoiceField object&gt;, 'period': &lt;django.forms.fields.MultipleChoiceField object&gt;}</em><a class="headerlink" href="#gug.forms.StatForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.forms.StatForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'csv_output': &lt;django.forms.fields.BooleanField object&gt;, 'gsid': &lt;django.forms.fields.MultipleChoiceField object&gt;, 'page': &lt;django.forms.fields.IntegerField object&gt;, 'pagesize': &lt;django.forms.fields.ChoiceField object&gt;, 'period': &lt;django.forms.fields.MultipleChoiceField object&gt;}</em><a class="headerlink" href="#gug.forms.StatForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.forms.StatForm.gs_choices">
+<code class="descname">gs_choices</code><em class="property"> = &lt;QuerySet [(2, 'GWM http Repositorio  (from March 2017)'), (3, 'GWM https Repositorio  (from March 2018)'), (4, 'GA www.cepal.org  (from Jan 2017)'), (5, 'GA Repositorio (from Jan 2017)'), (6, 'GA observatorioplanificacion  (from Jan 2017)'), (7, 'GA  observatoriop10 (from Jan 2017)'), (8, 'GA oig.cepal.org (from Jan 2017)')]&gt;</em><a class="headerlink" href="#gug.forms.StatForm.gs_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.forms.StatForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gug.forms.StatForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gug.forms.StatForm.period_choices">
+<code class="descname">period_choices</code><em class="property"> = &lt;QuerySet [(18, datetime.date(2017, 1, 1)), (17, datetime.date(2017, 2, 1)), (16, datetime.date(2017, 3, 1)), (15, datetime.date(2017, 4, 1)), (14, datetime.date(2017, 5, 1)), (13, datetime.date(2017, 6, 1)), (12, datetime.date(2017, 7, 1)), (11, datetime.date(2017, 8, 1)), (10, datetime.date(2017, 9, 1)), (9, datetime.date(2017, 10, 1)), (8, datetime.date(2017, 11, 1)), (7, datetime.date(2017, 12, 1)), (6, datetime.date(2018, 1, 1)), (5, datetime.date(2018, 2, 1)), (4, datetime.date(2018, 3, 1)), (3, datetime.date(2018, 4, 1)), (2, datetime.date(2018, 5, 1)), (1, datetime.date(2018, 6, 1)), (19, datetime.date(2018, 7, 1)), (20, datetime.date(2018, 8, 1)), '...(remaining elements truncated)...']&gt;</em><a class="headerlink" href="#gug.forms.StatForm.period_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-gug.models">
 <span id="gug-models-module"></span><h2>gug.models module<a class="headerlink" href="#module-gug.models" title="Permalink to this headline">¶</a></h2>
@@ -1116,7 +1204,7 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.viewsets.ModelViewSet</span></code></p>
 <dl class="attribute">
 <dt id="gug.serializers.DspaceViewSet.queryset">
-<code class="descname">queryset</code><a class="headerlink" href="#gug.serializers.DspaceViewSet.queryset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">queryset</code><em class="property"> = &lt;QuerySet [&lt;Dspace: 43442 La ineficiencia de la desigualdad &gt;, &lt;Dspace: 43614 La convergencia entre la Alianza del Pacífico y el MERCOSUR: Enfrentando juntos un escenario mundial desafiante &gt;, &lt;Dspace: 43477 Datos, algoritmos y políticas: la redefinición del mundo digital &gt;, &lt;Dspace: 43540 Desarrollo e igualdad: el pensamiento de la CEPAL en su séptimo decenio. Textos seleccionados del período 2008-2018 &gt;, &lt;Dspace: 42716 Panorama Social de América Latina 2017 &gt;, &lt;Dspace: 42023 La Inversión Extranjera Directa en América Latina y el Caribe 2017 &gt;, &lt;Dspace: 43513 Perspectivas económicas de América Latina 2018: repensando las instituciones para el desarrollo &gt;, &lt;Dspace: 43239 Anuario Estadístico de América Latina y el Caribe 2017 = Statistical Yearbook for Latin America and the Caribbean 2017 &gt;, &lt;Dspace: 41068 Las violencias en el espacio escolar &gt;, &lt;Dspace: 32026 Factores que influyen en el crecimiento de la poblacion &gt;, &lt;Dspace: 42001 Estudio Económico de América Latina y el Caribe 2017: la dinámica del ciclo económico actual y los desafíos de política para dinamizar la inversión y el crecimiento &gt;, &lt;Dspace: 43612 Informe nacional de monitoreo de la eficiencia energética de México, 2018 &gt;, &lt;Dspace: 43470 Revista CEPAL no. 124 &gt;, &lt;Dspace: 43415 Segundo informe anual sobre el progreso y los desafíos regionales de la Agenda 2030 para el Desarrollo Sostenible en América Latina y el Caribe &gt;, &lt;Dspace: 5607 Metodología del marco lógico para la planificación, el seguimiento y la evaluación de proyectos y programas &gt;, &lt;Dspace: 43596 Estudios sobre financierización en América Latina &gt;, &lt;Dspace: 43595 Acuerdo Regional sobre el Acceso a la Información, la Participación Pública y el Acceso a la Justicia en Asuntos Ambientales en América Latina y el Caribe &gt;, &lt;Dspace: 43476 Mercado digital regional: aspectos estratégicos &gt;, &lt;Dspace: 43603 Coyuntura Laboral en América Latina y el Caribe. La inserción laboral de las personas mayores: necesidades y opciones &gt;, &lt;Dspace: 1283 Guía del Pacto Global: una forma práctica para implementar los nueve principios en la gestión empresarial &gt;, '...(remaining elements truncated)...']&gt;</em><a class="headerlink" href="#gug.serializers.DspaceViewSet.queryset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1156,7 +1244,7 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.viewsets.ModelViewSet</span></code></p>
 <dl class="attribute">
 <dt id="gug.serializers.Google_serviceViewSet.queryset">
-<code class="descname">queryset</code><a class="headerlink" href="#gug.serializers.Google_serviceViewSet.queryset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">queryset</code><em class="property"> = &lt;QuerySet [&lt;Google_service: GWM http Repositorio  (from March 2017)&gt;, &lt;Google_service: GWM https Repositorio  (from March 2018)&gt;, &lt;Google_service: GA www.cepal.org  (from Jan 2017)&gt;, &lt;Google_service: GA Repositorio (from Jan 2017)&gt;, &lt;Google_service: GA observatorioplanificacion  (from Jan 2017)&gt;, &lt;Google_service: GA  observatoriop10 (from Jan 2017)&gt;, &lt;Google_service: GA oig.cepal.org (from Jan 2017)&gt;]&gt;</em><a class="headerlink" href="#gug.serializers.Google_serviceViewSet.queryset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1196,7 +1284,7 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.viewsets.ModelViewSet</span></code></p>
 <dl class="attribute">
 <dt id="gug.serializers.PeriodViewSet.queryset">
-<code class="descname">queryset</code><a class="headerlink" href="#gug.serializers.PeriodViewSet.queryset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">queryset</code><em class="property"> = &lt;QuerySet [&lt;Period: 2017 - January&gt;, &lt;Period: 2017 - February&gt;, &lt;Period: 2017 - March&gt;, &lt;Period: 2017 - April&gt;, &lt;Period: 2017 - May&gt;, &lt;Period: 2017 - June&gt;, &lt;Period: 2017 - July&gt;, &lt;Period: 2017 - August&gt;, &lt;Period: 2017 - September&gt;, &lt;Period: 2017 - October&gt;, &lt;Period: 2017 - November&gt;, &lt;Period: 2017 - December&gt;, &lt;Period: 2018 - January&gt;, &lt;Period: 2018 - February&gt;, &lt;Period: 2018 - March&gt;, &lt;Period: 2018 - April&gt;, &lt;Period: 2018 - May&gt;, &lt;Period: 2018 - June&gt;, &lt;Period: 2018 - July&gt;, &lt;Period: 2018 - August&gt;, '...(remaining elements truncated)...']&gt;</em><a class="headerlink" href="#gug.serializers.PeriodViewSet.queryset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1236,7 +1324,7 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.viewsets.ModelViewSet</span></code></p>
 <dl class="attribute">
 <dt id="gug.serializers.PeriodosViewSet.queryset">
-<code class="descname">queryset</code><a class="headerlink" href="#gug.serializers.PeriodosViewSet.queryset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">queryset</code><em class="property"> = &lt;QuerySet [&lt;Period: 2017 - January&gt;, &lt;Period: 2017 - February&gt;, &lt;Period: 2017 - March&gt;, &lt;Period: 2017 - April&gt;, &lt;Period: 2017 - May&gt;, &lt;Period: 2017 - June&gt;, &lt;Period: 2017 - July&gt;, &lt;Period: 2017 - August&gt;, &lt;Period: 2017 - September&gt;, &lt;Period: 2017 - October&gt;, &lt;Period: 2017 - November&gt;, &lt;Period: 2017 - December&gt;, &lt;Period: 2018 - January&gt;, &lt;Period: 2018 - February&gt;, &lt;Period: 2018 - March&gt;, &lt;Period: 2018 - April&gt;, &lt;Period: 2018 - May&gt;, &lt;Period: 2018 - June&gt;, &lt;Period: 2018 - July&gt;, &lt;Period: 2018 - August&gt;, '...(remaining elements truncated)...']&gt;</em><a class="headerlink" href="#gug.serializers.PeriodosViewSet.queryset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1276,7 +1364,7 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.viewsets.ModelViewSet</span></code></p>
 <dl class="attribute">
 <dt id="gug.serializers.PublicationViewSet.queryset">
-<code class="descname">queryset</code><a class="headerlink" href="#gug.serializers.PublicationViewSet.queryset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">queryset</code><em class="property"> = &lt;QuerySet [&lt;Publication: S1800059_es.epub&gt;, &lt;Publication: S1800059_es.mobi&gt;, &lt;Publication: S1800059_es.pdf&gt;, &lt;Publication: S1800528_es.pdf&gt;, &lt;Publication: S1800528_es.pdf;La&gt;, &lt;Publication: S1800053_es.epub&gt;, &lt;Publication: S1800053_es.mobi&gt;, &lt;Publication: S1800053_es.pdf&gt;, &lt;Publication: bibliografia_Desarrollo_e_igualdad.pdf&gt;, &lt;Publication: biblio_Desarrollo_e_igualdad_es.pdf&gt;, &lt;Publication: cap01_Desarrollo_e_igualdad_es.pdf&gt;, &lt;Publication: cap02_Desarrollo_e_igualdad_es.pdf&gt;, &lt;Publication: cap03_Desarrollo_e_igualdad_es.pdf&gt;, &lt;Publication: cap04_Desarrollo_e_igualdad_es.pdf&gt;, &lt;Publication: cap05_Desarrollo_e_igualdad_es.pdf&gt;, &lt;Publication: cap06_Desarrollo_e_igualdad_es.pdf&gt;, &lt;Publication: cap07_Desarrollo_e_igualdad_es.pdf&gt;, &lt;Publication: cap08_Desarrollo_e_igualdad_es.pdf&gt;, &lt;Publication: cap09_Desarrollo_e_igualdad_es.pdf&gt;, &lt;Publication: cap10_Desarrollo_e_igualdad_es.pdf&gt;, '...(remaining elements truncated)...']&gt;</em><a class="headerlink" href="#gug.serializers.PublicationViewSet.queryset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1316,7 +1404,7 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.viewsets.ModelViewSet</span></code></p>
 <dl class="attribute">
 <dt id="gug.serializers.Service_typeViewSet.queryset">
-<code class="descname">queryset</code><a class="headerlink" href="#gug.serializers.Service_typeViewSet.queryset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">queryset</code><em class="property"> = &lt;QuerySet [&lt;Service_type: analytics&gt;, &lt;Service_type: webmasters&gt;]&gt;</em><a class="headerlink" href="#gug.serializers.Service_typeViewSet.queryset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1402,7 +1490,7 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.viewsets.ModelViewSet</span></code></p>
 <dl class="attribute">
 <dt id="gug.serializers.StatsViewSet.queryset">
-<code class="descname">queryset</code><a class="headerlink" href="#gug.serializers.StatsViewSet.queryset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">queryset</code><em class="property"> = &lt;QuerySet [&lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, &lt;Stats: GWM http Repositorio  (from March 2017)&gt;, '...(remaining elements truncated)...']&gt;</em><a class="headerlink" href="#gug.serializers.StatsViewSet.queryset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1450,11 +1538,176 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 <div class="section" id="module-gug.tests">
 <span id="gug-tests-module"></span><h2>gug.tests module<a class="headerlink" href="#module-gug.tests" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="gug-urls-module">
-<h2>gug.urls module<a class="headerlink" href="#gug-urls-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-gug.urls">
+<span id="gug-urls-module"></span><h2>gug.urls module<a class="headerlink" href="#module-gug.urls" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="gug-views-module">
-<h2>gug.views module<a class="headerlink" href="#gug-views-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-gug.views">
+<span id="gug-views-module"></span><h2>gug.views module<a class="headerlink" href="#module-gug.views" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gug.views.Echo">
+<em class="property">class </em><code class="descclassname">gug.views.</code><code class="descname">Echo</code><a class="reference internal" href="_modules/gug/views.html#Echo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.Echo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An object that implements just the write method of the file-like
+interface.</p>
+<dl class="method">
+<dt id="gug.views.Echo.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#Echo.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.Echo.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the value by returning it, instead of storing in a buffer.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="gug.views.api_periods_detail">
+<code class="descclassname">gug.views.</code><code class="descname">api_periods_detail</code><span class="sig-paren">(</span><em>self</em>, <em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#api_periods_detail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.api_periods_detail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.api_periods_list">
+<code class="descclassname">gug.views.</code><code class="descname">api_periods_list</code><span class="sig-paren">(</span><em>self</em>, <em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#api_periods_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.api_periods_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.api_publication_detail">
+<code class="descclassname">gug.views.</code><code class="descname">api_publication_detail</code><span class="sig-paren">(</span><em>self</em>, <em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#api_publication_detail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.api_publication_detail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.dspace_detail">
+<code class="descclassname">gug.views.</code><code class="descname">dspace_detail</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#dspace_detail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.dspace_detail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.dspace_detail1">
+<code class="descclassname">gug.views.</code><code class="descname">dspace_detail1</code><span class="sig-paren">(</span><em>self</em>, <em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#dspace_detail1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.dspace_detail1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.dspace_detail2">
+<code class="descclassname">gug.views.</code><code class="descname">dspace_detail2</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#dspace_detail2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.dspace_detail2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.dspace_detail_byfile">
+<code class="descclassname">gug.views.</code><code class="descname">dspace_detail_byfile</code><span class="sig-paren">(</span><em>request</em>, <em>id_dspace</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#dspace_detail_byfile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.dspace_detail_byfile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.dspace_detail_tmp">
+<code class="descclassname">gug.views.</code><code class="descname">dspace_detail_tmp</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#dspace_detail_tmp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.dspace_detail_tmp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.get_ga">
+<code class="descclassname">gug.views.</code><code class="descname">get_ga</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#get_ga"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.get_ga" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.get_titles">
+<code class="descclassname">gug.views.</code><code class="descname">get_titles</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#get_titles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.get_titles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.get_workareas">
+<code class="descclassname">gug.views.</code><code class="descname">get_workareas</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#get_workareas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.get_workareas" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="gug.views.google_services">
+<em class="property">class </em><code class="descclassname">gug.views.</code><code class="descname">google_services</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#google_services"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.google_services" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.list.ListView</span></code></p>
+<dl class="attribute">
+<dt id="gug.views.google_services.context_object_name">
+<code class="descname">context_object_name</code><em class="property"> = 'google_service'</em><a class="headerlink" href="#gug.views.google_services.context_object_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gug.views.google_services.get_context_data">
+<code class="descname">get_context_data</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#google_services.get_context_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.google_services.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the context for this view.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gug.views.google_services.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#google_services.get_queryset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.google_services.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of items for this view.</p>
+<p>The return value must be an iterable and may be an instance of
+<cite>QuerySet</cite> in which case <cite>QuerySet</cite> specific behavior will be enabled.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gug.views.google_services.template_name">
+<code class="descname">template_name</code><em class="property"> = 'gug/google_service.html'</em><a class="headerlink" href="#gug.views.google_services.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="gug.views.google_services_detail">
+<code class="descclassname">gug.views.</code><code class="descname">google_services_detail</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#google_services_detail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.google_services_detail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.index">
+<code class="descclassname">gug.views.</code><code class="descname">index</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.iter_csv">
+<code class="descclassname">gug.views.</code><code class="descname">iter_csv</code><span class="sig-paren">(</span><em>rows</em>, <em>pseudo_buffer</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#iter_csv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.iter_csv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="gug.views.periods">
+<em class="property">class </em><code class="descclassname">gug.views.</code><code class="descname">periods</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#periods"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.periods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.list.ListView</span></code></p>
+<dl class="attribute">
+<dt id="gug.views.periods.context_object_name">
+<code class="descname">context_object_name</code><em class="property"> = 'periods'</em><a class="headerlink" href="#gug.views.periods.context_object_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gug.views.periods.get_context_data">
+<code class="descname">get_context_data</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#periods.get_context_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.periods.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the context for this view.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gug.views.periods.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#periods.get_queryset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.periods.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of items for this view.</p>
+<p>The return value must be an iterable and may be an instance of
+<cite>QuerySet</cite> in which case <cite>QuerySet</cite> specific behavior will be enabled.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gug.views.periods.template_name">
+<code class="descname">template_name</code><em class="property"> = 'gug/periods.html'</em><a class="headerlink" href="#gug.views.periods.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="gug.views.periods_detail">
+<code class="descclassname">gug.views.</code><code class="descname">periods_detail</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#periods_detail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.periods_detail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.stat_index_view">
+<code class="descclassname">gug.views.</code><code class="descname">stat_index_view</code><span class="sig-paren">(</span><em>self</em>, <em>request</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#stat_index_view"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.stat_index_view" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gug.views.stat_list">
+<code class="descclassname">gug.views.</code><code class="descname">stat_list</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#stat_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.stat_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all code snippets, or create a new snippet.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gug.views.workareas">
+<code class="descclassname">gug.views.</code><code class="descname">workareas</code><span class="sig-paren">(</span><em>request</em>, <em>period=None</em>, <em>google_service=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gug/views.html#workareas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gug.views.workareas" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="module-gug">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gug" title="Permalink to this headline">¶</a></h2>
