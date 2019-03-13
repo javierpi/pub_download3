@@ -24,19 +24,15 @@ install:
     - public
 
 
-test:
-  stage: prepare
-  dependencies:
-  - install
-  script:
-  - install_dependencies
-  - pip install tox flake8  # you can also use tox
-  - tox -e py34,flake8
+# test:
+#   stage: prepare
+#   script:
+#   - install_dependencies
+#   - pip install tox flake8  # you can also use tox
+#   - tox -e py34,flake8
 
 pages:
   stage: prepare
-  dependencies:
-  - install
   image: mysql
   script:
   - make_documentation
