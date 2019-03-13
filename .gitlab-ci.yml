@@ -19,14 +19,23 @@ cache:
     - .cache/pip
     - venv/
 
+install:
+  stage: prepare
+  script:
+  - install_dependencies
+  # - python -V               # Print out python version for debugging
+  # - pip install virtualenv
+  # - virtualenv venv --python=python3
+  # - source venv/bin/activate
+  # - pip install -r requeriments.txt
+  artifacts:
+    paths:
+    - public
+
+
 test:
   stage: test
   script:
-  - python -V               # Print out python version for debugging
-  - pip install virtualenv
-  - virtualenv venv --python=python3
-  - source venv/bin/activate
-  - pip install -r requeriments.txt
   - pwd
   - pip install tox flake8  # you can also use tox
   - tox -e py34,flake8
@@ -43,14 +52,6 @@ pages:
   only:
   - master
 
-mysql_build:
-  stage: prepare
-  image: mysql
-  script:
-  - mysql --version
-  - echo "SELECT 'OK';" | mysql --user=root --password="${MYSQL_ROOT_PASSWORD}" --host=mysql "${MYSQL_DATABASE}"
-
-
 
 # run:
 #   script:
@@ -63,5 +64,24 @@ mysql_build:
 #   artifacts:
 #     paths:
 #     - dist/*.whl
+
+
+.auto_devops: &auto_devops |
+  function install_dependencies() {
+    python -V               # Print out python version for debugging
+    pip install virtualenv
+    virtualenv venv --python=python3
+    source venv/bin/activate
+    pip install -r requeriments.txt
+  }
+before_script:
+  - *auto_devops
+
+mysql_build:
+  stage: prepare
+  image: mysql
+  script:
+  - mysql --version
+  - echo "SELECT 'OK';" | mysql --user=root --password="${MYSQL_ROOT_PASSWORD}" --host=mysql "${MYSQL_DATABASE}"
 
 
