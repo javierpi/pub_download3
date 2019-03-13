@@ -6,9 +6,6 @@ stages:
   - prepare
   - test
 
-
-# Change pip's cache directory to be inside the project directory since we can
-# only cache local items.
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   MYSQL_DATABASE: "pub_download"
@@ -37,6 +34,7 @@ test:
 
 pages:
   stage: test
+  image: mysql
   script:
   - install_dependencies
   - make_documentation
@@ -70,8 +68,10 @@ pages:
     virtualenv venv --python=python3
     source venv/bin/activate
     pip install -r requeriments.txt
+    mkdir venv/public
   }
   function make_documentation() {
+    source venv/bin/activate
     pip install sphinx sphinx-rtd-theme
     cd docs ; make html
     mv build/html/ ../public/
