@@ -4,7 +4,6 @@ services:
   - mysql:latest
 stages:
   - prepare
-  - test
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
@@ -26,14 +25,16 @@ install:
 
 
 test:
-  stage: test
+  stage: prepare
+  dependencies:
+  - install
   script:
   - install_dependencies
   - pip install tox flake8  # you can also use tox
   - tox -e py34,flake8
 
 pages:
-  stage: test
+  stage: prepare
   dependencies:
   - install
   image: mysql
@@ -44,19 +45,6 @@ pages:
     - public
   only:
   - master
-
-
-# run:
-#   script:
-#   # - python setup.py bdist_wheel
-#   - pwd
-  
-#   # an alternative approach is to install and run:
-#   #- pip install dist/*
-#   # run the command here
-#   artifacts:
-#     paths:
-#     - dist/*.whl
 
 
 .auto_devops: &auto_devops |
