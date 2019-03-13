@@ -14,12 +14,13 @@ variables:
   MYSQL_DATABASE: "pub_download"
   MYSQL_ROOT_PASSWORD: "pub_pass"
 
-# cache:
-#   paths:
-#     - .cache/pip
-#     - venv/
+cache:
+  paths:
+    - .cache/pip
+    - venv/
 
 before_script:
+  image: python
   - python -V               # Print out python version for debugging
   - pip install virtualenv
   - virtualenv venv --python=python3
