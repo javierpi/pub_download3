@@ -72,7 +72,7 @@
     </div>
     <div class="dashboard-container columns_3 cf">
       <div class="dashboard-column-wrapper">
-        <div class="dashboard-column ">
+        <div class="dashboard-column first">
             <div class="dashboard-item collapsible deletable draggable collapsed" data-module-id="3">
                 <div class="dashboard-item-header">
                     <span class="dashboard-item-header-drag icon-grid"></span>
@@ -85,216 +85,102 @@
                 </div>
                   {% include "gug/includes/workareas.html" %}
             </div>
-            <div class="dashboard-item collapsible deletable draggable" data-module-id="14">
-                <div class="dashboard-item-header">
-                    <span class="dashboard-item-header-drag icon-grid"></span>
-                    <span class="dashboard-item-header-buttons">
-                    </span>
-                    <span class="dashboard-item-header-title">
-                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
-                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>All groups </span>
-                    <div class="cf"></div>
-                </div>
-                <div class="dashboard-item-content">
-                  <div class="dashboard-container columns_1 cf">
-                    <div class="dashboard-column ui-droppable ">
-                      <table id="result_list">
-                        <thead>
-                          <tr>
-                            <th scope="col"  class="column-id_dspace">
-                              <div class="text">Group</div>
-                              <div class="clear"></div>
-                            </th>
-                            <th scope="col"  class="column-title">
-                               <div class="text"># Services</div>
-                               <div class="clear"></div>
-                            </th>
-                            <th scope="col"  class="column-title">
-                               <div class="text"><span class="float-right">Records</span></div>
-                               <div class="clear"></div>
-                            </th>
-                            <th scope="col"  class="column-title">
-                               <div class="text"><span class="float-right">Downloads</span></div>
-                               <div class="clear"></div>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {% for group in table.group_statistics %}
-                          <tr>
-                            <th colspan="1">{{ group.name }}</th>
-                            <th>{{ group.values|length }}</th>
-                            <th class="text-right"><span class="float-right">{{ group.resume.totalrecords }}</span></th>
-                            <th class="text-right"><span class="float-right">{{ group.resume.totalcuantity }}</span></th>
-                          </tr>
-                          {% endfor%}
-                        </tbody>
-                        <tfooter>
-                          <tr>
-                              <th colspan="1">Total</th>
-                              <th></th>
-                              <th class="text-right"><span class="float-right">{{ table.resume.totalrecords }}</span></th>
-                              <th class="text-right"><span class="float-right">{{ table.resume.totalcuantity }}</span></th>
-                          </tr>
-                        </tfooter>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {% for group in table.group_statistics %}
-              <div class="dashboard-item collapsible deletable draggable collapsed" data-module-id="4">
-                <div class="dashboard-item-header">
-                  <span class="dashboard-item-header-drag icon-grid"></span>
-                  <span class="dashboard-item-header-buttons"></span>
-                  <span class="dashboard-item-header-title">
-                    <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
-                    <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>{{ group.name }}</span>
-                  <div class="cf"></div>
-                </div>
-                <div class="dashboard-item-content">
-                  <div class="dashboard-container columns_1 cf">
-                    <div class="dashboard-column ui-droppable ">
-                      <table id="result_list">
-                        <thead>
-                          <tr>
-                            <th scope="col"  class="column-id_dspace">
-                              <div class="text">Service</div>
-                              <div class="clear"></div>
-                            </th>
-                            <th scope="col"  class="column-title">
-                               <div class="text"><span class="float-right">Records</span></div>
-                               <div class="clear"></div>
-                            </th>
-                            <th scope="col"  class="column-title">
-                               <div class="text"><span class="float-right">Downloads</span></div>
-                               <div class="clear"></div>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        {% for gs in group.values %}
-                          <tr>
-                            <td><a href="{% url "gug:stat_index_paginated" %}?page=1{% for t in table.periods %}&amp;period={{t.id}}{% endfor%}&amp;gsid={{gs.id}}&amp;pagesize=10">{{ gs.name }}</a></td>
-                            {% for statistic in table.statistics %}
-                              {% if gs.id == statistic.google_service %}
-                                <td>
-                                  <span class="float-right">
-                                    {{ statistic.cuantity__count }}
-                                  </span>
-                                </td>
-                                <td>
-                                  <span class="float-right">
-                                    {{ statistic.cuantity__sum }}
-                                  </span>
-                                </td>
-                              {% endif %}
-                            {% endfor%}
-                          </tr>
-                        {% endfor%}
-                        </tbody>
-                        <tfooter>
-                          <tr>
-                            <th colspan="1">Total</th>
-                            <th><span class="float-right">{{ group.resume.totalrecords }}</span></th>
-                            <th><span class="float-right">{{ group.resume.totalcuantity }}</span></th>
-                          </tr>
-                        </tfooter>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {% endfor%}
+            
+            
+            
+            {% include "gug/includes/group_all.html" %}  
           </div>
         </div>
+        
+        
         <div class="dashboard-column-wrapper">
           <div class="dashboard-column ">
-                <div class="dashboard-item collapsible deletable draggable" data-module-id="2">
-                    <div class="dashboard-item-header">
-                        <span class="dashboard-item-header-drag icon-grid"></span>
-                        <span class="dashboard-item-header-buttons">
+                  <div class="dashboard-item collapsible deletable draggable" data-module-id="2">
+                      <div class="dashboard-item-header">
+                          <span class="dashboard-item-header-drag icon-grid"></span>
+                          <span class="dashboard-item-header-buttons">
 
-                        </span>
-                        <span class="dashboard-item-header-title">
-                                <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
-                                <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                                Periods
-                        </span>
-                        <div class="cf"></div>
-                    </div>
-                   <div class="dashboard-item-content">
-                        <ul>
-                            <li class="contrast">
-                                <a href="{% url "gug:periods" %}" title="Periods Detail">Resume</a>
-                            </li>
-                            <li>
-                                <span class="float-right">
-                                        Downloads
-                                </span>
-                                Periods
-                            </li>
-
-                            {% for gs in table.periods %}
-                              <li>
-                                <span class="float-right">
-                                     {{ gs.cuantity }}
-                                </span>
-                                <a href="{% url "gug:periods_detail" gs.id %}">{{ gs }}</a>
+                          </span>
+                          <span class="dashboard-item-header-title">
+                                  <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                                  <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                                  Periods
+                          </span>
+                          <div class="cf"></div>
+                      </div>
+                     <div class="dashboard-item-content">
+                          <ul>
+                              <li class="contrast">
+                                  <a href="{% url "gug:periods" %}" title="Periods Detail">Resume</a>
                               </li>
-                            {% endfor%}
-                            <li >
-                                <span class="float-right">
-                                    {{ table.google_services_sums.cuantity }}
-                                </span>
-                                <a href="/stat/?pagesize=10&page=1{% for t in table.google_services %}&amp;gsid={{t.id}}{% endfor%}{% for t in table.periods %}&amp;period={{t.id}}{% endfor%}">Total</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="dashboard-column-wrapper">
-            <div class="dashboard-column ">
-                <div class="dashboard-item collapsible deletable draggable" data-module-id="3">
-                    <div class="dashboard-item-header">
-                        <span class="dashboard-item-header-drag icon-grid"></span>
-                        <span class="dashboard-item-header-buttons"></span>
-                        <span class="dashboard-item-header-title">
-                            <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
-                            <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
-                                Publications</span>
-                        <div class="cf"></div>
-                    </div>
-                    <div class="dashboard-item-content">
-                        <ul>
-                            <li class="contrast">
-                                <a href="/stat/?pagesize=10&amp;page=1{% for t in table.google_services %}&amp;gsid={{t.id}}{% endfor%}{% for t in table.periods %}&amp;period={{t.id}}{% endfor%}"  title="Periods Detail">Resume</a>
-                            </li>
-                            <li>
-                                <span class="float-right">
-                                    Downloads
-                                </span>
-                                Publications
-                            </li>
-                            {% for row in table.dspaces %}
+                              <li>
+                                  <span class="float-right">
+                                          Downloads
+                                  </span>
+                                  Periods
+                              </li>
+
+                              {% for gs in table.periods %}
                                 <li>
-                                {% for val in row %}
-                                    {% if forloop.counter0 == 0 %}
-                                        <a href="{% url 'gug:dspace_detail' %}?id_dspace={{val|urlize}}{% for t in table.google_services %}&amp;gsid={{t.id}}{% endfor%}{% for t in table.periods %}&amp;period={{t.id}}{% endfor%}">
-                                    {% elif forloop.counter0 == 1 %}
-                                        {{val|urlize}}</a>
-                                    {% else %}
-                                        <span class="float-right">
-                                          {{val|default_if_none:"0"}}
-                                        </span>
-                                    {% endif %}
-                                {% endfor%}
+                                  <span class="float-right">
+                                       {{ gs.cuantity }}
+                                  </span>
+                                  <a href="{% url "gug:periods_detail" gs.id %}">{{ gs }}</a>
                                 </li>
-                            {% endfor%}
-                        </ul>
-                    </div>
-                </div>
+                              {% endfor%}
+                              <li >
+                                  <span class="float-right">
+                                      {{ table.google_services_sums.cuantity }}
+                                  </span>
+                                  <a href="/stat/?pagesize=10&page=1{% for t in table.google_services %}&amp;gsid={{t.id}}{% endfor%}{% for t in table.periods %}&amp;period={{t.id}}{% endfor%}">Total</a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-column-wrapper">
+          <div class="dashboard-column ">
+              <div class="dashboard-item collapsible deletable draggable" data-module-id="3">
+                  <div class="dashboard-item-header">
+                      <span class="dashboard-item-header-drag icon-grid"></span>
+                      <span class="dashboard-item-header-buttons"></span>
+                      <span class="dashboard-item-header-title">
+                          <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                          <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                              Publications</span>
+                      <div class="cf"></div>
+                  </div>
+                  <div class="dashboard-item-content">
+                      <ul>
+                          <li class="contrast">
+                              <a href="/stat/?pagesize=10&amp;page=1{% for t in table.google_services %}&amp;gsid={{t.id}}{% endfor%}{% for t in table.periods %}&amp;period={{t.id}}{% endfor%}"  title="Periods Detail">Resume</a>
+                          </li>
+                          <li>
+                              <span class="float-right">
+                                  Downloads
+                              </span>
+                              Publications
+                          </li>
+                          {% for row in table.dspaces %}
+                              <li>
+                              {% for val in row %}
+                                  {% if forloop.counter0 == 0 %}
+                                      <a href="{% url 'gug:dspace_detail' %}?id_dspace={{val|urlize}}{% for t in table.google_services %}&amp;gsid={{t.id}}{% endfor%}{% for t in table.periods %}&amp;period={{t.id}}{% endfor%}">
+                                  {% elif forloop.counter0 == 1 %}
+                                      {{val|urlize}}</a>
+                                  {% else %}
+                                      <span class="float-right">
+                                        {{val|default_if_none:"0"}}
+                                      </span>
+                                  {% endif %}
+                              {% endfor%}
+                              </li>
+                          {% endfor%}
+                      </ul>
+                  </div>
+              </div>
             </div>
         </div>
     </div>

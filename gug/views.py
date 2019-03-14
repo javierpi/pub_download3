@@ -20,6 +20,7 @@ from django.forms import formset_factory
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.db.models import Count, Sum
+from django.db.models.functions import TruncYear
 from django.db import connection
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
@@ -392,8 +393,40 @@ def dspace_detail2(request):
         return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail})
         return render(request, 'gug/dspace_detail.html', {'form': form, 'stats': stat_list, 'gs': gs, 'dspace_record': dspace_record, 'detail': detail, 'resume': resume, 'period': period_objs})
 
+def groups_data(agno=None):
+    grupos = Service_group.objects.all()
+    google_services_groups = []
+    if agno is not None:
+        periods_list = list(Period.objects.values_list('pk', flat=True).filter(start_date__year=agno))
+    else:
+        periods_list = list(Period.objects.values_list('pk', flat=True))
 
-@cache_page(cache_time)
+    for grupo in grupos:
+        group_stat = Stats.objects.values('google_service').filter(period_id__in=periods_list,google_service_id__group=grupo.id).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+        google_services_groups.append({'name': grupo.name, 'values': Google_service.objects.values('id', 'name', 'view_id').filter(group=grupo.id), 'resume': group_stat})
+
+    return google_services_groups
+
+def groups(request):
+    context = {}
+    context['group_statistics'] = groups_data()
+    context['statistics'] = Stats.objects.values('google_service').annotate(Count('cuantity'), Sum('cuantity')).order_by()
+
+    group_years = []
+    periodos = Period.objects.values(year=TruncYear('start_date')).order_by('-year').distinct()
+    for periodo in periodos:
+        agno = periodo['year'].year
+
+        dats_agno = groups_data(agno)
+        periods_list = list(Period.objects.values_list('pk', flat=True).filter(start_date__year=agno))
+        totals = Stats.objects.filter(period_id__in=periods_list).aggregate(Sum('cuantity') )
+        group_years.append({'year': agno, 'resume': dats_agno, 'year_totals': totals})
+
+    context['by_year'] =  group_years
+    context['resume'] = Stats.objects.values('google_service').aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+    return render(request, 'gug/groups.html', {'table': context})
+
+# @cache_page(cache_time)
 def index(request):
     context_object_name = 'periods'
 
@@ -406,14 +439,8 @@ def index(request):
 
     context['periods'] = Period.objects.annotate(cuantity=Sum('stats__cuantity')).order_by('-start_date')
     context['statistics'] = Stats.objects.values('google_service').annotate(Count('cuantity'), Sum('cuantity')).order_by()
-    ###########
-    grupos = Service_group.objects.all()
-    google_services_groups = []
-    for grupo in grupos:
-        group_stat = Stats.objects.values('google_service').filter(google_service_id__group=grupo.id).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
-        google_services_groups.append({'name': grupo.name, 'values': Google_service.objects.values('id', 'name', 'view_id').filter(group=grupo.id), 'resume': group_stat})
 
-    context['group_statistics'] = google_services_groups
+    context['group_statistics'] = groups_data()
     context['resume'] = Stats.objects.values('google_service').aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
 
     q_dspace = " select gug_dspace.id_dspace, gug_dspace.title , sum(cuantity) as sumtotal " \

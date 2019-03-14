@@ -18903,3 +18903,467 @@ Traceback (most recent call last):
   File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/urls/resolvers.py", line 636, in _reverse_with_prefix
     raise NoReverseMatch(msg)
 django.urls.exceptions.NoReverseMatch: Reverse for 'get_report' with arguments '(<Period: 2019 - February>,)' not found. 1 pattern(s) tried: ['get_report/$']
+2019-03-14 16:42:22,550 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 407, in groups
+    for year in list('2018', '2019'):
+TypeError: list() takes at most 1 argument (2 given)
+2019-03-14 17:58:36,319 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 439, in groups
+    return render(request, 'gug/groups.html', {'table': context, 'stats': stat_list,})
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 454, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 452, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 568, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 668, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: ' group in table.by_year' from 'for group in table.by_year'
+2019-03-14 17:58:50,470 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 439, in groups
+    return render(request, 'gug/groups.html', {'table': context, 'stats': stat_list,})
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 454, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 452, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 568, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 668, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: ' in table.by_year' from 'group in table.by_year'
+2019-03-14 18:05:20,761 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 475, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 439, in groups
+    return render(request, 'gug/groups.html', {'table': context, 'stats': stat_list,})
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 815, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 477, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 533, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 69: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2019-03-14 18:05:54,327 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 475, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 439, in groups
+    return render(request, 'gug/groups.html', {'table': context, 'stats': stat_list,})
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 815, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 477, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 533, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 69: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2019-03-14 18:31:30,000 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 439, in groups
+    return render(request, 'gug/groups.html', {'table': context, 'stats': stat_list,})
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 211, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 211, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 167, in render
+    values = list(values)
+TypeError: 'int' object is not iterable
+2019-03-14 18:48:26,608 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 439, in groups
+    return render(request, 'gug/groups.html', {'table': context, 'stats': stat_list,})
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 211, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 211, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/template/defaulttags.py", line 167, in render
+    values = list(values)
+TypeError: 'int' object is not iterable
+2019-03-14 20:08:23,770 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 423, in groups
+    context['group_statistics'] = groups_data2()
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 416, in groups_data2
+    group_resume = Stats.objects.values(year=TruncYear('start_date')).filter(period_id__in=periods_list,google_service_id__group=grupo.id).annotate(Count('cuantity'), Sum('cuantity')).order_by()
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 742, in values
+    clone = self._values(*fields, **expressions)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 735, in _values
+    clone = clone.annotate(**expressions)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/query.py", line 997, in annotate
+    clone.query.add_annotation(annotation, alias, is_summary=False)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 975, in add_annotation
+    summarize=is_summary)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/functions/datetime.py", line 170, in resolve_expression
+    copy = super().resolve_expression(query, allow_joins, reuse, summarize, for_save)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/expressions.py", line 601, in resolve_expression
+    c.source_expressions[pos] = arg.resolve_expression(query, allow_joins, reuse, summarize, for_save)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/expressions.py", line 516, in resolve_expression
+    return query.resolve_ref(self.name, allow_joins, reuse, summarize)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1521, in resolve_ref
+    join_info = self.setup_joins(field_list, self.get_meta(), self.get_initial_alias(), can_reuse=reuse)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1448, in setup_joins
+    names, opts, allow_many, fail_on_missing=True)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/db/models/sql/query.py", line 1379, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'start_date' into field. Choices are: cuantity, google_service, google_service_id, id, id_dspace, id_dspace_id, period, period_id, publication, publication_id
+2019-03-14 20:11:26,389 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 423, in groups
+    context['group_statistics'] = groups_data2()
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 415, in groups_data2
+    group_stat = Stats.objects.values('google_service').filter(period_id__in=periods_list,google_service_id__group=grupo.id).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity')).annotate(Count('cuantity'), Sum('cuantity'))
+AttributeError: 'dict' object has no attribute 'annotate'
+2019-03-14 20:11:54,674 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 423, in groups
+    context['group_statistics'] = groups_data2()
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 417, in groups_data2
+    google_services_groups.append({'name': grupo.name, 'values': Google_service.objects.values('id', 'name', 'view_id').filter(group=grupo.id), 'resume': group_stat, 'group_resume': group_resume})
+NameError: name 'group_resume' is not defined
+2019-03-14 20:25:53,452 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 425, in groups
+    context['group_statistics'] = groups_data2()
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 418, in groups_data2
+    print(row.totalcuantity)
+AttributeError: 'str' object has no attribute 'totalcuantity'
+2019-03-14 20:26:37,570 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 425, in groups
+    context['group_statistics'] = groups_data2()
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 415, in groups_data2
+    group_stat = Stats.objects.values('google_service').filter(period_id__in=periods_list,google_service_id__group=grupo.id).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity')).all()
+AttributeError: 'dict' object has no attribute 'all'
+2019-03-14 20:28:57,064 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 425, in groups
+    context['group_statistics'] = groups_data2()
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 418, in groups_data2
+    print(row['totalcuantity'])
+TypeError: string indices must be integers
+2019-03-14 20:29:24,944 ERROR django.request Internal Server Error: /groups/
+Traceback (most recent call last):
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deployer/pub_download3/lib/python3.4/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 425, in groups
+    context['group_statistics'] = groups_data2()
+  File "/home/deployer/pub_download3/publications/gug/views.py", line 418, in groups_data2
+    print(row.totalcuantity)
+AttributeError: 'str' object has no attribute 'totalcuantity'
