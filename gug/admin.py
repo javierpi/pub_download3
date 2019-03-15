@@ -5,8 +5,10 @@ from .models import Period, Google_service, Publication, Stats, Dspace, Service_
 from jet.filters import RelatedFieldAjaxListFilter
 
 
+
 class Google_service_Admin(admin.ModelAdmin):
     list_display = ('name', 'client_secret_path', 'service', 'group', 'version', 'view_id', 'last_update', 'active')
+    list_filter = ('service', 'active') 
 
 
 class Publication_Admin(admin.ModelAdmin):
@@ -29,10 +31,13 @@ class Stats_Admin(admin.ModelAdmin):
 
 class Service_type_Admin(admin.ModelAdmin):
     list_display = ('service', 'max_month_before')
+    list_filter = ('service',) 
 
 class WorkArea_Admin(admin.ModelAdmin):
     list_display = ('name',)
 
+class Service_group_admin(admin.ModelAdmin):
+    list_display = ('name','order')
 
 admin.site.register(Period, Period_Admin)
 admin.site.register(Google_service, Google_service_Admin)
@@ -40,6 +45,6 @@ admin.site.register(Publication, Publication_Admin)
 admin.site.register(Stats, Stats_Admin)
 admin.site.register(Dspace, Dspace_Admin)
 admin.site.register(Service_type, Service_type_Admin)
-admin.site.register(Service_group)
+admin.site.register(Service_group, Service_group_admin)
 admin.site.register(WorkArea, WorkArea_Admin)
 

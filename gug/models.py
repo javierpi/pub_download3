@@ -46,7 +46,7 @@ class Period(models.Model):
 
     @staticmethod
     def autocomplete_search_fields():
-        return 'start_datet'
+        return 'start_date',
 
 
 class Service_type(models.Model):
@@ -60,6 +60,10 @@ class Service_type(models.Model):
     def __str__(self):
         return str(self.service)
 
+    @staticmethod
+    def autocomplete_search_fields():
+        return 'service',
+
 
 class Service_group(models.Model):
     name = models.CharField(max_length=200)
@@ -71,6 +75,10 @@ class Service_group(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+    @staticmethod
+    def autocomplete_search_fields():
+        return 'name',
 
 
 class Google_service(models.Model):
@@ -95,6 +103,10 @@ class Google_service(models.Model):
         return str(self.name) 
         # + ' :(Grpid:' + str(group.id)
 
+    @staticmethod
+    def autocomplete_search_fields():
+        return 'name',
+
 
 class WorkArea(models.Model):
     name = models.CharField(max_length=200, unique=True)
@@ -105,6 +117,10 @@ class WorkArea(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+    @staticmethod
+    def autocomplete_search_fields():
+        return 'name',
 
 
 class Dspace(models.Model):
@@ -126,7 +142,7 @@ class Dspace(models.Model):
 
     @staticmethod
     def autocomplete_search_fields():
-        return 'title',
+        return 'title', 'id_dspace'
 
 
 class Publication(models.Model):

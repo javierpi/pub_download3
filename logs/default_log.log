@@ -19367,3 +19367,77 @@ Traceback (most recent call last):
   File "/home/deployer/pub_download3/publications/gug/views.py", line 418, in groups_data2
     print(row.totalcuantity)
 AttributeError: 'str' object has no attribute 'totalcuantity'
+2019-03-15 21:34:31,732 ERROR django.request Internal Server Error: /admin/gug/service_type/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/options.py", line 575, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1592, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/options.py", line 706, in get_changelist_instance
+    self,
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/views/main.py", line 76, in __init__
+    self.queryset = self.get_queryset(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/views/main.py", line 322, in get_queryset
+    filters_use_distinct) = self.get_filters(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/views/main.py", line 130, in get_filters
+    self.model, self.model_admin, field_path=field_path
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/filters.py", line 162, in __init__
+    other_model = get_model_from_relation(field)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/utils.py", line 440, in get_model_from_relation
+    raise NotRelationField
+django.contrib.admin.utils.NotRelationField
+2019-03-15 21:36:14,259 ERROR django.request Internal Server Error: /admin/gug/service_type/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/options.py", line 575, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1592, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/options.py", line 706, in get_changelist_instance
+    self,
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/views/main.py", line 76, in __init__
+    self.queryset = self.get_queryset(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/views/main.py", line 322, in get_queryset
+    filters_use_distinct) = self.get_filters(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/views/main.py", line 130, in get_filters
+    self.model, self.model_admin, field_path=field_path
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/filters.py", line 162, in __init__
+    other_model = get_model_from_relation(field)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/utils.py", line 440, in get_model_from_relation
+    raise NotRelationField
+django.contrib.admin.utils.NotRelationField
