@@ -24,7 +24,7 @@
                 &rsaquo; <a href="{{ app.app_url }}">{% if app.name != app.app_label|capfirst|escape %}{{ app.name }}{% else %}{% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}{% endif %}</a>
             {% endif %}
             &rsaquo; {{ object.title|capfirst }}
-        </div>
+        </div> 
     {% endblock %}
 {% endif %}
 

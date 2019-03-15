@@ -1,8 +1,6 @@
 {% extends "gug/home.html" %}
-{% load i18n %}
-{% load static %}
-{% load mathfilters %}
-{% load bootstrap_pagination %}
+{% load i18n static mathfilters %}
+
 {% block extrastyle %}
 <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
 <script type="text/javascript" src="/admin/jsi18n/"></script>
@@ -14,6 +12,51 @@
 <script type="text/javascript" src="/static/admin/js/urlify.js"></script>
 <script type="text/javascript" src="/static/admin/js/prepopulate.min.js"></script>
 <script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.min.js"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['line']});
+    google.charts.setOnLoadCallback(drawChart);
+
+   
+    function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Period');
+        data.addColumn('number', 'Downloads');
+        data.addRows([
+         {% for period in periods reversed %}['{{ period.start_date|date:"Y-F" }}', {{ period.cuantity|urlize }}]{% if not forloop.last %},{% endif %}{% endfor%}
+      ]);
+        var options = {
+        chart: {
+          title: 'Downloads by period',
+          subtitle: 'All Google Services '
+        },
+        height: 500,
+        axes: {
+          x: {
+            0: {side: 'bottom'}
+          }
+        }
+      };
+
+      var chart = new google.charts.Line(document.getElementById('graph1'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options));
+
+    }
+    $(window).resize(function(){
+      drawChart();
+    });
+</script>
+<style type="text/css">
+  .chart {
+    width: 100%; 
+    min-height: 450px;
+  }
+  
+</style>
 {% endblock %}
 
 {% if not is_popup %}
@@ -28,57 +71,84 @@
     {% endblock %}
 {% endif %}
 
-{% block bodyclass %}{{ block.super }} dashboard jet change-form{% endblock %}
-
-
+{% block bodyclass %}{{ block.super }} dashboard jet {% endblock %}
 {% block content %}
 <div id="content" class="flex">
+  <h2>Periods </h2>
+  <div class="dashboard-container columns_2 cf">
+    <div class="dashboard-column-wrapper">
+      <div id="content" class="flex">
+        <div class="dashboard-column first">
+          <div class="dashboard-item collapsible deletable draggable" data-module-id="1">
+            <div class="dashboard-item-header">
+              <span class="dashboard-item-header-drag icon-grid"></span>
+              <span class="dashboard-item-header-buttons"></span>
+              <span class="dashboard-item-header-title">
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                      Period
+              </span>
+              <div class="cf"></div>
+            </div>
+            <div class="dashboard-item-content" style="height: auto;">
+              <div class="padding center">
+                <table >
+                  <thead>
+                    <tr>
+                      <th scope="col" class="column-title">Period</th>
+                      <th scope="col" class="column-title">Start</th>
+                      <th scope="col" class="column-title">End</th>
+                      <th scope="col" class="column-title">Records</th>
+                      <th scope="col" class="column-title">Downloads</th>
+                      <th scope="col" class="column-title">Last Update</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                      {% for period in periods %}
+                        <tr class="{% cycle 'row1' 'row2' %}">
+                          <th class="field-title"><a href="{% url 'gug:periods_detail' period.id %}">{{ period.start_date|date:"Y-F" }}</a></th>
+                          <th scope="col" class="column-title">{{ period.start_date }}</th>
+                          <th scope="col" class="column-title">{{ period.end_date }}</th>
+                          <th><span class="float-right">{{ period.stats__count }}</span></th>
+                          <th><span class="float-right">{{ period.cuantity }}</span></th>
+                          <th>{{ period.last_update }} </th>
 
-
-<h2>Periods </h2>
-<div class="panel panel-primary">
-  <div class="collapse navbar-collapse panel-heading" id="bs-example-navbar-collapse-1">
-
-
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="tabbable"> <!-- Only required for left/right tabs -->
-
-        <div class="tab-content">
-          <div class="tab-pane active" id="tab1">
-          <table class="table table-striped">
-		      <thead>
-		        <tr>
-              <th>Period</th>
-		          <th>Start</th>
-		          <th>End</th>
-		          <th>Records</th>
-              <th>Downloads</th>
-              <th>Last Update</th>
-		        </tr>
-		      </thead>
-      			<tbody>
-			        {% for period in periods %}
-			          <tr>
-                  <td><a href="{% url 'gug:periods_detail' period.id %}">{{ period.start_date|date:"Y-F" }}</a></td>
-			            <td>{{ period.start_date }}</td>
-			            <td>{{ period.end_date }}</td>
-			            <td>{{ period.stats__count }}</td>
-                  <td>{{ period.cuantity }}</td>
-                  <td>{{ period.last_update }} </td>
-
-			          </tr>
-			        {% endfor%}
-			    </tbody>
-			   </table>
+                        </tr>
+                      {% endfor%}
+                  </tbody>
+                 </table>
+              </div>
+            </div>
           </div>
-
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-column-wrapper">
+        <div id="content" class="flex">
+        <div class="dashboard-column ">
+          <div class="dashboard-item collapsible deletable draggable" data-module-id="2">
+            <div class="dashboard-item-header">
+              <span class="dashboard-item-header-drag icon-grid"></span>
+              <span class="dashboard-item-header-buttons"></span>
+              <span class="dashboard-item-header-title">
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                      Graph
+              </span>
+              <div class="cf"></div>
+            </div>
+            <div class="dashboard-item-content" style="height: auto;">
+              <div class="padding center">
+                <div id="graph1" class="chart"></div>        
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 
 

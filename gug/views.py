@@ -426,7 +426,7 @@ def groups(request):
     context['resume'] = Stats.objects.values('google_service').aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
     return render(request, 'gug/groups.html', {'table': context})
 
-# @cache_page(cache_time)
+@cache_page(cache_time)
 def index(request):
     context_object_name = 'periods'
 
