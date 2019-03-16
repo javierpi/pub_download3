@@ -19441,3 +19441,143 @@ Traceback (most recent call last):
   File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/contrib/admin/utils.py", line 440, in get_model_from_relation
     raise NotRelationField
 django.contrib.admin.utils.NotRelationField
+2019-03-15 21:54:58,648 ERROR django.request Internal Server Error: /sta1/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 52, in __init__
+    self.set_context(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 57, in set_context
+    self.load_modules()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 137, in load_modules
+    user=self.context['request'].user.pk
+TypeError: 'WSGIRequest' object is not subscriptable
+2019-03-15 21:57:48,260 ERROR django.request Internal Server Error: /sta1/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 52, in __init__
+    self.set_context(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 57, in set_context
+    self.load_modules()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 137, in load_modules
+    user=self.context['request'].user.pk
+TypeError: 'WSGIRequest' object is not subscriptable
+2019-03-15 22:03:48,060 ERROR django.request Internal Server Error: /sta1/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 52, in __init__
+    self.set_context(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 57, in set_context
+    self.load_modules()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 137, in load_modules
+    user=self.context['request'].user.pk
+TypeError: 'WSGIRequest' object is not subscriptable
+2019-03-15 22:11:25,043 ERROR django.request Internal Server Error: /sta1/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 156, in render
+    context.update({
+AttributeError: 'WSGIRequest' object has no attribute 'update'
+2019-03-15 22:19:58,380 ERROR django.request Internal Server Error: /sta1/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 156, in render
+    context.update({
+AttributeError: 'WSGIRequest' object has no attribute 'update'
+2019-03-15 22:20:40,674 ERROR django.request Internal Server Error: /sta1/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 156, in render
+    context.update({
+AttributeError: 'WSGIRequest' object has no attribute 'update'
+2019-03-15 22:36:32,084 ERROR django.request Internal Server Error: /sta1/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 52, in __init__
+    self.set_context(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 57, in set_context
+    self.load_modules()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 137, in load_modules
+    user=self.context['request'].user.pk
+TypeError: 'WSGIRequest' object is not subscriptable
+2019-03-16 12:18:33,518 ERROR django.request Internal Server Error: /sta1/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 52, in __init__
+    self.set_context(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 57, in set_context
+    self.load_modules()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 137, in load_modules
+    user=self.context['request'].user.pk
+TypeError: 'WSGIRequest' object is not subscriptable
+2019-03-16 12:22:07,323 ERROR django.request Internal Server Error: /sta1/
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 52, in __init__
+    self.set_context(context)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 57, in set_context
+    self.load_modules()
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/jet/dashboard/dashboard.py", line 137, in load_modules
+    user=self.context['request'].user.pk
+TypeError: 'WSGIRequest' object is not subscriptable
+2019-03-16 12:49:50,700 ERROR django.request Internal Server Error: /periods/22
+Traceback (most recent call last):
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/publications/gug/views.py", line 595, in periods_detail
+    context['period'] = Period.objects.get(id=pk)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/javier/hd1/Codigo/pub_download/lib/python3.6/site-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+gug.models.DoesNotExist: Period matching query does not exist.

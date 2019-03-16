@@ -1,28 +1,40 @@
 <div class="dashboard-item-content">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Downloads</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for download in table.work_area_list %}
-				<tr>
-					{% for field in download %}
-						{% if forloop.counter0 > 0%}
-							{% if forloop.counter0 == 1 %}
-							<th>{{field}}</th>
-							{% else %}
-							<td class="text-right"><span class="float-right">{{field}}</span></td>
-							{% endif %}
-						{% endif %}
+	<div class="dashboard-container columns_1 cf">
+		<div class="dashboard-column ui-droppable ">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col"  class="column-title">
+                         <div class="text">Name</div>
+                         <div class="clear"></div>
+                      </th>
+                      <th scope="col"  class="column-title">
+                         <div class="text"><span class="float-right">Downloads</span></div>
+                         <div class="clear"></div>
+                      </th>
+
 						
+					</tr>
+				</thead>
+				<tbody>
+					{% for download in table.work_area_list %}
+						<tr>
+							{% for field in download %}
+								{% if forloop.counter0 > 0%}
+									{% if forloop.counter0 == 1 %}
+									<th>{{field}}</th>
+									{% else %}
+									<td class="text-right"><span class="float-right">{{field}}</span></td>
+									{% endif %}
+								{% endif %}
+								
+							{% endfor%}
+						</tr>
 					{% endfor%}
-				</tr>
-			{% endfor%}
-		</tbody>
-	</table>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
                 
 

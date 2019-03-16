@@ -46,6 +46,7 @@ from .serializers import StatsSerializer
 
 cache_time = 60 * 15
 
+
 @cache_page(cache_time)
 @csrf_exempt
 def stat_list(request):

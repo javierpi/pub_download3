@@ -64,9 +64,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'publications.urls'
 
-# TEMPLATE_CONTEXT_PROCESSORS = (
-#     "django.core.context_processors.request",
-# )
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.request",
+)
 
 
 # 'django.template.context_processors.debug',
@@ -106,10 +106,6 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 WSGI_APPLICATION = 'publications.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 
 DATABASES = {
@@ -180,6 +176,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_DEFAULT_QUEUE = 'pub_download'
 # CELERY_ENABLE_REMOTE_CONTROL = True
 JET_CHANGE_FORM_SIBLING_LINKS = True
+JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.path.join(PROJECT_DIR, 'DownloadPublicaciones-a610ebc17b1e.json')
 # Jet
 JET_DEFAULT_THEME = 'light-gray'
 JET_SIDE_MENU_ITEMS = [
@@ -238,9 +235,9 @@ JET_THEMES = [
         'title': 'Light Gray'
     }
 ]
-JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
-JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
-# JET_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
+# JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
+# JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
+# JET_INDEX_DASHBOARD = 'gug.dashboard.CustomIndexDashboard'
 # JET_APP_INDEX_DASHBOARD = 'dashboard.CustomAppIndexDashboard'
 
 JET_SIDE_MENU_COMPACT = False

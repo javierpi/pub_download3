@@ -7,7 +7,6 @@ from .views import google_services, periods, google_services_detail,\
 # 
 
 from .apis import get_data, get_report
-#from .tasks import get_GA
  
 
 app_name = 'gug'
