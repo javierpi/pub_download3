@@ -20,7 +20,6 @@ def get_titles():
     call_id = management.call_command(
         'get_title',
         verbosity=2)
-    return_vars = json.loads(str(call_id))
 
 
 @shared_task
@@ -114,6 +113,44 @@ def get_GA(header=False):
         period.save()
         
     get_titles()
+
+    check_periods()
+
+def check_periods():
+    import calendar
+    ## Does this date have a period ??
+    today = datetime.today()
+    this_month = today.month
+    this_year = today.year
+    try:
+        period = Period.objects.get(start_date__year=this_year, start_date__month = this_month)
+    except Period.DoesNotExist:
+        ## Create this new period
+        firs_day, last_day = calendar.monthrange(this_year,this_month)
+        p = Period(
+            start_date = date(this_year, this_month, 1),
+            end_date   = date(this_year, this_month, last_day),
+            active     = True
+            )
+        p.save()
+
+    ## Are other periods active ?
+    periods = Period.objects.filter(active=True)
+    for period in periods:
+        start_date = str(period.start_date)
+        end_date = str(period.end_date)
+        max_prev = date.today() - timedelta(days=5)
+        if max_prev > period.end_date :
+            print('Closing period: ', period)
+            period.active = False
+            period.save()
+
+
+    
+
+
+    
+
 
 def tospanish(workarea):
     if workarea == 'assuntos de gênero' or workarea == 'gender affairs' or workarea[:10] == 'asuntos de' or workarea[:9] == 'gender eq' or workarea[:10] == 'igualdad d' :
