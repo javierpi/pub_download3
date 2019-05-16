@@ -263,6 +263,14 @@ def get_wa():
 def delete_stat(gs, period):
     print('deleting stats for period:', period, ' and gs:', gs)
     Stats.objects.filter(google_service=gs, period=period).delete()
+def clean_title(title):
+    ntitle = title
+    ntitle = ntitle.replace('\\xF0', '')
+    ntitle = ntitle.replace('\\x9F', '')
+    ntitle = ntitle.replace('\\x8C', '')
+    ntitle = ntitle.replace('\\x90', '')
+    return ntitle
+    
 
 def save_record(gs, period, url, title, cantidad, workareas=None):
     #print(gs.id, period.id, url, title, cantidad)
@@ -278,7 +286,10 @@ def save_record(gs, period, url, title, cantidad, workareas=None):
 
     id_dspace = n_url.split("/")[0]
     file = n_url.split("/")[-1]
+    title = str(title)
     title = title[:599]
+    title = clean_title(title)
+
     post_title1 = ''
     post_title2 = ''
     if title.count('|') == 2:
