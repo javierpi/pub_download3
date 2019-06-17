@@ -1,0 +1,47 @@
+{% load static my_templatetag %}
+<div class="dashboard-item-content">
+	<div class="dashboard-container columns_1 cf">
+		<div class="dashboard-column ui-droppable ">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col"  class="column-title">
+                         <div class="text">Extension</div>
+                         <div class="clear"></div>
+                      </th>
+                      <th scope="col"  class="column-title">
+                         <div class="text"><span class="float-right">Records</span></div>
+                         <div class="clear"></div>
+                      </th>
+                      <th scope="col"  class="column-title">
+                         <div class="text"><span class="float-right">Downloads</span></div>
+                         <div class="clear"></div>
+                      </th>
+
+						
+					</tr>
+				</thead>
+				<tbody>
+					{% for extension in table.extensions %}
+                        <tr>
+                          <th class="field-title">{{ extension.id_extension__extension_chars }}</a></th>
+                          <td><span class="float-right">{{ extension.stats__count }}</span></td>
+                          <td><span class="float-right">{{ extension.cuantity }}</span></td>
+                        </tr>
+                    {% endfor%}
+				</tbody>
+				<tfooter>
+          			<tr>
+              			<th colspan="1">Total</th>
+						<th><span class="float-right">{{ table.extensions | running_total:"stats__count" }}</span></th>
+						<th><span class="float-right">{{ table.extensions | running_total:"cuantity" }}</span></th>
+              			
+              		</tr>
+              	</tfooter>
+
+			</table>
+		</div>
+	</div>
+</div>
+                
+

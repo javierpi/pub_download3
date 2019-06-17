@@ -1,0 +1,109 @@
+{% extends "gug/home.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.min.js"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+<style type="text/css">
+  .chart {
+    width: 100%; 
+    min-height: 450px;
+  }
+  
+</style>
+{% endblock %}
+
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'gug:index' %}">{% trans 'Home' %}</a>
+            {% if app %}
+                &rsaquo; <a href="{{ app.app_url }}">{% if app.name != app.app_label|capfirst|escape %}{{ app.name }}{% else %}{% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}{% endif %}</a>
+            {% endif %}
+            &rsaquo; {{ object.title|capfirst }}
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block bodyclass %}{{ block.super }} dashboard jet {% endblock %}
+{% block content %}
+<div id="content" class="flex">
+  <h2>Extensions </h2>
+  <div class="dashboard-container columns_2 cf">
+    <div class="dashboard-column-wrapper">
+      <div id="content" class="flex">
+        <div class="dashboard-column first">
+          <div class="dashboard-item collapsible deletable draggable" data-module-id="1">
+            <div class="dashboard-item-header">
+              <span class="dashboard-item-header-drag icon-grid"></span>
+              <span class="dashboard-item-header-buttons"></span>
+              <span class="dashboard-item-header-title">
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                      <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+                      Period
+              </span>
+              <div class="cf"></div>
+            </div>
+            <div class="dashboard-item-content" style="height: auto;">
+              <div class="padding center">
+                <table >
+                  <thead>
+                    <tr>
+
+
+                      <th scope="col"  class="column-title">
+                         <div class="text"><span class="float-left">Extension</span></div>
+                         <div class="clear"></div>
+                      </th>
+                      <th scope="col"  class="column-title">
+                         <div class="text"><span class="float-right">Records</span></div>
+                         <div class="clear"></div>
+                      </th>
+                      <th scope="col"  class="column-title">
+                         <div class="text"><span class="float-right">Downloads</span></div>
+                         <div class="clear"></div>
+                      </th>
+
+                    </tr>
+                  </thead>
+                    <tbody>
+                    {% for extension in extensions %}
+                        <tr>
+                          <th class="field-title">{{ extension.id_extension__extension_chars }}</a></th>
+                          <td><span class="float-right">{{ extension.stats__count }}</span></td>
+                          <td><span class="float-right">{{ extension.cuantity }}</span></td>
+                        </tr>
+                      {% endfor%}
+                      
+                  </tbody>
+                   
+                 </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+  </div>
+</div>
+
+
+
+
+{% endblock %}
