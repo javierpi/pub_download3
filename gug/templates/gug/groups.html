@@ -1,5 +1,5 @@
 {% extends "gug/home.html" %}
-{% load i18n static %}
+{% load i18n static my_templatetag%}
 {% block extrastyle %}
 <link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}"/>
 
@@ -90,6 +90,44 @@
                             </tr>
                           </tfooter>
                         </table>
+                        <table id="result_list">
+                          <thead>
+                            <tr>
+                              <th scope="col"  class="column-title">
+                                 <div class="text">Extension</div>
+                                 <div class="clear"></div>
+                              </th>
+                              <th scope="col"  class="column-title">
+                                 <div class="text"><span class="float-right">Records</span></div>
+                                 <div class="clear"></div>
+                              </th>
+                              <th scope="col"  class="column-title">
+                                 <div class="text"><span class="float-right">Downloads</span></div>
+                                 <div class="clear"></div>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for gse in group.extensions %}
+                              <tr>
+                                  <td>{{gse.id_extension__extension_chars}}</td>
+                                  <td><span class="float-right">{{ gse.stats__count }}</span></td>
+                                  <td><span class="float-right">{{ gse.cuantity }}</span></td>
+                              </tr>
+                            {% endfor%}
+                          </tbody>
+                          <tfooter>
+                            <tr>
+                                <th colspan="1">Total</th>
+                                  <th><span class="float-right">{{ group.extensions | running_total:"stats__count" }}</span></th>
+                                  <th><span class="float-right">{{ group.extensions | running_total:"cuantity" }}</span></th>
+                              </tr>
+                            </tfooter>
+
+                        </table>
+
+
+
                       </div>
                     </div>
                   </div>

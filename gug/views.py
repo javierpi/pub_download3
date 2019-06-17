@@ -10,7 +10,7 @@ import json
 #### 
 ####
 
-from gug.models import Google_service, Period, Publication, Stats, Dspace, Service_group, WorkArea
+from gug.models import Google_service, Period, Publication, Stats, Dspace, Service_group, WorkArea, Extension
 from gug.forms import StatForm, DspaceForm, IndexForm
 from gug.serializers import PeriodSerializer, StatsSerializer, StatsSerializer3
 from gug.tasks import get_GA, get_wa
@@ -44,8 +44,8 @@ from django.core import management
 from .management.commands import get_title
 from .serializers import StatsSerializer
 
-cache_time = 60 * 15
-
+# cache_time = 60 * 15
+cache_time = 1
 
 @cache_page(cache_time)
 @csrf_exempt
@@ -421,13 +421,16 @@ def groups(request):
         dats_agno = groups_data(agno)
         periods_list = list(Period.objects.values_list('pk', flat=True).filter(start_date__year=agno))
         totals = Stats.objects.filter(period_id__in=periods_list).aggregate(Sum('cuantity') )
-        group_years.append({'year': agno, 'resume': dats_agno, 'year_totals': totals})
+
+        extensions = Publication.objects.values('id_extension__extension_chars','id_extension').filter(stats__period_id__in=periods_list).annotate(Count('stats')).annotate(cuantity=Sum('stats__cuantity')).order_by('cuantity')
+
+        group_years.append({'year': agno, 'resume': dats_agno, 'year_totals': totals, 'extensions': extensions})
 
     context['by_year'] =  group_years
     context['resume'] = Stats.objects.values('google_service').aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
     return render(request, 'gug/groups.html', {'table': context})
 
-@cache_page(cache_time)
+# @cache_page(cache_time)
 def index(request):
     context_object_name = 'periods'
 
@@ -443,6 +446,7 @@ def index(request):
 
     context['group_statistics'] = groups_data()
     context['resume'] = Stats.objects.values('google_service').aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+    context['extensions'] = Publication.objects.values('id_extension__extension_chars','id_extension').annotate(Count('stats')).annotate(cuantity=Sum('stats__cuantity')).order_by('cuantity')
 
     q_dspace = " select gug_dspace.id_dspace, gug_dspace.title , sum(cuantity) as sumtotal " \
             " from gug_stats as gs_master " \
@@ -601,6 +605,8 @@ def periods_detail(request, pk):
 
     context['group_statistics'] = google_services_groups
     context['resume'] = Stats.objects.values('google_service').filter(period_id=pk).aggregate(totalrecords=Count('cuantity'), totalcuantity=Sum('cuantity'))
+
+    context['extensions'] = Publication.objects.values('id_extension__extension_chars','id_extension').filter(stats__period_id=pk).annotate(Count('stats')).annotate(cuantity=Sum('stats__cuantity')).order_by('cuantity')
     
     q_dspace = " select gug_dspace.id_dspace, gug_dspace.title , sum(cuantity) as sumtotal " \
             " from gug_stats as gs_master " \
@@ -611,12 +617,23 @@ def periods_detail(request, pk):
     cursor = connection.cursor()
     cursor.execute(q_dspace)
     context['dspaces'] = cursor.fetchall()
-    work_area_list = workareas('function', period=pk, google_service=None)
-    context['work_area_list'] = work_area_list
+    context['work_area_list'] = workareas('function', period=pk, google_service=None)
 
 
     return render(request, 'gug/periods_detail.html', {'table': context })
 
+
+class extensions(ListView):
+    context_object_name = 'extensions'
+    template_name = 'gug/extensions.html'
+
+    def get_queryset(self):
+        return Publication.objects.values('id_extension__extension_chars','id_extension').annotate(Count('stats')).annotate(cuantity=Sum('stats__cuantity')).order_by('cuantity')
+        # .aggregate(totalrecords=Count('stats'), totalcuantity=Sum('stats__cuantity'))
+
+    def get_context_data(self, **kwargs):
+        context = super(extensions, self).get_context_data(**kwargs)
+        return context
 
 class periods(ListView):
     context_object_name = 'periods'
@@ -662,7 +679,6 @@ def workareas(request, period=None, google_service=None):
     if request != 'function':
         return render(request, 'gug/workarea.html', {'table': context})
     else:
-        #print('function')
         return work_area_list
 
 

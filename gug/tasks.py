@@ -3,7 +3,7 @@ from google.oauth2 import service_account
 from celery import shared_task
 from django.core.exceptions import ObjectDoesNotExist
 from django.core import management
-from gug.models import Google_service, Period, Publication, Stats, Dspace, WorkArea
+from gug.models import Google_service, Period, Publication, Stats, Dspace, WorkArea, Extension
 from datetime import datetime, timedelta, date
 import json
 import logging
@@ -20,6 +20,58 @@ def get_titles():
     call_id = management.call_command(
         'get_title',
         verbosity=2)
+
+def set_extension():
+    pub_list = Publication.objects.all()
+    # pub_list = Publication.objects.filter(id_extension=None)
+    for pub in pub_list:
+        filename = pub.tfile
+        fileparts = filename.split(".")
+        if len(fileparts) > 1:
+            extension = fileparts[-1]
+            extension = extension[:9]
+            
+            
+
+            if extension[0:3] == "pdf":
+                extension = "pdf"
+            else:
+                print(extension[0:3])    
+            # extension = extension.replace('pdf%3Bseq', 'pdf')
+            # extension = extension.replace('pdfFamil', 'pdf')
+            # extension = extension.replace('pdfINFOR', 'pdf')
+            # extension = extension.replace('pdfconse', 'pdf')
+            # extension = extension.replace('pdfEdith', 'pdf')
+            # extension = extension.replace('pdfameri', 'pdf')
+            # extension = extension.replace('pdfESTUD', 'pdf')
+            # extension = extension.replace('pdfTres', 'pdf')
+            # extension = extension.replace('pdf&amp', 'pdf')
+            # extension = extension.replace('pdfSOLO', 'pdf')
+            # extension = extension.replace('pdfla', 'pdf')
+            # extension = extension.replace('pdf;', 'pdf')
+            # extension = extension.replace('pdfe', 'pdf')
+            # extension = extension.replace('pdfA', 'pdf')
+            # extension = extension.replace('pdfs', 'pdf')
+
+            extension = extension.replace('#page=', '')
+            extension = extension.replace('%3Bjse', '')
+            extension = extension.replace('jsessi', '')
+            extension = extension.replace('&amp;s', '')
+            extension = extension.replace(';jsess', '')
+            extension = extension.replace(';seque', '')
+            extension = extension.replace(';jses', '')
+            extension = extension.replace('&amp', '')
+            extension = extension.replace('%20', '')
+            extension = extension.replace(';La', '')
+            extension = extension.replace(';js', '')
+            extension = extension.replace(';El', '')
+            extension = extension.replace(';j', '')            
+            extension = extension.replace(';', '')            
+            
+            ext, created = Extension.objects.get_or_create(extension_chars=extension)
+            # pub.id_extension = None
+            pub.id_extension = ext
+            pub.save()
 
 
 @shared_task
@@ -144,12 +196,6 @@ def check_periods():
             print('Closing period: ', period)
             period.active = False
             period.save()
-
-
-    
-
-
-    
 
 
 def tospanish(workarea):

@@ -2,7 +2,7 @@ from django.conf.urls import url, include
 from .views import google_services, periods, google_services_detail,\
     periods_detail, stat_index_view, index, dspace_detail, api_publication_detail, \
     api_periods_list, api_periods_detail, get_titles, get_ga, get_workareas, dspace_detail_byfile, \
-    dspace_detail_tmp, workareas, groups
+    dspace_detail_tmp, workareas, groups, extensions
 
 # 
 
@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^periods/$', periods.as_view(), name='periods'),
     # url(r'^periods/(?P<pk>\d+)$', periods_detail.as_view(), name='periods_detail'),
     url(r'^periods/(?P<pk>\d+)$', periods_detail, name='periods_detail'),
+
+    url(r'^extensions/$', extensions.as_view(), name='extensions'),
 
     url(r'^workareas/$', workareas, name='workareas'),
     url(r'^groups/$', groups, name='groups'),

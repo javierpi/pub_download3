@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 from django.contrib import admin
 from .models import Period, Google_service, Publication, Stats, Dspace, Service_type, Service_group,\
-					WorkArea
+					WorkArea, Extension
 from jet.filters import RelatedFieldAjaxListFilter
 
 
@@ -12,7 +12,7 @@ class Google_service_Admin(admin.ModelAdmin):
 
 
 class Publication_Admin(admin.ModelAdmin):
-    list_display = ('id_dspace', 'tfile')
+    list_display = ('id_dspace', 'tfile', 'id_extension')
 
 
 class Period_Admin(admin.ModelAdmin):
@@ -39,6 +39,10 @@ class WorkArea_Admin(admin.ModelAdmin):
 class Service_group_admin(admin.ModelAdmin):
     list_display = ('name','order')
 
+class Extension_admin(admin.ModelAdmin):
+    list_display = ('name','extension_chars', 'publicationcount')
+
+
 admin.site.register(Period, Period_Admin)
 admin.site.register(Google_service, Google_service_Admin)
 admin.site.register(Publication, Publication_Admin)
@@ -47,4 +51,5 @@ admin.site.register(Dspace, Dspace_Admin)
 admin.site.register(Service_type, Service_type_Admin)
 admin.site.register(Service_group, Service_group_admin)
 admin.site.register(WorkArea, WorkArea_Admin)
+admin.site.register(Extension,Extension_admin)
 

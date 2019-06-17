@@ -144,13 +144,24 @@ class Dspace(models.Model):
     def autocomplete_search_fields():
         return 'title', 'id_dspace'
 
+class Extension(models.Model):
+    name = models.CharField(max_length=100, default='')
+    extension_chars = models.CharField(max_length=10, default='')
+
+    def __str__(self):
+        return str(self.extension_chars)
+
+    def publicationcount(self):
+        return Publication.objects.filter(id_extension=self.id).count()
+        
 
 class Publication(models.Model):
     id_dspace = models.ForeignKey(Dspace, on_delete=models.CASCADE, null=True)
     tfile = models.CharField(max_length=200)
+    id_extension = models.ForeignKey(Extension, on_delete=models.CASCADE, null=True)
 
     class Meta:
-        ordering = ["id_dspace", "tfile"]
+        ordering = ["id_dspace", "tfile", "id_extension"]
         unique_together = ("id_dspace", "tfile")
 
     def __str__(self):

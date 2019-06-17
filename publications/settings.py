@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'elasticapm.contrib.django',
+    # 'elasticapm.contrib.django',
     'jet.dashboard',
     'jet',
     'django.contrib.admin',
@@ -53,7 +53,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'elasticapm.contrib.django.middleware.TracingMiddleware',
+    # 'elasticapm.contrib.django.middleware.TracingMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -71,12 +71,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
 )
 
-ELASTIC_APM = {
-  'SERVICE_NAME': 'PUB_DOWNLOADS',
-  'DEBUG': True,
-  'SECRET_TOKEN': '',
-  'SERVER_URL': 'http://kibanapro-q.cepal.org:8200',
-}
+# ELASTIC_APM = {
+#   'SERVICE_NAME': 'PUB_DOWNLOADS',
+#   'DEBUG': False,
+#   'SECRET_TOKEN': '',
+#   'SERVER_URL': 'http://kibanapro-q.cepal.org:8200',
+# }
+
 # 'django.template.context_processors.debug',
 # 'django.template.context_processors.request',
 # 'django.contrib.auth.context_processors.auth',
@@ -98,9 +99,14 @@ TEMPLATES = [
                 'django.template.context_processors.request'
 
             ],
+            'libraries':{
+                'my_templatetag': 'gug.templatestags.calcs',
+            }
         },
-    },
+    }
+    
 ]
+
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -276,114 +282,114 @@ DECIMAL_SEPARATOR = ','
 STATIC_ROOT = '/var/www/pub_static/'
 STATIC_URL = '/static/'
 GRAPPELLI_ADMIN_TITLE = 'UWEB'
-###
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'formatters': {
-#         'verbose': {
-#             'format': '%(asctime)s %(levelname)s %(name)s %(message)s'
-#         },
-#         'django.server': {
-#             '()': 'django.utils.log.ServerFormatter',
-#             'format': '[%(server_time)s] %(message)s',
-#         }
-#     },
-#     'filters': {
-#         'require_debug_true': {
-#             '()': 'django.utils.log.RequireDebugTrue',
-#         },
-#         'require_debug_false': {
-#             '()': 'django.utils.log.RequireDebugFalse',
-#         },
-#     },
-#     'handlers': {
-#         'request_handler': {
-#             'level': 'ERROR',
-#             'class': 'logging.handlers.RotatingFileHandler',
-#             'filename': 'logs/request_log.log',
-#             'maxBytes': 1024 * 1024 * 5,  # 5Mb
-#             'backupCount': 5,
-#             'formatter': 'verbose'
-#         },
-#         'default': {
-#             'level': 'ERROR',
-#             'filters': ['require_debug_true'],
-#             'class': 'logging.handlers.RotatingFileHandler',
-#             'filename': 'logs/default_log.log',
-#             'maxBytes': 1024 * 1024 * 5,  # 5Mb
-#             'backupCount': 5,
-#             'formatter': 'verbose'
-#         },
-#         'django.server': {
-#             'level': 'ERROR',
-#             'filters': ['require_debug_false'],
-#             'class': 'logging.handlers.RotatingFileHandler',
-#             'filename': 'logs/server_log.log',
-#             'maxBytes': 1024 * 1024 * 5,  # 5Mb
-#             'backupCount': 5,
-#             'formatter': 'django.server'
-#         },
-#         'mail_admins': {
-#             'level': 'ERROR',
-#             'filters': ['require_debug_false'],
-#             'class': 'django.utils.log.AdminEmailHandler'
-#         }
-#     },
-#     'loggers': {
-#         'django': {
-#             'handlers': ['default'],
-#             'level': 'ERROR',
-#             'propagate': True,
-#         },
-#         'django.server': {
-#             'handlers': ['django.server'],
-#             'level': 'ERROR',
-#             'propagate': False,
-#         },
-#         'django.request': {
-#             'handlers': ['request_handler', 'mail_admins'],
-#             'level': 'DEBUG',
-#             'propagate': True,
-#         },
-
-#     }
-# }
+##
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': True,
+    'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+            'format': '%(asctime)s %(levelname)s %(name)s %(message)s'
+        },
+        'django.server': {
+            '()': 'django.utils.log.ServerFormatter',
+            'format': '[%(server_time)s] %(message)s',
+        }
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
         },
     },
     'handlers': {
-        'elasticapm': {
-            'level': 'WARNING',
-            'class': 'elasticapm.contrib.django.handlers.LoggingHandler',
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
+        'request_handler': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/request_log.log',
+            'maxBytes': 1024 * 1024 * 5,  # 5Mb
+            'backupCount': 5,
             'formatter': 'verbose'
+        },
+        'default': {
+            'level': 'ERROR',
+            'filters': ['require_debug_true'],
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/default_log.log',
+            'maxBytes': 1024 * 1024 * 5,  # 5Mb
+            'backupCount': 5,
+            'formatter': 'verbose'
+        },
+        'django.server': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/server_log.log',
+            'maxBytes': 1024 * 1024 * 5,  # 5Mb
+            'backupCount': 5,
+            'formatter': 'django.server'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
         }
     },
     'loggers': {
-        'django.db.backends': {
+        'django': {
+            'handlers': ['default'],
             'level': 'ERROR',
-            'handlers': ['console'],
-            'propagate': False,
+            'propagate': True,
         },
-        'mysite': {
-            'level': 'WARNING',
-            'handlers': ['elasticapm'],
-            'propagate': False,
-        },
-        # Log errors from the Elastic APM module to the console (recommended)
-        'elasticapm.errors': {
+        'django.server': {
+            'handlers': ['django.server'],
             'level': 'ERROR',
-            'handlers': ['console'],
             'propagate': False,
         },
-    },
+        'django.request': {
+            'handlers': ['request_handler', 'mail_admins'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+
+    }
 }
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': True,
+#     'formatters': {
+#         'verbose': {
+#             'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+#         },
+#     },
+#     'handlers': {
+#         'elasticapm': {
+#             'level': 'WARNING',
+#             'class': 'elasticapm.contrib.django.handlers.LoggingHandler',
+#         },
+#         'console': {
+#             'level': 'DEBUG',
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'verbose'
+#         }
+#     },
+#     'loggers': {
+#         'django.db.backends': {
+#             'level': 'ERROR',
+#             'handlers': ['console'],
+#             'propagate': False,
+#         },
+#         'mysite': {
+#             'level': 'WARNING',
+#             'handlers': ['elasticapm'],
+#             'propagate': False,
+#         },
+#         # Log errors from the Elastic APM module to the console (recommended)
+#         'elasticapm.errors': {
+#             'level': 'ERROR',
+#             'handlers': ['console'],
+#             'propagate': False,
+#         },
+#     },
+# }
