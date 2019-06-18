@@ -21,57 +21,44 @@ def get_titles():
         'get_title',
         verbosity=2)
 
-def set_extension():
+def define_extension(filename):
+    fileparts = filename.split(".")
+    extension = ""
+    if len(fileparts) > 1:
+        extension = fileparts[-1]
+        extension = extension[:9]
+
+        if extension[0:3] == "pdf":
+            extension = "pdf"
+        # else:
+        #     print(extension[0:3])    
+
+        extension = extension.replace('#page=', '')
+        extension = extension.replace('%3Bjse', '')
+        extension = extension.replace('jsessi', '')
+        extension = extension.replace('&amp;s', '')
+        extension = extension.replace(';jsess', '')
+        extension = extension.replace(';seque', '')
+        extension = extension.replace(';jses', '')
+        extension = extension.replace('&amp', '')
+        extension = extension.replace('%20', '')
+        extension = extension.replace(';La', '')
+        extension = extension.replace(';js', '')
+        extension = extension.replace(';El', '')
+        extension = extension.replace(';j', '')            
+        extension = extension.replace(';', '')            
+        
+    ext, created = Extension.objects.get_or_create(extension_chars=extension)
+    return ext
+
+def set_all_extension():
     pub_list = Publication.objects.all()
-    # pub_list = Publication.objects.filter(id_extension=None)
     for pub in pub_list:
         filename = pub.tfile
-        fileparts = filename.split(".")
-        if len(fileparts) > 1:
-            extension = fileparts[-1]
-            extension = extension[:9]
-            
-            
-
-            if extension[0:3] == "pdf":
-                extension = "pdf"
-            else:
-                print(extension[0:3])    
-            # extension = extension.replace('pdf%3Bseq', 'pdf')
-            # extension = extension.replace('pdfFamil', 'pdf')
-            # extension = extension.replace('pdfINFOR', 'pdf')
-            # extension = extension.replace('pdfconse', 'pdf')
-            # extension = extension.replace('pdfEdith', 'pdf')
-            # extension = extension.replace('pdfameri', 'pdf')
-            # extension = extension.replace('pdfESTUD', 'pdf')
-            # extension = extension.replace('pdfTres', 'pdf')
-            # extension = extension.replace('pdf&amp', 'pdf')
-            # extension = extension.replace('pdfSOLO', 'pdf')
-            # extension = extension.replace('pdfla', 'pdf')
-            # extension = extension.replace('pdf;', 'pdf')
-            # extension = extension.replace('pdfe', 'pdf')
-            # extension = extension.replace('pdfA', 'pdf')
-            # extension = extension.replace('pdfs', 'pdf')
-
-            extension = extension.replace('#page=', '')
-            extension = extension.replace('%3Bjse', '')
-            extension = extension.replace('jsessi', '')
-            extension = extension.replace('&amp;s', '')
-            extension = extension.replace(';jsess', '')
-            extension = extension.replace(';seque', '')
-            extension = extension.replace(';jses', '')
-            extension = extension.replace('&amp', '')
-            extension = extension.replace('%20', '')
-            extension = extension.replace(';La', '')
-            extension = extension.replace(';js', '')
-            extension = extension.replace(';El', '')
-            extension = extension.replace(';j', '')            
-            extension = extension.replace(';', '')            
-            
-            ext, created = Extension.objects.get_or_create(extension_chars=extension)
-            # pub.id_extension = None
-            pub.id_extension = ext
-            pub.save()
+        ext = define_extension(filename)
+        # pub.id_extension = None
+        pub.id_extension = ext
+        pub.save()
 
 
 @shared_task
@@ -309,6 +296,7 @@ def get_wa():
 def delete_stat(gs, period):
     print('deleting stats for period:', period, ' and gs:', gs)
     Stats.objects.filter(google_service=gs, period=period).delete()
+
 def clean_title(title):
     ntitle = title
     ntitle = ntitle.replace('\\xF0', '')
@@ -346,15 +334,6 @@ def save_record(gs, period, url, title, cantidad, workareas=None):
 
     if isNum(id_dspace) and int(cantidad) > 0:
         
-        # dsp, created = Dspace.objects.update_or_create(
-        #     id_dspace=id_dspace,
-        #     defaults={
-        #         'title': title,
-        #         'post_title1': post_title1,
-        #         'post_title2': post_title2
-        #         }
-        #     )
-        
         dsp, created = Dspace.objects.get_or_create(id_dspace=id_dspace)
         if len(title.strip()) > 0 :
             dsp.title = title
@@ -362,10 +341,12 @@ def save_record(gs, period, url, title, cantidad, workareas=None):
             dsp.post_title2 = post_title2
             dsp.save()
 
+        ext = define_extension(file)
+
         try:
             pub = Publication.objects.get(id_dspace=dsp, tfile=file)
         except Publication.DoesNotExist:
-            pub = Publication(id_dspace=dsp, tfile=file)
+            pub = Publication(id_dspace=dsp, tfile=file, id_extension=ext)
             pub.save()
 
         try:

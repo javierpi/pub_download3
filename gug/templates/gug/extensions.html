@@ -1,5 +1,5 @@
 {% extends "gug/home.html" %}
-{% load i18n static %}
+{% load i18n static my_templatetag %}
 
 {% block extrastyle %}
 <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
@@ -89,6 +89,13 @@
                       {% endfor%}
                       
                   </tbody>
+                  <tfooter>
+                    <tr>
+                        <th colspan="1">Total</th>
+                        <th><span class="float-right">{{ extensions | running_total:"stats__count" }}</span></th>
+                        <th><span class="float-right">{{ extensions | running_total:"cuantity" }}</span></th>
+                      </tr>
+                  </tfooter>
                    
                  </table>
               </div>
